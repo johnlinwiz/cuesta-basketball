@@ -366,7 +366,9 @@ function renderSeasonTable() {
     }
     const r0 = (p.results || []).find(r => r.boxscore || r.recap);
     const watch = past(e) ? [r0?.boxscore && `<a href="${r0.boxscore}" target="_blank">box</a>`, r0?.recap && `<a href="${r0.recap}" target="_blank">recap</a>`].filter(Boolean).join(" ") :
-                  [p.video && `<a href="${p.video}" target="_blank">📺</a>`,
+                  [p.video && (p.videoUncertain
+                     ? `<a href="${p.video}" target="_blank" title="${esc(p.videoLabel)}">📺?</a>`
+                     : `<a href="${p.video}" target="_blank">📺</a>`),
                    p.stats ? `<a href="${p.stats}" target="_blank">📊</a>` : p.liveStats ? "📊" : ""]
                   .filter(Boolean).join(" ");
     return `<tr class="${row}"><td class="num c-head">${esc(p.dateLabel)}<span class="m-only"> · ${esc(p.time)} · ${esc(p.site)}</span></td>

@@ -58,7 +58,8 @@ def build_readme(sched, venues_cfg, drive, events, issues, today):
     out += [
         "🏠 home · 🚌 away · 🏆 tournament · `*` Western State Conference · "
         "`?` home/away inferred (poster had no `@`/`Vs`) · ✅ played  ",
-        "📺 host school's stream channel (the per-game link usually goes up on game day) · 📊 live stats. Drive times are OSRM "
+        "📺 host school's stream channel (the per-game link usually goes up on game day; 📺 maybe = that school "
+        "rarely streams: Cuesta hasn't posted a men's game since 2020) · 📊 live stats. Drive times are OSRM "
         "free-flow estimates (no traffic; run a bit long vs Google) — click one for live Google Maps "
         "directions. All times Pacific.",
         "",
@@ -80,7 +81,8 @@ def build_readme(sched, venues_cfg, drive, events, issues, today):
             game += f"<br>{badge} {who}**{result_label(g)}**{links}"
         watch = []
         if e.video and e.end_date >= today:
-            watch.append(f"[📺 watch]({e.video})" + ("" if e.video_is_channel else " (game)"))
+            watch.append(f"[📺 maybe]({e.video})" if e.video_uncertain else
+                         f"[📺 watch]({e.video})" + ("" if e.video_is_channel else " (game)"))
         if e.audio:
             watch.append(f"[🎙️ audio]({e.audio})")
         if e.stats:
@@ -231,7 +233,7 @@ def build_events_json(sched, venues_cfg, events, issues):
                 "liveStats": e.live_stats, "notes": e.notes, "confirmed": e.site_confirmed,
                 "results": [{"label": result_label(g), "outcome": g["outcome"], "opponent": g.get("opponent"),
                              "boxscore": g.get("boxscore"), "recap": g.get("recap")} for g in result_games(e)],
-                "venueKey": e.venue_key, "video": e.video, "videoLabel": e.video_label, "audio": e.audio, "stats": e.stats,
+                "venueKey": e.venue_key, "video": e.video, "videoLabel": e.video_label, "videoUncertain": e.video_uncertain, "audio": e.audio, "stats": e.stats,
                 "gcal": e.gcal_link(),
                 "issue": f"https://github.com/{REPO}/issues/{issues[e.id]}" if e.id in issues else None,
             },

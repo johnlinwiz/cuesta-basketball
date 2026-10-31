@@ -66,8 +66,12 @@ class Event:
         # Per-game stream link if posted; otherwise fall back to the host school's channel.
         self.video = raw.get("video") or self.venue.get("stream")
         self.video_is_channel = bool(self.video) and not raw.get("video")
+        # Channels known to rarely carry games are still linked, but flagged as such.
+        self.video_uncertain = self.video_is_channel and bool(self.venue.get("stream_uncertain"))
         self.video_label = ("Host channel: " + self.venue.get("stream_label", "")) if self.video_is_channel \
             else "Game stream"
+        if self.video_uncertain:
+            self.video_label += " (may not be streamed)"
         self.drive = drive.get(self.venue_key, {})
         self.all_day = "time" not in raw
         if self.all_day:

@@ -20,6 +20,8 @@ venues:
     lon: -120.7406
     stream: https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ
     stream_label: "YouTube · CuestaHDTV"
+    # Checked 2026-10-31 at tip-off vs Sequoias: no live/upcoming stream; latest MBB upload is Feb 2020.
+    stream_uncertain: true
   porterville:
     name: Porterville College Gym
     city: Porterville, CA

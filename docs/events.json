@@ -2,7 +2,7 @@
  "team": "Cuesta College Men's Basketball",
  "season": "2026-27",
  "ics": "cuesta-mbb.ics",
- "record": "1-0",
+ "record": "1-1",
  "repo": "johnlinwiz/cuesta-mbb",
  "venues": {
   "reedley": {
@@ -406,14 +406,22 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "L 82-87",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261031_b00x.xml",
+      "recap": null
+     }
+    ],
     "venueKey": "cuesta",
     "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
     "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
     "videoUncertain": true,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Sequoias&dates=20261031T130000%2F20261031T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Sequoias+%E2%80%94+L+82-87&dates=20261031T130000%2F20261031T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0AFinal%3A+L+82-87+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fmbkb%2F2026-27%2Fboxscores%2F20261031_b00x.xml",
     "issue": "https://github.com/johnlinwiz/cuesta-mbb/issues/4"
    },
    "start": "2026-10-31T13:00:00-07:00",

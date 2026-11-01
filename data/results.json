@@ -7,5 +7,14 @@
     "status": "Final",
     "them": 53,
     "us": 93
+  },
+  "2026-10-31-sequoias": {
+    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261031_b00x.xml",
+    "outcome": "L",
+    "raw": "L, 87-82",
+    "score": "82-87",
+    "status": "Final",
+    "them": 87,
+    "us": 82
   }
 }

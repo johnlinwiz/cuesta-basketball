@@ -2,7 +2,7 @@
  "team": "Cuesta College Men's Basketball",
  "season": "2026-27",
  "ics": "cuesta-mbb.ics",
- "record": "1-1",
+ "record": "1-2",
  "repo": "johnlinwiz/cuesta-mbb",
  "venues": {
   "reedley": {
@@ -452,14 +452,22 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "L 58-72",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cccaasports.org/links/1mntr8",
+      "recap": null
+     }
+    ],
     "venueKey": "mpc",
     "video": "https://www.youtube.com/@MPCMensBasketball/streams",
     "videoLabel": "Host channel: YouTube · MPC Men's Basketball",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+%40+Monterey+Peninsula&dates=20261103T150000%2F20261103T170000&ctz=America%2FLos_Angeles&location=Monterey+Peninsula+College+Gym%2C+980+Fremont+St%2C+Monterey%2C+CA+93940&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Monterey+Peninsula+College+Gym%2C+980+Fremont+St%2C+Monterey%2C+CA+93940%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMonterey%2BPeninsula%2BCollege%2BGym%252C%2B980%2BFremont%2BSt%252C%2BMonterey%252C%2BCA%2B93940%0ADrive+from+Pasadena%3A+6h+15m+%C2%B7+322+mi%0ADrive+from+SLO%3A+2h+51m+%C2%B7+144+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+MPC+Men%27s+Basketball%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40MPCMensBasketball%2Fstreams",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+%40+Monterey+Peninsula+%E2%80%94+L+58-72&dates=20261103T150000%2F20261103T170000&ctz=America%2FLos_Angeles&location=Monterey+Peninsula+College+Gym%2C+980+Fremont+St%2C+Monterey%2C+CA+93940&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Monterey+Peninsula+College+Gym%2C+980+Fremont+St%2C+Monterey%2C+CA+93940%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMonterey%2BPeninsula%2BCollege%2BGym%252C%2B980%2BFremont%2BSt%252C%2BMonterey%252C%2BCA%2B93940%0ADrive+from+Pasadena%3A+6h+15m+%C2%B7+322+mi%0ADrive+from+SLO%3A+2h+51m+%C2%B7+144+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+MPC+Men%27s+Basketball%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40MPCMensBasketball%2Fstreams%0AFinal%3A+L+58-72+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Flinks%2F1mntr8",
     "issue": "https://github.com/johnlinwiz/cuesta-mbb/issues/5"
    },
    "start": "2026-11-03T15:00:00-08:00",

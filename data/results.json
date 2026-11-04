@@ -16,5 +16,14 @@
     "status": "Final",
     "them": 87,
     "us": 82
+  },
+  "2026-11-03-monterey-peninsula": {
+    "boxscore": "https://www.cccaasports.org/links/1mntr8",
+    "outcome": "L",
+    "raw": "L, 72-58",
+    "score": "58-72",
+    "status": "Final",
+    "them": 72,
+    "us": 58
   }
 }

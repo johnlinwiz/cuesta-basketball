@@ -146,7 +146,9 @@ footer .qr svg {{ width:1.05in; height:1.05in; background:#fff; border-radius:6p
 def render(html_text, pdf_path, png_path):
     from playwright.sync_api import sync_playwright
     with sync_playwright() as p:
-        b = p.chromium.launch()
+        # --disable-lcd-text: Linux Chromium otherwise draws sub-pixel (RGB-fringed) text in the PNG
+        # preview, which shows up as colour on the black & white version. The PDF is vector either way.
+        b = p.chromium.launch(args=["--disable-lcd-text", "--disable-font-subpixel-positioning"])
         pg = b.new_page(viewport={"width": 816, "height": 1056})          # 8.5x11in at 96 dpi
         pg.set_content(html_text, wait_until="load")
         # Scale-to-fit (up to 118%) so it is always exactly one full page, however many games the team has.

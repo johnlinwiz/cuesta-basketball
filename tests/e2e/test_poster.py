@@ -59,9 +59,11 @@ def test_black_and_white_poster_has_no_colour(frozen_root, tmp_path):
             const img = new Image(); img.src = "data:image/png;base64," + b64; await img.decode();
             const c = document.createElement("canvas"); c.width = img.width; c.height = img.height;
             const x = c.getContext("2d"); x.drawImage(img, 0, 0);
-            const d = x.getImageData(0, 0, c.width, c.height).data; let worst = 0;
+            const d = x.getImageData(0, 0, c.width, c.height).data; let worst = [0, 0, 0, ""];
             for (let i = 0; i < d.length; i += 4 * 7) {
-              const m = Math.max(d[i], d[i+1], d[i+2]) - Math.min(d[i], d[i+1], d[i+2]); if (m > worst) worst = m; }
+              const m = Math.max(d[i], d[i+1], d[i+2]) - Math.min(d[i], d[i+1], d[i+2]);
+              if (m > worst[0]) { const px = i / 4; worst = [m, px % c.width, Math.floor(px / c.width), `rgb(${d[i]},${d[i+1]},${d[i+2]})`]; } }
             return worst; }""", __import__("base64").b64encode(png.read_bytes()).decode())
         b.close()
-    assert worst <= 24, f"colour found in the B&W poster (max channel spread {worst})"
+    spread, x, y, rgb = worst
+    assert spread <= 24, f"colour found in the B&W poster: {rgb} at ({x},{y}), channel spread {spread}"

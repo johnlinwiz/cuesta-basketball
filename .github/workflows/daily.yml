@@ -49,6 +49,9 @@ jobs:
       - name: Post reminders / close finished games
         env: { GH_TOKEN: "${{ github.token }}" }
         run: python scripts/daily.py
+      - name: Route any new back-to-back venue pairs (OSRM; cached in data/drive_pairs.json)
+        continue-on-error: true
+        run: python scripts/drive_times.py --pairs
       - name: Rebuild docs
         run: python scripts/build.py
       - name: Commit if changed

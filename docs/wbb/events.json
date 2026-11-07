@@ -344,7 +344,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Bakersfield+%28scrimmage%29&dates=20261017T113000%2F20261017T133000&ctz=America%2FLos_Angeles&location=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268&details=Scrimmage+%E2%80%94+Neutral%0AVenue%3A+Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DTaft%2BCollege%2BGym%252C%2B29%2BCougar%2BCourt%252C%2BTaft%252C%2BCA%2B93268%0ADrive+from+Pasadena%3A+2h+28m+%C2%B7+121+mi%0ADrive+from+SLO%3A+2h+12m+%C2%B7+96+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Taft+College+Women%27s+Basketball%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Ftaft%2Forganization%2F116746%2Ftaft-college%2Fteam%2F737875%2Fwomens-varsity-basketball%0ANote%3A+Taft+College+Jamboree",
     "issue": null,
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-10-17T11:30:00-07:00",
    "end": "2026-10-17T13:30:00-07:00"
@@ -384,7 +385,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Canyons+%28scrimmage%29&dates=20261024T140000%2F20261024T160000&ctz=America%2FLos_Angeles&location=College+of+the+Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355&details=Scrimmage+%E2%80%94+Away%0AVenue%3A+College+of+the+Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCollege%2Bof%2Bthe%2BCanyons%2B%25E2%2580%2594%2BLee%2BSmelser%2BCourt%2B%2528Cougar%2BCage%2529%252C%2B26455%2BRockwell%2BCanyon%2BRoad%252C%2BSanta%2BClarita%252C%2BCA%2B91355%0ADrive+from+Pasadena%3A+41m+%C2%B7+35+mi%0ADrive+from+SLO%3A+3h+32m+%C2%B7+169+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+Cougars+Sports+Network%29%3A+https%3A%2F%2Fwww.youtube.com%2Fc%2FCougarsSportsNetwork%2Ffeatured",
     "issue": null,
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-10-24T14:00:00-07:00",
    "end": "2026-10-24T16:00:00-07:00"
@@ -432,7 +434,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Taft+%E2%80%94+L+58-66&dates=20261030T170000%2F20261030T190000&ctz=America%2FLos_Angeles&location=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DTaft%2BCollege%2BGym%252C%2B29%2BCougar%2BCourt%252C%2BTaft%252C%2BCA%2B93268%0ADrive+from+Pasadena%3A+2h+28m+%C2%B7+121+mi%0ADrive+from+SLO%3A+2h+12m+%C2%B7+96+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Taft+College+Women%27s+Basketball%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Ftaft%2Forganization%2F116746%2Ftaft-college%2Fteam%2F737875%2Fwomens-varsity-basketball%0AFinal%3A+L+58-66+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Flinks%2Fdjm9mg",
     "issue": null,
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-10-30T17:00:00-07:00",
    "end": "2026-10-30T19:00:00-07:00"
@@ -480,7 +483,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Hartnell+%E2%80%94+L+51-67&dates=20261104T150000%2F20261104T170000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0AFinal%3A+L+51-67+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261104_hvlu.xml",
     "issue": null,
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-11-04T15:00:00-08:00",
    "end": "2026-11-04T17:00:00-08:00"
@@ -520,7 +524,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Santa+Monica&dates=20261107T130000%2F20261107T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/31",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-11-07T13:00:00-08:00",
    "end": "2026-11-07T15:00:00-08:00"
@@ -560,7 +565,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/32",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-11-12T16:00:00-08:00",
    "end": "2026-11-12T18:00:00-08:00"
@@ -600,7 +606,19 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Siskiyous&dates=20261113T140000%2F20261113T160000&ctz=America%2FLos_Angeles&location=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSiskiyous%2BGymnasium%252C%2B800%2BCollege%2BAvenue%252C%2BWeed%252C%2BCA%2B96094%0ADrive+from+Pasadena%3A+11h+16m+%C2%B7+613+mi%0ADrive+from+SLO%3A+9h+25m+%C2%B7+496+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+College+of+the+Siskiyous%29%3A+https%3A%2F%2Ffan.hudl.com%2FUnited-States%2FCA%2FWeed%2Forganization%2F4884%2FCollege-of-the-Siskiyous-%2Fvideo",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/33",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": {
+     "title": "@ Foothill",
+     "dateLabel": "Thu Nov 12",
+     "time": "4:00 PM",
+     "venue": "Foothill College Main Gymnasium",
+     "city": "Los Altos Hills, CA",
+     "same": false,
+     "sameDay": false,
+     "minutes": 369,
+     "miles": 321,
+     "dir": "https://www.google.com/maps/dir/?api=1&origin=12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&destination=800+College+Avenue%2C+Weed%2C+CA+96094&travelmode=driving"
+    }
    },
    "start": "2026-11-13T14:00:00-08:00",
    "end": "2026-11-13T16:00:00-08:00"
@@ -640,7 +658,19 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/34",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": {
+     "title": "@ Siskiyous",
+     "dateLabel": "Fri Nov 13",
+     "time": "2:00 PM",
+     "venue": "Siskiyous Gymnasium",
+     "city": "Weed, CA",
+     "same": false,
+     "sameDay": false,
+     "minutes": 286,
+     "miles": 254,
+     "dir": "https://www.google.com/maps/dir/?api=1&origin=800+College+Avenue%2C+Weed%2C+CA+96094&destination=2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&travelmode=driving"
+    }
    },
    "start": "2026-11-14T14:00:00-08:00",
    "end": "2026-11-14T16:00:00-08:00"
@@ -680,7 +710,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Monterey+Peninsula&dates=20261118T160000%2F20261118T180000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/35",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-11-18T16:00:00-08:00",
    "end": "2026-11-18T18:00:00-08:00"
@@ -720,7 +751,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Mission&dates=20261120T180000%2F20261120T200000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Tournament+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0ANote%3A+Hinson%27s+Tire+Pros+Classic%2C+day+1",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/36",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-11-20T18:00:00-08:00",
    "end": "2026-11-20T20:00:00-08:00"
@@ -760,7 +792,19 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Skyline&dates=20261121T150000%2F20261121T170000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Tournament+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0ANote%3A+Hinson%27s+Tire+Pros+Classic%2C+day+2",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/37",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": {
+     "title": "vs Mission",
+     "dateLabel": "Fri Nov 20",
+     "time": "6:00 PM",
+     "venue": "Stork Gymnasium (Cuesta Gym)",
+     "city": "San Luis Obispo, CA",
+     "same": true,
+     "sameDay": false,
+     "minutes": 0,
+     "miles": 0,
+     "dir": "https://www.google.com/maps/dir/?api=1&origin=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving"
+    }
    },
    "start": "2026-11-21T15:00:00-08:00",
    "end": "2026-11-21T17:00:00-08:00"
@@ -800,7 +844,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Reedley&dates=20261202T170000%2F20261202T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/38",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-12-02T17:00:00-08:00",
    "end": "2026-12-02T19:00:00-08:00"
@@ -840,7 +885,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+TBA+%28Tom+Gilcrest+Tournament%29&dates=20261205%2F20261206&ctz=America%2FLos_Angeles&location=College+of+the+Sequoias+%E2%80%94+Porter+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+College+of+the+Sequoias+%E2%80%94+Porter+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCollege%2Bof%2Bthe%2BSequoias%2B%25E2%2580%2594%2BPorter%2BFieldhouse%252C%2B915%2BS.%2BMooney%2BBlvd%252C%2BVisalia%252C%2BCA%2B93277%0ADrive+from+Pasadena%3A+3h+28m+%C2%B7+182+mi%0ADrive+from+SLO%3A+2h+50m+%C2%B7+135+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+COS+Giants%29%3A+https%3A%2F%2Fwww.youtube.com%2Fc%2Fcosgiant%0ANote%3A+College+of+the+Sequoias%27+49th+Tom+Gilcrest+Tournament+%28Dec+3-5%29%3B+opponent+and+time+not+announced+yet",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/39",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-12-05",
    "end": "2026-12-06"
@@ -880,7 +926,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Santa+Ana&dates=20261211T180000%2F20261211T200000&ctz=America%2FLos_Angeles&location=Santa+Ana+College+%E2%80%94+Bill+Cook+Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Santa+Ana+College+%E2%80%94+Bill+Cook+Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSanta%2BAna%2BCollege%2B%25E2%2580%2594%2BBill%2BCook%2BGymnasium%252C%2B1530%2BW.%2B17th%2BStreet%252C%2BSanta%2BAna%252C%2BCA%2B92706%0ADrive+from+Pasadena%3A+52m+%C2%B7+36+mi%0ADrive+from+SLO%3A+4h+31m+%C2%B7+220+mi%0AWatch+live+%28Host+channel%3A+FloCollege+%C2%B7+Santa+Ana+College+%28subscription%29%29%3A+https%3A%2F%2Fgo.flocollege.com%2Fteams%2Fsanta-ana-college",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/40",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-12-11T18:00:00-08:00",
    "end": "2026-12-11T20:00:00-08:00"
@@ -920,7 +967,19 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Fullerton&dates=20261212T130000%2F20261212T150000&ctz=America%2FLos_Angeles&location=Fullerton+College+%E2%80%94+The+Hornets+Nest%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Fullerton+College+%E2%80%94+The+Hornets+Nest%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFullerton%2BCollege%2B%25E2%2580%2594%2BThe%2BHornets%2BNest%252C%2B321%2BE.%2BChapman%2BAve%252C%2BFullerton%252C%2BCA%2B92832%0ADrive+from+Pasadena%3A+45m+%C2%B7+31+mi%0ADrive+from+SLO%3A+4h+24m+%C2%B7+215+mi%0AWatch+live+%28Game+stream%29%3A+https%3A%2F%2Fwww.flocollege.com%2Flive%2F284079%0ANote%3A+Stream+is+on+FloCollege+%28subscription%29",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/41",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": {
+     "title": "@ Santa Ana",
+     "dateLabel": "Fri Dec 11",
+     "time": "6:00 PM",
+     "venue": "Santa Ana College — Bill Cook Gymnasium",
+     "city": "Santa Ana, CA",
+     "same": false,
+     "sameDay": false,
+     "minutes": 20,
+     "miles": 12,
+     "dir": "https://www.google.com/maps/dir/?api=1&origin=1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706&destination=321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832&travelmode=driving"
+    }
    },
    "start": "2026-12-12T13:00:00-08:00",
    "end": "2026-12-12T15:00:00-08:00"
@@ -960,7 +1019,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Chabot&dates=20261219T150000%2F20261219T170000&ctz=America%2FLos_Angeles&location=Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DChabot%2BCollege%2BMain%2BGym%252C%2B25555%2BHesperian%2BBlvd%252C%2BHayward%252C%2BCA%2B94545%0ADrive+from+Pasadena%3A+6h+42m+%C2%B7+361+mi%0ADrive+from+SLO%3A+4h+04m+%C2%B7+210+mi",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/42",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2026-12-19T15:00:00-08:00",
    "end": "2026-12-19T17:00:00-08:00"
@@ -1000,7 +1060,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Ventura&dates=20270106T170000%2F20270106T190000&ctz=America%2FLos_Angeles&location=Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DVentura%2BCollege%2BGym%252C%2B4667%2BTelegraph%2BRd%252C%2BVentura%252C%2BCA%2B93003%0ADrive+from+Pasadena%3A+1h+24m+%C2%B7+68+mi%0ADrive+from+SLO%3A+2h+40m+%C2%B7+126+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+VC+Pirate+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCwtRPgwghVQtHQBZAsTmxdQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/43",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-06T17:00:00-08:00",
    "end": "2027-01-06T19:00:00-08:00"
@@ -1040,7 +1101,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Santa+Barbara&dates=20270109T130000%2F20270109T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/44",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-09T13:00:00-08:00",
    "end": "2027-01-09T15:00:00-08:00"
@@ -1080,7 +1142,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Moorpark&dates=20270113T170000%2F20270113T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/45",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-13T17:00:00-08:00",
    "end": "2027-01-13T19:00:00-08:00"
@@ -1120,7 +1183,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Oxnard&dates=20270116T130000%2F20270116T150000&ctz=America%2FLos_Angeles&location=Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DOxnard%2BCollege%2BGym%252C%2B4000%2BS%2BRose%2BAve%252C%2BOxnard%252C%2BCA%2B93033%0ADrive+from+Pasadena%3A+1h+19m+%C2%B7+63+mi%0ADrive+from+SLO%3A+2h+50m+%C2%B7+135+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+OC+Condors%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40occondors8165",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/46",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-16T13:00:00-08:00",
    "end": "2027-01-16T15:00:00-08:00"
@@ -1160,7 +1224,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+LA+Mission&dates=20270120T170000%2F20270120T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/47",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-20T17:00:00-08:00",
    "end": "2027-01-20T19:00:00-08:00"
@@ -1200,7 +1265,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+LA+Pierce&dates=20270123T130000%2F20270123T150000&ctz=America%2FLos_Angeles&location=LA+Pierce+College+%E2%80%94+Ken+Stanley+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+LA+Pierce+College+%E2%80%94+Ken+Stanley+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLA%2BPierce%2BCollege%2B%25E2%2580%2594%2BKen%2BStanley%2BCourt%252C%2B6201%2BWinnetka%2BAve%252C%2BWoodland%2BHills%252C%2BCA%2B91371%0ADrive+from+Pasadena%3A+35m+%C2%B7+27+mi%0ADrive+from+SLO%3A+3h+27m+%C2%B7+168+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+Brahma+Sports+Network%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40brahmasportsnetwork",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/48",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-23T13:00:00-08:00",
    "end": "2027-01-23T15:00:00-08:00"
@@ -1240,7 +1306,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Allan+Hancock&dates=20270127T170000%2F20270127T190000&ctz=America%2FLos_Angeles&location=Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+Maria%2C+CA+93454&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+Maria%2C+CA+93454%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAllan%2BHancock%2BCollege%2BGym%252C%2B800%2BS%2BCollege%2BDr%252C%2BSanta%2BMaria%252C%2BCA%2B93454%0ADrive+from+Pasadena%3A+3h+18m+%C2%B7+160+mi%0ADrive+from+SLO%3A+42m+%C2%B7+33+mi%0AWatch+live+%28Host+channel%3A+Team1Sports+%2F+BlueFrame%29%3A+https%3A%2F%2Fwww.team1sports.com%2Fcollege%2F%3FS%3Dallanhancockcollege",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/49",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-27T17:00:00-08:00",
    "end": "2027-01-27T19:00:00-08:00"
@@ -1280,7 +1347,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Ventura&dates=20270129T170000%2F20270129T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/50",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-01-29T17:00:00-08:00",
    "end": "2027-01-29T19:00:00-08:00"
@@ -1320,7 +1388,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Santa+Barbara&dates=20270203T170000%2F20270203T190000&ctz=America%2FLos_Angeles&location=Robertson+Gymnasium+%28%22Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Robertson+Gymnasium+%28%22Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DRobertson%2BGymnasium%2B%2528%2522Rob%2BGym%2522%2529%252C%2BUCSB%252C%2BRobertson%2BGymnasium%252C%2BOcean%2BRd%252C%2BSanta%2BBarbara%252C%2BCA%2B93106%0ADrive+from+Pasadena%3A+2h+09m+%C2%B7+109+mi%0ADrive+from+SLO%3A+1h+58m+%C2%B7+98+mi%0AWatch+live+%28Game+stream%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Fsanta-barbara%2Forganization%2F4943%2Fsanta-barbara-city%2Fwatch%3Fib%3D4106831%26shared%3Dtrue%0ANote%3A+Played+at+Rob+Gym+%28UCSB%29%2C+not+the+SBCC+campus",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/51",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-03T17:00:00-08:00",
    "end": "2027-02-03T19:00:00-08:00"
@@ -1360,7 +1429,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Moorpark&dates=20270205T170000%2F20270205T190000&ctz=America%2FLos_Angeles&location=Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMoorpark%2BCollege%2BGym%252C%2B7075%2BCampus%2BRd%252C%2BMoorpark%252C%2BCA%2B93021%0ADrive+from+Pasadena%3A+56m+%C2%B7+46+mi%0ADrive+from+SLO%3A+3h+12m+%C2%B7+151+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Moorpark+College%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Fmoorpark%2Forganization%2F8690%2Fmoorpark-college",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/52",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-05T17:00:00-08:00",
    "end": "2027-02-05T19:00:00-08:00"
@@ -1400,7 +1470,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Oxnard&dates=20270210T170000%2F20270210T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/53",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-10T17:00:00-08:00",
    "end": "2027-02-10T19:00:00-08:00"
@@ -1440,7 +1511,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+LA+Mission&dates=20270212T170000%2F20270212T190000&ctz=America%2FLos_Angeles&location=LA+Mission+College+Gymnasium+%28HFAC%29%2C+12890+Harding+Street%2C+Sylmar%2C+CA+91342&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+LA+Mission+College+Gymnasium+%28HFAC%29%2C+12890+Harding+Street%2C+Sylmar%2C+CA+91342%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLA%2BMission%2BCollege%2BGymnasium%2B%2528HFAC%2529%252C%2B12890%2BHarding%2BStreet%252C%2BSylmar%252C%2BCA%2B91342%0ADrive+from+Pasadena%3A+28m+%C2%B7+22+mi%0ADrive+from+SLO%3A+3h+44m+%C2%B7+179+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+LAMC+Eagles%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCE5h0MlX2Kev_Zq-J3XsBwg",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/54",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-12T17:00:00-08:00",
    "end": "2027-02-12T19:00:00-08:00"
@@ -1480,7 +1552,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+LA+Pierce&dates=20270217T170000%2F20270217T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/55",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-17T17:00:00-08:00",
    "end": "2027-02-17T19:00:00-08:00"
@@ -1520,7 +1593,8 @@
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Allan+Hancock&dates=20270219T170000%2F20270219T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/56",
     "team": "wbb",
-    "teamShort": "WBB"
+    "teamShort": "WBB",
+    "fromPrev": null
    },
    "start": "2027-02-19T17:00:00-08:00",
    "end": "2027-02-19T19:00:00-08:00"

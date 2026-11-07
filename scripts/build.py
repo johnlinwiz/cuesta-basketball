@@ -7,8 +7,10 @@ Legacy single-team (data/schedule.yaml): README.md, CALENDAR.md, docs/events.jso
 import calendar
 import datetime as dt
 import json
+from urllib.parse import urlencode
 
-from common import (COMBINED_ICS, PAGES_URL, REPO, ROOT, TYPE_LABEL, TZ, fmt_dur, load, load_issue_map, teams,
+from common import (COMBINED_ICS, PAGES_URL, REPO, ROOT, TYPE_LABEL, TZ, fmt_dur, legs, load, load_issue_map, load_pairs,
+                    pair_key, teams,
                     record_label, result_games, result_label,
                     maps_dir, maps_place, today_pt)
 
@@ -232,9 +234,26 @@ def build_geojson(venues_cfg, drive, events):
 TEAM_ICON = {"MBB": "👨", "WBB": "👩"}
 
 
+def from_prev(prev, e, pairs, tag_team):
+    """The drive from the previous game's venue when it was the same/previous day (else None)."""
+    if not prev:
+        return None
+    d = pairs.get(pair_key(prev.venue_key, e.venue_key))
+    if d is None:
+        return None
+    return {"title": (f"{TEAM_ICON.get(prev.team_short, prev.team_short)} " if tag_team else "") + prev.matchup,
+            "dateLabel": prev.date_label, "time": prev.time_label, "venue": prev.venue["name"],
+            "city": prev.venue["city"], "same": prev.venue_key == e.venue_key,
+            "sameDay": prev.end_date == e.date, "minutes": d["minutes"], "miles": d["miles"],
+            "dir": "https://www.google.com/maps/dir/?api=1&" + urlencode(
+                {"origin": prev.venue["address"], "destination": e.venue["address"], "travelmode": "driving"})}
+
+
 def build_events_json(sched, venues_cfg, events, issues, team_list=None, record=None, tag_team=False):
     """tag_team=True is the combined "Both" view: each title starts with the team icon."""
     rows = []
+    pairs = load_pairs()
+    prev_of = {nxt.id: prev for prev, nxt in legs(events)}   # back-to-back trips within this view
     for e in events:
         r = {
             "id": e.id, "allDay": e.all_day,
@@ -254,6 +273,7 @@ def build_events_json(sched, venues_cfg, events, issues, team_list=None, record=
                 "gcal": e.gcal_link(),
                 "issue": f"https://github.com/{REPO}/issues/{issues[e.id]}" if e.id in issues else None,
                 "team": e.team, "teamShort": e.team_short,
+                "fromPrev": from_prev(prev_of.get(e.id), e, pairs, tag_team),
             },
         }
         if e.all_day:

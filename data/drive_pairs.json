@@ -1,0 +1,82 @@
+{
+ "arc|arc": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "arc|napa": {
+  "miles": 67,
+  "minutes": 83
+ },
+ "cuesta|coalinga": {
+  "miles": 109,
+  "minutes": 143
+ },
+ "cuesta|cuesta": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "foothill|siskiyous": {
+  "miles": 321,
+  "minutes": 369
+ },
+ "fullerton|cuesta": {
+  "miles": 223,
+  "minutes": 274
+ },
+ "gavilan|taft": {
+  "miles": 216,
+  "minutes": 246
+ },
+ "hancock|hancock": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "moorpark|moorpark": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "mpc|cuesta": {
+  "miles": 149,
+  "minutes": 181
+ },
+ "oxnard|oxnard": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "pierce|pierce": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "robgym|robgym": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "santaana|fullerton": {
+  "miles": 12,
+  "minutes": 20
+ },
+ "siskiyous|arc": {
+  "miles": 236,
+  "minutes": 267
+ },
+ "siskiyous|napa": {
+  "miles": 254,
+  "minutes": 286
+ },
+ "taft|cuesta": {
+  "miles": 102,
+  "minutes": 142
+ },
+ "taft|reedley": {
+  "miles": 123,
+  "minutes": 154
+ },
+ "ventura|ventura": {
+  "miles": 0,
+  "minutes": 0
+ },
+ "westvalley|canyons": {
+  "miles": 311,
+  "minutes": 352
+ }
+}

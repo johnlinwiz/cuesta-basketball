@@ -31,16 +31,29 @@
   .res.W { background:#1f8f4e33; color:#1f8f4e } .res.L { background:#c0392b2e; color:#c0392b } .res.T { background:#8883 }
   @media (prefers-color-scheme: dark) { .res.W { color:#6fd39b } .res.L { color:#ff8a7a } }
   .res-links a { font-size:.75rem; margin-right:6px }
+  .leg { font-size:.75rem; color:var(--muted); margin-top:2px } .leg b { color:var(--ink); font-weight:600 }
+  #s-venue { font:inherit; font-size:0.875rem; border:1px solid #8886; border-radius:6px; padding:5px 8px; background:transparent; color:inherit; max-width:230px }
+  #s-venue option { color:#111 }
   #ts-badge { position:fixed; left:50%; top:18%; transform:translateX(-50%); z-index:9999; background:#0b6e3aee; color:#fff;
     font:700 1.1rem/1 -apple-system,BlinkMacSystemFont,sans-serif; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px #0006;
     pointer-events:none; opacity:0; transition:opacity .25s }
   #ts-badge.on { opacity:1 }
   .ts .ts-a1 { font-size:.8rem } .ts .ts-a2 { font-size:1.05rem }
   body { margin:0; font:0.9375rem/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink) }
-  header { background:var(--green); color:#fff; padding:14px 20px; display:flex; flex-wrap:wrap; gap:8px 20px; align-items:center }
-  header h1 { font-size:1.25rem; margin:0; letter-spacing:.3px }
-  header a { color:#fff; opacity:.9; text-decoration:none; font-size:0.875rem; border:1px solid #ffffff55; border-radius:16px; padding:3px 10px }
-  header a:hover { opacity:1; background:#ffffff1a }
+  /* Header: one compact row (two on phones) */
+  header { background:var(--green); color:#fff; padding:8px 16px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center;
+           position:sticky; top:0; z-index:1000 }
+  header h1 { font-size:1.05rem; margin:0 auto 0 0; letter-spacing:.2px; white-space:nowrap; display:flex; align-items:center; gap:6px }
+  header h1 .hseason { opacity:.75; font-weight:500; font-size:.9em }
+  header .logo { font-size:1.2em }
+  .menu { position:relative }
+  .menu summary { list-style:none; cursor:pointer; background:#ffffff22; border-radius:8px; padding:4px 10px; font-size:1.05rem; line-height:1.3 }
+  .menu summary::-webkit-details-marker { display:none }
+  .menu[open] summary { background:#fff; color:var(--green) }
+  .menu-pop { position:absolute; right:0; top:calc(100% + 6px); background:var(--card); color:var(--ink); border:1px solid #8884;
+              border-radius:10px; box-shadow:0 10px 30px #0005; padding:6px; min-width:210px; display:flex; flex-direction:column; z-index:1001 }
+  .menu-pop a { color:inherit; text-decoration:none; padding:8px 10px; border-radius:6px; font-size:.9rem; white-space:nowrap }
+  .menu-pop a:hover { background:#8882 }
   main { max-width:1100px; margin:0 auto; padding:16px }
   a { color:var(--green) } @media (prefers-color-scheme: dark){ a { color:#6fd39b } }
 
@@ -69,8 +82,8 @@
   #cal .cmbb-ev { cursor:pointer; white-space:normal }
   #cal .cmbb-ev * { white-space:normal; overflow:visible; text-overflow:clip }   /* wrap long names in month cells */
   /* Mode switch */
-  .modes { display:inline-flex; gap:0; margin-left:auto; background:#ffffff22; border-radius:8px; padding:2px }
-  .modes button { background:transparent; color:#fff; border:0; padding:5px 12px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.875rem; opacity:.75 }
+  .modes { display:inline-flex; gap:0; background:#ffffff22; border-radius:8px; padding:2px }
+  .modes button { background:transparent; color:#fff; border:0; padding:4px 10px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.85rem; opacity:.8; white-space:nowrap }
   .modes button.on { background:#fff; color:var(--green); opacity:1 }
   /* Season table / upcoming-trips table share styles */
   .tbl { margin-top:16px } .tbl h2 { font-size:1.0625rem; margin:0 0 8px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap }
@@ -98,12 +111,14 @@
     .tbl td[data-label] > div { display:inline } .tbl td[data-label="Drive"] { flex-wrap:wrap }
     .tbl td[data-label="Drive"] > div { flex-basis:100%; margin-left:78px } .tbl td[data-label="Drive"] > div:first-of-type { margin-left:0; flex-basis:auto }
     .tbl td button.link { font-size:1rem; font-weight:600 }
-    /* Header: compact */
-    header { padding:10px 12px; gap:6px 8px }
-    header h1 { font-size:1rem; flex-basis:100% }
-    header a { font-size:0.75rem; padding:2px 8px }
-    .modes { margin-left:0 } .modes button { padding:5px 10px; font-size:0.8125rem }
-    #l-readme { display:none }
+    /* Header: row 1 = title + menu, row 2 = team / view / text size */
+    header { padding:6px 10px; gap:6px }
+    header h1 { font-size:.95rem; order:0 } header h1 .hseason { display:none }
+    .menu { order:1 }
+    #teams, .views, .ts { order:2 }
+    #teams { flex:1 1 auto } #teams button { flex:1; padding:4px 6px }
+    .views .l { display:none } #teams .ti { display:none }
+    .modes button { padding:4px 8px; font-size:0.8125rem } .ts button { padding:3px 7px }
     main { padding:10px }
     #from { padding:8px 10px } #from input { flex:1; width:auto; max-width:none } #from form { flex:1 1 100% }
     #from small { font-size:0.6875rem }
@@ -141,20 +156,26 @@
 </head>
 <body>
 <header>
-  <h1 id="h1">🏀 Cuesta College Men's Basketball</h1>
+  <h1 id="h1"><span class="logo">🏀</span><span class="hname">Cuesta Basketball</span><span class="hseason"></span></h1>
   <nav class="modes" id="teams" role="tablist" aria-label="Team" hidden></nav>
-  <nav class="modes" role="tablist" aria-label="View">
-    <button id="m-tbl" class="on" role="tab">📊 Table</button>
-    <button id="m-cal" role="tab">📅 Calendar</button>
-    <button id="m-map" role="tab">🗺️ Map</button>
+  <nav class="modes views" role="tablist" aria-label="View">
+    <button id="m-tbl" class="on" role="tab" title="Table"><span class="i">📊</span><span class="l"> Table</span></button>
+    <button id="m-cal" role="tab" title="Calendar"><span class="i">📅</span><span class="l"> Calendar</span></button>
+    <button id="m-map" role="tab" title="Map"><span class="i">🗺️</span><span class="l"> Map</span></button>
   </nav>
   <span class="ts" role="group" aria-label="Text size">
     <button id="ts-down" class="ts-a1" type="button" aria-label="Smaller text" title="Smaller text">A−</button>
     <button id="ts-up" class="ts-a2" type="button" aria-label="Larger text" title="Larger text">A+</button>
   </span>
-  <a id="l-ics" href="cuesta-mbb.ics">➕ Subscribe .ics</a>
-  <a id="l-issues" href="#">🔔 Reminders</a>
-  <a id="l-readme" href="#">📄 README</a>
+  <details class="menu" id="menu">
+    <summary aria-label="More" title="More">☰</summary>
+    <div class="menu-pop">
+      <a id="l-ics" href="cuesta-mbb.ics">➕ Subscribe (.ics)</a>
+      <a id="l-pdf" href="#">🖨️ Printable PDF</a>
+      <a id="l-issues" href="#">🔔 Reminders</a>
+      <a id="l-readme" href="#">📄 README &amp; tables</a>
+    </div>
+  </details>
 </header>
 <main>
   <section id="from">
@@ -162,6 +183,7 @@
     <button id="b-geo" type="button">📍 My location</button>
     <form id="f-addr"><input id="i-addr" placeholder="City, address or ZIP" autocomplete="off" aria-label="Starting location"><button>Go</button></form>
     <span id="presets"></span>
+    <select id="s-venue" aria-label="Drive from a venue"><option value="">🏟️ From a venue…</option></select>
     <button id="b-clear" type="button" hidden>✕</button>
     <span id="from-status"></span>
     <small>Your location stays in this browser. It's sent only to OpenStreetMap (address lookup) and OSRM (routing) to estimate drive times without traffic.</small>
@@ -232,12 +254,13 @@ async function setOrigin(o, { save = true } = {}) {
   }
   $("b-clear").hidden = false;
   document.querySelectorAll("#presets button").forEach(b => b.classList.toggle("on", b.dataset.key === o.key));
+  $("s-venue").value = (o.key || "").startsWith("venue:") ? o.key.slice(6) : "";
   renderAll();
 }
 
 function clearOrigin() {
   origin = null; drives = {}; localStorage.removeItem(STORE);
-  $("from-status").textContent = ""; $("b-clear").hidden = true; $("i-addr").value = "";
+  $("from-status").textContent = ""; $("b-clear").hidden = true; $("i-addr").value = ""; $("s-venue").value = "";
   document.querySelectorAll("#presets button").forEach(b => b.classList.remove("on"));
   renderAll();
 }
@@ -321,7 +344,7 @@ function renderTrips() {
     return `<tr><td class="num c-head">${esc(p.dateLabel)} <span class="sub">${esc(p.time)}</span></td>
       <td class="c-game">${esc(e.title)} <span class="sub">${esc(p.site)}</span></td>
       <td data-label="Venue"><a href="${p.map}" target="_blank">${esc(p.venue)}</a> <span class="sub">${esc(p.city)}</span></td>
-      <td class="num" data-label="Drive">${drive}</td><td class="num" data-label="Leave by">${leaveBy(e, d) || "—"}</td></tr>`;
+      <td class="num" data-label="Drive">${drive}${legHtml(p, { short: true })}</td><td class="num" data-label="Leave by">${leaveBy(e, d) || "—"}</td></tr>`;
   });
   $("trips-h").textContent = `Upcoming games — drive from ${origin.label}`;
   $("trips-b").innerHTML = rows.join("");
@@ -376,7 +399,7 @@ function renderSeasonTable() {
     return `<tr class="${row}"><td class="num c-head">${esc(p.dateLabel)}<span class="m-only"> · ${esc(p.time)} · ${esc(p.site)}</span></td>
       <td class="num d-only">${esc(p.time)}</td><td class="c-game">${game}</td><td class="d-only">${esc(p.site)}</td>
       <td data-label="Venue"><a href="${p.map}" target="_blank">${esc(p.venue)}</a><br class="d-only"><span class="sub"> ${esc(p.city)}</span></td>
-      <td class="num" data-label="Drive">${driveCell}</td><td class="num" data-label="Watch">${watch || "—"}</td></tr>`;
+      <td class="num" data-label="Drive">${driveCell}${legHtml(p, { short: true })}</td><td class="num" data-label="Watch">${watch || "—"}</td></tr>`;
   });
   $("tbl-b").innerHTML = rows.join("");
   $("tbl-b").querySelectorAll("button.link").forEach(b => b.onclick = () => {
@@ -398,6 +421,7 @@ function openEvent(fcEvent) {
        <span class="muted">${mine ? "Also: " : "🚗 "}Pasadena <a href="${p.dirPasadena}" target="_blank">${esc(p.drivePasadena)}</a> ·
        SLO <a href="${p.dirSlo}" target="_blank">${esc(p.driveSlo)}</a></span><br>
        <small class="muted">${origin ? "" : "Set “Drive from” above for times from your location. "}Estimates without traffic; links open live Google directions.</small></p>
+    ${legHtml(p)}
     ${(p.video || p.audio || p.stats || p.liveStats) ? `<p>${
         [p.video && `📺 <a href="${p.video}" target="_blank">${esc(p.videoLabel)}</a>`,
          p.audio && `🎙️ <a href="${p.audio}" target="_blank">Listen</a>`,
@@ -409,7 +433,9 @@ function openEvent(fcEvent) {
     <a href="${p.gcal}" target="_blank">➕ Google Calendar</a>
     ${p.video ? `<a href="${p.video}" target="_blank">📺 Watch</a>` : ""}
     ${p.issue ? `<a href="${p.issue}" target="_blank">🔔 Reminder issue</a>` : ""}
+    <button id="d-from-here" type="button" title="Use this gym as your starting point">🚗 Drive from here</button>
     <button onclick="dlg.close()">Close</button>`;
+  $("d-from-here").onclick = () => { $("dlg").close(); setOrigin(venueOrigin(p.venueKey)); };
   $("dlg").showModal();
 }
 
@@ -449,13 +475,14 @@ function venuePopup(key) {
   return `<b>${esc(v.name)}</b><br><span style="opacity:.75">${esc(v.address)}</span>
     <ul>${games}</ul>${drive}<br>
     <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.name + ", " + v.address)}" target="_blank">Open in Google Maps</a><br>
-    ${routeBtns}`;
+    ${routeBtns}<button data-from-here="1">🚗 Drive from here</button>`;
 }
 
 function wirePopup(key, el) {
   el.querySelectorAll(".gl").forEach(s => s.onclick = () => {
     const ev = DATA.events.find(e => e.id === s.dataset.id); if (ev) openEvent(ev);
   });
+  el.querySelectorAll("button[data-from-here]").forEach(b => b.onclick = () => { MAP.closePopup(); setOrigin(venueOrigin(key)); });
   el.querySelectorAll("button[data-route]").forEach(b => b.onclick = () => {
     const r = b.dataset.route;
     const from = r === "me" ? origin : { ...DATA.origins[r], label: DATA.origins[r].label };
@@ -599,11 +626,40 @@ function setTextSize(pct, { save = true, badge = false } = {}) {
     document.addEventListener(ev, e => { if (!inMap(e.target)) e.preventDefault(); }, { passive: false });
 })();
 
+// ---------- header ☰ menu: close on outside click, Esc, or after choosing a link ----------
+document.addEventListener("click", ev => { const m = $("menu"); if (m.open && !m.contains(ev.target)) m.open = false; });
+document.addEventListener("keydown", ev => { if (ev.key === "Escape") $("menu").open = false; });
+$("menu").querySelectorAll("a").forEach(a => a.addEventListener("click", () => { $("menu").open = false; }));
+
+// ---------- drive from a venue (e.g. already at one gym, heading to the next) ----------
+function venueOrigin(key) {
+  const v = DATA.venues[key];
+  return { key: "venue:" + key, label: v.name.split(" — ")[0].replace(/ \(.*\)$/, ""), lat: v.lat, lon: v.lon };
+}
+function fillVenuePicker() {
+  const opts = Object.entries(DATA.venues).sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .map(([k, v]) => `<option value="${k}">${esc(v.name.split(" — ")[0])}</option>`).join("");
+  $("s-venue").insertAdjacentHTML("beforeend", opts);
+  $("s-venue").onchange = () => { const k = $("s-venue").value; if (k) setOrigin(venueOrigin(k)); };
+}
+
+// ---------- back-to-back legs (same/next-day games): drive from the previous venue ----------
+function legHtml(p, { short = false } = {}) {
+  const f = p.fromPrev;
+  if (!f) return "";
+  const when = f.sameDay ? "earlier today" : f.dateLabel.split(" ")[0];
+  if (f.same) return `<div class="leg">🔁 Same gym as <b>${esc(f.title)}</b> (${esc(when)})</div>`;
+  const leg = `<a href="${f.dir}" target="_blank">${fmtDur(f.minutes)}</a> · ${f.miles} mi`;
+  return short
+    ? `<div class="leg">🔁 ${leg} from <b>${esc(f.title)}</b> (${esc(when)})</div>`
+    : `<p>🔁 <b>Back-to-back:</b> ${leg} from the previous game, <b>${esc(f.title)}</b> at ${esc(f.venue)}, ${esc(f.city)} (${esc(f.dateLabel)} · ${esc(f.time)}).</p>`;
+}
+
 // ---------- boot ----------
 // Team: ?team=<key> (shareable) > last choice on this device > men's. Falls back to the legacy
 // single-team docs/events.json so old deployments and the test fixtures keep working.
-const TEAM_KEY = "cuesta-team";
-const wantedTeam = new URLSearchParams(location.search).get("team") || localStorage.getItem(TEAM_KEY) || "mbb";
+// A bare link always opens Men's; other teams are reached with the switch or a ?team= link.
+const wantedTeam = new URLSearchParams(location.search).get("team") || "mbb";
 async function loadTeamData() {
   for (const path of [`${wantedTeam}/events.json`, "mbb/events.json", "events.json"]) {
     const r = await fetch(path);
@@ -615,26 +671,31 @@ loadTeamData().then(data => {
   DATA = data;
   const events = data.events, gh = `https://github.com/${data.repo}`;
   document.title = `${data.team} ${data.season}`;
-  $("h1").textContent = `🏀 ${data.team} · ${data.season.replace("-", "–")}`;
+  $("h1").title = `${data.team} ${data.season}`;
+  $("h1").querySelector(".hname").textContent = data.team.replace("College ", "");
+  $("h1").querySelector(".hseason").textContent = data.season.replace("-", "–");
+  if (data.teamKey && data.teamKey !== "all") $("l-pdf").href = `cuesta-${data.teamKey}-schedule.pdf`;
+  else $("l-pdf").hidden = true;
   $("l-ics").href = data.ics;
   $("l-readme").href = `${gh}#readme`;
   $("l-issues").href = data.teamKey && data.teamKey !== "all" ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;
   if (data.teamKey) {
-    try { localStorage.setItem(TEAM_KEY, data.teamKey); } catch {}
     if (new URLSearchParams(location.search).get("team") !== data.teamKey)   // keep the URL shareable
       history.replaceState(null, "", `?team=${data.teamKey}${location.hash}`);
   }
   if ((data.teams || []).length > 1) {
-    const label = t => ({ MBB: "👨 Men", WBB: "👩 Women", ALL: "👥 Both" })[t.short] || t.short;
+    const LBL = { MBB: ["👨", "Men"], WBB: ["👩", "Women"], ALL: ["👥", "Both"] };
+    const label = t => LBL[t.short] ? `<span class="ti">${LBL[t.short][0]} </span><span class="tl">${LBL[t.short][1]}</span>` : esc(t.short);
     $("teams").innerHTML = data.teams.map(t =>
       `<button type="button" role="tab" data-team="${t.key}" class="${t.key === data.teamKey ? "on" : ""}" title="${esc(t.team)}">${label(t)}</button>`).join("");
     $("teams").hidden = false;
     $("teams").querySelectorAll("button").forEach(b => b.onclick = () => {
       if (b.dataset.team === data.teamKey) return;
-      try { localStorage.setItem(TEAM_KEY, b.dataset.team); } catch {}
       location.href = `?team=${b.dataset.team}${location.hash}`;      // same view (table/calendar/map), other team
     });
   }
+
+  fillVenuePicker();
 
   // Preset origins (Pasadena, SLO) from data/venues.yaml
   $("presets").innerHTML = Object.entries(data.origins)

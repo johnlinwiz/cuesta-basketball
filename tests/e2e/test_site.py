@@ -279,7 +279,13 @@ def test_team_switch_shows_and_navigates(make_page, events_json):
     expect(page.locator("#teams button.on")).to_have_text("👩 Women")
     expect(page.locator("#h1")).to_contain_text("Women's")
     assert shown_views(page) == ["map"]
-    assert page.evaluate("localStorage.getItem('cuesta-team')") == "wbb"
+    # A bare link always opens Men's, even right after viewing Women's (no remembered team).
+    net.requests.clear()
+    net.events_json = two_team(events_json, "mbb")
+    page.goto(page.url.split("?")[0])
+    expect(page.locator("#teams button.on")).to_have_text("👨 Men")
+    asked = [r for r in net.requests if r.split("?")[0].endswith("events.json")]
+    assert asked and asked[0].split("?")[0].endswith("/mbb/events.json"), asked
 
 
 def test_view_switch_keeps_team_in_url(make_page, events_json):
@@ -306,3 +312,60 @@ def test_both_view_shows_every_team_and_links_all_issues(make_page, events_json)
     titles = page.locator("#tbl-b button.link").all_text_contents()
     assert any(t.startswith("👨") for t in titles) and any(t.startswith("👩") for t in titles)
     assert "label%3A" not in page.get_attribute("#l-issues", "href")    # Both -> every team's reminders
+
+
+# ---------------------------------------------------------------- drive from a venue; back-to-back legs; header
+def test_drive_from_a_venue_picker(make_page, events_json):
+    page, net = make_page(mobile=False)
+    key, v = next(iter(events_json["venues"].items()))
+    page.select_option("#s-venue", key)
+    expect(page.locator("#from-status")).to_contain_text("From ")
+    o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
+    assert o["key"] == f"venue:{key}" and (o["lat"], o["lon"]) == (v["lat"], v["lon"])
+    assert any("router.project-osrm.org/table" in u and f"{v['lon']:.5f},{v['lat']:.5f}" in u for u in net.requests)
+    expect(page.locator("#tbl-th-drive")).to_contain_text("From ")
+    page.click("#b-clear")
+    expect(page.locator("#s-venue")).to_have_value("")
+
+
+def test_drive_from_here_in_the_game_dialog(make_page, events_json):
+    page, _ = make_page(mobile=False)
+    ev = events_json["events"][3]
+    page.click(f"button[data-id='{ev['id']}']")
+    page.click("#d-from-here")
+    expect(page.locator("#dlg")).to_be_hidden()
+    expect(page.locator("#from-status")).to_contain_text("From ")        # drives computed, origin saved
+    o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
+    assert o["key"] == "venue:" + ev["extendedProps"]["venueKey"]
+    expect(page.locator("#s-venue")).to_have_value(ev["extendedProps"]["venueKey"])
+
+
+def test_back_to_back_leg_shows_in_table_and_dialog(make_page, events_json):
+    data = json.loads(json.dumps(events_json))
+    a, b = data["events"][1], data["events"][2]
+    b["extendedProps"]["fromPrev"] = {"title": a["title"], "dateLabel": "Fri Oct 23", "time": "2:00 PM",
+                                      "venue": "Prev Gym", "city": "Saratoga, CA", "same": False, "sameDay": False,
+                                      "minutes": 222, "miles": 189, "dir": "https://www.google.com/maps/dir/?api=1&x=1"}
+    data["events"][3]["extendedProps"]["fromPrev"] = dict(b["extendedProps"]["fromPrev"], same=True, sameDay=True)
+    page, _ = make_page(mobile=False, data=data)
+    row = page.locator("#tbl-b tr", has=page.locator(f"button[data-id='{b['id']}']"))
+    expect(row.locator(".leg")).to_contain_text("3h 42m · 189 mi from")
+    same = page.locator("#tbl-b tr", has=page.locator(f"button[data-id='{data['events'][3]['id']}']"))
+    expect(same.locator(".leg")).to_contain_text("Same gym as")
+    page.click(f"button[data-id='{b['id']}']")
+    expect(page.locator("#d-body")).to_contain_text("Back-to-back: 3h 42m · 189 mi from the previous game")
+
+
+@pytest.mark.parametrize("mobile, max_rows", [(False, 1), (True, 2)])
+def test_header_is_condensed(make_page, mobile, max_rows, events_json):
+    page, _ = make_page(mobile=mobile, data=two_team(events_json, "mbb"))
+    rows = page.evaluate("""() => new Set([...document.querySelectorAll('header > *')]
+        .filter(el => el.offsetParent !== null || el.tagName === 'DETAILS')
+        .map(el => Math.round(el.getBoundingClientRect().top / 8))).size""")
+    assert rows <= max_rows, f"header uses {rows} rows"
+    expect(page.locator("#l-ics")).to_be_hidden()                       # secondary links live in the ☰ menu
+    page.click("#menu summary")
+    expect(page.locator("#l-ics")).to_be_visible()
+    expect(page.locator("#l-pdf")).to_have_attribute("href", "cuesta-mbb-schedule.pdf")
+    page.keyboard.press("Escape")
+    expect(page.locator("#l-ics")).to_be_hidden()

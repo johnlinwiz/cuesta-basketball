@@ -229,6 +229,31 @@ def team_file(team, name):
     return ROOT / "data" / "teams" / team / name if team else ROOT / "data" / name
 
 
+def legs(events, max_gap_days=1):
+    """Back-to-back trips: (prev, next) for consecutive games on the same or the next day.
+
+    `events` in date order (one team, or several merged for the "Both" view). The gap is measured
+    from the end of the previous event (multi-day tournaments count from their last day).
+    """
+    out = []
+    timed = sorted(events, key=lambda e: (e.date, e.start or dt.datetime.min.replace(tzinfo=TZ)))
+    for prev, nxt in zip(timed, timed[1:]):
+        gap = (nxt.date - prev.end_date).days
+        if 0 <= gap <= max_gap_days:
+            out.append((prev, nxt))
+    return out
+
+
+def pair_key(a, b):
+    return f"{a}|{b}"
+
+
+def load_pairs():
+    """Venue-to-venue drives cached by scripts/drive_times.py: {"a|b": {"miles", "minutes"}}."""
+    p = ROOT / "data" / "drive_pairs.json"
+    return json.loads(p.read_text()) if p.exists() else {}
+
+
 def load(team=None):
     if team is None:
         team = teams()[0]

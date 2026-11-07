@@ -26,12 +26,12 @@ FROZEN_NOW = "2026-11-05T12:00:00-08:00"
 CDN = {
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js": ("leaflet.js", "application/javascript"),
     "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css": ("leaflet.css", "text/css"),
-    "https://cdn.jsdelivr.net/npm/temporal-polyfill@1.0.6/global.js": ("temporal-polyfill.global.js", "application/javascript"),
-    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.3/all/global.js": ("fullcalendar7.all.global.js", "application/javascript"),
-    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.3/themes/classic/global.js": ("fullcalendar7.classic.global.js", "application/javascript"),
-    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.3/skeleton.css": ("fullcalendar7.skeleton.css", "text/css"),
-    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.3/themes/classic/theme.css": ("fullcalendar7.classic.theme.css", "text/css"),
-    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.3/themes/classic/palette.css": ("fullcalendar7.classic.palette.css", "text/css"),
+    "https://cdn.jsdelivr.net/npm/temporal-polyfill@1.0.8/global.js": ("temporal-polyfill.global.js", "application/javascript"),
+    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.4/all/global.js": ("fullcalendar7.all.global.js", "application/javascript"),
+    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.4/themes/classic/global.js": ("fullcalendar7.classic.global.js", "application/javascript"),
+    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.4/skeleton.css": ("fullcalendar7.skeleton.css", "text/css"),
+    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.4/themes/classic/theme.css": ("fullcalendar7.classic.theme.css", "text/css"),
+    "https://cdn.jsdelivr.net/npm/fullcalendar@7.1.4/themes/classic/palette.css": ("fullcalendar7.classic.palette.css", "text/css"),
 }
 PNG_1PX = base64.b64decode(
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/x8AAwMCAO+ip1sAAAAASUVORK5CYII=")

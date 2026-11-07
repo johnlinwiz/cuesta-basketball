@@ -3,13 +3,17 @@
 
 Idempotent: each issue body carries a hidden `<!-- event-id: ... -->` marker, so
 re-running updates titles/bodies/labels in place instead of duplicating.
-Writes the event-id -> issue-number map to data/issues.json.
+Writes the event-id -> issue-number map to the team's issues.json. With several teams each issue
+also carries `<!-- team: <key> -->`; unmarked (older) issues belong to the first team, and a team's
+sync never touches another team's issues.
 """
 import calendar
 import json
 
 import gh
-from common import ICS_NAME, PAGES_URL, ROOT, TYPE_LABEL, fmt_dur, load, maps_dir, maps_place
+from common import PAGES_URL, ROOT, TYPE_LABEL, fmt_dur, load, maps_dir, maps_place, team_file, teams, today_pt  # noqa: F401 (ROOT: tests patch it)
+
+TEAM_COLORS = {"mbb": "1d76db", "wbb": "d4c5f9"}
 
 LABELS = {
     "home": ("0b6e3a", "Home game at Cuesta"),
@@ -70,17 +74,21 @@ def body_for(e, sched):
     days = ", ".join(f"{d} days" for d in sched["reminder_days_before"] if d)
     rows += [
         f"**Add to calendar:** [Google Calendar]({e.gcal_link()}) · "
-        f"[Season .ics feed]({PAGES_URL}{ICS_NAME}) · [Live schedule]({PAGES_URL})", "",
+        f"[Season .ics feed]({PAGES_URL}{sched['ics']}) · [Live schedule]({sched['site_url']})", "",
         f"🔔 A reminder comment is posted {days} before and on game day; this issue closes after the game.",
         "", "<sub>Drive times: OSRM free-flow estimate (no traffic). Links open live Google Maps directions.</sub>",
         "", f"<!-- event-id: {e.id} -->",
+        *([f"<!-- team: {sched['key']} -->"] if sched.get("key") else []),
     ]
     return "\n".join(rows)
 
 
-def ensure_labels():
+def ensure_labels(sched=None):
     have = {l["name"] for l in gh.api("labels?per_page=100", paginate=True)}
-    for name, (color, desc) in LABELS.items():
+    wanted = dict(LABELS)
+    if sched and sched.get("key"):
+        wanted[sched["key"]] = (TEAM_COLORS.get(sched["key"], "ededed"), sched["team"])
+    for name, (color, desc) in wanted.items():
         if name not in have:
             gh.api("labels", "POST", {"name": name, "color": color, "description": desc})
 
@@ -93,37 +101,57 @@ def ensure_milestones(events):
         if title not in have:
             last = calendar.monthrange(y, m)[1]
             ms = gh.api("milestones", "POST", {"title": title, "due_on": f"{y}-{m:02d}-{last}T23:00:00Z",
-                                                 "description": f"Cuesta MBB games in {title}"})
+                                                 "description": f"Cuesta basketball games in {title}"})
             have[title] = ms["number"]
         out[(y, m)] = have[title]
     return out
 
 
-def main():
-    sched, _, _, events = load()
-    ensure_labels()
+def issue_title(e, sched):
+    return f"[{sched['short']}] {e.title()}" if sched.get("key") else e.title()
+
+
+def team_of(body, default):
+    return body.split("<!-- team: ", 1)[1].split(" -->", 1)[0] if "<!-- team: " in body else default
+
+
+def sync_team(key, all_issues, default_team):
+    sched, _, _, events = load(key)
+    ensure_labels(sched)
     milestones = ensure_milestones(events)
     existing = {}
-    for iss in gh.api("issues?state=all&per_page=100", paginate=True):
+    for iss in all_issues:
         body = iss.get("body") or ""
         if "<!-- event-id: " in body and "pull_request" not in iss:
+            if key and team_of(body, default_team) != key:
+                continue                              # another team's issue: never touch it
             eid = body.split("<!-- event-id: ", 1)[1].split(" -->", 1)[0]
             existing[eid] = iss["number"]
 
     issue_map = {}
     for e in events:
-        payload = {"title": e.title(), "body": body_for(e, sched), "labels": labels_for(e),
+        labels = labels_for(e) + ([key] if key else [])
+        payload = {"title": issue_title(e, sched), "body": body_for(e, sched), "labels": labels,
                    "milestone": milestones[(e.date.year, e.date.month)]}
         if e.id in existing:
             n = existing[e.id]
             gh.api(f"issues/{n}", "PATCH", payload)
-            print(f"updated #{n} {e.title()}")
+            print(f"updated #{n} {payload['title']}")
+        elif e.end_date < today_pt():
+            continue                       # already played when first imported: no reminder issue to open+close
         else:
             n = gh.api("issues", "POST", payload)["number"]
-            print(f"created #{n} {e.title()}")
+            print(f"created #{n} {payload['title']}")
         issue_map[e.id] = n
     close_superseded(sched, events, existing, issue_map)
-    (ROOT / "data/issues.json").write_text(json.dumps(issue_map, indent=2) + "\n")
+    team_file(key, "issues.json").write_text(json.dumps(issue_map, indent=2) + "\n")
+
+
+def main():
+    keys = teams()
+    all_issues = gh.api("issues?state=all&per_page=100", paginate=True)
+    for key in keys:
+        sync_team(key, all_issues, default_team=keys[0])
 
 
 def close_superseded(sched, events, existing, issue_map):

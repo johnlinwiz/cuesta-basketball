@@ -125,7 +125,9 @@ def test_already_closed_and_current_issues_are_left_alone(fake_gh, schedule):
     assert not [c for c in fake_gh.calls if c[0] in ("POST", "PATCH")]
 
 
-def test_full_sync_creates_updates_and_closes(fake_gh, schedule, season_root):
+def test_full_sync_creates_updates_and_closes(fake_gh, schedule, season_root, monkeypatch):
+    import datetime as dt
+    monkeypatch.setattr(sync_issues, "today_pt", lambda: dt.date(2026, 10, 1))   # before every game
     fake_gh.add_issue(1, marker("2026-10-16-porterville"))             # superseded by Reedley
     fake_gh.add_issue(4, marker("2027-01-09-santa-barbara"), title="stale title")
     fake_gh.add_issue(50, marker("2026-11-14-shasta"), pull_request=True)   # PRs are never treated as issues
@@ -165,3 +167,15 @@ def test_issue_body(schedule):
     assert "| **When** | Sat Jan 9, 2027 · **3:00 PM PT** |" in body
     assert "7 days, 2 days before and on game day" in body
     assert sync_issues.labels_for(next(e for e in events if e.opponent == "Shasta")) == ["tournament"]
+
+
+def test_sync_skips_games_already_played_at_import(fake_gh, schedule, season_root, monkeypatch):
+    """Importing a season mid-way must not open (and then immediately close+email) past games."""
+    import datetime as dt
+    monkeypatch.setattr(sync_issues, "today_pt", lambda: dt.date(2026, 11, 20))
+    fake_gh.add_issue(4, marker("2027-01-09-santa-barbara"))           # existing issue is still updated
+    sync_issues.main()
+    issue_map = json.loads((season_root / "data/issues.json").read_text())
+    played = {e["date"] + "-" + common.slug(e["opponent"]) for e in GAMES if e["date"] < "2026-11-20"}
+    assert played and not (played & set(issue_map))
+    assert issue_map["2027-01-09-santa-barbara"] == 4

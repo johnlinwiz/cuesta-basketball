@@ -1,0 +1,914 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//johnlinwiz/cuesta-basketball//schedule//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Cuesta WBB 2026-27
+X-WR-TIMEZONE:America/Los_Angeles
+REFRESH-INTERVAL;VALUE=DURATION:PT12H
+X-PUBLISHED-TTL:PT12H
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:19700308T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:19701101T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:wbb-2026-10-17-bakersfield@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261017T113000
+DTEND;TZID=America/Los_Angeles:20261017T133000
+SUMMARY:Cuesta WBB vs Bakersfield (scrimmage)
+LOCATION:Taft College Gym\, 29 Cougar Court\, Taft\, CA 93268
+GEO:35.1491;-119.4576
+DESCRIPTION:Scrimmage — Neutral\nVenue: Taft College Gym\, 29 Cougar Cour
+ t\, Taft\, CA 93268\nMap: https://www.google.com/maps/search/?api=1&query=
+ Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268\nDrive from Pasade
+ na: 2h 28m · 121 mi\nDrive from SLO: 2h 12m · 96 mi\nWatch live (Host ch
+ annel: Hudl · Taft College Women's Basketball): https://fan.hudl.com/usa/
+ ca/taft/organization/116746/taft-college/team/737875/womens-varsity-basket
+ ball\nNote: Taft College Jamboree\nSeason calendar: https://johnlinwiz.git
+ hub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Scrimmage,Neutral
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Bakersfield (scrimmage) tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Bakersfield (scrimmage) in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-10-24-canyons@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261024T140000
+DTEND;TZID=America/Los_Angeles:20261024T160000
+SUMMARY:Cuesta WBB @ Canyons (scrimmage)
+LOCATION:College of the Canyons — Lee Smelser Court (Cougar Cage)\, 26455
+  Rockwell Canyon Road\, Santa Clarita\, CA 91355
+GEO:34.4082;-118.5679
+DESCRIPTION:Scrimmage — Away\nVenue: College of the Canyons — Lee Smels
+ er Court (Cougar Cage)\, 26455 Rockwell Canyon Road\, Santa Clarita\, CA 9
+ 1355\nMap: https://www.google.com/maps/search/?api=1&query=College+of+the+
+ Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Ca
+ nyon+Road%2C+Santa+Clarita%2C+CA+91355\nDrive from Pasadena: 41m · 35 mi\
+ nDrive from SLO: 3h 32m · 169 mi\nWatch live (Host channel: YouTube · Co
+ ugars Sports Network): https://www.youtube.com/c/CougarsSportsNetwork/feat
+ ured\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?tea
+ m=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Scrimmage,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Canyons (scrimmage) tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Canyons (scrimmage) in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-10-30-taft@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261030T170000
+DTEND;TZID=America/Los_Angeles:20261030T190000
+SUMMARY:Cuesta WBB @ Taft — L 58-66
+LOCATION:Taft College Gym\, 29 Cougar Court\, Taft\, CA 93268
+GEO:35.1491;-119.4576
+DESCRIPTION:Non-conference — Away\nVenue: Taft College Gym\, 29 Cougar Co
+ urt\, Taft\, CA 93268\nMap: https://www.google.com/maps/search/?api=1&quer
+ y=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268\nDrive from Pasa
+ dena: 2h 28m · 121 mi\nDrive from SLO: 2h 12m · 96 mi\nWatch live (Host 
+ channel: Hudl · Taft College Women's Basketball): https://fan.hudl.com/us
+ a/ca/taft/organization/116746/taft-college/team/737875/womens-varsity-bask
+ etball\nFinal: L 58-66 · Box score: https://www.cuestaathletics.com/sport
+ s/wbkb/2026-27/boxscores/20261030_u1z6.xml\nSeason calendar: https://johnl
+ inwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Taft — L 58-66 tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Taft — L 58-66 in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-04-hartnell@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261104T150000
+DTEND;TZID=America/Los_Angeles:20261104T170000
+SUMMARY:Cuesta WBB vs Hartnell — L 51-67
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: L 51-67 · Box score: https://www
+ .cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml\nSeas
+ on calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Hartnell — L 51-67 tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Hartnell — L 51-67 in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-07-santa-monica@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261107T130000
+DTEND;TZID=America/Los_Angeles:20261107T150000
+SUMMARY:Cuesta WBB vs Santa Monica
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Santa Monica tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Santa Monica in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-12-foothill@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261112T160000
+DTEND;TZID=America/Los_Angeles:20261112T180000
+SUMMARY:Cuesta WBB @ Foothill
+LOCATION:Foothill College Main Gymnasium\, 12345 El Monte Rd\, Los Altos Hi
+ lls\, CA 94022
+GEO:37.3584;-122.1283
+DESCRIPTION:Non-conference — Away\nVenue: Foothill College Main Gymnasium
+ \, 12345 El Monte Rd\, Los Altos Hills\, CA 94022\nMap: https://www.google
+ .com/maps/search/?api=1&query=Foothill+College+Main+Gymnasium%2C+12345+El+
+ Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022\nDrive from Pasadena: 6h 40m · 35
+ 4 mi\nDrive from SLO: 3h 52m · 198 mi\nSeason calendar: https://johnlinwi
+ z.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Foothill tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Foothill in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-13-siskiyous@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261113T140000
+DTEND;TZID=America/Los_Angeles:20261113T160000
+SUMMARY:Cuesta WBB @ Siskiyous
+LOCATION:Siskiyous Gymnasium\, 800 College Avenue\, Weed\, CA 96094
+GEO:41.4115;-122.3905
+DESCRIPTION:Non-conference — Away\nVenue: Siskiyous Gymnasium\, 800 Colle
+ ge Avenue\, Weed\, CA 96094\nMap: https://www.google.com/maps/search/?api=
+ 1&query=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094\nDri
+ ve from Pasadena: 11h 16m · 613 mi\nDrive from SLO: 9h 25m · 496 mi\nWat
+ ch live (Host channel: Hudl · College of the Siskiyous): https://fan.hudl
+ .com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/vid
+ eo\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=
+ wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Siskiyous tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Siskiyous in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-14-napa-valley@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261114T140000
+DTEND;TZID=America/Los_Angeles:20261114T160000
+SUMMARY:Cuesta WBB @ Napa Valley
+LOCATION:Napa Valley College Gym\, 2277 Napa-Vallejo Hwy\, Napa\, CA 94558
+GEO:38.274;-122.2764
+DESCRIPTION:Non-conference — Away\nVenue: Napa Valley College Gym\, 2277 
+ Napa-Vallejo Hwy\, Napa\, CA 94558\nMap: https://www.google.com/maps/searc
+ h/?api=1&query=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C
+ +CA+94558\nDrive from Pasadena: 7h 24m · 398 mi\nDrive from SLO: 5h 07m 
+ · 262 mi\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball
+ /?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Napa Valley tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Napa Valley in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-18-monterey-peninsula@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261118T160000
+DTEND;TZID=America/Los_Angeles:20261118T180000
+SUMMARY:Cuesta WBB vs Monterey Peninsula
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Monterey Peninsula tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Monterey Peninsula in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-20-mission@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261120T180000
+DTEND;TZID=America/Los_Angeles:20261120T200000
+SUMMARY:Cuesta WBB vs Mission
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Tournament — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, Cues
+ ta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.goog
+ le.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta
+ +College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasadena:
+  4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host channel: 
+ YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/chan
+ nel/UCJ5AEH02wtWXIUFAgVMspnQ\nNote: Hinson's Tire Pros Classic\, day 1\nSe
+ ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Tournament,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Mission tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Mission in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-11-21-skyline@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261121T150000
+DTEND;TZID=America/Los_Angeles:20261121T170000
+SUMMARY:Cuesta WBB vs Skyline
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Tournament — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, Cues
+ ta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.goog
+ le.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta
+ +College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasadena:
+  4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host channel: 
+ YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/chan
+ nel/UCJ5AEH02wtWXIUFAgVMspnQ\nNote: Hinson's Tire Pros Classic\, day 2\nSe
+ ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Tournament,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Skyline tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Skyline in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-12-02-reedley@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261202T170000
+DTEND;TZID=America/Los_Angeles:20261202T190000
+SUMMARY:Cuesta WBB vs Reedley
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Reedley tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Reedley in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-12-05-tba-tom-gilcrest-tournament@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;VALUE=DATE:20261205
+DTEND;VALUE=DATE:20261206
+SUMMARY:Cuesta WBB TBA (Tom Gilcrest Tournament)
+LOCATION:College of the Sequoias — Porter Fieldhouse\, 915 S. Mooney Blvd
+ \, Visalia\, CA 93277
+GEO:36.3203;-119.3157
+DESCRIPTION:Tournament — Neutral\nVenue: College of the Sequoias — Port
+ er Fieldhouse\, 915 S. Mooney Blvd\, Visalia\, CA 93277\nMap: https://www.
+ google.com/maps/search/?api=1&query=College+of+the+Sequoias+%E2%80%94+Port
+ er+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277\nDrive from Pas
+ adena: 3h 28m · 182 mi\nDrive from SLO: 2h 50m · 135 mi\nWatch live (Hos
+ t channel: YouTube · COS Giants): https://www.youtube.com/c/cosgiant\nNot
+ e: College of the Sequoias' 49th Tom Gilcrest Tournament (Dec 3-5)\; oppon
+ ent and time not announced yet\nSeason calendar: https://johnlinwiz.github
+ .io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Tournament,Neutral
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB TBA (Tom Gilcrest Tournament) tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB TBA (Tom Gilcrest Tournament) in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-12-11-santa-ana@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261211T180000
+DTEND;TZID=America/Los_Angeles:20261211T200000
+SUMMARY:Cuesta WBB @ Santa Ana
+LOCATION:Santa Ana College — Bill Cook Gymnasium\, 1530 W. 17th Street\, 
+ Santa Ana\, CA 92706
+GEO:33.7576;-117.8888
+DESCRIPTION:Non-conference — Away\nVenue: Santa Ana College — Bill Cook
+  Gymnasium\, 1530 W. 17th Street\, Santa Ana\, CA 92706\nMap: https://www.
+ google.com/maps/search/?api=1&query=Santa+Ana+College+%E2%80%94+Bill+Cook+
+ Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706\nDrive from Pasa
+ dena: 52m · 36 mi\nDrive from SLO: 4h 31m · 220 mi\nWatch live (Host cha
+ nnel: FloCollege · Santa Ana College (subscription)): https://go.flocolle
+ ge.com/teams/santa-ana-college\nSeason calendar: https://johnlinwiz.github
+ .io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Santa Ana tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Santa Ana in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-12-12-fullerton@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261212T130000
+DTEND;TZID=America/Los_Angeles:20261212T150000
+SUMMARY:Cuesta WBB @ Fullerton
+LOCATION:Fullerton College — The Hornets Nest\, 321 E. Chapman Ave\, Full
+ erton\, CA 92832
+GEO:33.8741;-117.9192
+DESCRIPTION:Non-conference — Away\nVenue: Fullerton College — The Horne
+ ts Nest\, 321 E. Chapman Ave\, Fullerton\, CA 92832\nMap: https://www.goog
+ le.com/maps/search/?api=1&query=Fullerton+College+%E2%80%94+The+Hornets+Ne
+ st%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832\nDrive from Pasadena: 45
+ m · 31 mi\nDrive from SLO: 4h 24m · 215 mi\nWatch live (Game stream): ht
+ tps://www.flocollege.com/live/284079\nNote: Stream is on FloCollege (subsc
+ ription)\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/
+ ?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Fullerton tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Fullerton in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2026-12-19-chabot@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20261219T150000
+DTEND;TZID=America/Los_Angeles:20261219T170000
+SUMMARY:Cuesta WBB @ Chabot
+LOCATION:Chabot College Main Gym\, 25555 Hesperian Blvd\, Hayward\, CA 9454
+ 5
+GEO:37.6422;-122.1038
+DESCRIPTION:Non-conference — Away\nVenue: Chabot College Main Gym\, 25555
+  Hesperian Blvd\, Hayward\, CA 94545\nMap: https://www.google.com/maps/sea
+ rch/?api=1&query=Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Haywar
+ d%2C+CA+94545\nDrive from Pasadena: 6h 42m · 361 mi\nDrive from SLO: 4h 0
+ 4m · 210 mi\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketb
+ all/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:Non-conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Chabot tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Chabot in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-06-ventura@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270106T170000
+DTEND;TZID=America/Los_Angeles:20270106T190000
+SUMMARY:Cuesta WBB @ Ventura
+LOCATION:Ventura College Gym\, 4667 Telegraph Rd\, Ventura\, CA 93003
+GEO:34.2773;-119.2327
+DESCRIPTION:WSC conference — Away\nVenue: Ventura College Gym\, 4667 Tele
+ graph Rd\, Ventura\, CA 93003\nMap: https://www.google.com/maps/search/?ap
+ i=1&query=Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003\
+ nDrive from Pasadena: 1h 24m · 68 mi\nDrive from SLO: 2h 40m · 126 mi\nW
+ atch live (Host channel: YouTube · VC Pirate Athletics): https://www.yout
+ ube.com/channel/UCwtRPgwghVQtHQBZAsTmxdQ\nSeason calendar: https://johnlin
+ wiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Ventura tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Ventura in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-09-santa-barbara@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270109T130000
+DTEND;TZID=America/Los_Angeles:20270109T150000
+SUMMARY:Cuesta WBB vs Santa Barbara
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Santa Barbara tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Santa Barbara in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-13-moorpark@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270113T170000
+DTEND;TZID=America/Los_Angeles:20270113T190000
+SUMMARY:Cuesta WBB vs Moorpark
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Moorpark tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Moorpark in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-16-oxnard@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270116T130000
+DTEND;TZID=America/Los_Angeles:20270116T150000
+SUMMARY:Cuesta WBB @ Oxnard
+LOCATION:Oxnard College Gym\, 4000 S Rose Ave\, Oxnard\, CA 93033
+GEO:34.1657;-119.1555
+DESCRIPTION:WSC conference — Away\nVenue: Oxnard College Gym\, 4000 S Ros
+ e Ave\, Oxnard\, CA 93033\nMap: https://www.google.com/maps/search/?api=1&
+ query=Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033\nDrive f
+ rom Pasadena: 1h 19m · 63 mi\nDrive from SLO: 2h 50m · 135 mi\nWatch liv
+ e (Host channel: YouTube · OC Condors): https://www.youtube.com/@occondor
+ s8165\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?te
+ am=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Oxnard tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Oxnard in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-20-la-mission@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270120T170000
+DTEND;TZID=America/Los_Angeles:20270120T190000
+SUMMARY:Cuesta WBB vs LA Mission
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs LA Mission tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs LA Mission in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-23-la-pierce@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270123T130000
+DTEND;TZID=America/Los_Angeles:20270123T150000
+SUMMARY:Cuesta WBB @ LA Pierce
+LOCATION:LA Pierce College — Ken Stanley Court\, 6201 Winnetka Ave\, Wood
+ land Hills\, CA 91371
+GEO:34.1834;-118.5798
+DESCRIPTION:WSC conference — Away\nVenue: LA Pierce College — Ken Stanl
+ ey Court\, 6201 Winnetka Ave\, Woodland Hills\, CA 91371\nMap: https://www
+ .google.com/maps/search/?api=1&query=LA+Pierce+College+%E2%80%94+Ken+Stanl
+ ey+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371\nDrive from Pa
+ sadena: 35m · 27 mi\nDrive from SLO: 3h 27m · 168 mi\nWatch live (Host c
+ hannel: YouTube · Brahma Sports Network): https://www.youtube.com/@brahma
+ sportsnetwork\nSeason calendar: https://johnlinwiz.github.io/cuesta-basket
+ ball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ LA Pierce tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ LA Pierce in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-27-allan-hancock@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270127T170000
+DTEND;TZID=America/Los_Angeles:20270127T190000
+SUMMARY:Cuesta WBB @ Allan Hancock
+LOCATION:Allan Hancock College Gym\, 800 S College Dr\, Santa Maria\, CA 93
+ 454
+GEO:34.9433;-120.4231
+DESCRIPTION:WSC conference — Away\nVenue: Allan Hancock College Gym\, 800
+  S College Dr\, Santa Maria\, CA 93454\nMap: https://www.google.com/maps/s
+ earch/?api=1&query=Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+
+ Maria%2C+CA+93454\nDrive from Pasadena: 3h 18m · 160 mi\nDrive from SLO: 
+ 42m · 33 mi\nWatch live (Host channel: Team1Sports / BlueFrame): https://
+ www.team1sports.com/college/?S=allanhancockcollege\nSeason calendar: https
+ ://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Allan Hancock tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Allan Hancock in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-01-29-ventura@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270129T170000
+DTEND;TZID=America/Los_Angeles:20270129T190000
+SUMMARY:Cuesta WBB vs Ventura
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Ventura tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Ventura in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-03-santa-barbara@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270203T170000
+DTEND;TZID=America/Los_Angeles:20270203T190000
+SUMMARY:Cuesta WBB @ Santa Barbara
+LOCATION:Robertson Gymnasium ("Rob Gym")\, UCSB\, Robertson Gymnasium\, Oce
+ an Rd\, Santa Barbara\, CA 93106
+GEO:34.4162;-119.8494
+DESCRIPTION:WSC conference — Away\nVenue: Robertson Gymnasium ("Rob Gym")
+ \, UCSB\, Robertson Gymnasium\, Ocean Rd\, Santa Barbara\, CA 93106\nMap: 
+ https://www.google.com/maps/search/?api=1&query=Robertson+Gymnasium+%28%22
+ Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%
+ 2C+CA+93106\nDrive from Pasadena: 2h 09m · 109 mi\nDrive from SLO: 1h 58m
+  · 98 mi\nWatch live (Game stream): https://fan.hudl.com/usa/ca/santa-bar
+ bara/organization/4943/santa-barbara-city/watch?ib=4106831&shared=true\nNo
+ te: Played at Rob Gym (UCSB)\, not the SBCC campus\nSeason calendar: https
+ ://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Santa Barbara tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Santa Barbara in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-05-moorpark@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270205T170000
+DTEND;TZID=America/Los_Angeles:20270205T190000
+SUMMARY:Cuesta WBB @ Moorpark
+LOCATION:Moorpark College Gym\, 7075 Campus Rd\, Moorpark\, CA 93021
+GEO:34.2996;-118.8367
+DESCRIPTION:WSC conference — Away\nVenue: Moorpark College Gym\, 7075 Cam
+ pus Rd\, Moorpark\, CA 93021\nMap: https://www.google.com/maps/search/?api
+ =1&query=Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021\nD
+ rive from Pasadena: 56m · 46 mi\nDrive from SLO: 3h 12m · 151 mi\nWatch 
+ live (Host channel: Hudl · Moorpark College): https://fan.hudl.com/usa/ca
+ /moorpark/organization/8690/moorpark-college\nSeason calendar: https://joh
+ nlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ Moorpark tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ Moorpark in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-10-oxnard@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270210T170000
+DTEND;TZID=America/Los_Angeles:20270210T190000
+SUMMARY:Cuesta WBB vs Oxnard
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Oxnard tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Oxnard in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-12-la-mission@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270212T170000
+DTEND;TZID=America/Los_Angeles:20270212T190000
+SUMMARY:Cuesta WBB @ LA Mission
+LOCATION:LA Mission College Gymnasium (HFAC)\, 12890 Harding Street\, Sylma
+ r\, CA 91342
+GEO:34.3086;-118.4133
+DESCRIPTION:WSC conference — Away\nVenue: LA Mission College Gymnasium (H
+ FAC)\, 12890 Harding Street\, Sylmar\, CA 91342\nMap: https://www.google.c
+ om/maps/search/?api=1&query=LA+Mission+College+Gymnasium+%28HFAC%29%2C+128
+ 90+Harding+Street%2C+Sylmar%2C+CA+91342\nDrive from Pasadena: 28m · 22 mi
+ \nDrive from SLO: 3h 44m · 179 mi\nWatch live (Host channel: YouTube · L
+ AMC Eagles): https://www.youtube.com/channel/UCE5h0MlX2Kev_Zq-J3XsBwg\nSea
+ son calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Away
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB @ LA Mission tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB @ LA Mission in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-17-la-pierce@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270217T170000
+DTEND;TZID=America/Los_Angeles:20270217T190000
+SUMMARY:Cuesta WBB vs LA Pierce
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs LA Pierce tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs LA Pierce in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:wbb-2027-02-19-allan-hancock@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
+DTSTART;TZID=America/Los_Angeles:20270219T170000
+DTEND;TZID=America/Los_Angeles:20270219T190000
+SUMMARY:Cuesta WBB vs Allan Hancock
+LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
+ is Obispo\, CA 93405
+GEO:35.329;-120.7406
+DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, 
+ Cuesta College\, Highway 1\, San Luis Obispo\, CA 93405\nMap: https://www.
+ google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cu
+ esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
+ ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
+ el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+CATEGORIES:WSC conference,Home
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta WBB vs Allan Hancock tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta WBB vs Allan Hancock in 3 hours
+END:VALARM
+END:VEVENT
+END:VCALENDAR

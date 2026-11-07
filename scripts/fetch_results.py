@@ -21,7 +21,7 @@ import sys
 from urllib.parse import urljoin
 
 from check_feed import fetch_feed, norm, parse_feed
-from common import ROOT, load
+from common import ROOT, load, team_file, teams  # noqa: F401 (ROOT: tests patch it)
 
 UA = "Mozilla/5.0 (compatible; cuesta-mbb-schedule; +https://github.com/johnlinwiz/cuesta-mbb)"
 
@@ -109,7 +109,7 @@ def feed_rows(sched):
     url = sched["feed_url"]
     host = re.match(r"https?://[^/]+", url).group(0)
     rows = []
-    for f in parse_feed(fetch_feed(url)):
+    for f in parse_feed(fetch_feed(url), sport=sched.get("feed_sport", "Men's Basketball")):
         if "us" not in f:
             continue
         us, them = f["us"], f["them"]
@@ -199,9 +199,17 @@ def main():
                   f"{'  [box]' if r.get('boxscore') else ''}{'  [recap]' if r.get('recap') else ''}")
         return 0
 
-    sched, _, _, events = load()
+    for key in teams():
+        if key:
+            print(f"== {key}")
+        run(key)
+    return 0
+
+
+def run(team):
+    sched, _, _, events = load(team)
     aliases = {k.lower(): v.lower() for k, v in (sched.get("feed_aliases") or {}).items()}
-    out_path = ROOT / "data/results.json"
+    out_path = team_file(team, "results.json")
     prev = json.loads(out_path.read_text()) if out_path.exists() else {}
     try:
         rows, src = get_rows(sched)
@@ -240,7 +248,6 @@ def main():
 
     out_path.write_text(json.dumps(results, indent=2, sort_keys=True) + "\n")
     print(f"{len(results)} result(s) recorded")
-    return 0
 
 
 if __name__ == "__main__":

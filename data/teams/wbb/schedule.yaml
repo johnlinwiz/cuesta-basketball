@@ -1,0 +1,64 @@
+# Cuesta College Women's Basketball — 2026-27 season schedule.
+# Source: cuestaathletics.com/sports/wbkb/2026-27/schedule, drafted with scripts/import_schedule.py
+# and cross-checked against the 3C2A feed (2026-11-06). Venues researched on each host's athletics site.
+# This file is the single source of truth for the team: edit it, then run `make build`.
+#
+# Tournament wrapper rows on the official page (West Coast Shootout, Taft College Jamboree,
+# Hinson's Tire Pros Classic) aren't games; their individual games are listed instead.
+# replaces: [old-event-id] -> sync closes that old reminder issue and links it here.
+# All times are Pacific (America/Los_Angeles). Games with no time are all-day events.
+
+season: "2026-27"
+team: Cuesta College Women's Basketball
+short: WBB                        # issue title prefix / label text
+ics: cuesta-wbb.ics               # this team's calendar feed (docs/)
+id_prefix: "wbb-"                 # event ids must not collide with the men's (same date + opponent)
+source_url: https://www.cuestaathletics.com/sports/wbkb/2026-27/schedule
+feed_url: "https://www.cccaasports.org/sports/wbkb/2026-27/schedule?print=ical"   # official 3C2A feed, checked daily
+feed_sport: "Women's Basketball"  # sport tag in the feed's event titles
+results_fallback_url: "https://www.cccaasports.org/sports/wbkb/2026-27/teams/cuesta?view=schedule"
+feed_aliases:                     # feed name -> our name
+  to be announced: tba tom gilcrest tournament
+feed_ignore:                      # "YYYY-MM-DD Opponent" feed entries we deliberately don't track
+  - "2026-11-20 Hinson's Tire Pros Classic"   # wrapper; Mission + Skyline games are tracked
+  - "2026-11-21 Hinson's Tire Pros Classic"
+timezone: America/Los_Angeles
+default_duration_min: 120
+notify: [johnlinwiz]             # @-mentioned in reminder comments
+reminder_days_before: [7, 2, 0]   # GitHub issue reminder comments (0 = game day)
+
+games:
+  - {date: 2026-10-17, time: "11:30", opponent: Bakersfield,        site: neutral, venue: taft,      type: scrimmage, notes: "Taft College Jamboree"}
+  - {date: 2026-10-24, time: "14:00", opponent: Canyons,            site: away, venue: canyons,      type: scrimmage}
+  - {date: 2026-10-30, time: "17:00", opponent: Taft,               site: away, venue: taft,         type: non-conference}
+  - {date: 2026-11-04, time: "15:00", opponent: Hartnell,           site: home, venue: cuesta,       type: non-conference}
+
+  - {date: 2026-11-07, time: "13:00", opponent: Santa Monica,       site: home, venue: cuesta,       type: non-conference}
+  - {date: 2026-11-12, time: "16:00", opponent: Foothill,           site: away, venue: foothill,     type: non-conference}
+  - {date: 2026-11-13, time: "14:00", opponent: Siskiyous,          site: away, venue: siskiyous,    type: non-conference}
+  - {date: 2026-11-14, time: "14:00", opponent: Napa Valley,        site: away, venue: napa,         type: non-conference}
+  - {date: 2026-11-18, time: "16:00", opponent: Monterey Peninsula, site: home, venue: cuesta,       type: non-conference}
+  - {date: 2026-11-20, time: "18:00", opponent: Mission,            site: home, venue: cuesta,       type: tournament, notes: "Hinson's Tire Pros Classic, day 1"}
+  - {date: 2026-11-21, time: "15:00", opponent: Skyline,            site: home, venue: cuesta,       type: tournament, notes: "Hinson's Tire Pros Classic, day 2"}
+
+  - {date: 2026-12-02, time: "17:00", opponent: Reedley,            site: home, venue: cuesta,       type: non-conference}
+  - {date: 2026-12-05, opponent: TBA (Tom Gilcrest Tournament),     site: neutral, venue: sequoias,  type: tournament, notes: "College of the Sequoias' 49th Tom Gilcrest Tournament (Dec 3-5); opponent and time not announced yet"}
+  - {date: 2026-12-11, time: "18:00", opponent: Santa Ana,          site: away, venue: santaana,     type: non-conference}
+  - {date: 2026-12-12, time: "13:00", opponent: Fullerton,          site: away, venue: fullerton,    type: non-conference, video: "https://www.flocollege.com/live/284079", notes: "Stream is on FloCollege (subscription)"}
+  - {date: 2026-12-19, time: "15:00", opponent: Chabot,             site: away, venue: chabot,       type: non-conference}
+
+  - {date: 2027-01-06, time: "17:00", opponent: Ventura,            site: away, venue: ventura,      type: conference}
+  - {date: 2027-01-09, time: "13:00", opponent: Santa Barbara,      site: home, venue: cuesta,       type: conference}
+  - {date: 2027-01-13, time: "17:00", opponent: Moorpark,           site: home, venue: cuesta,       type: conference}
+  - {date: 2027-01-16, time: "13:00", opponent: Oxnard,             site: away, venue: oxnard,       type: conference}
+  - {date: 2027-01-20, time: "17:00", opponent: LA Mission,         site: home, venue: cuesta,       type: conference}
+  - {date: 2027-01-23, time: "13:00", opponent: LA Pierce,          site: away, venue: pierce,       type: conference}
+  - {date: 2027-01-27, time: "17:00", opponent: Allan Hancock,      site: away, venue: hancock,      type: conference}
+  - {date: 2027-01-29, time: "17:00", opponent: Ventura,            site: home, venue: cuesta,       type: conference}
+
+  - {date: 2027-02-03, time: "17:00", opponent: Santa Barbara,      site: away, venue: robgym,       type: conference, video: "https://fan.hudl.com/usa/ca/santa-barbara/organization/4943/santa-barbara-city/watch?ib=4106831&shared=true", notes: "Played at Rob Gym (UCSB), not the SBCC campus"}
+  - {date: 2027-02-05, time: "17:00", opponent: Moorpark,           site: away, venue: moorpark,     type: conference}
+  - {date: 2027-02-10, time: "17:00", opponent: Oxnard,             site: home, venue: cuesta,       type: conference}
+  - {date: 2027-02-12, time: "17:00", opponent: LA Mission,         site: away, venue: lamission,    type: conference}
+  - {date: 2027-02-17, time: "17:00", opponent: LA Pierce,          site: home, venue: cuesta,       type: conference}
+  - {date: 2027-02-19, time: "17:00", opponent: Allan Hancock,      site: home, venue: cuesta,       type: conference}

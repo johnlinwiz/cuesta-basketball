@@ -144,11 +144,11 @@ def make_page(browser, site_url, events_json):
     that hunt for runtime errors must use frozen=False (real timers)."""
     contexts, nets = [], []
 
-    def make(mobile=True, text_size=None, hash="", frozen=True):
+    def make(mobile=True, text_size=None, hash="", frozen=True, data=None):
         ctx = browser.new_context(**(MOBILE if mobile else DESKTOP), timezone_id="America/Los_Angeles",
                                   locale="en-US", service_workers="block")
         contexts.append(ctx)
-        net = Net(events_json); nets.append(net)
+        net = Net(data or events_json); nets.append(net)
         ctx.route("**/*", net.handle)
         if text_size is not None:
             ctx.add_init_script(f"localStorage.setItem('cuesta-mbb-textsize', {json.dumps(str(text_size))})")

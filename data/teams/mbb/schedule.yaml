@@ -10,6 +10,9 @@
 
 season: "2026-27"
 team: Cuesta College Men's Basketball
+short: MBB                        # issue title prefix / label text
+ics: cuesta-mbb.ics               # this team's calendar feed (docs/)
+id_prefix: ""                     # event-id prefix ("" keeps the original issue markers)
 source_url: https://www.cuestaathletics.com/sports/mbkb/2026-27/schedule
 feed_url: "https://www.cccaasports.org/sports/mbkb/2026-27/schedule?print=ical"
 results_fallback_url: "https://www.cccaasports.org/sports/mbkb/2026-27/teams/cuesta?view=schedule"   # used when the team site blocks GitHub   # official 3C2A feed, checked daily

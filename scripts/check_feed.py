@@ -17,7 +17,7 @@ import re
 import subprocess
 import sys
 
-from common import REPO, TZ, load, today_pt
+from common import REPO, TZ, load, teams, today_pt
 
 UA = "Mozilla/5.0 (compatible; cuesta-mbb-schedule; +https://github.com/johnlinwiz/cuesta-mbb)"
 LABEL = "schedule-drift"
@@ -39,7 +39,7 @@ def fetch_feed(url):
     return r.stdout
 
 
-def parse_feed(text, team="Cuesta"):
+def parse_feed(text, team="Cuesta", sport="Men's Basketball"):
     text = text.replace("\r\n", "\n").replace("\n ", "")  # unfold RFC 5545 lines
     out = []
     for block in text.split("BEGIN:VEVENT")[1:]:
@@ -47,9 +47,11 @@ def parse_feed(text, team="Cuesta"):
             m = re.search(rf"^{k}(?:;[^:\n]*)?:(.*)$", block, re.M)
             return m.group(1).strip() if m else ""
         summary = field("SUMMARY").replace("\\,", ",")
-        if "Men's Basketball" not in summary or team not in summary:
+        # "(Women's Basketball) ..." contains "men's Basketball" but not "(Men's Basketball)", so match the
+        # parenthesised sport tag exactly.
+        if f"({sport})" not in summary or team not in summary:
             continue
-        title = re.sub(r"^\(Men's Basketball\)\s*", "", summary)
+        title = re.sub(r"^\(" + re.escape(sport) + r"\)\s*", "", summary)
         score = re.search(r"\s*\((\d+)-(\d+)\)\s*$", title)      # finals: "Oxnard at Cuesta (62-78)", title order
         if score:
             title = title[:score.start()]
@@ -131,9 +133,12 @@ def gh(*args, input=None):
 
 
 def sync_issue(rows, sched, feed_url):
+    team = sched.get("key")
+    team_labels = ["--label", team] if team else []
+    tag = f"[{sched['short']}] " if team else ""
     import json
     repo_flag = ["-R", REPO]
-    existing = json.loads(gh("issue", "list", *repo_flag, "--label", LABEL, "--state", "open",
+    existing = json.loads(gh("issue", "list", *repo_flag, "--label", LABEL, *team_labels, "--state", "open",
                              "--json", "number,body") or "[]")
     issue = existing[0] if existing else None
     if not rows:
@@ -145,10 +150,10 @@ def sync_issue(rows, sched, feed_url):
         return
     fp = hashlib.sha1("\n".join(rows).encode()).hexdigest()[:12]
     body = "\n".join([
-        "The official schedule feed no longer matches `data/schedule.yaml`.", "",
+        "The official schedule feed no longer matches this team's `schedule.yaml`.", "",
         *[f"- {r}" for r in rows], "",
         f"Feed: {feed_url}", "",
-        "**To resolve:** edit `data/schedule.yaml` (use `replaces: [old-event-id]` when a game moves), "
+        "**To resolve:** edit the team's `schedule.yaml` (`data/teams/<team>/`) (use `replaces: [old-event-id]` when a game moves), "
         "or add a line to `feed_ignore:` for feed entries you deliberately don't track. "
         "This issue closes automatically once they agree.",
         "", f"<!-- drift-fp: {fp} -->"])
@@ -156,8 +161,10 @@ def sync_issue(rows, sched, feed_url):
     if not issue:
         gh("label", "create", LABEL, *repo_flag, "--color", "d93f0b",
            "--description", "Official feed differs from schedule.yaml", "--force")
-        url = gh("issue", "create", *repo_flag, "--title", "⚠️ Schedule drift: official feed differs",
-                 "--label", LABEL, "--body", body)
+        if team:
+            gh("label", "create", team, *repo_flag, "--color", "ededed", "--description", sched["team"], "--force")
+        url = gh("issue", "create", *repo_flag, "--title", f"⚠️ {tag}Schedule drift: official feed differs",
+                 "--label", LABEL, *team_labels, "--body", body)
         n = url.rstrip("/").split("/")[-1]
         gh("issue", "comment", n, *repo_flag, "--body", f"🔔 {mentions} the official schedule changed — see above.")
         print(f"opened drift issue #{n}")
@@ -171,20 +178,27 @@ def sync_issue(rows, sched, feed_url):
 
 
 def main():
-    sched, _, _, events = load()
+    for key in teams():
+        if key:
+            print(f"== {key}")
+        run(key)
+    return 0
+
+
+def run(team):
+    sched, _, _, events = load(team)
     url = sched["feed_url"]
     try:
-        feed = parse_feed(fetch_feed(url))
+        feed = parse_feed(fetch_feed(url), sport=sched.get("feed_sport", "Men's Basketball"))
     except Exception as err:  # never fail the daily job because the feed is down
-        print(f"::warning::schedule feed check skipped: {err}")
-        return 0
+        print(f"::warning::schedule feed check skipped ({team or 'team'}): {err}")
+        return
     rows = diff(sched, events, feed, today_pt())
     print(f"{len(feed)} feed games, {len(rows)} difference(s)")
     for r in rows:
         print(" ", r)
     if "--issue" in sys.argv:
         sync_issue(rows, sched, url)
-    return 0
 
 
 if __name__ == "__main__":

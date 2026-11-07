@@ -15,7 +15,7 @@ issues:           ## create/update one reminder issue per game, then rebuild lin
 	python3 scripts/sync_issues.py && python3 scripts/build.py
 feed:             ## compare the official 3C2A feed with schedule.yaml (prints diffs)
 	python3 scripts/check_feed.py
-results:          ## scrape final scores into data/results.json, then rebuild
+results:          ## scrape final scores into each team's results.json, then rebuild
 	python3 scripts/fetch_results.py && python3 scripts/build.py
 daily:            ## run the reminder/close job locally
 	python3 scripts/daily.py

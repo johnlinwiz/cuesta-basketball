@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//johnlinwiz/cuesta-mbb//schedule//EN
+PRODID:-//johnlinwiz/cuesta-basketball//schedule//EN
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 X-WR-CALNAME:Cuesta MBB 2026-27
@@ -25,8 +25,8 @@ RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:2026-10-17-reedley@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-10-17-reedley@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261017T140000
 DTEND;TZID=America/Los_Angeles:20261017T160000
 SUMMARY:Cuesta MBB @ Reedley (scrimmage)
@@ -37,9 +37,9 @@ DESCRIPTION:Scrimmage — Away\nVenue: Reedley College Gym\, 995 N Reed Ave
  y=Reedley+College+Gym%2C+995+N+Reed+Ave%2C+Reedley%2C+CA+93654\nDrive from
   Pasadena: 3h 59m · 208 mi\nDrive from SLO: 3h 08m · 147 mi\nNote: Repla
  ces the Fri Oct 16 Porterville scrimmage (changed on cuestaathletics.com\,
-  seen 2026-10-16)\nSeason calendar: https://johnlinwiz.github.io/cuesta-mb
- b/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+  seen 2026-10-16)\nSeason calendar: https://johnlinwiz.github.io/cuesta-ba
+ sketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Scrimmage,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -53,8 +53,8 @@ DESCRIPTION:Cuesta MBB @ Reedley (scrimmage) in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-23-west-valley@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-10-23-west-valley@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261023T140000
 DTEND;TZID=America/Los_Angeles:20261023T160000
 SUMMARY:Cuesta MBB @ West Valley (scrimmage)
@@ -66,8 +66,8 @@ DESCRIPTION:Scrimmage — Away\nVenue: West Valley College — Bob Burton C
  com/maps/search/?api=1&query=West+Valley+College+%E2%80%94+Bob+Burton+Cour
  t%2C+14000+Fruitvale+Ave%2C+Saratoga%2C+CA+95070\nDrive from Pasadena: 6h 
  31m · 345 mi\nDrive from SLO: 3h 42m · 189 mi\nSeason calendar: https://
- johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ johnlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Scrimmage,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -81,8 +81,8 @@ DESCRIPTION:Cuesta MBB @ West Valley (scrimmage) in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-29-gavilan@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-10-29-gavilan@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261029T180000
 DTEND;TZID=America/Los_Angeles:20261029T200000
 SUMMARY:Cuesta MBB @ Gavilan — W 93-53
@@ -92,9 +92,10 @@ DESCRIPTION:Non-conference — Away\nVenue: Gavilan College Gym\, 5055 Sant
  a Teresa Blvd\, Gilroy\, CA 95020\nMap: https://www.google.com/maps/search
  /?api=1&query=Gavilan+College+Gym%2C+5055+Santa+Teresa+Blvd%2C+Gilroy%2C+C
  A+95020\nDrive from Pasadena: 5h 51m · 313 mi\nDrive from SLO: 3h 01m · 
- 154 mi\nFinal: W 93-53 · Box score: https://www.cccaasports.org/links/qjx
- bsa\nSeason calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ 154 mi\nFinal: W 93-53 · Box score: https://www.cuestaathletics.com/sport
+ s/mbkb/2026-27/boxscores/20261029_f1v6.xml\nSeason calendar: https://johnl
+ inwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -108,8 +109,8 @@ DESCRIPTION:Cuesta MBB @ Gavilan — W 93-53 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-10-31-sequoias@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-10-31-sequoias@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261031T130000
 DTEND;TZID=America/Los_Angeles:20261031T150000
 SUMMARY:Cuesta MBB vs Sequoias — L 82-87
@@ -123,9 +124,9 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: L 82-87 · Box score: https://www
- .cccaasports.org/sports/mbkb/2026-27/boxscores/20261031_b00x.xml\nSeason c
- alendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ .cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261031_b00x.xml\nSeas
+ on calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -139,8 +140,8 @@ DESCRIPTION:Cuesta MBB vs Sequoias — L 82-87 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-03-monterey-peninsula@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-03-monterey-peninsula@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261103T150000
 DTEND;TZID=America/Los_Angeles:20261103T170000
 SUMMARY:Cuesta MBB @ Monterey Peninsula — L 58-72
@@ -153,9 +154,10 @@ DESCRIPTION:Non-conference — Away\nVenue: Monterey Peninsula College Gym\
  terey%2C+CA+93940\nDrive from Pasadena: 6h 15m · 322 mi\nDrive from SLO: 
  2h 51m · 144 mi\nWatch live (Host channel: YouTube · MPC Men's Basketbal
  l): https://www.youtube.com/@MPCMensBasketball/streams\nFinal: L 58-72 · 
- Box score: https://www.cccaasports.org/links/1mntr8\nSeason calendar: http
- s://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ Box score: https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/2
+ 0261103_p5bi.xml\nSeason calendar: https://johnlinwiz.github.io/cuesta-bas
+ ketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -169,8 +171,8 @@ DESCRIPTION:Cuesta MBB @ Monterey Peninsula — L 58-72 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-07-diablo-valley@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-07-diablo-valley@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261107T150000
 DTEND;TZID=America/Los_Angeles:20261107T170000
 SUMMARY:Cuesta MBB vs Diablo Valley
@@ -184,8 +186,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -199,8 +201,8 @@ DESCRIPTION:Cuesta MBB vs Diablo Valley in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-09-redwoods@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-09-redwoods@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261109T130000
 DTEND;TZID=America/Los_Angeles:20261109T150000
 SUMMARY:Cuesta MBB vs Redwoods
@@ -214,8 +216,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -229,8 +231,8 @@ DESCRIPTION:Cuesta MBB vs Redwoods in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-13-feather-river@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-13-feather-river@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261113T180000
 DTEND;TZID=America/Los_Angeles:20261113T200000
 SUMMARY:Cuesta MBB vs Feather River
@@ -243,8 +245,9 @@ DESCRIPTION:Tournament — Neutral\nVenue: American River College Gym\, 470
  Sacramento%2C+CA+95841\nDrive from Pasadena: 7h 19m · 396 mi\nDrive from 
  SLO: 5h 49m · 301 mi\nWatch live (Host channel: YouTube · ARC Athletics)
  : https://www.youtube.com/@arcbeavers\nNote: American River College Tourna
- ment\, day 1\nSeason calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ment\, day 1\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketb
+ all/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -258,8 +261,8 @@ DESCRIPTION:Cuesta MBB vs Feather River in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-14-shasta@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-14-shasta@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261114T130000
 DTEND;TZID=America/Los_Angeles:20261114T150000
 SUMMARY:Cuesta MBB vs Shasta
@@ -272,8 +275,9 @@ DESCRIPTION:Tournament — Neutral\nVenue: American River College Gym\, 470
  Sacramento%2C+CA+95841\nDrive from Pasadena: 7h 19m · 396 mi\nDrive from 
  SLO: 5h 49m · 301 mi\nWatch live (Host channel: YouTube · ARC Athletics)
  : https://www.youtube.com/@arcbeavers\nNote: American River College Tourna
- ment\, day 2\nSeason calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ment\, day 2\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketb
+ all/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -287,8 +291,8 @@ DESCRIPTION:Cuesta MBB vs Shasta in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-11-24-de-anza@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-11-24-de-anza@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261124T180000
 DTEND;TZID=America/Los_Angeles:20261124T200000
 SUMMARY:Cuesta MBB vs De Anza
@@ -302,8 +306,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -317,8 +321,8 @@ DESCRIPTION:Cuesta MBB vs De Anza in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-02-coalinga@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-02-coalinga@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261202T180000
 DTEND;TZID=America/Los_Angeles:20261202T200000
 SUMMARY:Cuesta MBB @ Coalinga
@@ -330,8 +334,8 @@ DESCRIPTION:Non-conference — Away\nVenue: West Hills College Coalinga Gym
  /search/?api=1&query=West+Hills+College+Coalinga+Gym%2C+300+W+Cherry+Ln%2C
  +Coalinga%2C+CA+93210\nDrive from Pasadena: 3h 53m · 202 mi\nDrive from S
  LO: 2h 12m · 102 mi\nSeason calendar: https://johnlinwiz.github.io/cuesta
- -mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ -basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -345,8 +349,8 @@ DESCRIPTION:Cuesta MBB @ Coalinga in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-12-rio-hondo@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-12-rio-hondo@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261212T150000
 DTEND;TZID=America/Los_Angeles:20261212T170000
 SUMMARY:Cuesta MBB vs Rio Hondo
@@ -360,8 +364,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -375,8 +379,8 @@ DESCRIPTION:Cuesta MBB vs Rio Hondo in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-15-bakersfield@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-15-bakersfield@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261215T173000
 DTEND;TZID=America/Los_Angeles:20261215T193000
 SUMMARY:Cuesta MBB @ Bakersfield
@@ -389,8 +393,8 @@ DESCRIPTION:Non-conference — Away\nVenue: Bakersfield College Gym\, 1801
  d%2C+CA+93305\nDrive from Pasadena: 2h 19m · 118 mi\nDrive from SLO: 2h 5
  3m · 139 mi\nLive stats: https://www.cuestaathletics.com/sports/mbkb/2026
  -27/boxscores/20261215_z1ox.xml\nSeason calendar: https://johnlinwiz.githu
- b.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ b.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -404,8 +408,8 @@ DESCRIPTION:Cuesta MBB @ Bakersfield in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-18-san-joaquin-delta-tournament@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-18-san-joaquin-delta-tournament@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;VALUE=DATE:20261218
 DTEND;VALUE=DATE:20261221
 SUMMARY:Cuesta MBB San Joaquin Delta Tournament
@@ -418,8 +422,8 @@ DESCRIPTION:Tournament — Neutral\nVenue: San Joaquin Delta College Gym\,
  ockton%2C+CA+95207\nDrive from Pasadena: 6h 18m · 341 mi\nDrive from SLO:
   4h 47m · 247 mi\nWatch live (Host channel: YouTube · Delta Athletics): 
  https://www.youtube.com/@deltaathletics324\nNote: Bracket/times TBA\nSeaso
- n calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ n calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -433,8 +437,8 @@ DESCRIPTION:Cuesta MBB San Joaquin Delta Tournament in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-29-santa-ana@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-29-santa-ana@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261229T150000
 DTEND;TZID=America/Los_Angeles:20261229T170000
 SUMMARY:Cuesta MBB vs Santa Ana
@@ -449,8 +453,8 @@ DESCRIPTION:Tournament — Neutral\nVenue: Allan Hancock College Gym\, 800
  ww.team1sports.com/college/?S=allanhancockcollege\nLive stats: https://www
  .cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261229_do4v.xml\nNote
  : AHC Holiday Classic\, day 1\nSeason calendar: https://johnlinwiz.github.
- io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -464,8 +468,8 @@ DESCRIPTION:Cuesta MBB vs Santa Ana in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-30-palo-verde@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2026-12-30-palo-verde@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20261230T130000
 DTEND;TZID=America/Los_Angeles:20261230T150000
 SUMMARY:Cuesta MBB vs Palo Verde
@@ -480,8 +484,8 @@ DESCRIPTION:Tournament — Neutral\nVenue: Allan Hancock College Gym\, 800
  ww.team1sports.com/college/?S=allanhancockcollege\nLive stats: https://www
  .cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261230_d1nc.xml\nNote
  : AHC Holiday Classic\, day 2\nSeason calendar: https://johnlinwiz.github.
- io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -495,8 +499,8 @@ DESCRIPTION:Cuesta MBB vs Palo Verde in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-06-ventura@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-06-ventura@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270106T190000
 DTEND;TZID=America/Los_Angeles:20270106T210000
 SUMMARY:Cuesta MBB @ Ventura
@@ -509,8 +513,8 @@ DESCRIPTION:WSC conference — Away\nVenue: Ventura College Gym\, 4667 Tele
  atch live (Host channel: YouTube · VC Pirate Athletics): https://www.yout
  ube.com/channel/UCwtRPgwghVQtHQBZAsTmxdQ\nLive stats: https://www.cuestaat
  hletics.com/sports/mbkb/2026-27/boxscores/20270106_lsd5.xml\nSeason calend
- ar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ar: https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -524,8 +528,8 @@ DESCRIPTION:Cuesta MBB @ Ventura in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-09-santa-barbara@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-09-santa-barbara@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270109T150000
 DTEND;TZID=America/Los_Angeles:20270109T170000
 SUMMARY:Cuesta MBB vs Santa Barbara
@@ -539,8 +543,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -554,8 +558,8 @@ DESCRIPTION:Cuesta MBB vs Santa Barbara in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-13-moorpark@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-13-moorpark@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270113T190000
 DTEND;TZID=America/Los_Angeles:20270113T210000
 SUMMARY:Cuesta MBB vs Moorpark
@@ -569,8 +573,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -584,8 +588,8 @@ DESCRIPTION:Cuesta MBB vs Moorpark in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-16-oxnard@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-16-oxnard@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270116T150000
 DTEND;TZID=America/Los_Angeles:20270116T170000
 SUMMARY:Cuesta MBB @ Oxnard
@@ -596,8 +600,9 @@ DESCRIPTION:WSC conference — Away\nVenue: Oxnard College Gym\, 4000 S Ros
  query=Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033\nDrive f
  rom Pasadena: 1h 19m · 63 mi\nDrive from SLO: 2h 50m · 135 mi\nWatch liv
  e (Host channel: YouTube · OC Condors): https://www.youtube.com/@occondor
- s8165\nSeason calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ s8165\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?te
+ am=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -611,8 +616,8 @@ DESCRIPTION:Cuesta MBB @ Oxnard in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-23-la-pierce@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-23-la-pierce@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270123T150000
 DTEND;TZID=America/Los_Angeles:20270123T170000
 SUMMARY:Cuesta MBB @ LA Pierce
@@ -625,8 +630,9 @@ DESCRIPTION:WSC conference — Away\nVenue: LA Pierce College — Ken Stanl
  ey+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371\nDrive from Pa
  sadena: 35m · 27 mi\nDrive from SLO: 3h 27m · 168 mi\nWatch live (Host c
  hannel: YouTube · Brahma Sports Network): https://www.youtube.com/@brahma
- sportsnetwork\nSeason calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ sportsnetwork\nSeason calendar: https://johnlinwiz.github.io/cuesta-basket
+ ball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -640,8 +646,8 @@ DESCRIPTION:Cuesta MBB @ LA Pierce in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-27-allan-hancock@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-27-allan-hancock@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270127T190000
 DTEND;TZID=America/Los_Angeles:20270127T210000
 SUMMARY:Cuesta MBB @ Allan Hancock
@@ -655,8 +661,8 @@ DESCRIPTION:WSC conference — Away\nVenue: Allan Hancock College Gym\, 800
  42m · 33 mi\nWatch live (Host channel: Team1Sports / BlueFrame): https://
  www.team1sports.com/college/?S=allanhancockcollege\nLive stats: https://ww
  w.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20270127_oe65.xml\nSea
- son calendar: https://johnlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ son calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -670,8 +676,8 @@ DESCRIPTION:Cuesta MBB @ Allan Hancock in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-01-29-ventura@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-01-29-ventura@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270129T190000
 DTEND;TZID=America/Los_Angeles:20270129T210000
 SUMMARY:Cuesta MBB vs Ventura
@@ -685,8 +691,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -700,8 +706,8 @@ DESCRIPTION:Cuesta MBB vs Ventura in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-02-03-santa-barbara@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-02-03-santa-barbara@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270203T190000
 DTEND;TZID=America/Los_Angeles:20270203T210000
 SUMMARY:Cuesta MBB @ Santa Barbara
@@ -717,8 +723,8 @@ DESCRIPTION:WSC conference — Away\nVenue: Robertson Gymnasium ("Rob Gym")
  s://www.team1sports.com/college/?S=sbcc\nLive stats: https://www.cuestaath
  letics.com/sports/mbkb/2026-27/boxscores/20270203_xp35.xml\nNote: Played a
  t Rob Gym (UCSB)\, not the SBCC campus\nSeason calendar: https://johnlinwi
- z.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ z.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -732,8 +738,8 @@ DESCRIPTION:Cuesta MBB @ Santa Barbara in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-02-05-moorpark@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-02-05-moorpark@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270205T190000
 DTEND;TZID=America/Los_Angeles:20270205T210000
 SUMMARY:Cuesta MBB @ Moorpark
@@ -745,8 +751,8 @@ DESCRIPTION:WSC conference — Away\nVenue: Moorpark College Gym\, 7075 Cam
  rive from Pasadena: 56m · 46 mi\nDrive from SLO: 3h 12m · 151 mi\nWatch 
  live (Host channel: Hudl · Moorpark College): https://fan.hudl.com/usa/ca
  /moorpark/organization/8690/moorpark-college\nSeason calendar: https://joh
- nlinwiz.github.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ nlinwiz.github.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -760,8 +766,8 @@ DESCRIPTION:Cuesta MBB @ Moorpark in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-02-10-oxnard@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-02-10-oxnard@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270210T190000
 DTEND;TZID=America/Los_Angeles:20270210T210000
 SUMMARY:Cuesta MBB vs Oxnard
@@ -775,8 +781,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -790,8 +796,8 @@ DESCRIPTION:Cuesta MBB vs Oxnard in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-02-17-la-pierce@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-02-17-la-pierce@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270217T190000
 DTEND;TZID=America/Los_Angeles:20270217T210000
 SUMMARY:Cuesta MBB vs LA Pierce
@@ -805,8 +811,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
@@ -820,8 +826,8 @@ DESCRIPTION:Cuesta MBB vs LA Pierce in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2027-02-19-allan-hancock@johnlinwiz.cuesta-mbb
-DTSTAMP:20261106T200538Z
+UID:2027-02-19-allan-hancock@johnlinwiz.cuesta-basketball
+DTSTAMP:20261107T014558Z
 DTSTART;TZID=America/Los_Angeles:20270219T190000
 DTEND;TZID=America/Los_Angeles:20270219T210000
 SUMMARY:Cuesta MBB vs Allan Hancock
@@ -835,8 +841,8 @@ DESCRIPTION:WSC conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
- ub.io/cuesta-mbb/
-URL:https://johnlinwiz.github.io/cuesta-mbb/
+ ub.io/cuesta-basketball/?team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:WSC conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY

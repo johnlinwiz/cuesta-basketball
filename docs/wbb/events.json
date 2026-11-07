@@ -1,0 +1,1464 @@
+{
+ "team": "Cuesta College Women's Basketball",
+ "season": "2026-27",
+ "ics": "cuesta-wbb.ics",
+ "teamKey": "wbb",
+ "teams": [
+  {
+   "key": "mbb",
+   "short": "MBB",
+   "team": "Cuesta College Men's Basketball"
+  },
+  {
+   "key": "wbb",
+   "short": "WBB",
+   "team": "Cuesta College Women's Basketball"
+  }
+ ],
+ "record": "0-2",
+ "repo": "johnlinwiz/cuesta-basketball",
+ "venues": {
+  "taft": {
+   "name": "Taft College Gym",
+   "address": "29 Cougar Court, Taft, CA 93268",
+   "lat": 35.1491,
+   "lon": -119.4576,
+   "drives": {
+    "pasadena": {
+     "miles": 121,
+     "minutes": 148
+    },
+    "slo": {
+     "miles": 96,
+     "minutes": 132
+    }
+   }
+  },
+  "canyons": {
+   "name": "College of the Canyons — Lee Smelser Court (Cougar Cage)",
+   "address": "26455 Rockwell Canyon Road, Santa Clarita, CA 91355",
+   "lat": 34.4082,
+   "lon": -118.5679,
+   "drives": {
+    "pasadena": {
+     "miles": 35,
+     "minutes": 41
+    },
+    "slo": {
+     "miles": 169,
+     "minutes": 212
+    }
+   }
+  },
+  "cuesta": {
+   "name": "Stork Gymnasium (Cuesta Gym)",
+   "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+   "lat": 35.329,
+   "lon": -120.7406,
+   "drives": {
+    "pasadena": {
+     "miles": 198,
+     "minutes": 243
+    },
+    "slo": {
+     "miles": 7,
+     "minutes": 12
+    }
+   }
+  },
+  "foothill": {
+   "name": "Foothill College Main Gymnasium",
+   "address": "12345 El Monte Rd, Los Altos Hills, CA 94022",
+   "lat": 37.3584,
+   "lon": -122.1283,
+   "drives": {
+    "pasadena": {
+     "miles": 354,
+     "minutes": 400
+    },
+    "slo": {
+     "miles": 198,
+     "minutes": 232
+    }
+   }
+  },
+  "siskiyous": {
+   "name": "Siskiyous Gymnasium",
+   "address": "800 College Avenue, Weed, CA 96094",
+   "lat": 41.4115,
+   "lon": -122.3905,
+   "drives": {
+    "pasadena": {
+     "miles": 613,
+     "minutes": 676
+    },
+    "slo": {
+     "miles": 496,
+     "minutes": 565
+    }
+   }
+  },
+  "napa": {
+   "name": "Napa Valley College Gym",
+   "address": "2277 Napa-Vallejo Hwy, Napa, CA 94558",
+   "lat": 38.274,
+   "lon": -122.2764,
+   "drives": {
+    "pasadena": {
+     "miles": 398,
+     "minutes": 444
+    },
+    "slo": {
+     "miles": 262,
+     "minutes": 307
+    }
+   }
+  },
+  "sequoias": {
+   "name": "College of the Sequoias — Porter Fieldhouse",
+   "address": "915 S. Mooney Blvd, Visalia, CA 93277",
+   "lat": 36.3203,
+   "lon": -119.3157,
+   "drives": {
+    "pasadena": {
+     "miles": 182,
+     "minutes": 208
+    },
+    "slo": {
+     "miles": 135,
+     "minutes": 170
+    }
+   }
+  },
+  "santaana": {
+   "name": "Santa Ana College — Bill Cook Gymnasium",
+   "address": "1530 W. 17th Street, Santa Ana, CA 92706",
+   "lat": 33.7576,
+   "lon": -117.8888,
+   "drives": {
+    "pasadena": {
+     "miles": 36,
+     "minutes": 52
+    },
+    "slo": {
+     "miles": 220,
+     "minutes": 271
+    }
+   }
+  },
+  "fullerton": {
+   "name": "Fullerton College — The Hornets Nest",
+   "address": "321 E. Chapman Ave, Fullerton, CA 92832",
+   "lat": 33.8741,
+   "lon": -117.9192,
+   "drives": {
+    "pasadena": {
+     "miles": 31,
+     "minutes": 45
+    },
+    "slo": {
+     "miles": 215,
+     "minutes": 264
+    }
+   }
+  },
+  "chabot": {
+   "name": "Chabot College Main Gym",
+   "address": "25555 Hesperian Blvd, Hayward, CA 94545",
+   "lat": 37.6422,
+   "lon": -122.1038,
+   "drives": {
+    "pasadena": {
+     "miles": 361,
+     "minutes": 402
+    },
+    "slo": {
+     "miles": 210,
+     "minutes": 244
+    }
+   }
+  },
+  "ventura": {
+   "name": "Ventura College Gym",
+   "address": "4667 Telegraph Rd, Ventura, CA 93003",
+   "lat": 34.2773,
+   "lon": -119.2327,
+   "drives": {
+    "pasadena": {
+     "miles": 68,
+     "minutes": 84
+    },
+    "slo": {
+     "miles": 126,
+     "minutes": 160
+    }
+   }
+  },
+  "oxnard": {
+   "name": "Oxnard College Gym",
+   "address": "4000 S Rose Ave, Oxnard, CA 93033",
+   "lat": 34.1657,
+   "lon": -119.1555,
+   "drives": {
+    "pasadena": {
+     "miles": 63,
+     "minutes": 79
+    },
+    "slo": {
+     "miles": 135,
+     "minutes": 170
+    }
+   }
+  },
+  "pierce": {
+   "name": "LA Pierce College — Ken Stanley Court",
+   "address": "6201 Winnetka Ave, Woodland Hills, CA 91371",
+   "lat": 34.1834,
+   "lon": -118.5798,
+   "drives": {
+    "pasadena": {
+     "miles": 27,
+     "minutes": 35
+    },
+    "slo": {
+     "miles": 168,
+     "minutes": 207
+    }
+   }
+  },
+  "hancock": {
+   "name": "Allan Hancock College Gym",
+   "address": "800 S College Dr, Santa Maria, CA 93454",
+   "lat": 34.9433,
+   "lon": -120.4231,
+   "drives": {
+    "pasadena": {
+     "miles": 160,
+     "minutes": 198
+    },
+    "slo": {
+     "miles": 33,
+     "minutes": 42
+    }
+   }
+  },
+  "robgym": {
+   "name": "Robertson Gymnasium (\"Rob Gym\"), UCSB",
+   "address": "Robertson Gymnasium, Ocean Rd, Santa Barbara, CA 93106",
+   "lat": 34.4162,
+   "lon": -119.8494,
+   "drives": {
+    "pasadena": {
+     "miles": 109,
+     "minutes": 129
+    },
+    "slo": {
+     "miles": 98,
+     "minutes": 118
+    }
+   }
+  },
+  "moorpark": {
+   "name": "Moorpark College Gym",
+   "address": "7075 Campus Rd, Moorpark, CA 93021",
+   "lat": 34.2996,
+   "lon": -118.8367,
+   "drives": {
+    "pasadena": {
+     "miles": 46,
+     "minutes": 56
+    },
+    "slo": {
+     "miles": 151,
+     "minutes": 192
+    }
+   }
+  },
+  "lamission": {
+   "name": "LA Mission College Gymnasium (HFAC)",
+   "address": "12890 Harding Street, Sylmar, CA 91342",
+   "lat": 34.3086,
+   "lon": -118.4133,
+   "drives": {
+    "pasadena": {
+     "miles": 22,
+     "minutes": 28
+    },
+    "slo": {
+     "miles": 179,
+     "minutes": 224
+    }
+   }
+  }
+ },
+ "origins": {
+  "pasadena": {
+   "label": "Pasadena",
+   "lat": 34.1477,
+   "lon": -118.1439
+  },
+  "slo": {
+   "label": "SLO",
+   "lat": 35.2828,
+   "lon": -120.6596
+  }
+ },
+ "events": [
+  {
+   "id": "wbb-2026-10-17-bakersfield",
+   "title": "vs Bakersfield",
+   "allDay": false,
+   "classNames": [
+    "neutral",
+    "scrimmage"
+   ],
+   "extendedProps": {
+    "matchup": "vs Bakersfield",
+    "type": "Scrimmage",
+    "site": "Neutral",
+    "time": "11:30 AM",
+    "dateLabel": "Sat Oct 17",
+    "venue": "Taft College Gym",
+    "city": "Taft, CA",
+    "address": "29 Cougar Court, Taft, CA 93268",
+    "map": "https://www.google.com/maps/search/?api=1&query=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=29+Cougar+Court%2C+Taft%2C+CA+93268&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=29+Cougar+Court%2C+Taft%2C+CA+93268&travelmode=driving",
+    "drivePasadena": "2h 28m · 121 mi",
+    "driveSlo": "2h 12m · 96 mi",
+    "liveStats": false,
+    "notes": "Taft College Jamboree",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "taft",
+    "video": "https://fan.hudl.com/usa/ca/taft/organization/116746/taft-college/team/737875/womens-varsity-basketball",
+    "videoLabel": "Host channel: Hudl · Taft College Women's Basketball",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Bakersfield+%28scrimmage%29&dates=20261017T113000%2F20261017T133000&ctz=America%2FLos_Angeles&location=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268&details=Scrimmage+%E2%80%94+Neutral%0AVenue%3A+Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DTaft%2BCollege%2BGym%252C%2B29%2BCougar%2BCourt%252C%2BTaft%252C%2BCA%2B93268%0ADrive+from+Pasadena%3A+2h+28m+%C2%B7+121+mi%0ADrive+from+SLO%3A+2h+12m+%C2%B7+96+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Taft+College+Women%27s+Basketball%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Ftaft%2Forganization%2F116746%2Ftaft-college%2Fteam%2F737875%2Fwomens-varsity-basketball%0ANote%3A+Taft+College+Jamboree",
+    "issue": null
+   },
+   "start": "2026-10-17T11:30:00-07:00",
+   "end": "2026-10-17T13:30:00-07:00"
+  },
+  {
+   "id": "wbb-2026-10-24-canyons",
+   "title": "@ Canyons",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "scrimmage"
+   ],
+   "extendedProps": {
+    "matchup": "@ Canyons",
+    "type": "Scrimmage",
+    "site": "Away",
+    "time": "2:00 PM",
+    "dateLabel": "Sat Oct 24",
+    "venue": "College of the Canyons — Lee Smelser Court (Cougar Cage)",
+    "city": "Santa Clarita, CA",
+    "address": "26455 Rockwell Canyon Road, Santa Clarita, CA 91355",
+    "map": "https://www.google.com/maps/search/?api=1&query=College+of+the+Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355&travelmode=driving",
+    "drivePasadena": "41m · 35 mi",
+    "driveSlo": "3h 32m · 169 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "canyons",
+    "video": "https://www.youtube.com/c/CougarsSportsNetwork/featured",
+    "videoLabel": "Host channel: YouTube · Cougars Sports Network",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Canyons+%28scrimmage%29&dates=20261024T140000%2F20261024T160000&ctz=America%2FLos_Angeles&location=College+of+the+Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355&details=Scrimmage+%E2%80%94+Away%0AVenue%3A+College+of+the+Canyons+%E2%80%94+Lee+Smelser+Court+%28Cougar+Cage%29%2C+26455+Rockwell+Canyon+Road%2C+Santa+Clarita%2C+CA+91355%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCollege%2Bof%2Bthe%2BCanyons%2B%25E2%2580%2594%2BLee%2BSmelser%2BCourt%2B%2528Cougar%2BCage%2529%252C%2B26455%2BRockwell%2BCanyon%2BRoad%252C%2BSanta%2BClarita%252C%2BCA%2B91355%0ADrive+from+Pasadena%3A+41m+%C2%B7+35+mi%0ADrive+from+SLO%3A+3h+32m+%C2%B7+169+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+Cougars+Sports+Network%29%3A+https%3A%2F%2Fwww.youtube.com%2Fc%2FCougarsSportsNetwork%2Ffeatured",
+    "issue": null
+   },
+   "start": "2026-10-24T14:00:00-07:00",
+   "end": "2026-10-24T16:00:00-07:00"
+  },
+  {
+   "id": "wbb-2026-10-30-taft",
+   "title": "@ Taft",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Taft",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Fri Oct 30",
+    "venue": "Taft College Gym",
+    "city": "Taft, CA",
+    "address": "29 Cougar Court, Taft, CA 93268",
+    "map": "https://www.google.com/maps/search/?api=1&query=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=29+Cougar+Court%2C+Taft%2C+CA+93268&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=29+Cougar+Court%2C+Taft%2C+CA+93268&travelmode=driving",
+    "drivePasadena": "2h 28m · 121 mi",
+    "driveSlo": "2h 12m · 96 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [
+     {
+      "label": "L 58-66",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261030_u1z6.xml",
+      "recap": null
+     }
+    ],
+    "venueKey": "taft",
+    "video": "https://fan.hudl.com/usa/ca/taft/organization/116746/taft-college/team/737875/womens-varsity-basketball",
+    "videoLabel": "Host channel: Hudl · Taft College Women's Basketball",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Taft+%E2%80%94+L+58-66&dates=20261030T170000%2F20261030T190000&ctz=America%2FLos_Angeles&location=Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Taft+College+Gym%2C+29+Cougar+Court%2C+Taft%2C+CA+93268%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DTaft%2BCollege%2BGym%252C%2B29%2BCougar%2BCourt%252C%2BTaft%252C%2BCA%2B93268%0ADrive+from+Pasadena%3A+2h+28m+%C2%B7+121+mi%0ADrive+from+SLO%3A+2h+12m+%C2%B7+96+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Taft+College+Women%27s+Basketball%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Ftaft%2Forganization%2F116746%2Ftaft-college%2Fteam%2F737875%2Fwomens-varsity-basketball%0AFinal%3A+L+58-66+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cuestaathletics.com%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261030_u1z6.xml",
+    "issue": null
+   },
+   "start": "2026-10-30T17:00:00-07:00",
+   "end": "2026-10-30T19:00:00-07:00"
+  },
+  {
+   "id": "wbb-2026-11-04-hartnell",
+   "title": "vs Hartnell",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Hartnell",
+    "type": "Non-conference",
+    "site": "Home",
+    "time": "3:00 PM",
+    "dateLabel": "Wed Nov 4",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [
+     {
+      "label": "L 51-67",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml",
+      "recap": null
+     }
+    ],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Hartnell+%E2%80%94+L+51-67&dates=20261104T150000%2F20261104T170000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0AFinal%3A+L+51-67+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cuestaathletics.com%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261104_hvlu.xml",
+    "issue": null
+   },
+   "start": "2026-11-04T15:00:00-08:00",
+   "end": "2026-11-04T17:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-07-santa-monica",
+   "title": "vs Santa Monica",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Santa Monica",
+    "type": "Non-conference",
+    "site": "Home",
+    "time": "1:00 PM",
+    "dateLabel": "Sat Nov 7",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Santa+Monica&dates=20261107T130000%2F20261107T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2026-11-07T13:00:00-08:00",
+   "end": "2026-11-07T15:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-12-foothill",
+   "title": "@ Foothill",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Foothill",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "4:00 PM",
+    "dateLabel": "Thu Nov 12",
+    "venue": "Foothill College Main Gymnasium",
+    "city": "Los Altos Hills, CA",
+    "address": "12345 El Monte Rd, Los Altos Hills, CA 94022",
+    "map": "https://www.google.com/maps/search/?api=1&query=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&travelmode=driving",
+    "drivePasadena": "6h 40m · 354 mi",
+    "driveSlo": "3h 52m · 198 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "foothill",
+    "video": null,
+    "videoLabel": "Game stream",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi",
+    "issue": null
+   },
+   "start": "2026-11-12T16:00:00-08:00",
+   "end": "2026-11-12T18:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-13-siskiyous",
+   "title": "@ Siskiyous",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Siskiyous",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "2:00 PM",
+    "dateLabel": "Fri Nov 13",
+    "venue": "Siskiyous Gymnasium",
+    "city": "Weed, CA",
+    "address": "800 College Avenue, Weed, CA 96094",
+    "map": "https://www.google.com/maps/search/?api=1&query=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=800+College+Avenue%2C+Weed%2C+CA+96094&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=800+College+Avenue%2C+Weed%2C+CA+96094&travelmode=driving",
+    "drivePasadena": "11h 16m · 613 mi",
+    "driveSlo": "9h 25m · 496 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "siskiyous",
+    "video": "https://fan.hudl.com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/video",
+    "videoLabel": "Host channel: Hudl · College of the Siskiyous",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Siskiyous&dates=20261113T140000%2F20261113T160000&ctz=America%2FLos_Angeles&location=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSiskiyous%2BGymnasium%252C%2B800%2BCollege%2BAvenue%252C%2BWeed%252C%2BCA%2B96094%0ADrive+from+Pasadena%3A+11h+16m+%C2%B7+613+mi%0ADrive+from+SLO%3A+9h+25m+%C2%B7+496+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+College+of+the+Siskiyous%29%3A+https%3A%2F%2Ffan.hudl.com%2FUnited-States%2FCA%2FWeed%2Forganization%2F4884%2FCollege-of-the-Siskiyous-%2Fvideo",
+    "issue": null
+   },
+   "start": "2026-11-13T14:00:00-08:00",
+   "end": "2026-11-13T16:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-14-napa-valley",
+   "title": "@ Napa Valley",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Napa Valley",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "2:00 PM",
+    "dateLabel": "Sat Nov 14",
+    "venue": "Napa Valley College Gym",
+    "city": "Napa, CA",
+    "address": "2277 Napa-Vallejo Hwy, Napa, CA 94558",
+    "map": "https://www.google.com/maps/search/?api=1&query=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&travelmode=driving",
+    "drivePasadena": "7h 24m · 398 mi",
+    "driveSlo": "5h 07m · 262 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "napa",
+    "video": null,
+    "videoLabel": "Game stream",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi",
+    "issue": null
+   },
+   "start": "2026-11-14T14:00:00-08:00",
+   "end": "2026-11-14T16:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-18-monterey-peninsula",
+   "title": "vs Monterey Peninsula",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Monterey Peninsula",
+    "type": "Non-conference",
+    "site": "Home",
+    "time": "4:00 PM",
+    "dateLabel": "Wed Nov 18",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Monterey+Peninsula&dates=20261118T160000%2F20261118T180000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2026-11-18T16:00:00-08:00",
+   "end": "2026-11-18T18:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-20-mission",
+   "title": "vs Mission",
+   "allDay": false,
+   "classNames": [
+    "tourney",
+    "tournament"
+   ],
+   "extendedProps": {
+    "matchup": "vs Mission",
+    "type": "Tournament",
+    "site": "Home",
+    "time": "6:00 PM",
+    "dateLabel": "Fri Nov 20",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "Hinson's Tire Pros Classic, day 1",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Mission&dates=20261120T180000%2F20261120T200000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Tournament+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0ANote%3A+Hinson%27s+Tire+Pros+Classic%2C+day+1",
+    "issue": null
+   },
+   "start": "2026-11-20T18:00:00-08:00",
+   "end": "2026-11-20T20:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-11-21-skyline",
+   "title": "vs Skyline",
+   "allDay": false,
+   "classNames": [
+    "tourney",
+    "tournament"
+   ],
+   "extendedProps": {
+    "matchup": "vs Skyline",
+    "type": "Tournament",
+    "site": "Home",
+    "time": "3:00 PM",
+    "dateLabel": "Sat Nov 21",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "Hinson's Tire Pros Classic, day 2",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Skyline&dates=20261121T150000%2F20261121T170000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Tournament+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0ANote%3A+Hinson%27s+Tire+Pros+Classic%2C+day+2",
+    "issue": null
+   },
+   "start": "2026-11-21T15:00:00-08:00",
+   "end": "2026-11-21T17:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-12-02-reedley",
+   "title": "vs Reedley",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Reedley",
+    "type": "Non-conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Dec 2",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Reedley&dates=20261202T170000%2F20261202T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2026-12-02T17:00:00-08:00",
+   "end": "2026-12-02T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-12-05-tba-tom-gilcrest-tournament",
+   "title": "TBA (Tom Gilcrest Tournament)",
+   "allDay": true,
+   "classNames": [
+    "tourney",
+    "tournament"
+   ],
+   "extendedProps": {
+    "matchup": "TBA (Tom Gilcrest Tournament)",
+    "type": "Tournament",
+    "site": "Neutral",
+    "time": "TBA",
+    "dateLabel": "Sat Dec 5",
+    "venue": "College of the Sequoias — Porter Fieldhouse",
+    "city": "Visalia, CA",
+    "address": "915 S. Mooney Blvd, Visalia, CA 93277",
+    "map": "https://www.google.com/maps/search/?api=1&query=College+of+the+Sequoias+%E2%80%94+Porter+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277&travelmode=driving",
+    "drivePasadena": "3h 28m · 182 mi",
+    "driveSlo": "2h 50m · 135 mi",
+    "liveStats": false,
+    "notes": "College of the Sequoias' 49th Tom Gilcrest Tournament (Dec 3-5); opponent and time not announced yet",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "sequoias",
+    "video": "https://www.youtube.com/c/cosgiant",
+    "videoLabel": "Host channel: YouTube · COS Giants",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+TBA+%28Tom+Gilcrest+Tournament%29&dates=20261205%2F20261206&ctz=America%2FLos_Angeles&location=College+of+the+Sequoias+%E2%80%94+Porter+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+College+of+the+Sequoias+%E2%80%94+Porter+Fieldhouse%2C+915+S.+Mooney+Blvd%2C+Visalia%2C+CA+93277%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DCollege%2Bof%2Bthe%2BSequoias%2B%25E2%2580%2594%2BPorter%2BFieldhouse%252C%2B915%2BS.%2BMooney%2BBlvd%252C%2BVisalia%252C%2BCA%2B93277%0ADrive+from+Pasadena%3A+3h+28m+%C2%B7+182+mi%0ADrive+from+SLO%3A+2h+50m+%C2%B7+135+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+COS+Giants%29%3A+https%3A%2F%2Fwww.youtube.com%2Fc%2Fcosgiant%0ANote%3A+College+of+the+Sequoias%27+49th+Tom+Gilcrest+Tournament+%28Dec+3-5%29%3B+opponent+and+time+not+announced+yet",
+    "issue": null
+   },
+   "start": "2026-12-05",
+   "end": "2026-12-06"
+  },
+  {
+   "id": "wbb-2026-12-11-santa-ana",
+   "title": "@ Santa Ana",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Santa Ana",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "6:00 PM",
+    "dateLabel": "Fri Dec 11",
+    "venue": "Santa Ana College — Bill Cook Gymnasium",
+    "city": "Santa Ana, CA",
+    "address": "1530 W. 17th Street, Santa Ana, CA 92706",
+    "map": "https://www.google.com/maps/search/?api=1&query=Santa+Ana+College+%E2%80%94+Bill+Cook+Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706&travelmode=driving",
+    "drivePasadena": "52m · 36 mi",
+    "driveSlo": "4h 31m · 220 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "santaana",
+    "video": "https://go.flocollege.com/teams/santa-ana-college",
+    "videoLabel": "Host channel: FloCollege · Santa Ana College (subscription)",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Santa+Ana&dates=20261211T180000%2F20261211T200000&ctz=America%2FLos_Angeles&location=Santa+Ana+College+%E2%80%94+Bill+Cook+Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Santa+Ana+College+%E2%80%94+Bill+Cook+Gymnasium%2C+1530+W.+17th+Street%2C+Santa+Ana%2C+CA+92706%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSanta%2BAna%2BCollege%2B%25E2%2580%2594%2BBill%2BCook%2BGymnasium%252C%2B1530%2BW.%2B17th%2BStreet%252C%2BSanta%2BAna%252C%2BCA%2B92706%0ADrive+from+Pasadena%3A+52m+%C2%B7+36+mi%0ADrive+from+SLO%3A+4h+31m+%C2%B7+220+mi%0AWatch+live+%28Host+channel%3A+FloCollege+%C2%B7+Santa+Ana+College+%28subscription%29%29%3A+https%3A%2F%2Fgo.flocollege.com%2Fteams%2Fsanta-ana-college",
+    "issue": null
+   },
+   "start": "2026-12-11T18:00:00-08:00",
+   "end": "2026-12-11T20:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-12-12-fullerton",
+   "title": "@ Fullerton",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Fullerton",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "1:00 PM",
+    "dateLabel": "Sat Dec 12",
+    "venue": "Fullerton College — The Hornets Nest",
+    "city": "Fullerton, CA",
+    "address": "321 E. Chapman Ave, Fullerton, CA 92832",
+    "map": "https://www.google.com/maps/search/?api=1&query=Fullerton+College+%E2%80%94+The+Hornets+Nest%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832&travelmode=driving",
+    "drivePasadena": "45m · 31 mi",
+    "driveSlo": "4h 24m · 215 mi",
+    "liveStats": false,
+    "notes": "Stream is on FloCollege (subscription)",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "fullerton",
+    "video": "https://www.flocollege.com/live/284079",
+    "videoLabel": "Game stream",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Fullerton&dates=20261212T130000%2F20261212T150000&ctz=America%2FLos_Angeles&location=Fullerton+College+%E2%80%94+The+Hornets+Nest%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Fullerton+College+%E2%80%94+The+Hornets+Nest%2C+321+E.+Chapman+Ave%2C+Fullerton%2C+CA+92832%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFullerton%2BCollege%2B%25E2%2580%2594%2BThe%2BHornets%2BNest%252C%2B321%2BE.%2BChapman%2BAve%252C%2BFullerton%252C%2BCA%2B92832%0ADrive+from+Pasadena%3A+45m+%C2%B7+31+mi%0ADrive+from+SLO%3A+4h+24m+%C2%B7+215+mi%0AWatch+live+%28Game+stream%29%3A+https%3A%2F%2Fwww.flocollege.com%2Flive%2F284079%0ANote%3A+Stream+is+on+FloCollege+%28subscription%29",
+    "issue": null
+   },
+   "start": "2026-12-12T13:00:00-08:00",
+   "end": "2026-12-12T15:00:00-08:00"
+  },
+  {
+   "id": "wbb-2026-12-19-chabot",
+   "title": "@ Chabot",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "non-conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Chabot",
+    "type": "Non-conference",
+    "site": "Away",
+    "time": "3:00 PM",
+    "dateLabel": "Sat Dec 19",
+    "venue": "Chabot College Main Gym",
+    "city": "Hayward, CA",
+    "address": "25555 Hesperian Blvd, Hayward, CA 94545",
+    "map": "https://www.google.com/maps/search/?api=1&query=Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545&travelmode=driving",
+    "drivePasadena": "6h 42m · 361 mi",
+    "driveSlo": "4h 04m · 210 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "chabot",
+    "video": null,
+    "videoLabel": "Game stream",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Chabot&dates=20261219T150000%2F20261219T170000&ctz=America%2FLos_Angeles&location=Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Chabot+College+Main+Gym%2C+25555+Hesperian+Blvd%2C+Hayward%2C+CA+94545%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DChabot%2BCollege%2BMain%2BGym%252C%2B25555%2BHesperian%2BBlvd%252C%2BHayward%252C%2BCA%2B94545%0ADrive+from+Pasadena%3A+6h+42m+%C2%B7+361+mi%0ADrive+from+SLO%3A+4h+04m+%C2%B7+210+mi",
+    "issue": null
+   },
+   "start": "2026-12-19T15:00:00-08:00",
+   "end": "2026-12-19T17:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-06-ventura",
+   "title": "@ Ventura*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Ventura",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Jan 6",
+    "venue": "Ventura College Gym",
+    "city": "Ventura, CA",
+    "address": "4667 Telegraph Rd, Ventura, CA 93003",
+    "map": "https://www.google.com/maps/search/?api=1&query=Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=4667+Telegraph+Rd%2C+Ventura%2C+CA+93003&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=4667+Telegraph+Rd%2C+Ventura%2C+CA+93003&travelmode=driving",
+    "drivePasadena": "1h 24m · 68 mi",
+    "driveSlo": "2h 40m · 126 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "ventura",
+    "video": "https://www.youtube.com/channel/UCwtRPgwghVQtHQBZAsTmxdQ",
+    "videoLabel": "Host channel: YouTube · VC Pirate Athletics",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Ventura&dates=20270106T170000%2F20270106T190000&ctz=America%2FLos_Angeles&location=Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Ventura+College+Gym%2C+4667+Telegraph+Rd%2C+Ventura%2C+CA+93003%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DVentura%2BCollege%2BGym%252C%2B4667%2BTelegraph%2BRd%252C%2BVentura%252C%2BCA%2B93003%0ADrive+from+Pasadena%3A+1h+24m+%C2%B7+68+mi%0ADrive+from+SLO%3A+2h+40m+%C2%B7+126+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+VC+Pirate+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCwtRPgwghVQtHQBZAsTmxdQ",
+    "issue": null
+   },
+   "start": "2027-01-06T17:00:00-08:00",
+   "end": "2027-01-06T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-09-santa-barbara",
+   "title": "vs Santa Barbara*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Santa Barbara",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "1:00 PM",
+    "dateLabel": "Sat Jan 9",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Santa+Barbara&dates=20270109T130000%2F20270109T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-01-09T13:00:00-08:00",
+   "end": "2027-01-09T15:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-13-moorpark",
+   "title": "vs Moorpark*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Moorpark",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Jan 13",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Moorpark&dates=20270113T170000%2F20270113T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-01-13T17:00:00-08:00",
+   "end": "2027-01-13T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-16-oxnard",
+   "title": "@ Oxnard*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Oxnard",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "1:00 PM",
+    "dateLabel": "Sat Jan 16",
+    "venue": "Oxnard College Gym",
+    "city": "Oxnard, CA",
+    "address": "4000 S Rose Ave, Oxnard, CA 93033",
+    "map": "https://www.google.com/maps/search/?api=1&query=Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033&travelmode=driving",
+    "drivePasadena": "1h 19m · 63 mi",
+    "driveSlo": "2h 50m · 135 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "oxnard",
+    "video": "https://www.youtube.com/@occondors8165",
+    "videoLabel": "Host channel: YouTube · OC Condors",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Oxnard&dates=20270116T130000%2F20270116T150000&ctz=America%2FLos_Angeles&location=Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Oxnard+College+Gym%2C+4000+S+Rose+Ave%2C+Oxnard%2C+CA+93033%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DOxnard%2BCollege%2BGym%252C%2B4000%2BS%2BRose%2BAve%252C%2BOxnard%252C%2BCA%2B93033%0ADrive+from+Pasadena%3A+1h+19m+%C2%B7+63+mi%0ADrive+from+SLO%3A+2h+50m+%C2%B7+135+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+OC+Condors%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40occondors8165",
+    "issue": null
+   },
+   "start": "2027-01-16T13:00:00-08:00",
+   "end": "2027-01-16T15:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-20-la-mission",
+   "title": "vs LA Mission*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs LA Mission",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Jan 20",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+LA+Mission&dates=20270120T170000%2F20270120T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-01-20T17:00:00-08:00",
+   "end": "2027-01-20T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-23-la-pierce",
+   "title": "@ LA Pierce*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ LA Pierce",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "1:00 PM",
+    "dateLabel": "Sat Jan 23",
+    "venue": "LA Pierce College — Ken Stanley Court",
+    "city": "Woodland Hills, CA",
+    "address": "6201 Winnetka Ave, Woodland Hills, CA 91371",
+    "map": "https://www.google.com/maps/search/?api=1&query=LA+Pierce+College+%E2%80%94+Ken+Stanley+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371&travelmode=driving",
+    "drivePasadena": "35m · 27 mi",
+    "driveSlo": "3h 27m · 168 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "pierce",
+    "video": "https://www.youtube.com/@brahmasportsnetwork",
+    "videoLabel": "Host channel: YouTube · Brahma Sports Network",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+LA+Pierce&dates=20270123T130000%2F20270123T150000&ctz=America%2FLos_Angeles&location=LA+Pierce+College+%E2%80%94+Ken+Stanley+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+LA+Pierce+College+%E2%80%94+Ken+Stanley+Court%2C+6201+Winnetka+Ave%2C+Woodland+Hills%2C+CA+91371%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLA%2BPierce%2BCollege%2B%25E2%2580%2594%2BKen%2BStanley%2BCourt%252C%2B6201%2BWinnetka%2BAve%252C%2BWoodland%2BHills%252C%2BCA%2B91371%0ADrive+from+Pasadena%3A+35m+%C2%B7+27+mi%0ADrive+from+SLO%3A+3h+27m+%C2%B7+168+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+Brahma+Sports+Network%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40brahmasportsnetwork",
+    "issue": null
+   },
+   "start": "2027-01-23T13:00:00-08:00",
+   "end": "2027-01-23T15:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-27-allan-hancock",
+   "title": "@ Allan Hancock*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Allan Hancock",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Jan 27",
+    "venue": "Allan Hancock College Gym",
+    "city": "Santa Maria, CA",
+    "address": "800 S College Dr, Santa Maria, CA 93454",
+    "map": "https://www.google.com/maps/search/?api=1&query=Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+Maria%2C+CA+93454",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=800+S+College+Dr%2C+Santa+Maria%2C+CA+93454&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=800+S+College+Dr%2C+Santa+Maria%2C+CA+93454&travelmode=driving",
+    "drivePasadena": "3h 18m · 160 mi",
+    "driveSlo": "42m · 33 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "hancock",
+    "video": "https://www.team1sports.com/college/?S=allanhancockcollege",
+    "videoLabel": "Host channel: Team1Sports / BlueFrame",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Allan+Hancock&dates=20270127T170000%2F20270127T190000&ctz=America%2FLos_Angeles&location=Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+Maria%2C+CA+93454&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Allan+Hancock+College+Gym%2C+800+S+College+Dr%2C+Santa+Maria%2C+CA+93454%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAllan%2BHancock%2BCollege%2BGym%252C%2B800%2BS%2BCollege%2BDr%252C%2BSanta%2BMaria%252C%2BCA%2B93454%0ADrive+from+Pasadena%3A+3h+18m+%C2%B7+160+mi%0ADrive+from+SLO%3A+42m+%C2%B7+33+mi%0AWatch+live+%28Host+channel%3A+Team1Sports+%2F+BlueFrame%29%3A+https%3A%2F%2Fwww.team1sports.com%2Fcollege%2F%3FS%3Dallanhancockcollege",
+    "issue": null
+   },
+   "start": "2027-01-27T17:00:00-08:00",
+   "end": "2027-01-27T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-01-29-ventura",
+   "title": "vs Ventura*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Ventura",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Fri Jan 29",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Ventura&dates=20270129T170000%2F20270129T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-01-29T17:00:00-08:00",
+   "end": "2027-01-29T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-03-santa-barbara",
+   "title": "@ Santa Barbara*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Santa Barbara",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Feb 3",
+    "venue": "Robertson Gymnasium (\"Rob Gym\"), UCSB",
+    "city": "Santa Barbara, CA",
+    "address": "Robertson Gymnasium, Ocean Rd, Santa Barbara, CA 93106",
+    "map": "https://www.google.com/maps/search/?api=1&query=Robertson+Gymnasium+%28%22Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106&travelmode=driving",
+    "drivePasadena": "2h 09m · 109 mi",
+    "driveSlo": "1h 58m · 98 mi",
+    "liveStats": false,
+    "notes": "Played at Rob Gym (UCSB), not the SBCC campus",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "robgym",
+    "video": "https://fan.hudl.com/usa/ca/santa-barbara/organization/4943/santa-barbara-city/watch?ib=4106831&shared=true",
+    "videoLabel": "Game stream",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Santa+Barbara&dates=20270203T170000%2F20270203T190000&ctz=America%2FLos_Angeles&location=Robertson+Gymnasium+%28%22Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Robertson+Gymnasium+%28%22Rob+Gym%22%29%2C+UCSB%2C+Robertson+Gymnasium%2C+Ocean+Rd%2C+Santa+Barbara%2C+CA+93106%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DRobertson%2BGymnasium%2B%2528%2522Rob%2BGym%2522%2529%252C%2BUCSB%252C%2BRobertson%2BGymnasium%252C%2BOcean%2BRd%252C%2BSanta%2BBarbara%252C%2BCA%2B93106%0ADrive+from+Pasadena%3A+2h+09m+%C2%B7+109+mi%0ADrive+from+SLO%3A+1h+58m+%C2%B7+98+mi%0AWatch+live+%28Game+stream%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Fsanta-barbara%2Forganization%2F4943%2Fsanta-barbara-city%2Fwatch%3Fib%3D4106831%26shared%3Dtrue%0ANote%3A+Played+at+Rob+Gym+%28UCSB%29%2C+not+the+SBCC+campus",
+    "issue": null
+   },
+   "start": "2027-02-03T17:00:00-08:00",
+   "end": "2027-02-03T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-05-moorpark",
+   "title": "@ Moorpark*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ Moorpark",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Fri Feb 5",
+    "venue": "Moorpark College Gym",
+    "city": "Moorpark, CA",
+    "address": "7075 Campus Rd, Moorpark, CA 93021",
+    "map": "https://www.google.com/maps/search/?api=1&query=Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=7075+Campus+Rd%2C+Moorpark%2C+CA+93021&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=7075+Campus+Rd%2C+Moorpark%2C+CA+93021&travelmode=driving",
+    "drivePasadena": "56m · 46 mi",
+    "driveSlo": "3h 12m · 151 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "moorpark",
+    "video": "https://fan.hudl.com/usa/ca/moorpark/organization/8690/moorpark-college",
+    "videoLabel": "Host channel: Hudl · Moorpark College",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Moorpark&dates=20270205T170000%2F20270205T190000&ctz=America%2FLos_Angeles&location=Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+Moorpark+College+Gym%2C+7075+Campus+Rd%2C+Moorpark%2C+CA+93021%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DMoorpark%2BCollege%2BGym%252C%2B7075%2BCampus%2BRd%252C%2BMoorpark%252C%2BCA%2B93021%0ADrive+from+Pasadena%3A+56m+%C2%B7+46+mi%0ADrive+from+SLO%3A+3h+12m+%C2%B7+151+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+Moorpark+College%29%3A+https%3A%2F%2Ffan.hudl.com%2Fusa%2Fca%2Fmoorpark%2Forganization%2F8690%2Fmoorpark-college",
+    "issue": null
+   },
+   "start": "2027-02-05T17:00:00-08:00",
+   "end": "2027-02-05T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-10-oxnard",
+   "title": "vs Oxnard*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Oxnard",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Feb 10",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Oxnard&dates=20270210T170000%2F20270210T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-02-10T17:00:00-08:00",
+   "end": "2027-02-10T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-12-la-mission",
+   "title": "@ LA Mission*",
+   "allDay": false,
+   "classNames": [
+    "away",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "@ LA Mission",
+    "type": "WSC conference",
+    "site": "Away",
+    "time": "5:00 PM",
+    "dateLabel": "Fri Feb 12",
+    "venue": "LA Mission College Gymnasium (HFAC)",
+    "city": "Sylmar, CA",
+    "address": "12890 Harding Street, Sylmar, CA 91342",
+    "map": "https://www.google.com/maps/search/?api=1&query=LA+Mission+College+Gymnasium+%28HFAC%29%2C+12890+Harding+Street%2C+Sylmar%2C+CA+91342",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=12890+Harding+Street%2C+Sylmar%2C+CA+91342&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=12890+Harding+Street%2C+Sylmar%2C+CA+91342&travelmode=driving",
+    "drivePasadena": "28m · 22 mi",
+    "driveSlo": "3h 44m · 179 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "lamission",
+    "video": "https://www.youtube.com/channel/UCE5h0MlX2Kev_Zq-J3XsBwg",
+    "videoLabel": "Host channel: YouTube · LAMC Eagles",
+    "videoUncertain": false,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+LA+Mission&dates=20270212T170000%2F20270212T190000&ctz=America%2FLos_Angeles&location=LA+Mission+College+Gymnasium+%28HFAC%29%2C+12890+Harding+Street%2C+Sylmar%2C+CA+91342&details=WSC+conference+%E2%80%94+Away%0AVenue%3A+LA+Mission+College+Gymnasium+%28HFAC%29%2C+12890+Harding+Street%2C+Sylmar%2C+CA+91342%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DLA%2BMission%2BCollege%2BGymnasium%2B%2528HFAC%2529%252C%2B12890%2BHarding%2BStreet%252C%2BSylmar%252C%2BCA%2B91342%0ADrive+from+Pasadena%3A+28m+%C2%B7+22+mi%0ADrive+from+SLO%3A+3h+44m+%C2%B7+179+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+LAMC+Eagles%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCE5h0MlX2Kev_Zq-J3XsBwg",
+    "issue": null
+   },
+   "start": "2027-02-12T17:00:00-08:00",
+   "end": "2027-02-12T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-17-la-pierce",
+   "title": "vs LA Pierce*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs LA Pierce",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Wed Feb 17",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+LA+Pierce&dates=20270217T170000%2F20270217T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-02-17T17:00:00-08:00",
+   "end": "2027-02-17T19:00:00-08:00"
+  },
+  {
+   "id": "wbb-2027-02-19-allan-hancock",
+   "title": "vs Allan Hancock*",
+   "allDay": false,
+   "classNames": [
+    "home",
+    "conference"
+   ],
+   "extendedProps": {
+    "matchup": "vs Allan Hancock",
+    "type": "WSC conference",
+    "site": "Home",
+    "time": "5:00 PM",
+    "dateLabel": "Fri Feb 19",
+    "venue": "Stork Gymnasium (Cuesta Gym)",
+    "city": "San Luis Obispo, CA",
+    "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
+    "map": "https://www.google.com/maps/search/?api=1&query=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405",
+    "dirPasadena": "https://www.google.com/maps/dir/?api=1&origin=Pasadena%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "dirSlo": "https://www.google.com/maps/dir/?api=1&origin=San+Luis+Obispo%2C+CA&destination=Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&travelmode=driving",
+    "drivePasadena": "4h 03m · 198 mi",
+    "driveSlo": "12m · 7 mi",
+    "liveStats": false,
+    "notes": "",
+    "confirmed": true,
+    "results": [],
+    "venueKey": "cuesta",
+    "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
+    "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
+    "videoUncertain": true,
+    "audio": null,
+    "stats": null,
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+vs+Allan+Hancock&dates=20270219T170000%2F20270219T190000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=WSC+conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "issue": null
+   },
+   "start": "2027-02-19T17:00:00-08:00",
+   "end": "2027-02-19T19:00:00-08:00"
+  }
+ ]
+}

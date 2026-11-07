@@ -1,4 +1,10 @@
-"""Shared loading/formatting for the Cuesta MBB schedule generators."""
+"""Shared loading/formatting for the Cuesta basketball schedule generators.
+
+Data layout (multi-team):      data/venues.yaml, data/drive_times.json            (shared)
+                               data/teams/<key>/{schedule.yaml,results.json,issues.json}
+Legacy single-team layout (no data/teams/): data/{schedule,results,issues}.* — still supported,
+and is what the unit tests use.
+"""
 import datetime as dt
 import json
 import pathlib
@@ -9,9 +15,10 @@ from zoneinfo import ZoneInfo
 import yaml
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-REPO = "johnlinwiz/cuesta-mbb"
-PAGES_URL = "https://johnlinwiz.github.io/cuesta-mbb/"
-ICS_NAME = "cuesta-mbb.ics"  # stable feed URL across seasons
+REPO = "johnlinwiz/cuesta-basketball"
+PAGES_URL = "https://johnlinwiz.github.io/cuesta-basketball/"
+ICS_NAME = "cuesta-mbb.ics"  # legacy/default feed name; each team sets its own `ics:` in schedule.yaml
+COMBINED_ICS = "cuesta-basketball.ics"   # every team in one feed
 TZ = ZoneInfo("America/Los_Angeles")
 
 ORIGIN_QUERY = {"pasadena": "Pasadena, CA", "slo": "San Luis Obispo, CA"}
@@ -80,7 +87,12 @@ class Event:
             h, m = map(int, raw["time"].split(":"))
             self.start = dt.datetime.combine(self.date, dt.time(h, m), TZ)
             self.end = self.start + dt.timedelta(minutes=raw.get("duration_min", defaults["default_duration_min"]))
-        self.id = f"{self.date.isoformat()}-{slug(self.opponent)}"
+        # id_prefix keeps teams apart (both play @ Ventura on 2027-01-06); MBB keeps "" so existing
+        # issue markers and .ics UIDs stay stable.
+        self.team = defaults.get("key")
+        self.team_short = defaults.get("short", "MBB")
+        self.id = f"{defaults.get('id_prefix', '')}{self.date.isoformat()}-{slug(self.opponent)}"
+        self.site_url = defaults.get("site_url", PAGES_URL)
 
     # --- display helpers -------------------------------------------------
     @property
@@ -120,7 +132,7 @@ class Event:
 
     def summary(self):
         """Calendar event title."""
-        s = f"Cuesta MBB {self.matchup}"
+        s = f"Cuesta {self.team_short} {self.matchup}"
         if self.type == "scrimmage":
             s += " (scrimmage)"
         if self.result and "outcome" in self.result:
@@ -165,7 +177,7 @@ class Event:
         if not self.site_confirmed:
             lines.append("Home/away inferred (no @/Vs on poster) — confirm before traveling")
         if not plain:
-            lines.append(f"Season calendar: {PAGES_URL}")
+            lines.append(f"Season calendar: {self.site_url}")
         return "\n".join(lines)
 
 
@@ -206,13 +218,30 @@ def record_label(events):
     return f"{w}-{l}" + (f" (WSC {cw}-{cl})" if cw or cl else "")
 
 
-def load():
-    sched = yaml.safe_load((ROOT / "data/schedule.yaml").read_text())
+def teams():
+    """Team keys from data/teams/*/schedule.yaml, or [None] for the legacy single-team layout."""
+    d = ROOT / "data" / "teams"
+    keys = sorted(p.name for p in d.iterdir() if (p / "schedule.yaml").exists()) if d.is_dir() else []
+    return keys or [None]
+
+
+def team_file(team, name):
+    return ROOT / "data" / "teams" / team / name if team else ROOT / "data" / name
+
+
+def load(team=None):
+    if team is None:
+        team = teams()[0]
+    sched = yaml.safe_load(team_file(team, "schedule.yaml").read_text())
+    sched["key"] = team
+    sched.setdefault("short", (team or "mbb").upper())
+    sched.setdefault("ics", ICS_NAME)
+    sched["site_url"] = PAGES_URL + (f"?team={team}" if team else "")
     venues_cfg = yaml.safe_load((ROOT / "data/venues.yaml").read_text())
     drive_path = ROOT / "data/drive_times.json"
     drive = json.loads(drive_path.read_text()) if drive_path.exists() else {}
     events = [Event(g, venues_cfg["venues"], drive, sched) for g in sched["games"]]
-    res_path = ROOT / "data/results.json"
+    res_path = team_file(team, "results.json")
     results = json.loads(res_path.read_text()) if res_path.exists() else {}
     for e in events:
         e.result = results.get(e.id)
@@ -220,8 +249,10 @@ def load():
     return sched, venues_cfg, drive, events
 
 
-def load_issue_map():
-    p = ROOT / "data/issues.json"
+def load_issue_map(team=None):
+    if team is None:
+        team = teams()[0]
+    p = team_file(team, "issues.json")
     return json.loads(p.read_text()) if p.exists() else {}
 
 

@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
   push:
     branches: [main]
-    paths: ["data/schedule.yaml", "data/venues.yaml", "scripts/**"]
+    paths: ["data/**", "scripts/**"]
 
 permissions:
   contents: write
@@ -42,7 +42,7 @@ jobs:
         run: python scripts/fetch_results.py
       - name: Check official schedule feed for changes
         # Opens/updates one `schedule-drift` issue (with @mention) when the 3C2A feed
-        # disagrees with data/schedule.yaml; closes it when they agree again.
+        # disagrees with a team's schedule.yaml; closes it when they agree again.
         continue-on-error: true
         env: { GH_TOKEN: "${{ github.token }}" }
         run: python scripts/check_feed.py --issue
@@ -55,5 +55,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A README.md CALENDAR.md venues.geojson docs data/issues.json data/results.json
+          # every team folder (mbb/, wbb/, ...) comes from data/teams/*; nothing here is team-specific
+          teams=$(cd data/teams && ls -d */ 2>/dev/null | tr -d /)
+          git add -A README.md venues.geojson docs data $teams
           git diff --cached --quiet || { git commit -m "chore: daily schedule refresh"; git push; }

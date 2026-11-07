@@ -132,3 +132,79 @@ venues:
     lon: -118.5798
     stream: https://www.youtube.com/@brahmasportsnetwork
     stream_label: "YouTube · Brahma Sports Network"
+
+  # --- added 2026-11-06 for women's basketball (names/addresses/streams verified on each school's athletics site)
+  taft:
+    name: "Taft College Gym"
+    city: Taft, CA
+    address: 29 Cougar Court, Taft, CA 93268
+    lat: 35.1491
+    lon: -119.4576
+    stream: https://fan.hudl.com/usa/ca/taft/organization/116746/taft-college/team/737875/womens-varsity-basketball
+    stream_label: "Hudl · Taft College Women's Basketball"
+  canyons:
+    name: "College of the Canyons — Lee Smelser Court (Cougar Cage)"
+    city: Santa Clarita, CA
+    address: 26455 Rockwell Canyon Road, Santa Clarita, CA 91355
+    lat: 34.4082
+    lon: -118.5679
+    stream: https://www.youtube.com/c/CougarsSportsNetwork/featured
+    stream_label: "YouTube · Cougars Sports Network"
+  foothill:
+    name: "Foothill College Main Gymnasium"
+    city: Los Altos Hills, CA
+    address: 12345 El Monte Rd, Los Altos Hills, CA 94022
+    lat: 37.3584
+    lon: -122.1283
+  siskiyous:
+    name: "Siskiyous Gymnasium"
+    city: Weed, CA
+    address: 800 College Avenue, Weed, CA 96094
+    lat: 41.4115
+    lon: -122.3905
+    stream: https://fan.hudl.com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/video
+    stream_label: "Hudl · College of the Siskiyous"
+  napa:
+    name: "Napa Valley College Gym"
+    city: Napa, CA
+    address: 2277 Napa-Vallejo Hwy, Napa, CA 94558
+    lat: 38.2740
+    lon: -122.2764
+  santaana:
+    name: "Santa Ana College — Bill Cook Gymnasium"
+    city: Santa Ana, CA
+    address: 1530 W. 17th Street, Santa Ana, CA 92706
+    lat: 33.7576
+    lon: -117.8888
+    stream: https://go.flocollege.com/teams/santa-ana-college
+    stream_label: "FloCollege · Santa Ana College (subscription)"
+  fullerton:
+    name: "Fullerton College — The Hornets Nest"
+    city: Fullerton, CA
+    address: 321 E. Chapman Ave, Fullerton, CA 92832
+    lat: 33.8741
+    lon: -117.9192
+    stream: https://www.youtube.com/user/FullCollSports
+    stream_label: "YouTube · Fullerton College Sports"
+  chabot:
+    name: "Chabot College Main Gym"
+    city: Hayward, CA
+    address: 25555 Hesperian Blvd, Hayward, CA 94545
+    lat: 37.6422
+    lon: -122.1038
+  lamission:
+    name: "LA Mission College Gymnasium (HFAC)"
+    city: Sylmar, CA
+    address: 12890 Harding Street, Sylmar, CA 91342
+    lat: 34.3086
+    lon: -118.4133
+    stream: https://www.youtube.com/channel/UCE5h0MlX2Kev_Zq-J3XsBwg
+    stream_label: "YouTube · LAMC Eagles"
+  sequoias:
+    name: "College of the Sequoias — Porter Fieldhouse"
+    city: Visalia, CA
+    address: 915 S. Mooney Blvd, Visalia, CA 93277
+    lat: 36.3203
+    lon: -119.3157
+    stream: https://www.youtube.com/c/cosgiant
+    stream_label: "YouTube · COS Giants"

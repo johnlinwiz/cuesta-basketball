@@ -6,7 +6,7 @@
       "properties": {
         "name": "Stork Gymnasium (Cuesta Gym)",
         "address": "Cuesta College, Highway 1, San Luis Obispo, CA 93405",
-        "games": "Sat Oct 31 1:00 PM vs Sequoias; Sat Nov 7 3:00 PM vs Diablo Valley; Mon Nov 9 1:00 PM vs Redwoods; Tue Nov 24 6:00 PM vs De Anza; Sat Dec 12 3:00 PM vs Rio Hondo; Sat Jan 9 3:00 PM vs Santa Barbara; Wed Jan 13 7:00 PM vs Moorpark; Fri Jan 29 7:00 PM vs Ventura; Wed Feb 10 7:00 PM vs Oxnard; Wed Feb 17 7:00 PM vs LA Pierce; Fri Feb 19 7:00 PM vs Allan Hancock",
+        "games": "MBB Sat Oct 31 1:00 PM vs Sequoias; WBB Wed Nov 4 3:00 PM vs Hartnell; WBB Sat Nov 7 1:00 PM vs Santa Monica; MBB Sat Nov 7 3:00 PM vs Diablo Valley; MBB Mon Nov 9 1:00 PM vs Redwoods; WBB Wed Nov 18 4:00 PM vs Monterey Peninsula; WBB Fri Nov 20 6:00 PM vs Mission; WBB Sat Nov 21 3:00 PM vs Skyline; MBB Tue Nov 24 6:00 PM vs De Anza; WBB Wed Dec 2 5:00 PM vs Reedley; MBB Sat Dec 12 3:00 PM vs Rio Hondo; WBB Sat Jan 9 1:00 PM vs Santa Barbara; MBB Sat Jan 9 3:00 PM vs Santa Barbara; WBB Wed Jan 13 5:00 PM vs Moorpark; MBB Wed Jan 13 7:00 PM vs Moorpark; WBB Wed Jan 20 5:00 PM vs LA Mission; WBB Fri Jan 29 5:00 PM vs Ventura; MBB Fri Jan 29 7:00 PM vs Ventura; WBB Wed Feb 10 5:00 PM vs Oxnard; MBB Wed Feb 10 7:00 PM vs Oxnard; WBB Wed Feb 17 5:00 PM vs LA Pierce; MBB Wed Feb 17 7:00 PM vs LA Pierce; WBB Fri Feb 19 5:00 PM vs Allan Hancock; MBB Fri Feb 19 7:00 PM vs Allan Hancock",
         "from Pasadena": "4h 03m, 198 mi",
         "from SLO": "12m, 7 mi",
         "marker-color": "#0b6e3a",
@@ -26,7 +26,7 @@
       "properties": {
         "name": "Reedley College Gym",
         "address": "995 N Reed Ave, Reedley, CA 93654",
-        "games": "Sat Oct 17 2:00 PM @ Reedley",
+        "games": "MBB Sat Oct 17 2:00 PM @ Reedley",
         "from Pasadena": "3h 59m, 208 mi",
         "from SLO": "3h 08m, 147 mi",
         "marker-color": "#555555",
@@ -46,7 +46,7 @@
       "properties": {
         "name": "West Valley College — Bob Burton Court",
         "address": "14000 Fruitvale Ave, Saratoga, CA 95070",
-        "games": "Fri Oct 23 2:00 PM @ West Valley",
+        "games": "MBB Fri Oct 23 2:00 PM @ West Valley",
         "from Pasadena": "6h 31m, 345 mi",
         "from SLO": "3h 42m, 189 mi",
         "marker-color": "#555555",
@@ -66,7 +66,7 @@
       "properties": {
         "name": "Gavilan College Gym",
         "address": "5055 Santa Teresa Blvd, Gilroy, CA 95020",
-        "games": "Thu Oct 29 6:00 PM @ Gavilan",
+        "games": "MBB Thu Oct 29 6:00 PM @ Gavilan",
         "from Pasadena": "5h 51m, 313 mi",
         "from SLO": "3h 01m, 154 mi",
         "marker-color": "#555555",
@@ -86,7 +86,7 @@
       "properties": {
         "name": "Monterey Peninsula College Gym",
         "address": "980 Fremont St, Monterey, CA 93940",
-        "games": "Tue Nov 3 3:00 PM @ Monterey Peninsula",
+        "games": "MBB Tue Nov 3 3:00 PM @ Monterey Peninsula",
         "from Pasadena": "6h 15m, 322 mi",
         "from SLO": "2h 51m, 144 mi",
         "marker-color": "#555555",
@@ -106,7 +106,7 @@
       "properties": {
         "name": "American River College Gym",
         "address": "4700 College Oak Dr, Sacramento, CA 95841",
-        "games": "Fri Nov 13 6:00 PM vs Feather River; Sat Nov 14 1:00 PM vs Shasta",
+        "games": "MBB Fri Nov 13 6:00 PM vs Feather River; MBB Sat Nov 14 1:00 PM vs Shasta",
         "from Pasadena": "7h 19m, 396 mi",
         "from SLO": "5h 49m, 301 mi",
         "marker-color": "#555555",
@@ -126,7 +126,7 @@
       "properties": {
         "name": "West Hills College Coalinga Gym",
         "address": "300 W Cherry Ln, Coalinga, CA 93210",
-        "games": "Wed Dec 2 6:00 PM @ Coalinga",
+        "games": "MBB Wed Dec 2 6:00 PM @ Coalinga",
         "from Pasadena": "3h 53m, 202 mi",
         "from SLO": "2h 12m, 102 mi",
         "marker-color": "#555555",
@@ -146,7 +146,7 @@
       "properties": {
         "name": "Bakersfield College Gym",
         "address": "1801 Panorama Dr, Bakersfield, CA 93305",
-        "games": "Tue Dec 15 5:30 PM @ Bakersfield",
+        "games": "MBB Tue Dec 15 5:30 PM @ Bakersfield",
         "from Pasadena": "2h 19m, 118 mi",
         "from SLO": "2h 53m, 139 mi",
         "marker-color": "#555555",
@@ -166,7 +166,7 @@
       "properties": {
         "name": "San Joaquin Delta College Gym",
         "address": "5151 Pacific Ave, Stockton, CA 95207",
-        "games": "Fri Dec 18–Sun 20 TBA San Joaquin Delta Tournament",
+        "games": "MBB Fri Dec 18–Sun 20 TBA San Joaquin Delta Tournament",
         "from Pasadena": "6h 18m, 341 mi",
         "from SLO": "4h 47m, 247 mi",
         "marker-color": "#555555",
@@ -186,7 +186,7 @@
       "properties": {
         "name": "Allan Hancock College Gym",
         "address": "800 S College Dr, Santa Maria, CA 93454",
-        "games": "Tue Dec 29 3:00 PM vs Santa Ana; Wed Dec 30 1:00 PM vs Palo Verde; Wed Jan 27 7:00 PM @ Allan Hancock",
+        "games": "MBB Tue Dec 29 3:00 PM vs Santa Ana; MBB Wed Dec 30 1:00 PM vs Palo Verde; WBB Wed Jan 27 5:00 PM @ Allan Hancock; MBB Wed Jan 27 7:00 PM @ Allan Hancock",
         "from Pasadena": "3h 18m, 160 mi",
         "from SLO": "42m, 33 mi",
         "marker-color": "#555555",
@@ -206,7 +206,7 @@
       "properties": {
         "name": "Ventura College Gym",
         "address": "4667 Telegraph Rd, Ventura, CA 93003",
-        "games": "Wed Jan 6 7:00 PM @ Ventura",
+        "games": "WBB Wed Jan 6 5:00 PM @ Ventura; MBB Wed Jan 6 7:00 PM @ Ventura",
         "from Pasadena": "1h 24m, 68 mi",
         "from SLO": "2h 40m, 126 mi",
         "marker-color": "#555555",
@@ -226,7 +226,7 @@
       "properties": {
         "name": "Robertson Gymnasium (\"Rob Gym\"), UCSB",
         "address": "Robertson Gymnasium, Ocean Rd, Santa Barbara, CA 93106",
-        "games": "Wed Feb 3 7:00 PM @ Santa Barbara",
+        "games": "WBB Wed Feb 3 5:00 PM @ Santa Barbara; MBB Wed Feb 3 7:00 PM @ Santa Barbara",
         "from Pasadena": "2h 09m, 109 mi",
         "from SLO": "1h 58m, 98 mi",
         "marker-color": "#555555",
@@ -246,7 +246,7 @@
       "properties": {
         "name": "Moorpark College Gym",
         "address": "7075 Campus Rd, Moorpark, CA 93021",
-        "games": "Fri Feb 5 7:00 PM @ Moorpark",
+        "games": "WBB Fri Feb 5 5:00 PM @ Moorpark; MBB Fri Feb 5 7:00 PM @ Moorpark",
         "from Pasadena": "56m, 46 mi",
         "from SLO": "3h 12m, 151 mi",
         "marker-color": "#555555",
@@ -266,7 +266,7 @@
       "properties": {
         "name": "Oxnard College Gym",
         "address": "4000 S Rose Ave, Oxnard, CA 93033",
-        "games": "Sat Jan 16 3:00 PM @ Oxnard",
+        "games": "WBB Sat Jan 16 1:00 PM @ Oxnard; MBB Sat Jan 16 3:00 PM @ Oxnard",
         "from Pasadena": "1h 19m, 63 mi",
         "from SLO": "2h 50m, 135 mi",
         "marker-color": "#555555",
@@ -286,7 +286,7 @@
       "properties": {
         "name": "LA Pierce College — Ken Stanley Court",
         "address": "6201 Winnetka Ave, Woodland Hills, CA 91371",
-        "games": "Sat Jan 23 3:00 PM @ LA Pierce",
+        "games": "WBB Sat Jan 23 1:00 PM @ LA Pierce; MBB Sat Jan 23 3:00 PM @ LA Pierce",
         "from Pasadena": "35m, 27 mi",
         "from SLO": "3h 27m, 168 mi",
         "marker-color": "#555555",
@@ -298,6 +298,206 @@
         "coordinates": [
           -118.5798,
           34.1834
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Taft College Gym",
+        "address": "29 Cougar Court, Taft, CA 93268",
+        "games": "WBB Sat Oct 17 11:30 AM vs Bakersfield; WBB Fri Oct 30 5:00 PM @ Taft",
+        "from Pasadena": "2h 28m, 121 mi",
+        "from SLO": "2h 12m, 96 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.4576,
+          35.1491
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of the Canyons — Lee Smelser Court (Cougar Cage)",
+        "address": "26455 Rockwell Canyon Road, Santa Clarita, CA 91355",
+        "games": "WBB Sat Oct 24 2:00 PM @ Canyons",
+        "from Pasadena": "41m, 35 mi",
+        "from SLO": "3h 32m, 169 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.5679,
+          34.4082
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Foothill College Main Gymnasium",
+        "address": "12345 El Monte Rd, Los Altos Hills, CA 94022",
+        "games": "WBB Thu Nov 12 4:00 PM @ Foothill",
+        "from Pasadena": "6h 40m, 354 mi",
+        "from SLO": "3h 52m, 198 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1283,
+          37.3584
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Siskiyous Gymnasium",
+        "address": "800 College Avenue, Weed, CA 96094",
+        "games": "WBB Fri Nov 13 2:00 PM @ Siskiyous",
+        "from Pasadena": "11h 16m, 613 mi",
+        "from SLO": "9h 25m, 496 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.3905,
+          41.4115
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Napa Valley College Gym",
+        "address": "2277 Napa-Vallejo Hwy, Napa, CA 94558",
+        "games": "WBB Sat Nov 14 2:00 PM @ Napa Valley",
+        "from Pasadena": "7h 24m, 398 mi",
+        "from SLO": "5h 07m, 262 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.2764,
+          38.274
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Santa Ana College — Bill Cook Gymnasium",
+        "address": "1530 W. 17th Street, Santa Ana, CA 92706",
+        "games": "WBB Fri Dec 11 6:00 PM @ Santa Ana",
+        "from Pasadena": "52m, 36 mi",
+        "from SLO": "4h 31m, 220 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.8888,
+          33.7576
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fullerton College — The Hornets Nest",
+        "address": "321 E. Chapman Ave, Fullerton, CA 92832",
+        "games": "WBB Sat Dec 12 1:00 PM @ Fullerton",
+        "from Pasadena": "45m, 31 mi",
+        "from SLO": "4h 24m, 215 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -117.9192,
+          33.8741
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Chabot College Main Gym",
+        "address": "25555 Hesperian Blvd, Hayward, CA 94545",
+        "games": "WBB Sat Dec 19 3:00 PM @ Chabot",
+        "from Pasadena": "6h 42m, 361 mi",
+        "from SLO": "4h 04m, 210 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -122.1038,
+          37.6422
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "LA Mission College Gymnasium (HFAC)",
+        "address": "12890 Harding Street, Sylmar, CA 91342",
+        "games": "WBB Fri Feb 12 5:00 PM @ LA Mission",
+        "from Pasadena": "28m, 22 mi",
+        "from SLO": "3h 44m, 179 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -118.4133,
+          34.3086
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "College of the Sequoias — Porter Fieldhouse",
+        "address": "915 S. Mooney Blvd, Visalia, CA 93277",
+        "games": "WBB Sat Dec 5 TBA TBA (Tom Gilcrest Tournament)",
+        "from Pasadena": "3h 28m, 182 mi",
+        "from SLO": "2h 50m, 135 mi",
+        "marker-color": "#555555",
+        "marker-symbol": "basketball",
+        "marker-size": "medium"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -119.3157,
+          36.3203
         ]
       }
     }

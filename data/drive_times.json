@@ -158,5 +158,105 @@
       "miles": 168,
       "minutes": 207
     }
+  },
+  "taft": {
+    "pasadena": {
+      "miles": 121,
+      "minutes": 148
+    },
+    "slo": {
+      "miles": 96,
+      "minutes": 132
+    }
+  },
+  "canyons": {
+    "pasadena": {
+      "miles": 35,
+      "minutes": 41
+    },
+    "slo": {
+      "miles": 169,
+      "minutes": 212
+    }
+  },
+  "foothill": {
+    "pasadena": {
+      "miles": 354,
+      "minutes": 400
+    },
+    "slo": {
+      "miles": 198,
+      "minutes": 232
+    }
+  },
+  "siskiyous": {
+    "pasadena": {
+      "miles": 613,
+      "minutes": 676
+    },
+    "slo": {
+      "miles": 496,
+      "minutes": 565
+    }
+  },
+  "napa": {
+    "pasadena": {
+      "miles": 398,
+      "minutes": 444
+    },
+    "slo": {
+      "miles": 262,
+      "minutes": 307
+    }
+  },
+  "santaana": {
+    "pasadena": {
+      "miles": 36,
+      "minutes": 52
+    },
+    "slo": {
+      "miles": 220,
+      "minutes": 271
+    }
+  },
+  "fullerton": {
+    "pasadena": {
+      "miles": 31,
+      "minutes": 45
+    },
+    "slo": {
+      "miles": 215,
+      "minutes": 264
+    }
+  },
+  "chabot": {
+    "pasadena": {
+      "miles": 361,
+      "minutes": 402
+    },
+    "slo": {
+      "miles": 210,
+      "minutes": 244
+    }
+  },
+  "lamission": {
+    "pasadena": {
+      "miles": 22,
+      "minutes": 28
+    },
+    "slo": {
+      "miles": 179,
+      "minutes": 224
+    }
+  },
+  "sequoias": {
+    "pasadena": {
+      "miles": 182,
+      "minutes": 208
+    },
+    "slo": {
+      "miles": 135,
+      "minutes": 170
+    }
   }
 }

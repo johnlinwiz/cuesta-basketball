@@ -9,7 +9,7 @@ import sys
 
 import gh
 from common import (fmt_dur, load, load_issue_map, maps_dir, maps_place, record_label, result_games,
-                    result_label, today_pt)
+                    result_label, today_pt, teams)
 
 BUFFER_MIN = 30  # arrive this long before tip-off
 
@@ -63,8 +63,16 @@ def result_body(e, games, mentions, record):
 
 
 def main():
-    sched, _, _, events = load()
-    issues = load_issue_map()
+    for key in teams():
+        if key:
+            print(f"== {key}")
+        run(key)
+    return 0
+
+
+def run(team):
+    sched, _, _, events = load(team)
+    issues = load_issue_map(team)
     mentions = sched.get("notify", [])
     today = today_pt()
     for e in events:
@@ -94,7 +102,6 @@ def main():
                            "(scrimmages usually aren't scored; add `result: \"W 70-62\"` in schedule.yaml if you know it)."})
                 gh.api(f"issues/{n}", "PATCH", {"state": "closed", "state_reason": "completed"})
                 print(f"#{n}: closed")
-    return 0
 
 
 if __name__ == "__main__":

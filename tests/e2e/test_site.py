@@ -235,7 +235,7 @@ def test_details_dialog_shows_result(make_page):
     expect(page.locator("#d-body .res-links a")).to_have_text(["box", "recap"])
     expect(page.locator("#d-body a", has_text="recap")).to_have_attribute("href", "https://example.test/recap/sequoias")
     expect(page.locator("#d-foot a", has_text="Reminder issue")).to_have_attribute(
-        "href", re.compile(r"github\.com/johnlinwiz/cuesta-mbb/issues/\d+"))
+        "href", re.compile(r"github\.com/johnlinwiz/cuesta-basketball/issues/\d+"))
     page.click("#d-foot button")
     expect(dlg).to_be_hidden()
 
@@ -254,3 +254,40 @@ def test_vendored_cdn_files_match_page_integrity(url):
     assert m, f"{url} no longer referenced by docs/index.html; update tests/e2e/conftest.py CDN + vendor/"
     digest = "sha384-" + base64.b64encode(hashlib.sha384((VENDOR / CDN[url][0]).read_bytes()).digest()).decode()
     assert digest == m.group(1), f"re-download {url} into tests/e2e/vendor/"
+
+
+# ---------------------------------------------------------------- two teams (Men / Women switch)
+def two_team(events_json, key):
+    d = dict(events_json, teamKey=key,
+             teams=[{"key": "mbb", "short": "MBB", "team": "Cuesta College Men's Basketball"},
+                    {"key": "wbb", "short": "WBB", "team": "Cuesta College Women's Basketball"}])
+    if key == "wbb":
+        d["team"] = "Cuesta College Women's Basketball"
+    return d
+
+
+def test_team_switch_shows_and_navigates(make_page, events_json):
+    page, net = make_page(mobile=False, hash="#map", data=two_team(events_json, "mbb"))
+    btns = page.locator("#teams button")
+    expect(btns).to_have_text(["👨 Men", "👩 Women"])
+    expect(page.locator("#teams button.on")).to_have_text("👨 Men")
+    assert "?team=mbb" in page.url and page.url.endswith("#map")        # URL made shareable, view kept
+    net.events_json = two_team(events_json, "wbb")
+    btns.nth(1).click()
+    page.wait_for_url(re.compile(r"\?team=wbb#map$"))
+    expect(page.locator("#teams button.on")).to_have_text("👩 Women")
+    expect(page.locator("#h1")).to_contain_text("Women's")
+    assert shown_views(page) == ["map"]
+    assert page.evaluate("localStorage.getItem('cuesta-team')") == "wbb"
+
+
+def test_view_switch_keeps_team_in_url(make_page, events_json):
+    page, _ = make_page(mobile=False, data=two_team(events_json, "wbb"))
+    for btn, tail in (("#m-cal", "?team=wbb#calendar"), ("#m-map", "?team=wbb#map"), ("#m-tbl", "?team=wbb")):
+        page.click(btn)
+        assert page.url.endswith(tail), page.url
+
+
+def test_single_team_data_has_no_switch(make_page):
+    page, _ = make_page(mobile=False)
+    expect(page.locator("#teams")).to_be_hidden()

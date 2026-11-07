@@ -141,6 +141,7 @@
 <body>
 <header>
   <h1 id="h1">🏀 Cuesta College Men's Basketball</h1>
+  <nav class="modes" id="teams" role="tablist" aria-label="Team" hidden></nav>
   <nav class="modes" role="tablist" aria-label="View">
     <button id="m-tbl" class="on" role="tab">📊 Table</button>
     <button id="m-cal" role="tab">📅 Calendar</button>
@@ -598,14 +599,41 @@ function setTextSize(pct, { save = true, badge = false } = {}) {
 })();
 
 // ---------- boot ----------
-fetch("events.json").then(r => r.json()).then(data => {
+// Team: ?team=<key> (shareable) > last choice on this device > men's. Falls back to the legacy
+// single-team docs/events.json so old deployments and the test fixtures keep working.
+const TEAM_KEY = "cuesta-team";
+const wantedTeam = new URLSearchParams(location.search).get("team") || localStorage.getItem(TEAM_KEY) || "mbb";
+async function loadTeamData() {
+  for (const path of [`${wantedTeam}/events.json`, "mbb/events.json", "events.json"]) {
+    const r = await fetch(path);
+    if (r.ok) return r.json();
+  }
+  throw new Error("no schedule data found");
+}
+loadTeamData().then(data => {
   DATA = data;
   const events = data.events, gh = `https://github.com/${data.repo}`;
   document.title = `${data.team} ${data.season}`;
   $("h1").textContent = `🏀 ${data.team} · ${data.season.replace("-", "–")}`;
   $("l-ics").href = data.ics;
   $("l-readme").href = `${gh}#readme`;
-  $("l-issues").href = `${gh}/issues`;
+  $("l-issues").href = data.teamKey ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;
+  if (data.teamKey) {
+    try { localStorage.setItem(TEAM_KEY, data.teamKey); } catch {}
+    if (new URLSearchParams(location.search).get("team") !== data.teamKey)   // keep the URL shareable
+      history.replaceState(null, "", `?team=${data.teamKey}${location.hash}`);
+  }
+  if ((data.teams || []).length > 1) {
+    const label = t => ({ MBB: "👨 Men", WBB: "👩 Women" })[t.short] || t.short;
+    $("teams").innerHTML = data.teams.map(t =>
+      `<button type="button" role="tab" data-team="${t.key}" class="${t.key === data.teamKey ? "on" : ""}" title="${esc(t.team)}">${label(t)}</button>`).join("");
+    $("teams").hidden = false;
+    $("teams").querySelectorAll("button").forEach(b => b.onclick = () => {
+      if (b.dataset.team === data.teamKey) return;
+      try { localStorage.setItem(TEAM_KEY, b.dataset.team); } catch {}
+      location.href = `?team=${b.dataset.team}${location.hash}`;      // same view (table/calendar/map), other team
+    });
+  }
 
   // Preset origins (Pasadena, SLO) from data/venues.yaml
   $("presets").innerHTML = Object.entries(data.origins)
@@ -651,7 +679,7 @@ fetch("events.json").then(r => r.json()).then(data => {
   const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map" })[location.hash] || "table";
   const setMode = m => {
     for (const k in MODES) { $(MODES[k]).hidden = k !== m; $(BTN[k]).classList.toggle("on", k === m); }
-    history.replaceState(null, "", m === "table" ? location.pathname : `#${m === "cal" ? "calendar" : m}`);
+    history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : `#${m === "cal" ? "calendar" : m}`));
     if (m === "map") showMap();
     if (m === "cal" && CAL?.updateSize) setTimeout(() => CAL.updateSize(), 0);   // v6 needed this after being hidden; v7 resizes itself
   };

@@ -229,11 +229,16 @@ def build_geojson(venues_cfg, drive, events):
 
 
 # ---------------------------------------------------------------- docs/events.json
-def build_events_json(sched, venues_cfg, events, issues, team_list=None):
+TEAM_ICON = {"MBB": "👨", "WBB": "👩"}
+
+
+def build_events_json(sched, venues_cfg, events, issues, team_list=None, record=None, tag_team=False):
+    """tag_team=True is the combined "Both" view: each title starts with the team icon."""
     rows = []
     for e in events:
         r = {
-            "id": e.id, "title": f"{e.matchup}{e.conf_star}", "allDay": e.all_day,
+            "id": e.id, "allDay": e.all_day,
+            "title": (f"{TEAM_ICON.get(e.team_short, e.team_short)} " if tag_team else "") + f"{e.matchup}{e.conf_star}",
             "classNames": ["tourney" if e.is_tournament else e.site, e.type],
             "extendedProps": {
                 "matchup": e.matchup, "type": TYPE_LABEL[e.type], "site": e.site_label,
@@ -248,6 +253,7 @@ def build_events_json(sched, venues_cfg, events, issues, team_list=None):
                 "venueKey": e.venue_key, "video": e.video, "videoLabel": e.video_label, "videoUncertain": e.video_uncertain, "audio": e.audio, "stats": e.stats,
                 "gcal": e.gcal_link(),
                 "issue": f"https://github.com/{REPO}/issues/{issues[e.id]}" if e.id in issues else None,
+                "team": e.team, "teamShort": e.team_short,
             },
         }
         if e.all_day:
@@ -268,7 +274,7 @@ def build_events_json(sched, venues_cfg, events, issues, team_list=None):
                for k, o in venues_cfg["origins"].items()}
     return json.dumps({"team": sched["team"], "season": sched["season"], "ics": sched["ics"],
                        "teamKey": sched.get("key"), "teams": team_list or [],
-                       "record": record_label(events),
+                       "record": record if record is not None else record_label(events),
                        "repo": REPO, "venues": venues, "origins": origins, "events": rows},
                       indent=1, ensure_ascii=False)
 
@@ -346,7 +352,8 @@ def build_index(teamdata, today):
     """Repo-root README for the multi-team layout."""
     season = teamdata[0][0]["season"]
     out = [f"# 🏀 Cuesta College Basketball — {season}", "",
-           f"**[🌐 Live schedule]({PAGES_URL})** · **[➕ Subscribe to every team (.ics)]({PAGES_URL}{COMBINED_ICS})** · "
+           f"**[🌐 Live schedule]({PAGES_URL})** ([👥 both teams together]({PAGES_URL}?team=all)) · "
+           f"**[➕ Subscribe to every team (.ics)]({PAGES_URL}{COMBINED_ICS})** · "
            f"**[🗺️ Venue map](venues.geojson)** · **[🔔 All reminders](https://github.com/{REPO}/issues)**", "",
            "| Team | Record | Next up | Schedule | Live site | Calendar feed | Print |", "|---|---|---|---|---|---|---|"]
     for sched, events in teamdata:
@@ -386,6 +393,9 @@ def main():
         return
     loaded = [(k, *load(k)) for k in keys]
     team_list = [{"key": k, "short": sc["short"], "team": sc["team"]} for k, sc, *_ in loaded]
+    if len(team_list) > 1:
+        team_list.append({"key": "all", "short": "ALL", "team": "Both teams"})
+    all_issues = {}
     teamdata, all_events, venues_cfg, drive = [], [], loaded[0][2], loaded[0][3]
     for key, sched, venues_cfg, drive, events in loaded:
         issues = load_issue_map(key)
@@ -395,11 +405,20 @@ def main():
         ddir = ROOT / "docs" / key; ddir.mkdir(parents=True, exist_ok=True)
         (ddir / "events.json").write_text(build_events_json(sched, venues_cfg, events, issues, team_list) + "\n")
         (ROOT / "docs" / sched["ics"]).write_bytes(build_ics(sched, events).encode())
-        teamdata.append((sched, events)); all_events += events
+        teamdata.append((sched, events)); all_events += events; all_issues.update(issues)
         print(f"{key}: built {len(events)} events")
     all_events.sort(key=lambda e: (e.date, e.start or dt.datetime.min.replace(tzinfo=TZ)))
     (ROOT / "README.md").write_text(build_index(teamdata, today))
     (ROOT / "venues.geojson").write_text(build_geojson(venues_cfg, drive, all_events) + "\n")
+    if len(teamdata) > 1:   # "Both" view: every team's games in one schedule (ids never collide: id_prefix)
+        both = dict(teamdata[0][0], key="all", short="ALL", team="Cuesta College Basketball", ics=COMBINED_ICS,
+                    site_url=PAGES_URL + "?team=all")
+        rec = " · ".join(f"{'Men' if sc['short'] == 'MBB' else 'Women' if sc['short'] == 'WBB' else sc['short']} "
+                         f"{record_label(ev) or '0-0'}" for sc, ev in teamdata)
+        (ROOT / "docs" / "all").mkdir(exist_ok=True)
+        (ROOT / "docs" / "all" / "events.json").write_text(
+            build_events_json(both, venues_cfg, all_events, all_issues, team_list, record=rec, tag_team=True) + "\n")
+        print(f"all: built {len(all_events)} events")
     (ROOT / "docs" / COMBINED_ICS).write_bytes(
         build_ics(teamdata[0][0], all_events, calname=f"Cuesta Basketball {teamdata[0][0]['season']}").encode())
 

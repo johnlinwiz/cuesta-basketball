@@ -48,11 +48,19 @@ def test_build_writes_per_team_outputs(two_teams):
     for key in ("mbb", "wbb"):
         assert (two_teams / key / "README.md").exists() and (two_teams / key / "CALENDAR.md").exists()
         data = json.loads((two_teams / "docs" / key / "events.json").read_text())
-        assert data["teamKey"] == key and [t["key"] for t in data["teams"]] == ["mbb", "wbb"]
+        assert data["teamKey"] == key and [t["key"] for t in data["teams"]] == ["mbb", "wbb", "all"]
+        assert not any(e["title"].startswith(("👨", "👩")) for e in data["events"])   # single team: untagged
         assert (two_teams / "docs" / f"cuesta-{key}.ics").exists()
     combined = (two_teams / "docs" / common.COMBINED_ICS).read_text()
     n = combined.count("BEGIN:VEVENT")
     assert n == 2 * (two_teams / "docs" / "cuesta-mbb.ics").read_text().count("BEGIN:VEVENT")
+    both = json.loads((two_teams / "docs" / "all" / "events.json").read_text())
+    per_team = sum(len(json.loads((two_teams / "docs" / k / "events.json").read_text())["events"]) for k in ("mbb", "wbb"))
+    assert both["teamKey"] == "all" and len(both["events"]) == per_team
+    assert len({e["id"] for e in both["events"]}) == per_team                 # no id collisions across teams
+    assert {e["title"][:1] for e in both["events"]} == {"👨", "👩"}
+    assert both["record"].startswith("Men ") and " · Women " in both["record"]
+    assert [e["start"] for e in both["events"]] == sorted(e["start"] for e in both["events"])
     index = (two_teams / "README.md").read_text()
     assert "[MBB schedule](mbb/README.md)" in index and "[WBB schedule](wbb/README.md)" in index
     assert not (two_teams / "docs" / "events.json").exists()            # no stale single-team file

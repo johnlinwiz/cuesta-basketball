@@ -260,7 +260,8 @@ def test_vendored_cdn_files_match_page_integrity(url):
 def two_team(events_json, key):
     d = dict(events_json, teamKey=key,
              teams=[{"key": "mbb", "short": "MBB", "team": "Cuesta College Men's Basketball"},
-                    {"key": "wbb", "short": "WBB", "team": "Cuesta College Women's Basketball"}])
+                    {"key": "wbb", "short": "WBB", "team": "Cuesta College Women's Basketball"},
+                    {"key": "all", "short": "ALL", "team": "Both teams"}])
     if key == "wbb":
         d["team"] = "Cuesta College Women's Basketball"
     return d
@@ -269,7 +270,7 @@ def two_team(events_json, key):
 def test_team_switch_shows_and_navigates(make_page, events_json):
     page, net = make_page(mobile=False, hash="#map", data=two_team(events_json, "mbb"))
     btns = page.locator("#teams button")
-    expect(btns).to_have_text(["👨 Men", "👩 Women"])
+    expect(btns).to_have_text(["👨 Men", "👩 Women", "👥 Both"])
     expect(page.locator("#teams button.on")).to_have_text("👨 Men")
     assert "?team=mbb" in page.url and page.url.endswith("#map")        # URL made shareable, view kept
     net.events_json = two_team(events_json, "wbb")
@@ -291,3 +292,17 @@ def test_view_switch_keeps_team_in_url(make_page, events_json):
 def test_single_team_data_has_no_switch(make_page):
     page, _ = make_page(mobile=False)
     expect(page.locator("#teams")).to_be_hidden()
+
+
+def test_both_view_shows_every_team_and_links_all_issues(make_page, events_json):
+    both = two_team(events_json, "all")
+    both["team"] = "Cuesta College Basketball"
+    both["record"] = "Men 1-2 · Women 0-2"
+    both["events"] = [dict(e, title=("👩 " if i % 2 else "👨 ") + e["title"]) for i, e in enumerate(events_json["events"])]
+    page, _ = make_page(mobile=False, data=both)
+    expect(page.locator("#teams button.on")).to_have_text("👥 Both")
+    assert "?team=all" in page.url
+    expect(page.locator("#next")).to_contain_text("Men 1-2 · Women 0-2")
+    titles = page.locator("#tbl-b button.link").all_text_contents()
+    assert any(t.startswith("👨") for t in titles) and any(t.startswith("👩") for t in titles)
+    assert "label%3A" not in page.get_attribute("#l-issues", "href")    # Both -> every team's reminders

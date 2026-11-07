@@ -1,6 +1,6 @@
 # 🏀 Cuesta College Basketball — 2026-27
 
-**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/)** · **[➕ Subscribe to every team (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-basketball.ics)** · **[🗺️ Venue map](venues.geojson)** · **[🔔 All reminders](https://github.com/johnlinwiz/cuesta-basketball/issues)**
+**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/)** ([👥 both teams together](https://johnlinwiz.github.io/cuesta-basketball/?team=all)) · **[➕ Subscribe to every team (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-basketball.ics)** · **[🗺️ Venue map](venues.geojson)** · **[🔔 All reminders](https://github.com/johnlinwiz/cuesta-basketball/issues)**
 
 | Team | Record | Next up | Schedule | Live site | Calendar feed | Print |
 |---|---|---|---|---|---|---|

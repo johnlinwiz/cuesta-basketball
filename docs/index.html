@@ -67,6 +67,7 @@
     --fc-classic-today:#c9a2272e; --fc-classic-background:var(--bg);
   }
   #cal .cmbb-ev { cursor:pointer; white-space:normal }
+  #cal .cmbb-ev * { white-space:normal; overflow:visible; text-overflow:clip }   /* wrap long names in month cells */
   /* Mode switch */
   .modes { display:inline-flex; gap:0; margin-left:auto; background:#ffffff22; border-radius:8px; padding:2px }
   .modes button { background:transparent; color:#fff; border:0; padding:5px 12px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.875rem; opacity:.75 }
@@ -617,14 +618,14 @@ loadTeamData().then(data => {
   $("h1").textContent = `🏀 ${data.team} · ${data.season.replace("-", "–")}`;
   $("l-ics").href = data.ics;
   $("l-readme").href = `${gh}#readme`;
-  $("l-issues").href = data.teamKey ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;
+  $("l-issues").href = data.teamKey && data.teamKey !== "all" ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;
   if (data.teamKey) {
     try { localStorage.setItem(TEAM_KEY, data.teamKey); } catch {}
     if (new URLSearchParams(location.search).get("team") !== data.teamKey)   // keep the URL shareable
       history.replaceState(null, "", `?team=${data.teamKey}${location.hash}`);
   }
   if ((data.teams || []).length > 1) {
-    const label = t => ({ MBB: "👨 Men", WBB: "👩 Women" })[t.short] || t.short;
+    const label = t => ({ MBB: "👨 Men", WBB: "👩 Women", ALL: "👥 Both" })[t.short] || t.short;
     $("teams").innerHTML = data.teams.map(t =>
       `<button type="button" role="tab" data-team="${t.key}" class="${t.key === data.teamKey ? "on" : ""}" title="${esc(t.team)}">${label(t)}</button>`).join("");
     $("teams").hidden = false;

@@ -21,8 +21,8 @@ poster:           ## one-page printable PDF per team -> docs/cuesta-<team>-sched
 	cd scripts && for t in $$(ls ../data/teams); do ../$(PY) poster.py $$t; done
 daily:            ## run the reminder/close job locally
 	python3 scripts/daily.py
-serve:            ## preview the Pages calendar at http://localhost:8000
-	cd docs && python3 -m http.server 8000
+serve:            ## preview the Pages site at http://127.0.0.1:8000 (loopback only)
+	cd docs && python3 -m http.server --bind 127.0.0.1 8000
 all: drive issues
 dev:              ## create .venv with the test tools + headless Chromium
 	$(PYBOOT) -m venv .venv && .venv/bin/pip install -q -r requirements-dev.txt && .venv/bin/python -m playwright install chromium

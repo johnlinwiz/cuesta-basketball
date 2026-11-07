@@ -1,6 +1,6 @@
 # 🏀 Cuesta College Men's Basketball — 2026-27
 
-**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb)** (table · [calendar](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb#calendar) · [map](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb#map)) · **[➕ Subscribe (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics)** · **[🗓️ Month grids](CALENDAR.md)** · **[🗺️ Venue map](../venues.geojson)** · **[🔔 Reminders](https://github.com/johnlinwiz/cuesta-basketball/issues?q=is%3Aissue+label%3Ambb)** · **[🖨️ Printable PDF](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf)** · [⬅ All teams](../README.md)
+**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb)** (table · [calendar](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb#calendar) · [map](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb#map)) · **[➕ Subscribe (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics)** · **[🗓️ Month grids](CALENDAR.md)** · **[🗺️ Venue map](../venues.geojson)** · **[🔔 Reminders](https://github.com/johnlinwiz/cuesta-basketball/issues?q=is%3Aissue+label%3Ambb)** · **🖨️ Printable PDF: [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) · [black & white](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule-bw.pdf)** · [⬅ All teams](../README.md)
 
 **Record: 1-2**
 

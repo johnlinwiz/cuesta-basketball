@@ -17,8 +17,8 @@ feed:             ## compare the official 3C2A feed with schedule.yaml (prints d
 	python3 scripts/check_feed.py
 results:          ## scrape final scores into each team's results.json, then rebuild
 	python3 scripts/fetch_results.py && python3 scripts/build.py
-poster:           ## one-page printable PDF per team -> docs/cuesta-<team>-schedule.pdf
-	cd scripts && for t in $$(ls ../data/teams); do ../$(PY) poster.py $$t; done
+poster:           ## one-page printable PDFs per team (colour + black & white) -> docs/cuesta-<team>-schedule[-bw].pdf
+	cd scripts && for t in $$(ls ../data/teams); do ../$(PY) poster.py $$t && ../$(PY) poster.py $$t --bw; done
 daily:            ## run the reminder/close job locally
 	python3 scripts/daily.py
 serve:            ## preview the Pages site at http://127.0.0.1:8000 (loopback only)

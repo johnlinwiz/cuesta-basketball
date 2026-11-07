@@ -4,8 +4,8 @@
 
 | Team | Record | Next up | Schedule | Live site | Calendar feed | Print |
 |---|---|---|---|---|---|---|
-| **Cuesta College Men's Basketball** | 1-2 | Sat Nov 7 · 3:00 PM · vs Diablo Valley | [MBB schedule](mbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb) | [cuesta-mbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics) | [PDF](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) |
-| **Cuesta College Women's Basketball** | 0-2 | Sat Nov 7 · 1:00 PM · vs Santa Monica | [WBB schedule](wbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb) | [cuesta-wbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics) | [PDF](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf) |
+| **Cuesta College Men's Basketball** | 1-2 | Sat Nov 7 · 3:00 PM · vs Diablo Valley | [MBB schedule](mbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb) | [cuesta-mbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule-bw.pdf) |
+| **Cuesta College Women's Basketball** | 0-2 | Sat Nov 7 · 1:00 PM · vs Santa Monica | [WBB schedule](wbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb) | [cuesta-wbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule-bw.pdf) |
 
 ## How this repo works
 

@@ -171,7 +171,8 @@
     <summary aria-label="More" title="More">☰</summary>
     <div class="menu-pop">
       <a id="l-ics" href="cuesta-mbb.ics">➕ Subscribe (.ics)</a>
-      <a id="l-pdf" href="#">🖨️ Printable PDF</a>
+      <a id="l-pdf" href="#">🖨️ Printable PDF (colour)</a>
+      <a id="l-pdf-bw" href="#">🖨️ Printable PDF (black &amp; white)</a>
       <a id="l-issues" href="#">🔔 Reminders</a>
       <a id="l-readme" href="#">📄 README &amp; tables</a>
     </div>
@@ -674,8 +675,10 @@ loadTeamData().then(data => {
   $("h1").title = `${data.team} ${data.season}`;
   $("h1").querySelector(".hname").textContent = data.team.replace("College ", "");
   $("h1").querySelector(".hseason").textContent = data.season.replace("-", "–");
-  if (data.teamKey && data.teamKey !== "all") $("l-pdf").href = `cuesta-${data.teamKey}-schedule.pdf`;
-  else $("l-pdf").hidden = true;
+  if (data.teamKey && data.teamKey !== "all") {
+    $("l-pdf").href = `cuesta-${data.teamKey}-schedule.pdf`;
+    $("l-pdf-bw").href = `cuesta-${data.teamKey}-schedule-bw.pdf`;
+  } else { $("l-pdf").hidden = true; $("l-pdf-bw").hidden = true; }
   $("l-ics").href = data.ics;
   $("l-readme").href = `${gh}#readme`;
   $("l-issues").href = data.teamKey && data.teamKey !== "all" ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;

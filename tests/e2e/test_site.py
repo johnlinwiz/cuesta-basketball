@@ -367,5 +367,6 @@ def test_header_is_condensed(make_page, mobile, max_rows, events_json):
     page.click("#menu summary")
     expect(page.locator("#l-ics")).to_be_visible()
     expect(page.locator("#l-pdf")).to_have_attribute("href", "cuesta-mbb-schedule.pdf")
+    expect(page.locator("#l-pdf-bw")).to_have_attribute("href", "cuesta-mbb-schedule-bw.pdf")
     page.keyboard.press("Escape")
     expect(page.locator("#l-ics")).to_be_hidden()

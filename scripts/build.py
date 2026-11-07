@@ -51,7 +51,8 @@ def build_readme(sched, venues_cfg, drive, events, issues, today, rel=""):
         "**[🗓️ Month grids](CALENDAR.md)** · "
         f"**[🗺️ Venue map]({rel}venues.geojson)** · "
         f"**[🔔 Reminders]({team_issues_url(sched)})**"
-        + (f" · **[🖨️ Printable PDF]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf)**"
+        + (f" · **🖨️ Printable PDF: [colour]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf) · "
+           f"[black & white]({PAGES_URL}cuesta-{sched['key']}-schedule-bw.pdf)**"
            if sched.get("key") and (ROOT / "docs" / f"cuesta-{sched['key']}-schedule.pdf").exists() else "")
         + (f" · [⬅ All teams]({rel}README.md)" if rel else ""),
         "",
@@ -382,7 +383,8 @@ def build_index(teamdata, today):
         out.append(f"| **{sched['team']}** | {record_label(events) or '0-0'} | {nxt} | "
                    f"[{sched['short']} schedule]({sched['key']}/README.md) | [open]({sched['site_url']}) | "
                    f"[{sched['ics']}]({PAGES_URL}{sched['ics']}) | "
-                   + (f"[PDF]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf)"
+                   + (f"[colour]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf) · "
+                      f"[B&W]({PAGES_URL}cuesta-{sched['key']}-schedule-bw.pdf)"
                       if (ROOT / "docs" / f"cuesta-{sched['key']}-schedule.pdf").exists() else "—") + " |")
     out += ["", "## How this repo works", "",
             "- One code base, one folder per team: `data/teams/<team>/schedule.yaml` (+ `results.json`, `issues.json`); "

@@ -3,6 +3,7 @@
 
     .venv/bin/python scripts/poster.py wbb            # -> docs/cuesta-wbb-schedule.pdf (+ .png)
     .venv/bin/python scripts/poster.py mbb --out ~/Downloads/mbb.pdf
+    .venv/bin/python scripts/poster.py wbb --bw       # black & white -> docs/cuesta-wbb-schedule-bw.pdf
 
 Laid out like the @cuesta_mbb season poster: month blocks, "@" = away, "Vs" = home,
 "*" = Western State Conference, times Pacific. Games already played show the final score.
@@ -57,7 +58,24 @@ def game_line(e, today):
             + (f'<small>{esc(" · ".join(sub))}</small>' if sub else "") + f'</span><span class="t">{right}</span></div>')
 
 
-def build_html(sched, events, today):
+# Black & white: white paper, black ink, no fills - for home printers and copiers. Home games are
+# bold (colour used to separate them); results are outlined badges, wins in heavier type.
+BW_CSS = """
+body { background:#fff !important; color:#000 !important }
+header { border-bottom-color:#000 !important } footer { border-top-color:#000 !important }
+.kicker, .season, h2, .pre, .g.home .pre, .star, .legend b { color:#000 !important }
+h2 { border-bottom-color:#000 !important }
+.d, .g.home .o, .g:not(.home) .o, .legend .url, .rec { color:#000 !important }
+.g { border-bottom-color:#00000033 !important }
+.g.home .o { font-weight:700 } .g:not(.home) .o { font-weight:400 }
+.w, .o small, .muted, .legend, .legend span { color:#333 !important }
+.res { background:#fff !important; color:#000 !important; border:1.5px solid #000; padding:0 .04in }
+.res.W { font-weight:900 } .res.L { font-weight:500; border-style:dashed }
+footer .qr svg { background:#fff; border:1px solid #000 }
+"""
+
+
+def build_html(sched, events, today, bw=False):
     months = []
     for e in events:
         key = (e.date.year, e.date.month)
@@ -66,7 +84,7 @@ def build_html(sched, events, today):
         months[-1][2].append(e)
     site = sched["site_url"]
     qr = io.BytesIO()
-    segno.make(site, error="m").save(qr, kind="svg", scale=4, border=1, dark="#0b6e3a")
+    segno.make(site, error="m").save(qr, kind="svg", scale=4, border=1, dark="#000000" if bw else "#0b6e3a")
     qr_svg = qr.getvalue().decode()
     rec = record_label(events)
     women = "Women" in sched["team"]
@@ -102,10 +120,11 @@ footer .qr svg {{ width:1.05in; height:1.05in; background:#fff; border-radius:6p
 .legend {{ font-size:9.5pt; color:#c9d5ce; line-height:1.5 }}
 .legend b {{ color:#c9a227 }} .legend .url {{ font-size:10.5pt; color:#ffffff; font-weight:700 }}
 .rec {{ font-size:12pt; font-weight:800; color:#ffffff }}
-</style></head><body><div id="page">
+{BW_CSS if bw else ""}</style></head><body><div id="page">
 <header>
-  <svg class="ball" viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#0b6e3a"/>
-    <circle cx="32" cy="32" r="22" fill="#f28c28" stroke="#1d2421" stroke-width="2.5"/>
+  <svg class="ball" viewBox="0 0 64 64">{'<rect x="1.5" y="1.5" width="61" height="61" rx="13" fill="#fff" stroke="#000" stroke-width="2.5"/>'
+    if bw else '<rect width="64" height="64" rx="14" fill="#0b6e3a"/>'}
+    <circle cx="32" cy="32" r="22" fill="{'#fff' if bw else '#f28c28'}" stroke="#1d2421" stroke-width="2.5"/>
     <g fill="none" stroke="#1d2421" stroke-width="2.5" stroke-linecap="round"><path d="M32 10v44M10 32h44"/>
     <path d="M17 16.5c6 4.5 9 10 9 15.5s-3 11-9 15.5"/><path d="M47 16.5c-6 4.5-9 10-9 15.5s3 11 9 15.5"/></g></svg>
   <div><div class="kicker">CUESTA COLLEGE COUGARS</div>
@@ -117,7 +136,7 @@ footer .qr svg {{ width:1.05in; height:1.05in; background:#fff; border-radius:6p
   <div class="qr">{qr_svg}</div>
   <div class="legend">
     {f'<div class="rec">Record: {esc(rec)}</div>' if rec else ''}
-    <b>Vs</b> home (Stork Gym, Cuesta College, San Luis Obispo) · <b>@</b> away · <b>*</b> Western State Conference · times Pacific<br>
+    <b>Vs</b> home{' games in bold' if bw else ''} (Stork Gym, Cuesta College, San Luis Obispo) · <b>@</b> away · <b>*</b> Western State Conference · times Pacific<br>
     Live schedule, drive times, streams &amp; reminders:<br><span class="url">{esc(site.replace("https://", ""))}</span><br>
     <span style="color:#7f948a">As of {today:%b %-d, %Y} — check the live site for changes.</span>
   </div>
@@ -160,12 +179,14 @@ def render(html_text, pdf_path, png_path):
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("team", nargs="?", default="wbb")
-    ap.add_argument("--out", help="PDF path (default docs/cuesta-<team>-schedule.pdf)")
+    ap.add_argument("--out", help="PDF path (default docs/cuesta-<team>-schedule[-bw].pdf)")
+    ap.add_argument("--bw", action="store_true", help="black & white version for home printers")
     a = ap.parse_args(argv)
     sched, _, _, events = load(a.team)
-    pdf = pathlib.Path(a.out).expanduser() if a.out else ROOT / "docs" / f"cuesta-{a.team}-schedule.pdf"
+    name = f"cuesta-{a.team}-schedule{'-bw' if a.bw else ''}.pdf"
+    pdf = pathlib.Path(a.out).expanduser() if a.out else ROOT / "docs" / name
     png = pdf.with_suffix(".png")
-    scale = render(build_html(sched, events, today_pt()), pdf, png)
+    scale = render(build_html(sched, events, today_pt(), bw=a.bw), pdf, png)
     print(f"{pdf}  ({len(events)} games, fit {scale:.3f})")
     return 0
 

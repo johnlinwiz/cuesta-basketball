@@ -6,7 +6,7 @@ export GH_TOKEN
 PY ?= $(if $(wildcard .venv/bin/python),.venv/bin/python,python3)
 PYBOOT ?= $(shell command -v python3.12 || command -v python3.13 || command -v python3.14 || echo python3)
 
-.PHONY: build drive issues feed results daily serve all dev test e2e test-all
+.PHONY: build drive issues feed results poster daily serve all dev test e2e test-all
 build:            ## regenerate README, CALENDAR.md, venues.geojson, docs/
 	python3 scripts/build.py
 drive:            ## recompute drive times (OSRM) after editing venues
@@ -17,6 +17,8 @@ feed:             ## compare the official 3C2A feed with schedule.yaml (prints d
 	python3 scripts/check_feed.py
 results:          ## scrape final scores into each team's results.json, then rebuild
 	python3 scripts/fetch_results.py && python3 scripts/build.py
+poster:           ## one-page printable PDF per team -> docs/cuesta-<team>-schedule.pdf
+	cd scripts && for t in $$(ls ../data/teams); do ../$(PY) poster.py $$t; done
 daily:            ## run the reminder/close job locally
 	python3 scripts/daily.py
 serve:            ## preview the Pages calendar at http://localhost:8000

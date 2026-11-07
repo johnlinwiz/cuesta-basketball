@@ -48,7 +48,10 @@ def build_readme(sched, venues_cfg, drive, events, issues, today, rel=""):
         f"**[➕ Subscribe (.ics)]({ics})** · "
         "**[🗓️ Month grids](CALENDAR.md)** · "
         f"**[🗺️ Venue map]({rel}venues.geojson)** · "
-        f"**[🔔 Reminders]({team_issues_url(sched)})**" + (f" · [⬅ All teams]({rel}README.md)" if rel else ""),
+        f"**[🔔 Reminders]({team_issues_url(sched)})**"
+        + (f" · **[🖨️ Printable PDF]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf)**"
+           if sched.get("key") and (ROOT / "docs" / f"cuesta-{sched['key']}-schedule.pdf").exists() else "")
+        + (f" · [⬅ All teams]({rel}README.md)" if rel else ""),
         "",
     ]
     rec = record_label(events)
@@ -310,7 +313,9 @@ def fold(line):
 
 
 def build_ics(sched, events, calname=None):
-    stamp = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    # Day-granular DTSTAMP: same-day builds (mine and the bot's) produce identical feeds, so they no
+    # longer conflict on rebase or show a diff every run.
+    stamp = today_pt().strftime("%Y%m%dT000000Z")
     lines = ["BEGIN:VCALENDAR", "VERSION:2.0", f"PRODID:-//{REPO}//schedule//EN", "CALSCALE:GREGORIAN",
              "METHOD:PUBLISH", f"X-WR-CALNAME:{calname or 'Cuesta ' + sched['short'] + ' ' + sched['season']}",
              "X-WR-TIMEZONE:America/Los_Angeles", "REFRESH-INTERVAL;VALUE=DURATION:PT12H",
@@ -343,13 +348,15 @@ def build_index(teamdata, today):
     out = [f"# 🏀 Cuesta College Basketball — {season}", "",
            f"**[🌐 Live schedule]({PAGES_URL})** · **[➕ Subscribe to every team (.ics)]({PAGES_URL}{COMBINED_ICS})** · "
            f"**[🗺️ Venue map](venues.geojson)** · **[🔔 All reminders](https://github.com/{REPO}/issues)**", "",
-           "| Team | Record | Next up | Schedule | Live site | Calendar feed |", "|---|---|---|---|---|---|"]
+           "| Team | Record | Next up | Schedule | Live site | Calendar feed | Print |", "|---|---|---|---|---|---|---|"]
     for sched, events in teamdata:
         up = [e for e in events if e.end_date >= today and not (e.end_date == today and result_games(e))]
         nxt = f"{up[0].title()}" if up else "Season complete"
         out.append(f"| **{sched['team']}** | {record_label(events) or '0-0'} | {nxt} | "
                    f"[{sched['short']} schedule]({sched['key']}/README.md) | [open]({sched['site_url']}) | "
-                   f"[{sched['ics']}]({PAGES_URL}{sched['ics']}) |")
+                   f"[{sched['ics']}]({PAGES_URL}{sched['ics']}) | "
+                   + (f"[PDF]({PAGES_URL}cuesta-{sched['key']}-schedule.pdf)"
+                      if (ROOT / "docs" / f"cuesta-{sched['key']}-schedule.pdf").exists() else "—") + " |")
     out += ["", "## How this repo works", "",
             "- One code base, one folder per team: `data/teams/<team>/schedule.yaml` (+ `results.json`, `issues.json`); "
             "`data/venues.yaml` and `data/drive_times.json` are shared.",

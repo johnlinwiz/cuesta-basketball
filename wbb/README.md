@@ -1,6 +1,6 @@
 # 🏀 Cuesta College Women's Basketball — 2026-27
 
-**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb)** (table · [calendar](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb#calendar) · [map](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb#map)) · **[➕ Subscribe (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics)** · **[🗓️ Month grids](CALENDAR.md)** · **[🗺️ Venue map](../venues.geojson)** · **[🔔 Reminders](https://github.com/johnlinwiz/cuesta-basketball/issues?q=is%3Aissue+label%3Awbb)** · [⬅ All teams](../README.md)
+**[🌐 Live schedule](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb)** (table · [calendar](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb#calendar) · [map](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb#map)) · **[➕ Subscribe (.ics)](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics)** · **[🗓️ Month grids](CALENDAR.md)** · **[🗺️ Venue map](../venues.geojson)** · **[🔔 Reminders](https://github.com/johnlinwiz/cuesta-basketball/issues?q=is%3Aissue+label%3Awbb)** · **[🖨️ Printable PDF](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf)** · [⬅ All teams](../README.md)
 
 **Record: 0-2**
 

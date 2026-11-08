@@ -1,6 +1,6 @@
 {
   "wbb-2026-10-30-taft": {
-    "boxscore": "https://www.cccaasports.org/links/djm9mg",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261030_u1z6.xml",
     "outcome": "L",
     "raw": "L, 66-58",
     "score": "58-66",
@@ -9,12 +9,20 @@
     "us": 58
   },
   "wbb-2026-11-04-hartnell": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml",
     "outcome": "L",
     "raw": "L, 67-51",
     "score": "51-67",
     "status": "Final",
     "them": 67,
     "us": 51
+  },
+  "wbb-2026-11-07-santa-monica": {
+    "outcome": "W",
+    "raw": "W, 65-50",
+    "score": "65-50",
+    "status": "Final",
+    "them": 50,
+    "us": 65
   }
 }

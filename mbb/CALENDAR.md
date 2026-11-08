@@ -18,8 +18,8 @@
 
 | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|---|
-| 1 | 2 | 3<br>✅🚌 **L 58-72** [@ Monterey Peninsula](https://github.com/johnlinwiz/cuesta-basketball/issues/5) | 4 | 5 | 6 | **7**<br>🏠 3pm [vs Diablo Valley](https://github.com/johnlinwiz/cuesta-basketball/issues/6) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
-| 8 | 9<br>🏠 1pm [vs Redwoods](https://github.com/johnlinwiz/cuesta-basketball/issues/7) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 10 | 11 | 12 | 13<br>🏆 6pm [vs Feather River](https://github.com/johnlinwiz/cuesta-basketball/issues/29) [📺](https://www.youtube.com/@arcbeavers) | 14<br>🏆 1pm [vs Shasta](https://github.com/johnlinwiz/cuesta-basketball/issues/30) [📺](https://www.youtube.com/@arcbeavers) |
+| 1 | 2 | 3<br>✅🚌 **L 58-72** [@ Monterey Peninsula](https://github.com/johnlinwiz/cuesta-basketball/issues/5) | 4 | 5 | 6 | 7<br>✅🏠 **W 72-65** [vs Diablo Valley](https://github.com/johnlinwiz/cuesta-basketball/issues/6) |
+| **8** | 9<br>🏠 1pm [vs Redwoods](https://github.com/johnlinwiz/cuesta-basketball/issues/7) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 10 | 11 | 12 | 13<br>🏆 6pm [vs Feather River](https://github.com/johnlinwiz/cuesta-basketball/issues/29) [📺](https://www.youtube.com/@arcbeavers) | 14<br>🏆 1pm [vs Shasta](https://github.com/johnlinwiz/cuesta-basketball/issues/30) [📺](https://www.youtube.com/@arcbeavers) |
 | 15 | 16 | 17 | 18 | 19 | 20 | 21 |
 | 22 | 23 | 24<br>🏠 6pm [vs De Anza](https://github.com/johnlinwiz/cuesta-basketball/issues/9) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 25 | 26 | 27 | 28 |
 | 29 | 30 |   |   |   |   |   |

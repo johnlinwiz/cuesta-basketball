@@ -14,6 +14,12 @@ VIEWS = {"table": "#view-tbl", "cal": "#view-cal", "map": "#view-map"}
 BUTTONS = {"table": "#m-tbl", "cal": "#m-cal", "map": "#m-map"}
 
 
+def choose_from(page, value):
+    """Pick a Drive-from suggestion (geo / o:<preset> / v:<venue>) from the combobox list."""
+    page.click("#i-addr")
+    page.click(f"#from-list li[data-v='{value}']")
+
+
 def shown_views(page):
     return [m for m, sel in VIEWS.items()
             if page.eval_on_selector(sel, "el => getComputedStyle(el).display !== 'none' && el.getClientRects().length > 0")]
@@ -77,7 +83,7 @@ def test_nothing_scrolls_sideways_at_390px(make_page, mode, size):
     page.click(BUTTONS[mode])
     page.wait_for_timeout(100)
     assert horizontal_overflow(page) == []
-    page.select_option("#s-from", "o:pasadena")                # drive columns get longer once an origin is set
+    choose_from(page, "o:pasadena")                            # drive columns get longer once an origin is set
     expect(page.locator("#from-status")).to_have_text("From Pasadena")
     page.wait_for_timeout(100)
     assert horizontal_overflow(page) == []
@@ -318,14 +324,14 @@ def test_both_view_shows_every_team_and_links_all_issues(make_page, events_json)
 def test_drive_from_a_venue_picker(make_page, events_json):
     page, net = make_page(mobile=False)
     key, v = next(iter(events_json["venues"].items()))
-    page.select_option("#s-from", f"v:{key}")
+    choose_from(page, f"v:{key}")
     expect(page.locator("#from-status")).to_contain_text("From ")
     o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
     assert o["key"] == f"venue:{key}" and (o["lat"], o["lon"]) == (v["lat"], v["lon"])
     assert any("router.project-osrm.org/table" in u and f"{v['lon']:.5f},{v['lat']:.5f}" in u for u in net.requests)
     expect(page.locator("#tbl-th-drive")).to_contain_text("From ")
     page.click("#b-clear")
-    expect(page.locator("#s-from")).to_have_value("")
+    expect(page.locator("#i-addr")).to_have_value("")
 
 
 def test_drive_from_here_in_the_game_dialog(make_page, events_json):
@@ -337,7 +343,8 @@ def test_drive_from_here_in_the_game_dialog(make_page, events_json):
     expect(page.locator("#from-status")).to_contain_text("From ")        # drives computed, origin saved
     o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
     assert o["key"] == "venue:" + ev["extendedProps"]["venueKey"]
-    expect(page.locator("#s-from")).to_have_value("v:" + ev["extendedProps"]["venueKey"])
+    expect(page.locator("#i-addr")).to_have_class(re.compile(r"\bset\b"))
+    expect(page.locator("#i-addr")).to_have_value(re.compile(re.escape(o["label"])))
 
 
 def test_back_to_back_leg_shows_in_table_and_dialog(make_page, events_json):
@@ -394,23 +401,48 @@ def test_drive_from_is_one_compact_bar(make_page):
     page, _ = make_page(mobile=True)
     rows = page.evaluate("""() => new Set([...document.querySelectorAll('#from > *')].filter(e => e.offsetParent !== null)
         .map(e => Math.round(e.getBoundingClientRect().top / 10))).size""")
-    assert rows <= 2, rows
-    assert page.locator("#from").bounding_box()["height"] < 100
+    assert rows <= 1, rows                                             # one row now: box + Go + ⓘ
+    assert page.locator("#from").bounding_box()["height"] < 60
     expect(page.locator("#from-note")).to_be_hidden()
     page.click("#b-info"); expect(page.locator("#from-note")).to_be_visible()
-    opts = page.locator("#s-from option").all_text_contents()
-    assert opts[:2] == ["Drive from…", "📍 My location"] and "Pasadena" in opts and "SLO" in opts and len(opts) > 6
+    page.click("#i-addr")
+    opts = page.locator("#from-list li[role=option]").all_text_contents()
+    assert opts[0] == "📍 My location" and "Pasadena" in opts and "SLO" in opts and len(opts) > 6
 
 
-def test_typed_place_shows_in_the_picker(make_page):
+def test_typed_place_shows_in_the_box_and_switching_replaces_it(make_page):
     page, _ = make_page(mobile=False)
     page.fill("#i-addr", "Fresno, CA"); page.press("#i-addr", "Enter")
-    expect(page.locator("#s-from")).to_have_value("addr")
-    expect(page.locator("#s-from option[value=addr]")).to_have_text("📌 Fresno, Fresno County")
-    page.select_option("#s-from", "o:slo")                             # switching drops the typed entry
-    expect(page.locator("#s-from option[value=addr]")).to_have_count(0)
+    expect(page.locator("#i-addr")).to_have_value("Fresno, Fresno County")
+    expect(page.locator("#i-addr")).to_have_class(re.compile(r"\bset\b"))
+    choose_from(page, "o:slo")
+    expect(page.locator("#i-addr")).to_have_value("SLO")
     page.click("#b-clear")
-    expect(page.locator("#s-from")).to_have_value("")
+    expect(page.locator("#i-addr")).to_have_value("")
+
+
+def test_combobox_filters_as_you_type_and_offers_a_lookup(make_page, events_json):
+    page, net = make_page(mobile=False)
+    key, v = next(iter(events_json["venues"].items()))
+    word = v["name"].split()[0]
+    page.click("#i-addr"); page.fill("#i-addr", word.lower())
+    opts = page.locator("#from-list li[role=option]")
+    labels = opts.all_text_contents()
+    assert all(word.lower() in l.lower() for l in labels[:-1]), labels      # filtered (venue name or city)
+    assert labels[-1].startswith("🔎 Look up")                             # free text is always an option
+    page.keyboard.press("ArrowDown"); page.keyboard.press("Enter")          # keyboard picks the first match
+    expect(page.locator("#from-status")).to_contain_text("From ")
+    assert json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))["key"].startswith(("venue:", "pasadena", "slo"))
+
+
+def test_combobox_escape_restores_the_current_choice(make_page):
+    page, _ = make_page(mobile=False)
+    choose_from(page, "o:pasadena")
+    expect(page.locator("#i-addr")).to_have_value("Pasadena")
+    page.click("#i-addr"); page.keyboard.type("xyz")
+    page.keyboard.press("Escape")
+    expect(page.locator("#from-list")).to_be_hidden()
+    expect(page.locator("#i-addr")).to_have_value("Pasadena")
 
 
 @pytest.mark.parametrize("mobile", [True, False])

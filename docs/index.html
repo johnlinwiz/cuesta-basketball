@@ -37,11 +37,17 @@
   #from select, #from input, #from button { font:inherit; font-size:0.875rem; border:1px solid #8886; border-radius:6px;
           padding:5px 8px; background:transparent; color:inherit; min-width:0 }
   #from button { cursor:pointer } #from button:hover { background:#8881 }
-  .from-pick { display:flex; align-items:center; gap:6px; flex:0 1 auto; min-width:0 }
-  #s-from { max-width:240px } #s-from option, #s-from optgroup { color:#111 }
-  #s-from.set { border-color:var(--green); font-weight:600 }
-  #f-addr { display:flex; gap:6px; margin:0; flex:1 1 220px; min-width:0 } #i-addr { flex:1; min-width:0 }
   #b-clear, #b-info { padding:5px 9px }
+  .combo { position:relative; display:flex; align-items:center; gap:6px; margin:0; flex:1 1 260px; min-width:0 }
+  .combo-ico { flex:none }
+  #i-addr { flex:1; min-width:0 } #i-addr.set { border-color:var(--green); font-weight:600 }
+  #from-list { position:absolute; left:22px; right:0; top:calc(100% + 4px); z-index:900; margin:0; padding:4px; list-style:none;
+               background:var(--card); color:var(--ink); border:1px solid #8885; border-radius:8px; box-shadow:0 10px 28px #0006;
+               max-height:min(60vh, 360px); overflow:auto; font-size:0.875rem }
+  #from-list li { padding:7px 10px; border-radius:6px; cursor:pointer; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+  #from-list li.grp { cursor:default; color:var(--muted); font-size:.75rem; text-transform:uppercase; letter-spacing:.4px; padding:8px 10px 2px }
+  #from-list li[aria-selected="true"], #from-list li[role=option]:hover { background:#8882 }
+  #from-list li.lookup { color:var(--green) } @media (prefers-color-scheme: dark) { #from-list li.lookup { color:#6fd39b } }
   #from-status { color:var(--muted); font-size:0.8125rem }
   #from-status.ok { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0) }   /* picker shows it */
   #from-status:empty { display:none }
@@ -141,10 +147,8 @@
     .views .l { display:none } #teams .ti { display:none }
     .modes button { padding:4px 8px; font-size:0.8125em } .ts button { padding:3px 7px }
     main { padding:10px }
-    /* Phones: row 1 = picker + ✕ + ⓘ, row 2 = address box */
-    .from-pick { flex:1 1 0; order:0 } #s-from { max-width:none; width:100%; flex:1 }
-    #b-clear { order:1 } #b-info { order:2 } #from-status { order:3 } #from-note { order:5 }
-    #f-addr { flex:1 1 100%; order:4 }
+    /* Phones: one row - search box + Go, ✕, ⓘ */
+    .combo { flex:1 1 0 } #from-note { flex-basis:100% }
     /* Calendar toolbar */
   }
 
@@ -203,12 +207,13 @@
 </header>
 <main>
   <section id="from">
-    <label class="from-pick"><span aria-hidden="true">🚗</span>
-      <select id="s-from" aria-label="Drive from">
-        <option value="">Drive from…</option>
-        <option value="geo">📍 My location</option>
-      </select></label>
-    <form id="f-addr"><input id="i-addr" placeholder="or city / address" autocomplete="off" aria-label="Starting location"><button>Go</button></form>
+    <form id="f-addr" class="combo" autocomplete="off">
+      <span class="combo-ico" aria-hidden="true">🚗</span>
+      <input id="i-addr" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="from-list"
+             placeholder="Drive from… gym or address" aria-label="Drive from">
+      <button id="b-go" title="Use this">Go</button>
+      <ul id="from-list" role="listbox" hidden></ul>
+    </form>
     <button id="b-clear" type="button" hidden title="Clear starting point" aria-label="Clear starting point">✕</button>
     <button id="b-info" type="button" title="Privacy" aria-label="About location privacy" aria-expanded="false">ⓘ</button>
     <span id="from-status" aria-live="polite"></span>
@@ -312,10 +317,21 @@ function useMyLocation() {
 }
 $("b-info").onclick = () => { const n = $("from-note"); n.hidden = !n.hidden; $("b-info").setAttribute("aria-expanded", String(!n.hidden)); };
 
-$("f-addr").onsubmit = async ev => {
+$("f-addr").onsubmit = ev => {
   ev.preventDefault();
   const q = $("i-addr").value.trim();
+  const active = $("from-list").querySelector('li[aria-selected="true"]');
+  if (active) return chooseFrom(active.dataset.v);
+  closeCombo();
   if (!q) return;
+  if (origin && q === $("i-addr").value.trim() && $("i-addr").classList.contains("set")) return;   // unchanged
+  const exact = FROM_CHOICES.find(c => c.label.toLowerCase() === q.toLowerCase());
+  if (exact) return chooseFrom(exact.v);
+  lookupAddress(q);
+};
+async function lookupAddress(q) {
+  if (!q) return;
+  $("from-status").classList.remove("ok");
   $("from-status").textContent = `Looking up “${q}”…`;
   try {
     const r = await fetch("https://nominatim.openstreetmap.org/search?" + new URLSearchParams({ q, format: "json", limit: 1 }));
@@ -324,7 +340,9 @@ $("f-addr").onsubmit = async ev => {
     const label = hit.display_name.split(",").slice(0, 2).join(",").trim();
     setOrigin({ key: "addr", label, lat: +hit.lat, lon: +hit.lon });
   } catch (err) { $("from-status").textContent = `Lookup failed (${err.message}).`; }
-};
+}
+// Typing marks the box "not set" (it no longer shows the current starting point)
+$("i-addr").addEventListener("input", () => $("i-addr").classList.remove("set"));
 $("b-clear").onclick = clearOrigin;
 
 // ---------- results ----------
@@ -664,32 +682,59 @@ function venueOrigin(key) {
   const v = DATA.venues[key];
   return { key: "venue:" + key, label: v.name.split(" — ")[0].replace(/ \(.*\)$/, ""), lat: v.lat, lon: v.lon };
 }
-// One picker: "geo" (my location), "o:<preset>" (Pasadena, SLO), "v:<venue>", and "addr" for a typed place.
+// ---------- Drive from: one search box with suggestions ----------
+// Choices: "geo" (my location), "o:<preset>" (Pasadena, SLO), "v:<venue>"; any other text is looked up
+// as an address. The box shows the current starting point once one is set.
+let FROM_CHOICES = [], comboActive = -1;
 function fillFromPicker() {
-  const presets = Object.entries(DATA.origins).map(([k, o]) => `<option value="o:${k}">${esc(o.label)}</option>`).join("");
-  const venues = Object.entries(DATA.venues).sort((a, b) => a[1].name.localeCompare(b[1].name))
-    .map(([k, v]) => `<option value="v:${k}">${esc(v.name.split(" — ")[0])}</option>`).join("");
-  $("s-from").insertAdjacentHTML("beforeend", `<optgroup label="Places">${presets}</optgroup><optgroup label="Gyms">${venues}</optgroup>`);
-  $("s-from").onchange = () => {
-    const v = $("s-from").value;
-    if (!v) return clearOrigin();
-    if (v === "geo") return useMyLocation();
-    if (v.startsWith("o:")) { const k = v.slice(2), o = DATA.origins[k]; return setOrigin({ key: k, label: o.label, lat: o.lat, lon: o.lon }); }
-    if (v.startsWith("v:")) return setOrigin(venueOrigin(v.slice(2)));
-  };
+  FROM_CHOICES = [{ v: "geo", label: "📍 My location", group: "" },
+    ...Object.entries(DATA.origins).map(([k, o]) => ({ v: "o:" + k, label: o.label, group: "Places" })),
+    ...Object.entries(DATA.venues).sort((a, b) => a[1].name.localeCompare(b[1].name))
+       .map(([k, v]) => ({ v: "v:" + k, label: v.name.split(" — ")[0], group: "Gyms", city: v.city }))];
+  const box = $("i-addr");
+  box.addEventListener("focus", () => { box.select(); openCombo(""); });
+  box.addEventListener("click", () => { if ($("from-list").hidden) openCombo(""); });
+  box.addEventListener("input", () => openCombo(box.value));
+  box.addEventListener("keydown", ev => {
+    const items = [...$("from-list").querySelectorAll("li[role=option]")];
+    if (ev.key === "ArrowDown" || ev.key === "ArrowUp") {
+      ev.preventDefault();
+      if ($("from-list").hidden) openCombo(box.value);
+      comboActive = (comboActive + (ev.key === "ArrowDown" ? 1 : -1) + items.length) % items.length;
+      items.forEach((li, i) => li.setAttribute("aria-selected", String(i === comboActive)));
+      items[comboActive]?.scrollIntoView({ block: "nearest" });
+    } else if (ev.key === "Escape") { closeCombo(); syncFromPicker(origin); }
+  });
+  document.addEventListener("click", ev => { if (!$("f-addr").contains(ev.target)) closeCombo(); });
+}
+function openCombo(q) {
+  q = (q || "").trim().toLowerCase();
+  const shown = q && origin && q === (origin.label || "").toLowerCase() ? "" : q;     // box still shows the current choice
+  const hit = c => !shown || c.label.toLowerCase().includes(shown) || (c.city || "").toLowerCase().includes(shown);
+  let html = "", group = null;
+  for (const c of FROM_CHOICES.filter(hit)) {
+    if (c.group !== group) { group = c.group; if (group) html += `<li class="grp" role="presentation">${esc(group)}</li>`; }
+    html += `<li role="option" data-v="${c.v}" aria-selected="false">${esc(c.label)}${c.city ? ` <span class="sub">· ${esc(c.city)}</span>` : ""}</li>`;
+  }
+  if (shown) html += `<li role="option" class="lookup" data-v="lookup" aria-selected="false">🔎 Look up “${esc($("i-addr").value.trim())}”</li>`;
+  $("from-list").innerHTML = html;
+  $("from-list").hidden = !html;
+  $("i-addr").setAttribute("aria-expanded", String(!!html));
+  comboActive = -1;
+  $("from-list").querySelectorAll("li[role=option]").forEach(li => li.onmousedown = ev => { ev.preventDefault(); chooseFrom(li.dataset.v); });
+}
+function closeCombo() { $("from-list").hidden = true; $("i-addr").setAttribute("aria-expanded", "false"); comboActive = -1; }
+function chooseFrom(v) {
+  closeCombo();
+  if (v === "lookup") return lookupAddress($("i-addr").value.trim());
+  if (v === "geo") return useMyLocation();
+  if (v.startsWith("o:")) { const k = v.slice(2), o = DATA.origins[k]; return setOrigin({ key: k, label: o.label, lat: o.lat, lon: o.lon }); }
+  if (v.startsWith("v:")) return setOrigin(venueOrigin(v.slice(2)));
 }
 function syncFromPicker(o) {
-  const sel = $("s-from");
-  sel.querySelector('option[value="addr"]')?.remove();
-  let val = "";
-  if (o) {
-    if (o.key === "geo") val = "geo";
-    else if ((o.key || "").startsWith("venue:")) val = "v:" + o.key.slice(6);
-    else if (DATA.origins[o.key]) val = "o:" + o.key;
-    else { sel.insertAdjacentHTML("afterbegin", `<option value="addr">📌 ${esc(o.label)}</option>`); val = "addr"; }
-  }
-  sel.value = val;
-  sel.classList.toggle("set", !!o);
+  const box = $("i-addr");
+  box.value = o ? (o.key === "geo" ? `📍 ${o.label}` : o.label) : "";
+  box.classList.toggle("set", !!o);
 }
 
 // ---------- back-to-back legs (same/next-day games): drive from the previous venue ----------

@@ -170,9 +170,13 @@ def run(team, force=False):
     prev = json.loads(on_disk) if on_disk else {}
     today = today_pt()
     finished = [e for e in events if e.end_date <= today]
-    # A box score still missing/incomplete a week after the game is left alone (re-run with --force).
+    # Fetched until complete: missing, or saved without minutes (the stat crew often finishes the box
+    # later: rebounds, assists, minutes). Left alone a week after the game (re-run with --force).
     recent = today - RETRY_DAYS
-    missing = [e for e in finished if force or (e.end_date >= recent and not (box_dir / f"{e.id}.json").exists())]
+    def provisional(e):
+        f = box_dir / f"{e.id}.json"
+        return not f.exists() or not normalize_game(json.loads(f.read_text()))["minutes"]
+    missing = [e for e in finished if force or (e.end_date >= recent and provisional(e))]
     stamp = roster_stamp(team)
     roster_age = dt.datetime.now(TZ) - dt.datetime.fromisoformat(stamp.read_text().strip()) if stamp.exists() else None
     need_roster = force or not prev.get("roster") or roster_age is None or roster_age > ROSTER_MAX_AGE
@@ -190,11 +194,12 @@ def run(team, force=False):
             if not ok:
                 print(f"{team}: box score {e.id} not final yet ({why}); will retry")
                 continue
-            if lines:
-                (box_dir / f"{e.id}.json").write_text(json.dumps(
-                    {"event": e.id, "date": e.date.isoformat(), "opponent": e.opponent, "boxscore": url, "lines": lines},
-                    indent=1) + "\n")
-                print(f"{team}: box score {e.id} ({len(lines)} players)")
+            f = box_dir / f"{e.id}.json"
+            new = json.dumps({"event": e.id, "date": e.date.isoformat(), "opponent": e.opponent, "boxscore": url,
+                              "lines": lines}, indent=1) + "\n"
+            if not f.exists() or f.read_text() != new:
+                print(f"{team}: box score {e.id} ({len(lines)} players){' updated' if f.exists() else ''}")
+                f.write_text(new)
             time.sleep(1)                             # polite to the athletics site
         if need_roster:
             roster_url = re.sub(r"/schedule.*$", "/roster", sched["source_url"])

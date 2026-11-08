@@ -168,3 +168,24 @@ def test_box_comment_is_opt_in_and_not_backfilled(followed_game, monkeypatch):
     monkeypatch.setattr(daily, "today_pt", lambda: dt.date(2026, 11, 10))
     daily.main()
     assert not any("<!-- box -->" in c for c in fake.comments.get(7, []))
+
+
+def test_box_saved_without_minutes_is_rechecked_and_updated(stats_env, monkeypatch):
+    """Presto often finishes a box score later: one saved without minutes is re-read (for a week)."""
+    root, e, fetched, _ = stats_env
+    pages = {"box": "box-sequoias.html"}                                  # first: no minutes (MIN 1 placeholders)
+    real_fetch = fetch_stats.fetch
+    def fetch(url):
+        if "box.example" in url:
+            fetched.append(url); return page(pages["box"])
+        return real_fetch(url)
+    monkeypatch.setattr(fetch_stats, "fetch", fetch)
+    fetch_stats.run(None)
+    f = root / "data/box" / f"{e.id}.json"
+    assert not normalize_game(json.loads(f.read_text()))["minutes"]
+    pages["box"] = "box-gavilan.html"                                     # later: the finished box score
+    fetch_stats.run(None)
+    assert normalize_game(json.loads(f.read_text()))["minutes"]
+    n = len(fetched)
+    fetch_stats.run(None)                                                 # complete now: no more box requests
+    assert not any("box.example" in u for u in fetched[n:])

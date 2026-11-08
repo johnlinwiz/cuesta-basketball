@@ -448,18 +448,19 @@ def test_combobox_escape_restores_the_current_choice(make_page):
 @pytest.mark.parametrize("mobile", [True, False])
 def test_view_buttons_jump_to_the_view(make_page, mobile):
     page, _ = make_page(mobile=mobile, frozen=False)
-    # Where it lands is the point, not the animation: reduced motion makes the jump instant
-    # (smooth scrolling timing varies on busy CI runners).
-    page.emulate_media(reduced_motion="reduce")
-    page.evaluate("window.scrollTo(0, 0)")
+    page.emulate_media(reduced_motion="reduce")        # where it lands is the point, not the animation
     hdr = page.locator("header").bounding_box()["height"]
     for btn, view in (("#m-cal", "#view-cal"), ("#m-map", "#view-map"), ("#m-tbl", "#view-tbl")):
         page.evaluate("window.scrollTo(0, 0)")
         page.click(btn)
-        page.wait_for_function(f"Math.abs(document.querySelector('{view}').getBoundingClientRect().top - {hdr} - 8) < 4"
-                               f" || document.documentElement.scrollHeight - innerHeight - scrollY < 2", timeout=10000)
-        top = page.locator(view).bounding_box()["y"]
-        assert top >= hdr - 1, f"{view} hidden under the sticky header ({top} < {hdr})"
+        # wait until scrolling has settled (same scrollY for ~300 ms)
+        page.wait_for_function("""() => { const y = scrollY, t = performance.now();
+            if (window.__y !== y) { window.__y = y; window.__t = t; return false; } return t - window.__t > 300; }""",
+            polling=50, timeout=10000)
+        m = page.evaluate(f"""() => ({{ top: document.querySelector('{view}').getBoundingClientRect().top, y: scrollY,
+            atBottom: document.documentElement.scrollHeight - innerHeight - scrollY < 2 }})""")
+        assert m["y"] > 0, f"{btn}: page did not scroll ({m})"
+        assert m["atBottom"] or hdr - 1 <= m["top"] <= hdr + 20, f"{btn}: {view} top {m['top']:.0f}px, header {hdr:.0f}px ({m})"
 
 
 def test_page_load_does_not_jump(make_page):

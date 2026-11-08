@@ -199,6 +199,23 @@
   .fv button { color:#c9a227; font-size:1rem; line-height:1 }
   .box-lines { font-size:0.75rem; color:var(--muted); margin-top:2px } .box-lines .me { color:var(--ink); font-weight:600 }
   #dlg .stw { margin:4px 0 10px }
+  .st-filters label { display:inline-flex; gap:5px; align-items:center; color:var(--muted) }
+  .st-filters select, .st-btn, .cmp-pick select { font:inherit; color:var(--ink); background:var(--card); border:1px solid #8886; border-radius:6px; padding:3px 6px }
+  .st-btn { cursor:pointer } .st-help { margin:2px 0 0; font-size:0.75rem }
+  table.st td.weak { opacity:.45 } table.st b.hi { color:var(--green) } @media (prefers-color-scheme: dark) { table.st b.hi { color:#6fd39b } }
+  .leaders { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:8px; margin:0 0 8px }
+  .ld { background:var(--card); border:1px solid #8883; border-radius:8px; padding:6px 10px; font-size:0.8125rem }
+  .ld h3 { margin:0 0 2px; font-size:0.6875rem; text-transform:uppercase; letter-spacing:.3px; color:var(--muted) }
+  .ld ol { margin:0; padding-left:1.2em } .ld li b { float:right } .ld button.link { background:none; border:0; padding:0; font:inherit; color:var(--green); cursor:pointer }
+  @media (prefers-color-scheme: dark) { .ld button.link { color:#6fd39b } }
+  @media (max-width:640px) { .leaders { grid-template-columns:1fr 1fr 1fr; gap:6px } .ld { padding:5px 7px; font-size:0.75rem } .ld ol { padding-left:1em } }
+  .pchart { margin:6px 0 4px } .pchart svg { width:100%; max-width:420px; height:auto; display:block }
+  .pchart .bar { fill:var(--green) } @media (prefers-color-scheme: dark) { .pchart .bar { fill:#6fd39b } }
+  .pchart .axis { stroke:#8886; stroke-width:1 } .pchart text { font-size:10px; fill:var(--muted) } .pchart text.v { fill:var(--ink); font-weight:600 }
+  .pchart rect.hit { fill:transparent; cursor:pointer; outline:none } .pchart rect.hit.on, .pchart rect.hit:focus-visible { fill:#8881 }
+  .pchart figcaption { font-size:0.75rem; color:var(--muted); min-height:1.2em }
+  .cmp-pick { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px } .cmp-pick select { max-width:100% }
+  table.cmp th.l { text-align:left; cursor:default }
 </style>
 </head>
 <body>
@@ -262,11 +279,21 @@
       <p class="muted">🟢 home · ⚫ away · 🟡 tournament/neutral. Marker size = number of games. Click a venue for games, drive time and route.</p></aside>
   </section>
   <section id="view-stats" hidden>
-    <div class="st-bar"><span class="seg" role="group" aria-label="Stat mode">
-      <button type="button" id="st-avg" class="on">Per game</button><button type="button" id="st-tot">Totals</button></span>
-      <span class="muted">☆ = follow a player (saved on this device) · click a name for the game log · click a column to sort</span></div>
+    <div class="st-bar">
+      <span class="seg" role="group" aria-label="Per game or totals"><button type="button" data-st-mode="avg">Per game</button><button type="button" data-st-mode="tot">Totals</button></span>
+      <span class="seg" role="group" aria-label="Columns"><button type="button" data-st-cols="basic">Basic</button><button type="button" data-st-cols="shoot">Shooting</button><button type="button" data-st-cols="reb">Rebounds</button><button type="button" data-st-cols="adv">Advanced</button></span>
+      <button type="button" class="st-btn" id="st-compare">⇄ Compare</button><button type="button" class="st-btn" id="st-csv" title="Download this table as CSV">⬇ CSV</button>
+    </div>
+    <div class="st-bar st-filters">
+      <label>Games <select id="st-games"><option value="all">All</option><option value="conf">Conference</option><option value="nonconf">Non-conference</option></select></label>
+      <label>Site <select id="st-site"><option value="all">All</option><option value="home">Home</option><option value="away">Away &amp; neutral</option></select></label>
+      <label>Span <select id="st-span"><option value="0">Season</option><option value="5">Last 5</option><option value="3">Last 3</option></select></label>
+      <label>Role <select id="st-role"><option value="all">All</option><option value="starter">As starter</option><option value="bench">Off the bench</option></select></label>
+      <button type="button" class="st-btn" id="st-reset" hidden>✕ Reset filters</button>
+    </div>
+    <p class="muted st-help">☆ follow a player (saved on this device) · tap a name for highs, chart and game log · tap a column to sort (again to reverse)</p>
     <div id="st-body"></div>
-    <p class="muted">From the official box scores (scrimmages not counted), usually posted the night of or the day after each game. MIN per game counts only games where minutes were recorded.</p>
+    <p class="muted">From the official box scores (scrimmages not counted), usually posted the night of or the day after each game. MIN and per-40 stats count only games where minutes were recorded. Shooting % needs 1 attempt per game (3 in all) to rank; smaller samples are faded and sort last. Leaders need half the games.</p>
   </section>
 </main>
 <div id="ts-badge" aria-live="polite"></div>
@@ -288,7 +315,6 @@ let CAL, DATA, origin = null, drives = {};   // drives: venueKey -> {min, mi}
 let STATS = { teams: [], byEvent: {} };      // byEvent: event id -> {team, short, lines}
 const FOLLOW_STORE = "cuesta-follow";
 let FOLLOW = new Set((() => { try { return JSON.parse(localStorage.getItem(FOLLOW_STORE) || "[]"); } catch { return []; } })());
-let ST_MODE = "avg", ST_SORT = { col: "pts", dir: -1 };
 const fkey = (team, name) => `${team}|${name}`;
 const isFollowed = (team, name) => FOLLOW.has(fkey(team, name));
 function toggleFollow(team, name) {
@@ -343,32 +369,118 @@ function boxTableHtml(eventId) {
     <td>${tot("stl")}</td><td>${tot("blk")}</td><td>${tot("to")}</td><td>${tot("pf")}</td></tr></tfoot></table>
     <small class="muted">* starter · ☆ follow a player${noMin ? " · minutes weren't recorded for this game" : ""}</small></div>`;
 }
-// Season table: one row per player (box-score totals + roster bio; rostered players who haven't played at the bottom).
-const ST_COLS = [["gp", "GP"], ["min", "Min"], ["pts", "Pts"], ["reb", "Reb"], ["ast", "Ast"], ["stl", "Stl"], ["blk", "Blk"], ["to", "TO"],
-                 ["fgp", "FG%"], ["fg3p", "3P%"], ["ftp", "FT%"]];
-function seasonRows(t) {
-  const bio = Object.fromEntries((t.roster || []).map(r => [r.name.toLowerCase(), r]));
-  const rows = (t.season || []).map(s => ({ ...s, bio: bio[s.name.toLowerCase()] }));
-  const seen = new Set(rows.map(r => r.name.toLowerCase()));
-  for (const r of t.roster || []) if (!seen.has(r.name.toLowerCase())) rows.push({ name: r.name, no: r.no, gp: 0, bio: r });
-  return rows;
+// ---------- season table: computed here from the box scores, so it can be filtered ----------
+// State lives in the URL (#stats/sort=reb&dir=1&games=conf…) so a link reopens the same view.
+const ST_ALLOWED = { mode: ["avg", "tot"], cols: ["basic", "shoot", "reb", "adv"], games: ["all", "conf", "nonconf"],
+                     site: ["all", "home", "away"], span: ["0", "5", "3"], role: ["all", "starter", "bench"], dir: ["-1", "1"] };
+const ST_DEFAULT = { mode: "avg", cols: "basic", games: "all", site: "all", span: "0", role: "all", sort: "pts", dir: "-1" };
+let ST = { ...ST_DEFAULT };
+function stFromHash() {
+  const q = new URLSearchParams(location.hash.split("/")[1] || ""), st = { ...ST_DEFAULT };
+  for (const k in ST_DEFAULT) {
+    const v = q.get(k);
+    if (v != null && (k === "sort" ? (v in C || v in STR) : ST_ALLOWED[k].includes(v))) st[k] = v;
+  }
+  return st;
 }
-function stVal(r, col) {
-  if (col === "fgp") return r.fga ? r.fgm / r.fga : -1;
-  if (col === "fg3p") return r.fg3a ? r.fg3m / r.fg3a : -1;
-  if (col === "ftp") return r.fta ? r.ftm / r.fta : -1;
-  if (col === "gp") return r.gp || 0;
-  if (col === "min") return r.mgp ? (ST_MODE === "avg" ? r.min / r.mgp : r.min) : -1;
-  return ST_MODE === "avg" ? (r.gp ? (r[col] || 0) / r.gp : -1) : (r[col] || 0);
+function stHash() {
+  const q = new URLSearchParams(Object.entries(ST).filter(([k, v]) => v !== ST_DEFAULT[k])).toString();
+  return "#stats" + (q ? "/" + q : "");
 }
-function stCell(r, col) {
-  if (!r.gp) return "—";
-  if (col === "fgp") return pct(r.fgm, r.fga);
-  if (col === "fg3p") return pct(r.fg3m, r.fg3a);
-  if (col === "ftp") return pct(r.ftm, r.fta);
-  if (col === "gp") return r.gp;
-  if (col === "min") return !r.mgp ? "—" : ST_MODE === "avg" ? (r.min / r.mgp).toFixed(1) : r.min;
-  return ST_MODE === "avg" ? ((r[col] || 0) / r.gp).toFixed(1) : (r[col] || 0);
+const stFiltered = () => ["games", "site", "span", "role"].some(k => ST[k] !== ST_DEFAULT[k]);
+
+const evOf = id => DATA.events.find(e => e.id === id);
+const isScrim = ev => /scrimmage/i.test(ev?.extendedProps.type || "");
+const isConf = ev => /conference/i.test(ev.extendedProps.type || "") && !/non-conference/i.test(ev.extendedProps.type || "");
+function stGames(t, st = ST) {
+  let gs = (t.games || []).map(g => ({ g, ev: evOf(g.event) })).filter(x => x.ev && !isScrim(x.ev));
+  if (st.games !== "all") gs = gs.filter(x => isConf(x.ev) === (st.games === "conf"));
+  if (st.site !== "all") gs = gs.filter(x => (x.ev.extendedProps.site === "Home") === (st.site === "home"));
+  gs.sort((a, b) => a.g.date.localeCompare(b.g.date));
+  return +st.span ? gs.slice(-st.span) : gs;
+}
+const SUMS = ["min", "fgm", "fga", "fg3m", "fg3a", "ftm", "fta", "oreb", "dreb", "reb", "ast", "stl", "blk", "to", "pf", "pts"];
+function aggregate(t, st = ST) {
+  const games = stGames(t, st), by = {};
+  for (const { g } of games) for (const l of g.lines) {
+    if ((st.role === "starter" && !l.starter) || (st.role === "bench" && l.starter)) continue;
+    const r = by[l.name] ??= { name: l.name, no: l.no, team: t.key, gp: 0, gs: 0, mgp: 0,
+                              ...Object.fromEntries(SUMS.map(k => [k, 0])), m: { pts: 0, reb: 0, ast: 0 } };
+    if (!played(l)) continue;
+    r.gp++; r.gs += l.starter ? 1 : 0;
+    for (const k of SUMS) r[k] += l[k] || 0;
+    if (l.min != null) { r.mgp++; for (const k in r.m) r.m[k] += l[k] || 0; }
+  }
+  const rows = Object.values(by), seen = new Set(rows.map(r => r.name.toLowerCase()));
+  for (const b of t.roster || []) if (!seen.has(b.name.toLowerCase())) rows.push({ name: b.name, no: b.no, team: t.key, gp: 0 });
+  const bio = Object.fromEntries((t.roster || []).map(b => [b.name.toLowerCase(), b]));
+  rows.forEach(r => { r.bio = bio[r.name.toLowerCase()]; if (!r.no && r.bio) r.no = r.bio.no; });
+  return { rows, n: games.length };
+}
+
+// Columns. v = sort value (null = no value), f = cell text, q = qualifies (shooting % needs a real sample).
+const per = (r, x) => ST.mode === "avg" ? x / r.gp : x;
+const dec = x => ST.mode === "avg" ? x.toFixed(1) : String(Math.round(x));
+const att = (n, r) => n >= Math.max(3, r.gp);       // ≥ 1 attempt per game played, and ≥ 3 in all
+const count = (k, h, t) => ({ h, t, v: r => per(r, r[k] || 0), f: r => dec(per(r, r[k] || 0)) });
+const madeAtt = (m, a, h, t) => ({ h, t, v: r => per(r, r[m]), f: r => `${dec(per(r, r[m]))}-${dec(per(r, r[a]))}` });
+const ratio = (h, t, num, den, q) => ({ h, t, v: r => den(r) ? num(r) / den(r) : null, f: r => (100 * num(r) / den(r)).toFixed(1), q });
+const per40 = (k, h) => ({ h, t: `${h.split("/")[0]} per 40 minutes (games with minutes recorded)`,
+                          v: r => r.min ? r.m[k] / r.min * 40 : null, f: r => (r.m[k] / r.min * 40).toFixed(1), q: r => r.min >= 40 });
+const C = {
+  gp: { h: "GP", t: "Games played", v: r => r.gp, f: r => String(r.gp) },
+  gs: { h: "GS", t: "Games started", v: r => r.gs, f: r => String(r.gs) },
+  min: { h: "Min", t: "Minutes (only games where minutes were recorded)", v: r => r.mgp ? (ST.mode === "avg" ? r.min / r.mgp : r.min) : null,
+         f: r => ST.mode === "avg" ? (r.min / r.mgp).toFixed(1) : String(r.min) },
+  pts: count("pts", "Pts", "Points"), reb: count("reb", "Reb", "Rebounds"), oreb: count("oreb", "OReb", "Offensive rebounds"),
+  dreb: count("dreb", "DReb", "Defensive rebounds"), ast: count("ast", "Ast", "Assists"), stl: count("stl", "Stl", "Steals"),
+  blk: count("blk", "Blk", "Blocks"), to: count("to", "TO", "Turnovers"), pf: count("pf", "PF", "Personal fouls"),
+  fg: madeAtt("fgm", "fga", "FGM-A", "Field goals made-attempted"), fg3: madeAtt("fg3m", "fg3a", "3PM-A", "3-pointers made-attempted"),
+  ft: madeAtt("ftm", "fta", "FTM-A", "Free throws made-attempted"),
+  fgp: ratio("FG%", "Field goal % (min. 1 attempt per game, 3 in all)", r => r.fgm, r => r.fga, r => att(r.fga, r)),
+  fg3p: ratio("3P%", "3-point % (min. 1 attempt per game, 3 in all)", r => r.fg3m, r => r.fg3a, r => att(r.fg3a, r)),
+  ftp: ratio("FT%", "Free throw % (min. 1 attempt per game, 3 in all)", r => r.ftm, r => r.fta, r => att(r.fta, r)),
+  efg: ratio("eFG%", "Effective FG%: a made 3 counts 1.5 field goals", r => r.fgm + 0.5 * r.fg3m, r => r.fga, r => att(r.fga, r)),
+  ts: ratio("TS%", "True shooting %: points per shot, free throws included", r => r.pts, r => 2 * (r.fga + 0.44 * r.fta),
+            r => att(r.fga + r.fta, r)),
+  pts40: per40("pts", "Pts/40"), reb40: per40("reb", "Reb/40"), ast40: per40("ast", "Ast/40"),
+  ato: { h: "A/TO", t: "Assists per turnover", v: r => r.to ? r.ast / r.to : r.ast ? Infinity : null,
+         f: r => r.to ? (r.ast / r.to).toFixed(2) : "∞", q: r => r.ast + r.to >= 3 },
+};
+const GROUPS = { basic: ["gp", "gs", "min", "pts", "reb", "ast", "stl", "blk", "to", "fgp", "fg3p", "ftp"],
+                 shoot: ["gp", "pts", "fg", "fgp", "fg3", "fg3p", "ft", "ftp", "efg", "ts"],
+                 reb: ["gp", "min", "oreb", "dreb", "reb", "pf"],
+                 adv: ["gp", "min", "pts40", "reb40", "ast40", "ato", "efg", "ts"] };
+const posShort = p => (p || "").split(/[\/ ]+/).filter(Boolean).map(w => w[0].toUpperCase()).join("/");
+const STR = { name: { h: "Player", v: r => lastName(r.name) + " " + r.name }, no: { h: "#", v: r => Number(r.no) || 999 },
+              pos: { h: "Pos", v: r => posShort(r.bio?.pos) || "~" } };
+const val = (c, r) => C[c] ? (r.gp ? C[c].v(r) : null) : STR[c].v(r);
+const qual = (c, r) => !C[c]?.q || C[c].q(r);
+function cell(c, r) {
+  const x = val(c, r);
+  if (x == null) return "—";
+  return C[c].f(r);
+}
+function sortRows(rows) {
+  const c = ST.sort, dir = +ST.dir, cmp = (a, b) => typeof a === "string" ? a.localeCompare(b) : a - b;
+  return rows.sort((a, b) => {
+    if (!STR[c]) {                                   // stats: not played, no value, too small a sample -> last
+      const d = (!a.gp - !b.gp) || ((val(c, a) == null) - (val(c, b) == null)) || (!qual(c, a) - !qual(c, b));
+      if (d) return d;
+    }
+    const va = val(c, a), vb = val(c, b);
+    return (va == null || vb == null ? 0 : cmp(va, vb) * dir) || a.name.localeCompare(b.name);
+  });
+}
+function leadersHtml(t, rows, n) {
+  const need = Math.max(1, Math.ceil(n / 2));          // leaders must have played half the games
+  const pool = rows.filter(r => r.gp >= need);
+  const card = (k, h) => {
+    const top = [...pool].sort((a, b) => b[k] / b.gp - a[k] / a.gp).slice(0, 3);
+    return `<div class="ld"><h3>${h}</h3><ol>${top.map(r => `<li><button type="button" class="link" data-team="${esc(t.key)}" data-name="${esc(r.name)}">${esc(lastName(r.name))}</button>
+      <b>${(r[k] / r.gp).toFixed(1)}</b></li>`).join("") || "<li class=muted>—</li>"}</ol></div>`;
+  };
+  return `<div class="leaders" aria-label="Team leaders">${card("pts", "Points")}${card("reb", "Rebounds")}${card("ast", "Assists")}</div>`;
 }
 function viewTeams() {
   const k = DATA?.teamKey;
@@ -377,57 +489,177 @@ function viewTeams() {
 function renderStats() {
   const el = $("st-body");
   if (!el || !DATA) return;
+  for (const k of ["mode", "cols"]) document.querySelectorAll(`[data-st-${k}]`).forEach(b => b.classList.toggle("on", b.dataset[`st${k[0].toUpperCase() + k.slice(1)}`] === ST[k]));
+  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).value = ST[k];
+  $("st-reset").hidden = !stFiltered();
+  if (!$("view-stats").hidden) history.replaceState(null, "", location.pathname + location.search + stHash());
   const teams = viewTeams();
-  if (!teams.some(t => (t.games || []).length || (t.roster || []).length)) {
+  if (!teams.some(t => (t.games || []).length)) {
     el.innerHTML = `<p class="muted">No box scores yet — player stats appear after the first game's box score is posted.</p>`; return;
   }
+  const cols = GROUPS[ST.cols];
   el.innerHTML = teams.map(t => {
-    const rows = seasonRows(t).sort((a, b) => (!a.gp - !b.gp)            // not played yet: always last
-      || (stVal(b, ST_SORT.col) - stVal(a, ST_SORT.col)) * -ST_SORT.dir || a.name.localeCompare(b.name));
-    const n = (t.games || []).filter(g => DATA.events.find(e => e.id === g.event)?.extendedProps.type !== "scrimmage").length;
-    const head = ST_COLS.map(([c, h]) => `<th data-col="${c}" class="${ST_SORT.col === c ? "on" + (ST_SORT.dir > 0 ? " asc" : "") : ""}">${h}</th>`).join("");
-    const body = rows.map(r => `<tr class="${r.gp ? "" : "dnp"} ${isFollowed(t.key, r.name) ? "fol" : ""}">
-      <td class="fv">${starBtn(t.key, r.name)}</td>
-      <td class="l pl"><button type="button" class="link" data-team="${esc(t.key)}" data-name="${esc(r.name)}">${esc(r.no)} ${esc(r.name)}</button>
-        <span class="sub">${esc([r.bio?.pos, r.bio?.cl, r.bio?.ht].filter(Boolean).join(" · "))}</span></td>
-      ${ST_COLS.map(([c]) => `<td>${c === "pts" ? `<b>${stCell(r, c)}</b>` : stCell(r, c)}</td>`).join("")}</tr>`).join("");
+    const { rows, n } = aggregate(t);
     const label = teams.length > 1 || DATA.teamKey === "all" ? `${esc(t.team.replace("College ", ""))} — ` : "";
-    return `<div class="stw"><h2>${label}${n} game${n === 1 ? "" : "s"} <span class="muted">· ${ST_MODE === "avg" ? "per game" : "season totals"}</span></h2>
-      <table class="st season" data-team="${esc(t.key)}"><thead><tr><th></th><th class="l pl">Player</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+    const head = `<h2>${label}${n} game${n === 1 ? "" : "s"} <span class="muted">· ${ST.mode === "avg" ? "per game" : "totals"}${stFiltered() ? " · filtered" : ""}</span></h2>`;
+    if (!n) return `<div class="stw">${head}<p class="muted">No games match these filters.</p></div>`;
+    const th = c => {
+      const d = C[c] || STR[c], on = ST.sort === c;
+      return `<th data-col="${c}" title="${esc(d.t || "Sort by " + d.h)}" class="${c === "name" ? "l pl " : c === "pos" ? "l " : ""}${on ? "on" + (+ST.dir > 0 ? " asc" : "") : ""}"
+        aria-sort="${on ? (+ST.dir > 0 ? "ascending" : "descending") : "none"}">${d.h}</th>`;
+    };
+    const body = sortRows(rows).map(r => `<tr class="${r.gp ? "" : "dnp"} ${isFollowed(t.key, r.name) ? "fol" : ""}">
+      <td class="fv">${starBtn(t.key, r.name)}</td>
+      <td class="l pl"><button type="button" class="link" data-team="${esc(t.key)}" data-name="${esc(r.name)}">${esc(r.name)}</button>
+        <span class="sub">${esc([r.bio?.cl, r.bio?.ht].filter(Boolean).join(" · "))}</span></td>
+      <td>${esc(r.no)}</td><td class="l">${esc(posShort(r.bio?.pos))}</td>
+      ${cols.map(c => {
+        const x = cell(c, r), weak = r.gp && val(c, r) != null && !qual(c, r);
+        return `<td${weak ? ' class="weak" title="Too few attempts to rank"' : ""}>${c === "pts" ? `<b>${x}</b>` : x}</td>`;
+      }).join("")}</tr>`).join("");
+    return `<div class="stw">${head}${leadersHtml(t, rows, n)}
+      <table class="st season" data-team="${esc(t.key)}"><thead><tr><th></th>${th("name")}${th("no")}${th("pos")}${cols.map(th).join("")}</tr></thead>
+      <tbody>${body}</tbody></table></div>`;
   }).join("");
   el.querySelectorAll("th[data-col]").forEach(th => th.onclick = () => {
-    const c = th.dataset.col;
-    ST_SORT = ST_SORT.col === c ? { col: c, dir: -ST_SORT.dir } : { col: c, dir: -1 };
+    const c = th.dataset.col, first = STR[c] ? "1" : "-1";
+    ST = { ...ST, sort: c, dir: ST.sort === c ? String(-ST.dir) : first };
     renderStats();
   });
   el.querySelectorAll("button.link").forEach(b => b.onclick = () => openPlayer(b.dataset.team, b.dataset.name));
   wireStars(el);
 }
+function wireStatsControls() {
+  document.querySelectorAll("[data-st-mode]").forEach(b => b.onclick = () => { ST.mode = b.dataset.stMode; renderStats(); });
+  document.querySelectorAll("[data-st-cols]").forEach(b => b.onclick = () => {
+    ST.cols = b.dataset.stCols;
+    const g = GROUPS[ST.cols];        // sorted by a column this group doesn't show: fall back to its headline stat
+    if (C[ST.sort] && !g.includes(ST.sort)) ST = { ...ST, sort: g.find(c => c === "pts") || g.find(c => c !== "gp" && c !== "min"), dir: "-1" };
+    renderStats();
+  });
+  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).onchange = ev => { ST[k] = ev.target.value; renderStats(); };
+  $("st-reset").onclick = () => { for (const k of ["games", "site", "span", "role"]) ST[k] = ST_DEFAULT[k]; renderStats(); };
+  $("st-compare").onclick = () => openCompare();
+  $("st-csv").onclick = downloadCsv;
+}
+
+// ---------- player pop-up: highs, points-by-game chart, game log ----------
+function pointsChart(log) {
+  // One series (points), so no legend; the game log below is the table view. Bars: 4px rounded
+  // tops on the baseline, 2px gaps; the season high is labelled; hover/tap/focus reads out a game.
+  const W = 320, H = 118, top = 16, base = 96, n = log.length;
+  if (!n) return "";
+  const max = Math.max(10, ...log.map(x => x.l.pts || 0)), slot = W / n, bw = Math.max(4, Math.min(28, slot - 2));
+  const hi = Math.max(...log.map(x => x.l.pts || 0));
+  const bars = log.map(({ l, p, g }, i) => {
+    const h = played(l) ? (l.pts / max) * (base - top) : 0, x = i * slot + (slot - bw) / 2, y = base - h, r = Math.min(4, bw / 2, h);
+    const bar = h > 0 ? `<path class="bar" d="M${x},${base}V${y + r}Q${x},${y} ${x + r},${y}H${x + bw - r}Q${x + bw},${y} ${x + bw},${y + r}V${base}Z"/>` : "";
+    const lab = played(l) && l.pts === hi && hi > 0 ? `<text class="v" x="${x + bw / 2}" y="${y - 4}" text-anchor="middle">${l.pts}</text>` : "";
+    const dnp = played(l) ? "" : `<text class="t" x="${x + bw / 2}" y="${base - 3}" text-anchor="middle">DNP</text>`;
+    const tick = n <= 12 || i % Math.ceil(n / 12) === 0 ? `<text class="t" x="${x + bw / 2}" y="${base + 14}" text-anchor="middle">${esc(g.date.slice(5).replace("-", "/").replace(/^0/, ""))}</text>` : "";
+    const say = `${p?.dateLabel || g.date} · ${p?.matchup || g.opponent}: ${played(l) ? `${l.pts} pts` : "did not play"}`;
+    return `${bar}${lab}${dnp}${tick}<rect class="hit" data-say="${esc(say)}" x="${i * slot}" y="0" width="${slot}" height="${H}" tabindex="0" aria-label="${esc(say)}"/>`;
+  }).join("");
+  return `<figure class="pchart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Points by game">
+    <line class="axis" x1="0" x2="${W}" y1="${base}" y2="${base}"/>${bars}</svg>
+    <figcaption id="pc-read" aria-live="polite">Points by game · hover or tap a bar</figcaption></figure>`;
+}
+function playerLog(t, name) {
+  return (t.games || []).map(g => ({ g, l: g.lines.find(l => l.name === name), e: evOf(g.event) }))
+    .filter(x => x.l).sort((a, b) => a.g.date.localeCompare(b.g.date)).map(x => ({ ...x, p: x.e?.extendedProps }));
+}
 function openPlayer(team, name) {
   const t = STATS.teams.find(x => x.key === team);
   if (!t) return;
-  const r = seasonRows(t).find(x => x.name === name) || { name };
-  const games = (t.games || []).map(g => ({ g, l: g.lines.find(l => l.name === name), e: DATA.events.find(e => e.id === g.event) })).filter(x => x.l);
+  const season = aggregate(t, ST_DEFAULT).rows.find(x => x.name === name) || { name, gp: 0 };
+  const log = playerLog(t, name), real = log.filter(x => !isScrim(x.e) && played(x.l));
+  const high = k => real.reduce((b, x) => (x.l[k] || 0) > (b?.l[k] ?? -1) ? x : b, null);
   const draw = () => {
-    $("d-title").textContent = `${r.no ? "#" + r.no + " " : ""}${name}`;
-    $("d-sub").textContent = [r.bio?.pos, r.bio?.cl, r.bio?.ht, r.bio?.home, t.team.replace("College ", "")].filter(Boolean).join(" · ");
-    const log = games.map(({ g, l, e }) => {
-      const p = e?.extendedProps, res = p?.results?.[0];
-      return `<tr class="${played(l) ? "" : "dnp"}"><td class="l pl">${esc(p?.dateLabel || g.date)} ${esc(p?.matchup || g.opponent)}${p?.type === "scrimmage" ? ' <span class="muted">(scrim.)</span>' : ""}
+    $("d-title").textContent = `${season.no ? "#" + season.no + " " : ""}${name}`;
+    $("d-sub").textContent = [season.bio?.pos, season.bio?.cl, season.bio?.ht, season.bio?.home, t.team.replace("College ", "")].filter(Boolean).join(" · ");
+    const highs = ["pts", "reb", "ast"].map(k => { const x = high(k); return x && x.l[k] ? `${x.l[k]} ${k} (${esc(x.p?.matchup || x.g.opponent)})` : ""; }).filter(Boolean);
+    const isHigh = (k, l) => real.length > 1 && l[k] && high(k)?.l === l;
+    const td = (k, l) => `<td>${isHigh(k, l) ? `<b class="hi" title="Season high">${l[k]}</b>` : l[k]}</td>`;
+    const rows = log.map(({ g, l, p }) => {
+      const res = p?.results?.[0];
+      return `<tr class="${played(l) ? "" : "dnp"}"><td class="l pl">${esc(p?.dateLabel || g.date)} ${esc(p?.matchup || g.opponent)}${isScrim({ extendedProps: p }) ? ' <span class="muted">(scrim.)</span>' : ""}
         ${res ? `<span class="res ${res.outcome}">${esc(res.label)}</span>` : ""}</td>
-        ${played(l) ? `<td>${minCell(l.min)}</td><td><b>${l.pts}</b></td><td>${l.reb}</td><td>${l.ast}</td><td>${shoot(l.fgm, l.fga)}</td><td>${shoot(l.fg3m, l.fg3a)}</td><td>${shoot(l.ftm, l.fta)}</td>`
-                    : `<td class="l" colspan="7">DNP</td>`}</tr>`;
+        ${played(l) ? `<td>${minCell(l.min)}</td>${td("pts", l)}${td("reb", l)}${td("ast", l)}<td>${l.stl}</td><td>${l.blk}</td><td>${l.to}</td>
+          <td>${shoot(l.fgm, l.fga)}</td><td>${shoot(l.fg3m, l.fg3a)}</td><td>${shoot(l.ftm, l.fta)}</td>` : `<td class="l" colspan="10">DNP</td>`}</tr>`;
     }).join("");
-    $("d-body").innerHTML = (r.gp ? `<p>📈 ${(r.pts / r.gp).toFixed(1)} pts · ${(r.reb / r.gp).toFixed(1)} reb · ${(r.ast / r.gp).toFixed(1)} ast per game
-        <span class="muted">(${r.gp} GP, FG ${pct(r.fgm, r.fga)}%)</span></p>` : `<p class="muted">No game minutes yet this season.</p>`) +
-      (log ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>FG</th><th>3PT</th><th>FT</th></tr></thead>
-        <tbody>${log}</tbody></table></div>` : "");
+    $("d-body").innerHTML = (season.gp ? `<p>📈 ${(season.pts / season.gp).toFixed(1)} pts · ${(season.reb / season.gp).toFixed(1)} reb · ${(season.ast / season.gp).toFixed(1)} ast per game
+        <span class="muted">(${season.gp} GP, FG ${season.fga ? (100 * season.fgm / season.fga).toFixed(1) : "—"}%)</span></p>` : `<p class="muted">No game minutes yet this season.</p>`) +
+      (highs.length ? `<p class="muted">Season highs: ${highs.join(" · ")}</p>` : "") +
+      pointsChart(log) +
+      (rows ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>Stl</th><th>Blk</th><th>TO</th>
+        <th>FG</th><th>3PT</th><th>FT</th></tr></thead><tbody>${rows}</tbody></table></div>` : "");
+    $("d-body").querySelectorAll(".pchart rect.hit").forEach(h => {
+      const say = () => { $("pc-read").textContent = h.dataset.say; $("d-body").querySelectorAll(".pchart rect.hit.on").forEach(o => o.classList.remove("on")); h.classList.add("on"); };
+      h.addEventListener("pointerenter", say); h.addEventListener("focus", say); h.addEventListener("click", say);
+    });
     $("d-foot").innerHTML = `<button type="button" id="d-follow">${isFollowed(team, name) ? "★ Following" : "☆ Follow"}</button>
-      <button onclick="dlg.close()">Close</button>`;
+      ${season.gp ? `<button type="button" id="d-compare">⇄ Compare</button>` : ""}<button onclick="dlg.close()">Close</button>`;
     $("d-follow").onclick = () => { toggleFollow(team, name); draw(); };
+    if ($("d-compare")) $("d-compare").onclick = () => openCompare([fkey(team, name)]);
   };
   draw();
   if (!$("dlg").open) $("dlg").showModal();
+}
+
+// ---------- compare up to 3 players (current filters) ----------
+const CMP_ROWS = ["gp", "min", "pts", "reb", "ast", "stl", "blk", "to", "fgp", "fg3p", "ftp", "efg", "ts", "pts40"];
+function openCompare(want = []) {
+  const multi = viewTeams().length > 1, icon = { MBB: "👨 ", WBB: "👩 " };
+  const pool = viewTeams().flatMap(t => aggregate(t).rows.filter(r => r.gp).map(r => ({ ...r, k: fkey(t.key, r.name), lbl: (multi ? icon[t.short] || "" : "") + r.name })));
+  const byPts = [...pool].sort((a, b) => b.pts / b.gp - a.pts / a.gp);
+  let picks = [...want, ...[...FOLLOW].filter(k => !want.includes(k)), ...byPts.map(r => r.k)]
+    .filter((k, i, a) => a.indexOf(k) === i && pool.some(r => r.k === k)).slice(0, Math.min(3, Math.max(2, want.length + 1)));
+  const draw = () => {
+    const ps = picks.map(k => pool.find(r => r.k === k)).filter(Boolean);
+    $("d-title").textContent = "Compare players";
+    $("d-sub").textContent = `${ST.mode === "avg" ? "Per game" : "Totals"}${stFiltered() ? " · Stats filters applied" : ""} · best in bold`;
+    const sel = i => `<select data-i="${i}" aria-label="Player ${i + 1}"><option value="">${i < 2 ? "Pick a player" : "— add a player —"}</option>${
+      pool.map(r => `<option value="${esc(r.k)}"${picks[i] === r.k ? " selected" : ""}>${esc(r.lbl)}</option>`).join("")}</select>`;
+    const rows = CMP_ROWS.map(c => {
+      const vs = ps.map(r => val(c, r) != null && qual(c, r) ? val(c, r) : null), ok = vs.filter(v => v != null);
+      const best = ok.length > 1 && c !== "gp" && c !== "min" ? (c === "to" ? Math.min(...ok) : Math.max(...ok)) : null;
+      return `<tr><th class="l" title="${esc(C[c].t)}">${C[c].h}</th>${ps.map((r, i) => {
+        const x = cell(c, r), weak = val(c, r) != null && !qual(c, r);
+        return `<td class="${weak ? "weak" : ""}">${best != null && vs[i] === best ? `<b>${x}</b>` : x}</td>`;
+      }).join("")}</tr>`;
+    }).join("");
+    $("d-body").innerHTML = `<div class="cmp-pick">${[0, 1, 2].map(sel).join("")}</div>` + (ps.length ? `<div class="stw"><table class="st cmp">
+      <thead><tr><th></th>${ps.map(r => `<th>${esc(r.lbl)}</th>`).join("")}</tr></thead><tbody>${rows}</tbody></table></div>` : "");
+    $("d-body").querySelectorAll(".cmp-pick select").forEach(s => s.onchange = () => {
+      picks[+s.dataset.i] = s.value; picks = picks.filter((k, i, a) => k && a.indexOf(k) === i); draw();
+    });
+    $("d-foot").innerHTML = `<button onclick="dlg.close()">Close</button>`;
+  };
+  draw();
+  if (!$("dlg").open) $("dlg").showModal();
+}
+
+// ---------- CSV of the season table (current filters + mode, every stat) ----------
+const csvCell = s => /[",\n]/.test(s) ? `"${String(s).replace(/"/g, '""')}"` : String(s);
+function statsCsv() {
+  const num = (x, d = ST.mode === "avg" ? 1 : 0) => x == null || !isFinite(x) ? "" : (+x).toFixed(d);
+  const pc = (m, a) => a ? (100 * m / a).toFixed(1) : "";
+  const cols = [["Team", (r, t) => t.team], ["#", r => r.no], ["Player", r => r.name], ["Pos", r => r.bio?.pos || ""], ["Class", r => r.bio?.cl || ""],
+    ["Ht", r => r.bio?.ht || ""], ["GP", r => r.gp], ["GS", r => r.gs ?? 0], ["MIN", r => r.mgp ? num(ST.mode === "avg" ? r.min / r.mgp : r.min) : ""],
+    ...["pts", "reb", "oreb", "dreb", "ast", "stl", "blk", "to", "pf", "fgm", "fga", "fg3m", "fg3a", "ftm", "fta"].map(k => [k.toUpperCase().replace("FG3", "3P"), r => r.gp ? num(per(r, r[k])) : ""]),
+    ["FG%", r => pc(r.fgm, r.fga)], ["3P%", r => pc(r.fg3m, r.fg3a)], ["FT%", r => pc(r.ftm, r.fta)],
+    ["eFG%", r => r.gp && r.fga ? pc(r.fgm + 0.5 * r.fg3m, r.fga) : ""], ["TS%", r => r.gp && (r.fga + r.fta) ? pc(r.pts, 2 * (r.fga + 0.44 * r.fta)) : ""],
+    ["PTS/40", r => r.min ? num(r.m.pts / r.min * 40, 1) : ""], ["A/TO", r => r.gp && r.to ? num(r.ast / r.to, 2) : ""]];
+  const lines = [cols.map(c => c[0]).join(",")];
+  for (const t of viewTeams()) for (const r of sortRows(aggregate(t).rows)) lines.push(cols.map(c => csvCell(c[1](r, t) ?? "")).join(","));
+  return lines.join("\n") + "\n";
+}
+function downloadCsv() {
+  const key = DATA.teamKey || "team", tag = [ST.mode === "tot" ? "totals" : "per-game", ...["games", "site", "role"].filter(k => ST[k] !== "all").map(k => ST[k]),
+               ...(+ST.span ? [`last${ST.span}`] : [])].join("-");
+  const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(new Blob([statsCsv()], { type: "text/csv" })),
+                                                         download: `cuesta-${key}-stats-${tag}.csv` });
+  document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
 }
 
 // ---------- routing: one OSRM table request covers every venue ----------
@@ -1008,10 +1240,10 @@ loadTeamData().then(data => {
   // Mode switch: calendar <-> all-games table, synced to URL hash so it's bookmarkable.
   const MODES = { cal: "view-cal", table: "view-tbl", map: "view-map", stats: "view-stats" };
   const BTN = { cal: "m-cal", table: "m-tbl", map: "m-map", stats: "m-stats" };
-  const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map", "#stats": "stats" })[location.hash] || "table";
+  const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map", "#stats": "stats" })[location.hash.split("/")[0]] || "table";
   const setMode = (m, { jump = false } = {}) => {
     for (const k in MODES) { $(MODES[k]).hidden = k !== m; $(BTN[k]).classList.toggle("on", k === m); }
-    history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : `#${m === "cal" ? "calendar" : m}`));
+    history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : m === "stats" ? stHash() : `#${m === "cal" ? "calendar" : m}`));
     if (m === "map") showMap();
     if (m === "cal" && CAL?.updateSize) setTimeout(() => CAL.updateSize(), 0);   // v6 needed this after being hidden; v7 resizes itself
     if (jump) {
@@ -1027,13 +1259,11 @@ loadTeamData().then(data => {
     }
   };
   for (const k in BTN) $(BTN[k]).onclick = () => setMode(k, { jump: true });   // taps jump; page load / hash don't
+  ST = stFromHash();
   setMode(modeFromHash());
-  addEventListener("hashchange", () => setMode(modeFromHash()));
+  addEventListener("hashchange", () => { ST = stFromHash(); setMode(modeFromHash()); renderStats(); });
 
-  renderAll(); renderStats();
-  for (const [b, m] of [["st-avg", "avg"], ["st-tot", "tot"]]) $(b).onclick = () => {
-    ST_MODE = m; $("st-avg").classList.toggle("on", m === "avg"); $("st-tot").classList.toggle("on", m === "tot"); renderStats();
-  };
+  renderAll(); wireStatsControls(); renderStats();
   const saved = localStorage.getItem(STORE);
   if (saved) { try { setOrigin(JSON.parse(saved), { save: false }); } catch { localStorage.removeItem(STORE); } }
 });

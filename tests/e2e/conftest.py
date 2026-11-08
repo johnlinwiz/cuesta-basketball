@@ -57,9 +57,9 @@ def osrm_meters(i):
     return 40000 + 16093.44 * i
 
 
-def _line(name, no, starter, mins, pts, reb=0, ast=0, fgm=0, fga=0):
+def _line(name, no, starter, mins, pts, reb=0, ast=0, fgm=0, fga=0, ftm=0, fta=0):
     return {"name": name, "id": None, "no": no, "starter": starter, "min": mins, "fgm": fgm, "fga": fga, "fg3m": 0, "fg3a": 0,
-            "ftm": 0, "fta": 0, "oreb": 0, "dreb": reb, "reb": reb, "ast": ast, "stl": 0, "blk": 0, "to": 0, "pf": 0, "pts": pts}
+            "ftm": ftm, "fta": fta, "oreb": 0, "dreb": reb, "reb": reb, "ast": ast, "stl": 0, "blk": 0, "to": 0, "pf": 0, "pts": pts}
 
 
 @pytest.fixture(scope="session")
@@ -68,10 +68,10 @@ def stats_json():
     import fetch_stats
     games = [fetch_stats.normalize_game(g) for g in (
         {"event": "2026-10-29-gavilan", "date": "2026-10-29", "opponent": "Gavilan", "boxscore": "https://example.test/box/gavilan",
-         "lines": [_line("Ann Star", "2", True, 30, 20, 4, 3, 8, 15), _line("Cy Guard", "10", True, 25, 12, 6, 1, 5, 9),
+         "lines": [_line("Ann Star", "2", True, 30, 20, 4, 3, 8, 15, 3, 4), _line("Cy Guard", "10", True, 25, 12, 6, 1, 5, 9, 1, 1),
                    _line("Bo Bench", "5", False, 0, 0)]},
         {"event": "2026-10-31-sequoias", "date": "2026-10-31", "opponent": "Sequoias", "boxscore": "https://example.test/box/sequoias",
-         "lines": [_line("Ann Star", "2", True, 1, 30, 2, 5, 11, 20), _line("Cy Guard", "10", True, 1, 5, 9, 0, 2, 7)]},
+         "lines": [_line("Ann Star", "2", True, 1, 30, 2, 5, 11, 20, 2, 2), _line("Cy Guard", "10", False, 1, 5, 9, 0, 2, 7)]},
     )]
     roster = [{"no": n, "name": nm, "pos": "Guard", "cl": "Sophomore", "ht": "6-1", "home": "Pasadena, CA / Muir"}
               for n, nm in (("2", "Ann Star"), ("10", "Cy Guard"), ("5", "Bo Bench"), ("21", "Di Rookie"))]

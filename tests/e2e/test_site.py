@@ -370,3 +370,19 @@ def test_header_is_condensed(make_page, mobile, max_rows, events_json):
     expect(page.locator("#l-pdf-bw")).to_have_attribute("href", "cuesta-mbb-schedule-bw.pdf")
     page.keyboard.press("Escape")
     expect(page.locator("#l-ics")).to_be_hidden()
+
+
+@pytest.mark.parametrize("width", [360, 390, 430, 768, 1280])
+def test_header_does_not_move_when_the_team_title_changes(make_page, events_json, width):
+    """Regression: the title's length (Men's / Women's / Both) used to reflow the phone header."""
+    geo = []
+    for key, name in (("mbb", "Cuesta College Men's Basketball"), ("wbb", "Cuesta College Women's Basketball"),
+                      ("all", "Cuesta College Basketball")):
+        page, _ = make_page(mobile=width < 641, data=dict(two_team(events_json, key), team=name))
+        page.set_viewport_size({"width": width, "height": 800})
+        page.wait_for_timeout(100)
+        geo.append(page.evaluate("""() => [document.querySelector('header').getBoundingClientRect().height,
+            ...['#teams', '.views', '.ts', '#menu'].map(s => { const r = document.querySelector(s).getBoundingClientRect();
+                return [Math.round(r.x), Math.round(r.y), Math.round(r.width)]; })]"""))
+        assert page.evaluate("document.documentElement.scrollWidth") <= width
+    assert geo[0] == geo[1] == geo[2], geo

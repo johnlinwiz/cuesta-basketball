@@ -41,9 +41,20 @@
   .ts .ts-a1 { font-size:.8rem } .ts .ts-a2 { font-size:1.05rem }
   body { margin:0; font:0.9375rem/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink) }
   /* Header: one compact row (two on phones) */
-  header { background:var(--green); color:#fff; padding:8px 16px; display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center;
+  /* Fixed slots (grid), so the title's length - which changes with the team - never moves anything:
+     one row on wide screens, two rows (title + ☰, then team / view / text size) up to 900px. */
+  header { background:var(--green); color:#fff; padding:8px 16px; display:grid; gap:6px 10px; align-items:center;
+           grid-template-columns:minmax(0, 1fr) auto auto auto auto; grid-template-areas:"title teams views ts menu";
            position:sticky; top:0; z-index:1000 }
-  header h1 { font-size:1.05rem; margin:0 auto 0 0; letter-spacing:.2px; white-space:nowrap; display:flex; align-items:center; gap:6px }
+  header h1 { grid-area:title; min-width:0; font-size:1.05rem; margin:0; letter-spacing:.2px; white-space:nowrap;
+              display:flex; align-items:center; gap:6px; overflow:hidden }
+  header h1 .hname { overflow:hidden; text-overflow:ellipsis; min-width:0 }
+  header h1 .logo, header h1 .hseason { flex:none }
+  #teams { grid-area:teams } .views { grid-area:views } .ts { grid-area:ts } .menu { grid-area:menu; justify-self:end }
+  @media (max-width:900px) {
+    header { grid-template-columns:minmax(0, 1fr) auto auto; grid-template-areas:"title title menu" "teams views ts"; padding:6px 10px }
+    #teams { justify-self:stretch } #teams button { flex:1 }
+  }
   header h1 .hseason { opacity:.75; font-weight:500; font-size:.9em }
   header .logo { font-size:1.2em }
   .menu { position:relative }
@@ -79,6 +90,7 @@
     --fc-classic-button-outline:#0b6e3a80; --fc-classic-primary:#0b6e3a;
     --fc-classic-today:#c9a2272e; --fc-classic-background:var(--bg);
   }
+  #view-cal, #cal { min-width:0; max-width:100%; overflow-x:auto }   /* narrow tablets: never widen the page */
   #cal .cmbb-ev { cursor:pointer; white-space:normal }
   #cal .cmbb-ev * { white-space:normal; overflow:visible; text-overflow:clip }   /* wrap long names in month cells */
   /* Mode switch */
@@ -86,7 +98,7 @@
   .modes button { background:transparent; color:#fff; border:0; padding:4px 10px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.85rem; opacity:.8; white-space:nowrap }
   .modes button.on { background:#fff; color:var(--green); opacity:1 }
   /* Season table / upcoming-trips table share styles */
-  .tbl { margin-top:16px } .tbl h2 { font-size:1.0625rem; margin:0 0 8px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap }
+  .tbl { margin-top:16px; overflow-x:auto }   /* tablets: a wide table scrolls inside itself, never the page */ .tbl h2 { font-size:1.0625rem; margin:0 0 8px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap }
   .tbl h2 .muted { font-size:0.8125rem; font-weight:400 }
   .tbl table { width:100%; border-collapse:collapse; font-size:0.875rem }
   .tbl th, .tbl td { text-align:left; padding:7px 8px; border-bottom:1px solid #8883; vertical-align:top }
@@ -111,12 +123,10 @@
     .tbl td[data-label] > div { display:inline } .tbl td[data-label="Drive"] { flex-wrap:wrap }
     .tbl td[data-label="Drive"] > div { flex-basis:100%; margin-left:78px } .tbl td[data-label="Drive"] > div:first-of-type { margin-left:0; flex-basis:auto }
     .tbl td button.link { font-size:1rem; font-weight:600 }
-    /* Header: row 1 = title + menu, row 2 = team / view / text size */
-    header { padding:6px 10px; gap:6px }
-    header h1 { font-size:.95rem; order:0 } header h1 .hseason { display:none }
-    .menu { order:1 }
-    #teams, .views, .ts { order:2 }
-    #teams { flex:1 1 auto } #teams button { flex:1; padding:4px 6px }
+    /* Header (phones): same two-row grid, smaller type */
+    header { gap:6px }
+    header h1 { font-size:.95rem } header h1 .hseason { display:none }
+    #teams button { padding:4px 6px }
     .views .l { display:none } #teams .ti { display:none }
     .modes button { padding:4px 8px; font-size:0.8125rem } .ts button { padding:3px 7px }
     main { padding:10px }

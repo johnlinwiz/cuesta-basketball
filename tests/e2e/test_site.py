@@ -10,8 +10,8 @@ from playwright.sync_api import expect
 from conftest import CDN, REPO, VENDOR
 from pagetools import fmt_dur, horizontal_overflow, pinch, text_size
 
-VIEWS = {"table": "#view-tbl", "cal": "#view-cal", "map": "#view-map"}
-BUTTONS = {"table": "#m-tbl", "cal": "#m-cal", "map": "#m-map"}
+VIEWS = {"table": "#view-tbl", "cal": "#view-cal", "map": "#view-map", "stats": "#view-stats"}
+BUTTONS = {"table": "#m-tbl", "cal": "#m-cal", "map": "#m-map", "stats": "#m-stats"}
 
 
 def choose_from(page, value):
@@ -30,7 +30,7 @@ def shown_views(page):
 def test_each_view_shows_alone(make_page, mobile):
     page, _ = make_page(mobile=mobile)
     assert shown_views(page) == ["table"]
-    for mode in ("map", "cal", "table", "map"):
+    for mode in ("map", "cal", "stats", "table", "map"):
         page.click(BUTTONS[mode])
         assert shown_views(page) == [mode], f"after clicking {mode}"
         assert page.eval_on_selector(BUTTONS[mode], "b => b.classList.contains('on')")

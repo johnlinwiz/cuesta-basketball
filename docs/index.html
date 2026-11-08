@@ -53,7 +53,7 @@
   #from-status:empty { display:none }
   #from-note { flex-basis:100%; color:var(--muted); font-size:0.75rem }
   /* View jump lands just under the sticky header (its height is kept in --hdr-h by JS) */
-  #view-tbl, #view-cal, #view-map { scroll-margin-top:calc(var(--hdr-h, 56px) + 8px) }
+  #view-tbl, #view-cal, #view-map, #view-stats { scroll-margin-top:calc(var(--hdr-h, 56px) + 8px) }
   .leg { font-size:.75rem; color:var(--muted); margin-top:2px } .leg b { color:var(--ink); font-weight:600 }
   #ts-badge { position:fixed; left:50%; top:18%; transform:translateX(-50%); z-index:9999; background:#0b6e3aee; color:#fff;
     font:700 1.1rem/1 -apple-system,BlinkMacSystemFont,sans-serif; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px #0006;
@@ -179,6 +179,26 @@
   .warn { color:#b26b00; font-size:0.8125rem }
   .df { display:flex; flex-wrap:wrap; gap:8px; padding:10px 18px 16px }
   .df a, .df button { font:inherit; font-size:0.8125rem; border:1px solid #8885; border-radius:6px; padding:5px 10px; background:transparent; color:inherit; text-decoration:none; cursor:pointer }
+  /* player stats */
+  .st-bar { display:flex; flex-wrap:wrap; gap:8px 14px; align-items:center; margin:16px 0 4px; font-size:0.8125rem }
+  .seg { display:inline-flex; border:1px solid #8886; border-radius:8px; overflow:hidden }
+  .seg button { font:inherit; border:0; background:transparent; color:inherit; padding:4px 10px; cursor:pointer }
+  .seg button.on { background:var(--green); color:#fff }
+  .stw { overflow-x:auto; margin:6px 0 18px; -webkit-overflow-scrolling:touch }
+  .stw h2 { font-size:1.0625rem; margin:10px 0 6px }
+  table.st { border-collapse:collapse; font-size:0.8125rem; white-space:nowrap; min-width:100% }
+  table.st th, table.st td { padding:5px 7px; border-bottom:1px solid #8883; text-align:right }
+  table.st th { color:var(--muted); font-weight:600; font-size:0.6875rem; text-transform:uppercase; letter-spacing:.3px; cursor:pointer; user-select:none }
+  table.st th.on { color:var(--ink) } table.st th.on::after { content:" ▾" } table.st th.on.asc::after { content:" ▴" }
+  table.st .l { text-align:left } table.st .pl { position:sticky; left:0; background:var(--bg); z-index:1 }
+  table.st tr.dnp td:not(.pl):not(.fv) { opacity:.45 } table.st tr.fol td { background:#c9a22722 } table.st tr.fol td.pl { background:color-mix(in srgb, #c9a227 14%, var(--bg)) }
+  table.st tfoot td { font-weight:600; border-top:2px solid #8885 }
+  table.st .sub { color:var(--muted); font-size:0.6875rem; display:block }
+  table.st button.link, .fv button { background:transparent; border:0; padding:0; font:inherit; color:var(--green); cursor:pointer; text-align:left }
+  @media (prefers-color-scheme: dark) { table.st button.link { color:#6fd39b } }
+  .fv button { color:#c9a227; font-size:1rem; line-height:1 }
+  .box-lines { font-size:0.75rem; color:var(--muted); margin-top:2px } .box-lines .me { color:var(--ink); font-weight:600 }
+  #dlg .stw { margin:4px 0 10px }
 </style>
 </head>
 <body>
@@ -189,6 +209,7 @@
     <button id="m-tbl" class="on" role="tab" title="Table"><span class="i">📊</span><span class="l"> Table</span></button>
     <button id="m-cal" role="tab" title="Calendar"><span class="i">📅</span><span class="l"> Calendar</span></button>
     <button id="m-map" role="tab" title="Map"><span class="i">🗺️</span><span class="l"> Map</span></button>
+    <button id="m-stats" role="tab" title="Player stats"><span class="i">📈</span><span class="l"> Stats</span></button>
   </nav>
   <span class="ts" role="group" aria-label="Text size">
     <button id="ts-down" class="ts-a1" type="button" aria-label="Smaller text" title="Smaller text">A−</button>
@@ -240,6 +261,13 @@
     <aside id="map-side"><h3>Venues</h3><div id="map-list"></div>
       <p class="muted">🟢 home · ⚫ away · 🟡 tournament/neutral. Marker size = number of games. Click a venue for games, drive time and route.</p></aside>
   </section>
+  <section id="view-stats" hidden>
+    <div class="st-bar"><span class="seg" role="group" aria-label="Stat mode">
+      <button type="button" id="st-avg" class="on">Per game</button><button type="button" id="st-tot">Totals</button></span>
+      <span class="muted">☆ = follow a player (saved on this device) · click a name for the game log · click a column to sort</span></div>
+    <div id="st-body"></div>
+    <p class="muted">From the official box scores (scrimmages not counted), usually posted the night of or the day after each game. MIN per game counts only games where minutes were recorded.</p>
+  </section>
 </main>
 <div id="ts-badge" aria-live="polite"></div>
 <dialog id="dlg"><div class="dh"><h2 id="d-title"></h2><div id="d-sub"></div></div>
@@ -255,6 +283,152 @@ const dirUrl = (o, address) => "https://www.google.com/maps/dir/?api=1&" + new U
   { origin: `${o.lat},${o.lon}`, destination: address, travelmode: "driving" });
 
 let CAL, DATA, origin = null, drives = {};   // drives: venueKey -> {min, mi}
+
+// ---------- player stats (docs/<team>/stats.json, from the official box scores) ----------
+let STATS = { teams: [], byEvent: {} };      // byEvent: event id -> {team, short, lines}
+const FOLLOW_STORE = "cuesta-follow";
+let FOLLOW = new Set((() => { try { return JSON.parse(localStorage.getItem(FOLLOW_STORE) || "[]"); } catch { return []; } })());
+let ST_MODE = "avg", ST_SORT = { col: "pts", dir: -1 };
+const fkey = (team, name) => `${team}|${name}`;
+const isFollowed = (team, name) => FOLLOW.has(fkey(team, name));
+function toggleFollow(team, name) {
+  const k = fkey(team, name);
+  FOLLOW.has(k) ? FOLLOW.delete(k) : FOLLOW.add(k);
+  localStorage.setItem(FOLLOW_STORE, JSON.stringify([...FOLLOW]));
+  renderSeasonTable(); renderStats();
+}
+const starBtn = (team, name) => `<button type="button" class="star" data-team="${esc(team)}" data-name="${esc(name)}"
+  aria-pressed="${isFollowed(team, name)}" title="${isFollowed(team, name) ? "Unfollow" : "Follow"} ${esc(name)}">${isFollowed(team, name) ? "★" : "☆"}</button>`;
+function wireStars(el, after) {
+  el.querySelectorAll("button.star").forEach(b => b.onclick = ev => {
+    ev.stopPropagation(); toggleFollow(b.dataset.team, b.dataset.name); after?.();
+  });
+}
+async function loadStats(dir) {
+  try {
+    const r = await fetch(`${dir}stats.json`);
+    if (!r.ok) return;
+    const d = await r.json(), teams = (d.teams || [d]).map(t => ({ ...t, key: t.key || "" }));   // "" = legacy single team
+    const byEvent = {};
+    for (const t of teams) for (const g of t.games || []) byEvent[g.event] = { team: t.key, short: t.short, lines: g.lines };
+    STATS = { teams, byEvent };
+  } catch { /* stats are optional: the schedule works without them */ }
+}
+const lastName = n => n.split(" ").slice(1).join(" ") || n;
+const played = l => l.min == null || l.min > 0;          // null = minutes not recorded for that game (player appeared)
+const statLine = l => played(l) ? `${l.pts} pts · ${l.reb} reb · ${l.ast} ast${l.min ? ` · ${l.min} min` : ""}` : "DNP";
+const minCell = m => m == null ? "—" : m;
+const pct = (m, a) => a ? (100 * m / a).toFixed(1) : "—";
+const shoot = (m, a) => `${m}-${a}`;
+// Under a finished game's row: the top scorers, then any followed player's line.
+function boxLinesHtml(e) {
+  const p = e.extendedProps, b = STATS.byEvent[e.id];
+  const top = p.box?.top?.length ? `🏀 ${p.box.top.map(t => `${esc(lastName(t.name))} ${t.pts}`).join(" · ")}` : "";
+  const mine = b ? b.lines.filter(l => isFollowed(b.team, l.name))
+                    .map(l => `<span class="me">⭐ ${esc(l.name)}: ${statLine(l)}</span>`) : [];
+  return top || mine.length ? `<div class="box-lines">${[top, ...mine].filter(Boolean).join("<br>")}</div>` : "";
+}
+function boxTableHtml(eventId) {
+  const b = STATS.byEvent[eventId];
+  if (!b) return "";
+  const tot = k => b.lines.reduce((s, l) => s + (l[k] || 0), 0), noMin = b.lines.every(l => l.min == null);
+  const rows = b.lines.map(l => `<tr class="${played(l) ? "" : "dnp"} ${isFollowed(b.team, l.name) ? "fol" : ""}">
+    <td class="fv">${starBtn(b.team, l.name)}</td><td class="l pl">${esc(l.no)} ${esc(l.name)}${l.starter ? " <span class=\"muted\">*</span>" : ""}</td>
+    ${played(l) ? `<td>${minCell(l.min)}</td><td><b>${l.pts}</b></td><td>${l.reb}</td><td>${l.ast}</td><td>${shoot(l.fgm, l.fga)}</td><td>${shoot(l.fg3m, l.fg3a)}</td>
+      <td>${shoot(l.ftm, l.fta)}</td><td>${l.stl}</td><td>${l.blk}</td><td>${l.to}</td><td>${l.pf}</td>` : `<td class="l" colspan="11">DNP</td>`}</tr>`).join("");
+  return `<div class="stw"><table class="st box"><thead><tr><th></th><th class="l pl">Cuesta</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th>
+    <th>FG</th><th>3PT</th><th>FT</th><th>Stl</th><th>Blk</th><th>TO</th><th>PF</th></tr></thead><tbody>${rows}</tbody>
+    <tfoot><tr><td></td><td class="l pl">Team</td><td>${noMin ? "—" : tot("min")}</td><td>${tot("pts")}</td><td>${tot("reb")}</td><td>${tot("ast")}</td>
+    <td>${shoot(tot("fgm"), tot("fga"))}</td><td>${shoot(tot("fg3m"), tot("fg3a"))}</td><td>${shoot(tot("ftm"), tot("fta"))}</td>
+    <td>${tot("stl")}</td><td>${tot("blk")}</td><td>${tot("to")}</td><td>${tot("pf")}</td></tr></tfoot></table>
+    <small class="muted">* starter · ☆ follow a player${noMin ? " · minutes weren't recorded for this game" : ""}</small></div>`;
+}
+// Season table: one row per player (box-score totals + roster bio; rostered players who haven't played at the bottom).
+const ST_COLS = [["gp", "GP"], ["min", "Min"], ["pts", "Pts"], ["reb", "Reb"], ["ast", "Ast"], ["stl", "Stl"], ["blk", "Blk"], ["to", "TO"],
+                 ["fgp", "FG%"], ["fg3p", "3P%"], ["ftp", "FT%"]];
+function seasonRows(t) {
+  const bio = Object.fromEntries((t.roster || []).map(r => [r.name.toLowerCase(), r]));
+  const rows = (t.season || []).map(s => ({ ...s, bio: bio[s.name.toLowerCase()] }));
+  const seen = new Set(rows.map(r => r.name.toLowerCase()));
+  for (const r of t.roster || []) if (!seen.has(r.name.toLowerCase())) rows.push({ name: r.name, no: r.no, gp: 0, bio: r });
+  return rows;
+}
+function stVal(r, col) {
+  if (col === "fgp") return r.fga ? r.fgm / r.fga : -1;
+  if (col === "fg3p") return r.fg3a ? r.fg3m / r.fg3a : -1;
+  if (col === "ftp") return r.fta ? r.ftm / r.fta : -1;
+  if (col === "gp") return r.gp || 0;
+  if (col === "min") return r.mgp ? (ST_MODE === "avg" ? r.min / r.mgp : r.min) : -1;
+  return ST_MODE === "avg" ? (r.gp ? (r[col] || 0) / r.gp : -1) : (r[col] || 0);
+}
+function stCell(r, col) {
+  if (!r.gp) return "—";
+  if (col === "fgp") return pct(r.fgm, r.fga);
+  if (col === "fg3p") return pct(r.fg3m, r.fg3a);
+  if (col === "ftp") return pct(r.ftm, r.fta);
+  if (col === "gp") return r.gp;
+  if (col === "min") return !r.mgp ? "—" : ST_MODE === "avg" ? (r.min / r.mgp).toFixed(1) : r.min;
+  return ST_MODE === "avg" ? ((r[col] || 0) / r.gp).toFixed(1) : (r[col] || 0);
+}
+function viewTeams() {
+  const k = DATA?.teamKey;
+  return STATS.teams.filter(t => !k || k === "all" || t.key === k || STATS.teams.length === 1);
+}
+function renderStats() {
+  const el = $("st-body");
+  if (!el || !DATA) return;
+  const teams = viewTeams();
+  if (!teams.some(t => (t.games || []).length || (t.roster || []).length)) {
+    el.innerHTML = `<p class="muted">No box scores yet — player stats appear after the first game's box score is posted.</p>`; return;
+  }
+  el.innerHTML = teams.map(t => {
+    const rows = seasonRows(t).sort((a, b) => (!a.gp - !b.gp)            // not played yet: always last
+      || (stVal(b, ST_SORT.col) - stVal(a, ST_SORT.col)) * -ST_SORT.dir || a.name.localeCompare(b.name));
+    const n = (t.games || []).filter(g => DATA.events.find(e => e.id === g.event)?.extendedProps.type !== "scrimmage").length;
+    const head = ST_COLS.map(([c, h]) => `<th data-col="${c}" class="${ST_SORT.col === c ? "on" + (ST_SORT.dir > 0 ? " asc" : "") : ""}">${h}</th>`).join("");
+    const body = rows.map(r => `<tr class="${r.gp ? "" : "dnp"} ${isFollowed(t.key, r.name) ? "fol" : ""}">
+      <td class="fv">${starBtn(t.key, r.name)}</td>
+      <td class="l pl"><button type="button" class="link" data-team="${esc(t.key)}" data-name="${esc(r.name)}">${esc(r.no)} ${esc(r.name)}</button>
+        <span class="sub">${esc([r.bio?.pos, r.bio?.cl, r.bio?.ht].filter(Boolean).join(" · "))}</span></td>
+      ${ST_COLS.map(([c]) => `<td>${c === "pts" ? `<b>${stCell(r, c)}</b>` : stCell(r, c)}</td>`).join("")}</tr>`).join("");
+    const label = teams.length > 1 || DATA.teamKey === "all" ? `${esc(t.team.replace("College ", ""))} — ` : "";
+    return `<div class="stw"><h2>${label}${n} game${n === 1 ? "" : "s"} <span class="muted">· ${ST_MODE === "avg" ? "per game" : "season totals"}</span></h2>
+      <table class="st season" data-team="${esc(t.key)}"><thead><tr><th></th><th class="l pl">Player</th>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+  }).join("");
+  el.querySelectorAll("th[data-col]").forEach(th => th.onclick = () => {
+    const c = th.dataset.col;
+    ST_SORT = ST_SORT.col === c ? { col: c, dir: -ST_SORT.dir } : { col: c, dir: -1 };
+    renderStats();
+  });
+  el.querySelectorAll("button.link").forEach(b => b.onclick = () => openPlayer(b.dataset.team, b.dataset.name));
+  wireStars(el);
+}
+function openPlayer(team, name) {
+  const t = STATS.teams.find(x => x.key === team);
+  if (!t) return;
+  const r = seasonRows(t).find(x => x.name === name) || { name };
+  const games = (t.games || []).map(g => ({ g, l: g.lines.find(l => l.name === name), e: DATA.events.find(e => e.id === g.event) })).filter(x => x.l);
+  const draw = () => {
+    $("d-title").textContent = `${r.no ? "#" + r.no + " " : ""}${name}`;
+    $("d-sub").textContent = [r.bio?.pos, r.bio?.cl, r.bio?.ht, r.bio?.home, t.team.replace("College ", "")].filter(Boolean).join(" · ");
+    const log = games.map(({ g, l, e }) => {
+      const p = e?.extendedProps, res = p?.results?.[0];
+      return `<tr class="${played(l) ? "" : "dnp"}"><td class="l pl">${esc(p?.dateLabel || g.date)} ${esc(p?.matchup || g.opponent)}${p?.type === "scrimmage" ? ' <span class="muted">(scrim.)</span>' : ""}
+        ${res ? `<span class="res ${res.outcome}">${esc(res.label)}</span>` : ""}</td>
+        ${played(l) ? `<td>${minCell(l.min)}</td><td><b>${l.pts}</b></td><td>${l.reb}</td><td>${l.ast}</td><td>${shoot(l.fgm, l.fga)}</td><td>${shoot(l.fg3m, l.fg3a)}</td><td>${shoot(l.ftm, l.fta)}</td>`
+                    : `<td class="l" colspan="7">DNP</td>`}</tr>`;
+    }).join("");
+    $("d-body").innerHTML = (r.gp ? `<p>📈 ${(r.pts / r.gp).toFixed(1)} pts · ${(r.reb / r.gp).toFixed(1)} reb · ${(r.ast / r.gp).toFixed(1)} ast per game
+        <span class="muted">(${r.gp} GP, FG ${pct(r.fgm, r.fga)}%)</span></p>` : `<p class="muted">No game minutes yet this season.</p>`) +
+      (log ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>FG</th><th>3PT</th><th>FT</th></tr></thead>
+        <tbody>${log}</tbody></table></div>` : "");
+    $("d-foot").innerHTML = `<button type="button" id="d-follow">${isFollowed(team, name) ? "★ Following" : "☆ Follow"}</button>
+      <button onclick="dlg.close()">Close</button>`;
+    $("d-follow").onclick = () => { toggleFollow(team, name); draw(); };
+  };
+  draw();
+  if (!$("dlg").open) $("dlg").showModal();
+}
 
 // ---------- routing: one OSRM table request covers every venue ----------
 async function computeDrives(o) {
@@ -425,7 +599,7 @@ function renderSeasonTable() {
                                  : e.classNames.includes("tourney") ? "row-tourney" : "");
     const chips = resultChips(p, { links: false });
     const game = `${iconFor(e)} <button class="link" data-id="${e.id}">${esc(e.title)}</button>` + (chips ? `<br>${chips}` : "")
-               + (p.notes ? `<br><span class="sub">${esc(p.notes)}</span>` : "");
+               + (p.notes ? `<br><span class="sub">${esc(p.notes)}</span>` : "") + boxLinesHtml(e);
     let driveCell;
     if (originSet) {
       const d = driveFor(p);
@@ -461,7 +635,8 @@ function openEvent(fcEvent) {
   $("d-sub").textContent = `${p.dateLabel} · ${p.time} · ${p.type} · ${p.site}`;
   const mine = driveHtml(ev);
   const rc = resultChips(p);
-  $("d-body").innerHTML = (rc ? `<p>🏁 ${rc}</p>` : "") + `
+  const box = boxTableHtml(fcEvent.id);
+  $("d-body").innerHTML = (rc ? `<p>🏁 ${rc}</p>` : "") + box + `
     <p>📍 <a href="${p.map}" target="_blank">${esc(p.venue)}</a><br><small>${esc(p.address)}</small></p>
     <p>${mine ? mine + "<br>" : ""}
        <span class="muted">${mine ? "Also: " : "🚗 "}Pasadena <a href="${p.dirPasadena}" target="_blank">${esc(p.drivePasadena)}</a> ·
@@ -482,7 +657,8 @@ function openEvent(fcEvent) {
     <button id="d-from-here" type="button" title="Use this gym as your starting point">🚗 Drive from here</button>
     <button onclick="dlg.close()">Close</button>`;
   $("d-from-here").onclick = () => { $("dlg").close(); setOrigin(venueOrigin(p.venueKey)); };
-  $("dlg").showModal();
+  wireStars($("d-body"), () => openEvent(fcEvent));
+  if (!$("dlg").open) $("dlg").showModal();
 }
 
 // ---------- map view (Leaflet + OSM tiles, OSRM route geometry) ----------
@@ -759,9 +935,9 @@ new ResizeObserver(([e]) => document.documentElement.style.setProperty("--hdr-h"
 // A bare link always opens Men's; other teams are reached with the switch or a ?team= link.
 const wantedTeam = new URLSearchParams(location.search).get("team") || "mbb";
 async function loadTeamData() {
-  for (const path of [`${wantedTeam}/events.json`, "mbb/events.json", "events.json"]) {
-    const r = await fetch(path);
-    if (r.ok) return r.json();
+  for (const dir of [`${wantedTeam}/`, "mbb/", ""]) {
+    const r = await fetch(`${dir}events.json`);
+    if (r.ok) { const data = await r.json(); await loadStats(dir); return data; }
   }
   throw new Error("no schedule data found");
 }
@@ -830,9 +1006,9 @@ loadTeamData().then(data => {
   darkMq.addEventListener("change", ev => CAL.setOption("colorScheme", ev.matches ? "dark" : "light"));
 
   // Mode switch: calendar <-> all-games table, synced to URL hash so it's bookmarkable.
-  const MODES = { cal: "view-cal", table: "view-tbl", map: "view-map" };
-  const BTN = { cal: "m-cal", table: "m-tbl", map: "m-map" };
-  const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map" })[location.hash] || "table";
+  const MODES = { cal: "view-cal", table: "view-tbl", map: "view-map", stats: "view-stats" };
+  const BTN = { cal: "m-cal", table: "m-tbl", map: "m-map", stats: "m-stats" };
+  const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map", "#stats": "stats" })[location.hash] || "table";
   const setMode = (m, { jump = false } = {}) => {
     for (const k in MODES) { $(MODES[k]).hidden = k !== m; $(BTN[k]).classList.toggle("on", k === m); }
     history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : `#${m === "cal" ? "calendar" : m}`));
@@ -854,7 +1030,10 @@ loadTeamData().then(data => {
   setMode(modeFromHash());
   addEventListener("hashchange", () => setMode(modeFromHash()));
 
-  renderAll();
+  renderAll(); renderStats();
+  for (const [b, m] of [["st-avg", "avg"], ["st-tot", "tot"]]) $(b).onclick = () => {
+    ST_MODE = m; $("st-avg").classList.toggle("on", m === "avg"); $("st-tot").classList.toggle("on", m === "tot"); renderStats();
+  };
   const saved = localStorage.getItem(STORE);
   if (saved) { try { setOrigin(JSON.parse(saved), { save: false }); } catch { localStorage.removeItem(STORE); } }
 });

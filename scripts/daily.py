@@ -5,13 +5,16 @@ Run by .github/workflows/daily.yml. Safe to run repeatedly — each reminder com
 carries a hidden marker so it is posted at most once per issue.
 """
 import datetime as dt
+import json
 import sys
 
 import gh
-from common import (fmt_dur, load, load_issue_map, maps_dir, maps_place, record_label, result_games,
-                    result_label, today_pt, teams)
+from common import (PAGES_URL, fmt_dur, load, load_issue_map, maps_dir, maps_place, record_label, result_games,
+                    result_label, team_file, today_pt, teams)
+from fetch_stats import normalize_game
 
 BUFFER_MIN = 30  # arrive this long before tip-off
+BOX_COMMENT_DAYS = 3   # box scores arriving later than this after the game don't get a comment (no backfill spam)
 
 
 def leave_by(e, origin):
@@ -62,6 +65,36 @@ def result_body(e, games, mentions, record):
     return "\n".join([head, "", *lines, *tail, "", "<!-- result -->"])
 
 
+def stat_line(l):
+    if l.get("min") is not None and l["min"] <= 0:
+        return "did not play"
+    mins = f" · {l['min']} min" if l.get("min") else ""
+    return (f"{l['pts']} pts · {l['reb']} reb · {l['ast']} ast{mins} "
+            f"(FG {l['fgm']}-{l['fga']}, 3PT {l['fg3m']}-{l['fg3a']}, FT {l['ftm']}-{l['fta']})")
+
+
+def box_body(e, box, follow, mentions, team):
+    """Followed players' lines + top scorers, posted once the box score is in (it often lands after the final)."""
+    games = result_games(e)
+    res = f" ({', '.join(result_label(g) for g in games)})" if games else ""
+    by_name = {l["name"].lower(): l for l in box["lines"]}
+    lines = [f"📈 {' '.join('@' + m for m in mentions)} Box score — Cuesta {e.matchup}{res}", ""]
+    for name in follow:
+        l = by_name.get(name.lower())
+        lines.append(f"- ⭐ **{l['name'] if l else name}**: {stat_line(l) if l else 'did not play'}")
+    top = sorted((l for l in box["lines"] if l.get("pts")), key=lambda l: -l["pts"])[:3]
+    if top:
+        lines.append("- 🏀 Top scorers: " + " · ".join(f"{l['name']} {l['pts']}" for l in top))
+    links = [f"[Full box score]({box['boxscore']})"] if box.get("boxscore") else []
+    links.append(f"[Season stats]({PAGES_URL}?team={team}#stats)" if team else f"[Season stats]({PAGES_URL}#stats)")
+    return "\n".join([*lines, "", " · ".join(links), "", "<!-- box -->"])
+
+
+def load_box(team, e):
+    p = team_file(team, "box") / f"{e.id}.json"
+    return normalize_game(json.loads(p.read_text())) if p.exists() else None
+
+
 def main():
     for key in teams():
         if key:
@@ -98,6 +131,13 @@ def run(team):
                 if not any("<!-- result -->" in (c.get("body") or "") for c in comments):
                     gh.api(f"issues/{n}/comments", "POST", {"body": result_body(e, games, mentions, record_label(events))})
                     print(f"#{n}: posted result")
+            follow = sched.get("follow") or []
+            box = load_box(team, e) if follow and (today - e.end_date).days <= BOX_COMMENT_DAYS else None
+            if box:     # opt-in (`follow:` in schedule.yaml): one comment with the followed players' lines
+                comments = comments if comments is not None else gh.api(f"issues/{n}/comments?per_page=100")
+                if not any("<!-- box -->" in (c.get("body") or "") for c in comments):
+                    gh.api(f"issues/{n}/comments", "POST", {"body": box_body(e, box, follow, mentions, team)})
+                    print(f"#{n}: posted box score")
             if iss["state"] == "open":
                 if not games:
                     gh.api(f"issues/{n}/comments", "POST", {"body":

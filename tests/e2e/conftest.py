@@ -57,8 +57,30 @@ def osrm_meters(i):
     return 40000 + 16093.44 * i
 
 
+def _line(name, no, starter, mins, pts, reb=0, ast=0, fgm=0, fga=0):
+    return {"name": name, "id": None, "no": no, "starter": starter, "min": mins, "fgm": fgm, "fga": fga, "fg3m": 0, "fg3a": 0,
+            "ftm": 0, "fta": 0, "oreb": 0, "dreb": reb, "reb": reb, "ast": ast, "stl": 0, "blk": 0, "to": 0, "pf": 0, "pts": pts}
+
+
 @pytest.fixture(scope="session")
-def events_json(tmp_path_factory):
+def stats_json():
+    """docs/stats.json for the e2e games: two box scores (the 2nd without minutes) + a roster."""
+    import fetch_stats
+    games = [fetch_stats.normalize_game(g) for g in (
+        {"event": "2026-10-29-gavilan", "date": "2026-10-29", "opponent": "Gavilan", "boxscore": "https://example.test/box/gavilan",
+         "lines": [_line("Ann Star", "2", True, 30, 20, 4, 3, 8, 15), _line("Cy Guard", "10", True, 25, 12, 6, 1, 5, 9),
+                   _line("Bo Bench", "5", False, 0, 0)]},
+        {"event": "2026-10-31-sequoias", "date": "2026-10-31", "opponent": "Sequoias", "boxscore": "https://example.test/box/sequoias",
+         "lines": [_line("Ann Star", "2", True, 1, 30, 2, 5, 11, 20), _line("Cy Guard", "10", True, 1, 5, 9, 0, 2, 7)]},
+    )]
+    roster = [{"no": n, "name": nm, "pos": "Guard", "cl": "Sophomore", "ht": "6-1", "home": "Pasadena, CA / Muir"}
+              for n, nm in (("2", "Ann Star"), ("10", "Cy Guard"), ("5", "Bo Bench"), ("21", "Di Rookie"))]
+    return {"team": "Cuesta College Men's Basketball", "short": "MBB", "key": None, "roster": roster,
+            "season": fetch_stats.season_totals(games, set()), "games": games}
+
+
+@pytest.fixture(scope="session")
+def events_json(tmp_path_factory, stats_json):
     """docs/events.json as scripts/build.py would write it for the frozen e2e data."""
     import build
     import common
@@ -70,7 +92,8 @@ def events_json(tmp_path_factory):
         mp.setattr(build, "ROOT", root)
         sched, venues_cfg, _, events = common.load()
         issues = {e.id: n for n, e in enumerate(events, start=1)}
-        return json.loads(build.build_events_json(sched, venues_cfg, events, issues))
+        boxes = {g["event"]: {"top": build.box_summary(g["lines"]), "url": g["boxscore"]} for g in stats_json["games"]}
+        return json.loads(build.build_events_json(sched, venues_cfg, events, issues, boxes=boxes))
     finally:
         mp.undo()
 
@@ -90,8 +113,8 @@ def site_url():
 class Net:
     """Fake outside world. Records what the page asked for."""
 
-    def __init__(self, events_json):
-        self.events_json = events_json
+    def __init__(self, events_json, stats_json=None):
+        self.events_json, self.stats_json = events_json, stats_json
         self.venue_keys = list(events_json["venues"])
         self.requests, self.unexpected = [], []
 
@@ -102,6 +125,10 @@ class Net:
         if u.hostname == "127.0.0.1":
             if u.path.endswith("/events.json"):
                 return route.fulfill(status=200, content_type="application/json", body=json.dumps(self.events_json))
+            if u.path.endswith("/stats.json"):        # never the real docs/*/stats.json
+                if self.stats_json is None:
+                    return route.fulfill(status=404, body="")
+                return route.fulfill(status=200, content_type="application/json", body=json.dumps(self.stats_json))
             return route.continue_()
         cors = {"Access-Control-Allow-Origin": "*"}
         if url in CDN:
@@ -136,7 +163,7 @@ class Net:
 
 
 @pytest.fixture
-def make_page(browser, site_url, events_json):
+def make_page(browser, site_url, events_json, stats_json):
     """make_page(mobile=True, text_size=None, hash="", frozen=True) -> (page, net). Fails the test on errors.
 
     frozen=True pins the clock to FROZEN_NOW via Playwright's fake clock. That clock also fakes
@@ -144,14 +171,16 @@ def make_page(browser, site_url, events_json):
     that hunt for runtime errors must use frozen=False (real timers)."""
     contexts, nets = [], []
 
-    def make(mobile=True, text_size=None, hash="", frozen=True, data=None):
+    def make(mobile=True, text_size=None, hash="", frozen=True, data=None, stats=True, init_script=None):
         ctx = browser.new_context(**(MOBILE if mobile else DESKTOP), timezone_id="America/Los_Angeles",
                                   locale="en-US", service_workers="block")
         contexts.append(ctx)
-        net = Net(data or events_json); nets.append(net)
+        net = Net(data or events_json, stats_json if stats is True else (stats or None)); nets.append(net)
         ctx.route("**/*", net.handle)
         if text_size is not None:
             ctx.add_init_script(f"localStorage.setItem('cuesta-mbb-textsize', {json.dumps(str(text_size))})")
+        if init_script:
+            ctx.add_init_script(init_script)
         page = ctx.new_page()
         page.errors = []
         page.on("pageerror", lambda exc: page.errors.append(str(exc)))

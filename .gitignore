@@ -3,3 +3,4 @@ __pycache__/
 .preview.png
 .venv/
 .pytest_cache/
+.cache/

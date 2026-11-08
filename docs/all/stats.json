@@ -1531,7 +1531,7 @@
     {
      "name": "Genesis Gavilanes",
      "no": "5",
-     "gp": 3,
+     "gp": 2,
      "gs": 0,
      "mgp": 1,
      "min": 5,
@@ -2261,28 +2261,6 @@
        "to": 0,
        "pf": 0,
        "pts": 4
-      },
-      {
-       "name": "Genesis Gavilanes",
-       "id": "p040hf7w9ysz4wav",
-       "no": "5",
-       "starter": false,
-       "min": null,
-       "fgm": 0,
-       "fga": 0,
-       "fg3m": 0,
-       "fg3a": 0,
-       "ftm": 0,
-       "fta": 0,
-       "oreb": 0,
-       "dreb": 0,
-       "reb": 0,
-       "ast": 0,
-       "stl": 0,
-       "blk": 0,
-       "to": 0,
-       "pf": 0,
-       "pts": 0
       },
       {
        "name": "Charlotte Hasson",

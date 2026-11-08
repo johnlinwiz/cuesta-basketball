@@ -13,7 +13,7 @@
 set -eu
 cd "$(dirname "$0")/.."
 echo "== $(date '+%F %T')"
-git pull -q --rebase
+git pull -q --rebase --autostash      # a run interrupted mid-way may have left changes
 python3 scripts/fetch_stats.py
 git add data/teams/*/box data/teams/*/stats.json 2>/dev/null || true
 if git diff --cached --quiet; then
@@ -22,6 +22,6 @@ fi
 git commit -q -m "chore: box scores and roster (pi)"
 for try in 1 2 3; do
   if git push -q; then echo "pushed"; exit 0; fi
-  sleep $((try * 15)); git pull -q --rebase      # the workflow pushed meanwhile: replay on top
+  sleep $((try * 15)); git pull -q --rebase --autostash      # the workflow pushed meanwhile: replay on top
 done
 echo "push failed" >&2; exit 1

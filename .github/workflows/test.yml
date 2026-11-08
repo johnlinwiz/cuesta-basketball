@@ -20,7 +20,7 @@ jobs:
       - run: pip install -r requirements-dev.txt
       - name: Unit tests (saved 2025-26 pages and feeds, no network)
         run: python -m pytest tests/unit -q
-      - name: Install headless Chromium
-        run: python -m playwright install --with-deps chromium
+      - name: Install headless Chromium + WebKit (Safari engine, for the iPhone header test)
+        run: python -m playwright install --with-deps chromium webkit
       - name: Browser tests (docs/index.html; CDN, OpenStreetMap and OSRM faked)
         run: python -m pytest tests/e2e -q

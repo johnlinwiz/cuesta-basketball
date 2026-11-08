@@ -38,32 +38,36 @@
     font:700 1.1rem/1 -apple-system,BlinkMacSystemFont,sans-serif; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px #0006;
     pointer-events:none; opacity:0; transition:opacity .25s }
   #ts-badge.on { opacity:1 }
-  .ts .ts-a1 { font-size:.8rem } .ts .ts-a2 { font-size:1.05rem }
+  .ts .ts-a1 { font-size:.8em } .ts .ts-a2 { font-size:1.05em }
   body { margin:0; font:0.9375rem/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif; background:var(--bg); color:var(--ink) }
   /* Header: one compact row (two on phones) */
   /* Fixed slots (grid), so the title's length - which changes with the team - never moves anything:
      one row on wide screens, two rows (title + ☰, then team / view / text size) up to 900px. */
-  header { background:var(--green); color:#fff; padding:8px 16px; display:grid; gap:6px 10px; align-items:center;
+  header { font-size:16px; background:var(--green); color:#fff; padding:8px 16px; display:grid; gap:6px 10px; align-items:center;
            grid-template-columns:minmax(0, 1fr) auto auto auto auto; grid-template-areas:"title teams views ts menu";
            position:sticky; top:0; z-index:1000 }
-  header h1 { grid-area:title; min-width:0; font-size:1.05rem; margin:0; letter-spacing:.2px; white-space:nowrap;
+  header h1 { grid-area:title; min-width:0; font-size:1.05em; margin:0; letter-spacing:.2px; white-space:nowrap;
               display:flex; align-items:center; gap:6px; overflow:hidden }
   header h1 .hname { overflow:hidden; text-overflow:ellipsis; min-width:0 }
   header h1 .logo, header h1 .hseason { flex:none }
   #teams { grid-area:teams } .views { grid-area:views } .ts { grid-area:ts } .menu { grid-area:menu; justify-self:end }
   @media (max-width:900px) {
-    header { grid-template-columns:minmax(0, 1fr) auto auto; grid-template-areas:"title title menu" "teams views ts"; padding:6px 10px }
-    #teams { justify-self:stretch } #teams button { flex:1 }
+    /* Row 1: title (truncates) + text size + menu. Row 2: team switch + views.
+       Column 1 is plain 1fr (min = the team buttons' width), NOT minmax(0,1fr): WebKit/Safari
+       shrank it to zero and "Both" slid under the view icons. */
+    header { grid-template-columns:1fr auto auto; grid-template-areas:"title ts menu" "teams views views"; padding:6px 10px }
+    #teams { display:flex; justify-self:stretch } #teams button { flex:1 1 auto; white-space:nowrap }
+    .views { justify-self:end }
   }
   header h1 .hseason { opacity:.75; font-weight:500; font-size:.9em }
   header .logo { font-size:1.2em }
   .menu { position:relative }
-  .menu summary { list-style:none; cursor:pointer; background:#ffffff22; border-radius:8px; padding:4px 10px; font-size:1.05rem; line-height:1.3 }
+  .menu summary { list-style:none; cursor:pointer; background:#ffffff22; border-radius:8px; padding:4px 10px; font-size:1.05em; line-height:1.3 }
   .menu summary::-webkit-details-marker { display:none }
   .menu[open] summary { background:#fff; color:var(--green) }
   .menu-pop { position:absolute; right:0; top:calc(100% + 6px); background:var(--card); color:var(--ink); border:1px solid #8884;
               border-radius:10px; box-shadow:0 10px 30px #0005; padding:6px; min-width:210px; display:flex; flex-direction:column; z-index:1001 }
-  .menu-pop a { color:inherit; text-decoration:none; padding:8px 10px; border-radius:6px; font-size:.9rem; white-space:nowrap }
+  .menu-pop a { color:inherit; text-decoration:none; padding:8px 10px; border-radius:6px; font-size:.9em; white-space:nowrap }
   .menu-pop a:hover { background:#8882 }
   main { max-width:1100px; margin:0 auto; padding:16px }
   a { color:var(--green) } @media (prefers-color-scheme: dark){ a { color:#6fd39b } }
@@ -95,7 +99,7 @@
   #cal .cmbb-ev * { white-space:normal; overflow:visible; text-overflow:clip }   /* wrap long names in month cells */
   /* Mode switch */
   .modes { display:inline-flex; gap:0; background:#ffffff22; border-radius:8px; padding:2px }
-  .modes button { background:transparent; color:#fff; border:0; padding:4px 10px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.85rem; opacity:.8; white-space:nowrap }
+  .modes button { background:transparent; color:#fff; border:0; padding:4px 10px; border-radius:6px; cursor:pointer; font:inherit; font-size:0.85em; opacity:.8; white-space:nowrap }
   .modes button.on { background:#fff; color:var(--green); opacity:1 }
   /* Season table / upcoming-trips table share styles */
   .tbl { margin-top:16px; overflow-x:auto }   /* tablets: a wide table scrolls inside itself, never the page */ .tbl h2 { font-size:1.0625rem; margin:0 0 8px; display:flex; align-items:baseline; gap:10px; flex-wrap:wrap }
@@ -125,12 +129,13 @@
     .tbl td button.link { font-size:1rem; font-weight:600 }
     /* Header (phones): same two-row grid, smaller type */
     header { gap:6px }
-    header h1 { font-size:.95rem } header h1 .hseason { display:none }
+    header h1 { font-size:.95em } header h1 .hseason { display:none }
     #teams button { padding:4px 6px }
     .views .l { display:none } #teams .ti { display:none }
-    .modes button { padding:4px 8px; font-size:0.8125rem } .ts button { padding:3px 7px }
+    .modes button { padding:4px 8px; font-size:0.8125em } .ts button { padding:3px 7px }
     main { padding:10px }
-    #from { padding:8px 10px } #from input { flex:1; width:auto; max-width:none } #from form { flex:1 1 100% }
+    #from { padding:8px 10px } #from input { flex:1; width:auto; max-width:none; min-width:0 } #from form { flex:1 1 100%; min-width:0 }
+    #s-venue { max-width:100%; min-width:0 }   /* WebKit's default input/select widths otherwise push "Go" off-screen at large text */
     #from small { font-size:0.6875rem }
     /* Calendar toolbar */
   }

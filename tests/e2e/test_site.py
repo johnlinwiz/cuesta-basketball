@@ -451,15 +451,15 @@ def test_view_buttons_jump_to_the_view(make_page, mobile):
     page.emulate_media(reduced_motion="reduce")        # where it lands is the point, not the animation
     hdr = page.locator("header").bounding_box()["height"]
     for btn, view in (("#m-cal", "#view-cal"), ("#m-map", "#view-map"), ("#m-tbl", "#view-tbl")):
-        page.evaluate("window.scrollTo(0, 0)")
+        page.evaluate("window.scrollTo(0, 0); window.__y = undefined")
         page.click(btn)
-        # wait until scrolling has settled (same scrollY for ~300 ms)
+        # wait until scrolling has settled (same scrollY for ~600 ms; the page re-jumps at 350 ms)
         page.wait_for_function("""() => { const y = scrollY, t = performance.now();
-            if (window.__y !== y) { window.__y = y; window.__t = t; return false; } return t - window.__t > 300; }""",
+            if (window.__y !== y) { window.__y = y; window.__t = t; return false; } return t - window.__t > 600; }""",
             polling=50, timeout=10000)
         m = page.evaluate(f"""() => ({{ top: document.querySelector('{view}').getBoundingClientRect().top, y: scrollY,
             atBottom: document.documentElement.scrollHeight - innerHeight - scrollY < 2 }})""")
-        assert m["y"] > 0, f"{btn}: page did not scroll ({m})"
+        assert m["y"] > 0 or m["atBottom"], f"{btn}: page did not scroll ({m})"   # (or it already fits on screen)
         assert m["atBottom"] or hdr - 1 <= m["top"] <= hdr + 20, f"{btn}: {view} top {m['top']:.0f}px, header {hdr:.0f}px ({m})"
 
 

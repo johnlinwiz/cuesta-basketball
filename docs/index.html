@@ -838,8 +838,17 @@ loadTeamData().then(data => {
     history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : `#${m === "cal" ? "calendar" : m}`));
     if (m === "map") showMap();
     if (m === "cal" && CAL?.updateSize) setTimeout(() => CAL.updateSize(), 0);   // v6 needed this after being hidden; v7 resizes itself
-    if (jump) requestAnimationFrame(() => $(MODES[m]).scrollIntoView({
-      block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+    if (jump) {
+      // Jump now, and again once the newly shown view has laid out (the calendar/map render
+      // asynchronously, so at first the page may be too short to scroll to it).
+      const el = $(MODES[m]), smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const go = () => el.scrollIntoView({ block: "start", behavior: smooth ? "smooth" : "auto" });
+      requestAnimationFrame(go);
+      setTimeout(() => {
+        const want = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+        if (!el.hidden && Math.abs(el.getBoundingClientRect().top - want) > 4) go();
+      }, 350);
+    }
   };
   for (const k in BTN) $(BTN[k]).onclick = () => setMode(k, { jump: true });   // taps jump; page load / hash don't
   setMode(modeFromHash());

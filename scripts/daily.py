@@ -86,7 +86,10 @@ def run(team):
             if not any(marker in (c.get("body") or "") for c in comments):
                 gh.api(f"issues/{n}/comments", "POST", {"body": reminder_body(e, days, mentions)})
                 print(f"#{n}: posted {days}d reminder")
-        if e.end_date < today:
+        # Finished: the day has passed, or (single-day games) a final score is already in tonight.
+        # Multi-day tournaments wait for the day after, so day-1 scores don't close them early.
+        same_day_final = e.date == e.end_date == today and bool(result_games(e))
+        if e.end_date < today or same_day_final:
             games = result_games(e)
             iss = gh.api(f"issues/{n}")
             comments = None

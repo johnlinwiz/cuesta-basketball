@@ -2,11 +2,16 @@ name: daily reminders
 
 on:
   schedule:
-    # GitHub delays scheduled runs by up to a few hours (worst on the hour), so run early and
-    # twice at off-minutes. Every step is idempotent (hidden markers), so the 2nd run is a no-op
-    # unless the 1st was skipped or something changed overnight.
+    # Full runs. GitHub delays scheduled runs by up to a few hours (worst on the hour), so run
+    # early and twice at off-minutes. Every step is idempotent (hidden markers), so the 2nd run is
+    # a no-op unless the 1st was skipped or something changed overnight. Keep in sync with
+    # FULL_RUN_CRONS in scripts/gameday.py.
     - cron: "17 11 * * *"   # ~4:17 AM PDT / 3:17 AM PST
     - cron: "47 13 * * *"   # ~6:47 AM PDT / 5:47 AM PST
+    # Game-day refresh: every 15 min, ~9 AM to midnight Pacific. scripts/gameday.py stops these
+    # within seconds unless a game window is open (1 h before tip-off to 6 h after the expected end).
+    - cron: "7,22,37,52 17-23 * * *"
+    - cron: "7,22,37,52 0-7 * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -28,37 +33,65 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
-      - run: pip install -r requirements-dev.txt
+      - name: Game window?
+        id: gate
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
+        run: |
+          pip install -q pyyaml
+          python scripts/gameday.py --gha
+      - name: Install dependencies
+        if: steps.gate.outputs.active == 'true'
+        run: pip install -r requirements-dev.txt
       - name: Unit tests
         # Parsers/generators must pass against last season's saved pages before this job
         # fetches anything, comments on issues, or commits to the Pages site.
+        if: steps.gate.outputs.active == 'true'
         run: python -m pytest tests/unit -q
       - name: Sync issues (on schedule edits)
-        if: github.event_name == 'push'
+        if: steps.gate.outputs.active == 'true' && github.event_name == 'push'
         env: { GH_TOKEN: "${{ github.token }}" }
         run: python scripts/sync_issues.py
-      - name: Fetch final scores from the official schedule page
+      - name: Fetch final scores (league iCal feed)
+        if: steps.gate.outputs.active == 'true'
         continue-on-error: true
         run: python scripts/fetch_results.py
       - name: Check official schedule feed for changes
         # Opens/updates one `schedule-drift` issue (with @mention) when the 3C2A feed
         # disagrees with a team's schedule.yaml; closes it when they agree again.
+        if: steps.gate.outputs.active == 'true'
         continue-on-error: true
         env: { GH_TOKEN: "${{ github.token }}" }
         run: python scripts/check_feed.py --issue
-      - name: Post reminders / close finished games
+      - name: Post reminders / results, close finished games
+        if: steps.gate.outputs.active == 'true'
         env: { GH_TOKEN: "${{ github.token }}" }
         run: python scripts/daily.py
       - name: Route any new back-to-back venue pairs (OSRM; cached in data/drive_pairs.json)
+        if: steps.gate.outputs.active == 'true'
         continue-on-error: true
         run: python scripts/drive_times.py --pairs
       - name: Rebuild docs
+        if: steps.gate.outputs.active == 'true'
         run: python scripts/build.py
+      - name: Regenerate printable PDFs when scores or schedules changed
+        if: steps.gate.outputs.active == 'true'
+        run: |
+          if git diff --quiet HEAD -- data/teams; then echo "no data change: PDFs unchanged"; exit 0; fi
+          python -m playwright install --with-deps chromium
+          cd scripts
+          for t in $(ls ../data/teams); do python poster.py "$t" && python poster.py "$t" --bw; done
       - name: Commit if changed
+        if: steps.gate.outputs.active == 'true'
+        env:
+          EVENT_SCHEDULE: ${{ github.event.schedule }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           # every team folder (mbb/, wbb/, ...) comes from data/teams/*; nothing here is team-specific
           teams=$(cd data/teams && ls -d */ 2>/dev/null | tr -d /)
           git add -A README.md venues.geojson docs data $teams
-          git diff --cached --quiet || { git commit -m "chore: daily schedule refresh"; git push; }
+          msg="chore: daily schedule refresh"
+          case "$EVENT_SCHEDULE" in 7,22,37,52*) msg="chore: game-day refresh";; esac
+          git diff --cached --quiet || { git commit -m "$msg"; git push; }

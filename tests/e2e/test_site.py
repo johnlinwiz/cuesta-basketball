@@ -77,7 +77,7 @@ def test_nothing_scrolls_sideways_at_390px(make_page, mode, size):
     page.click(BUTTONS[mode])
     page.wait_for_timeout(100)
     assert horizontal_overflow(page) == []
-    page.click("#presets button[data-key=pasadena]")          # drive columns get longer once an origin is set
+    page.select_option("#s-from", "o:pasadena")                # drive columns get longer once an origin is set
     expect(page.locator("#from-status")).to_have_text("From Pasadena")
     page.wait_for_timeout(100)
     assert horizontal_overflow(page) == []
@@ -318,14 +318,14 @@ def test_both_view_shows_every_team_and_links_all_issues(make_page, events_json)
 def test_drive_from_a_venue_picker(make_page, events_json):
     page, net = make_page(mobile=False)
     key, v = next(iter(events_json["venues"].items()))
-    page.select_option("#s-venue", key)
+    page.select_option("#s-from", f"v:{key}")
     expect(page.locator("#from-status")).to_contain_text("From ")
     o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
     assert o["key"] == f"venue:{key}" and (o["lat"], o["lon"]) == (v["lat"], v["lon"])
     assert any("router.project-osrm.org/table" in u and f"{v['lon']:.5f},{v['lat']:.5f}" in u for u in net.requests)
     expect(page.locator("#tbl-th-drive")).to_contain_text("From ")
     page.click("#b-clear")
-    expect(page.locator("#s-venue")).to_have_value("")
+    expect(page.locator("#s-from")).to_have_value("")
 
 
 def test_drive_from_here_in_the_game_dialog(make_page, events_json):
@@ -337,7 +337,7 @@ def test_drive_from_here_in_the_game_dialog(make_page, events_json):
     expect(page.locator("#from-status")).to_contain_text("From ")        # drives computed, origin saved
     o = json.loads(page.evaluate("localStorage.getItem('cuesta-mbb-origin')"))
     assert o["key"] == "venue:" + ev["extendedProps"]["venueKey"]
-    expect(page.locator("#s-venue")).to_have_value(ev["extendedProps"]["venueKey"])
+    expect(page.locator("#s-from")).to_have_value("v:" + ev["extendedProps"]["venueKey"])
 
 
 def test_back_to_back_leg_shows_in_table_and_dialog(make_page, events_json):
@@ -386,3 +386,48 @@ def test_header_does_not_move_when_the_team_title_changes(make_page, events_json
                 return [Math.round(r.x), Math.round(r.y), Math.round(r.width)]; })]"""))
         assert page.evaluate("document.documentElement.scrollWidth") <= width
     assert geo[0] == geo[1] == geo[2], geo
+
+
+
+def test_drive_from_is_one_compact_bar(make_page):
+    """Phone: picker + ✕ + ⓘ on one row, address box on the next - nothing else."""
+    page, _ = make_page(mobile=True)
+    rows = page.evaluate("""() => new Set([...document.querySelectorAll('#from > *')].filter(e => e.offsetParent !== null)
+        .map(e => Math.round(e.getBoundingClientRect().top / 10))).size""")
+    assert rows <= 2, rows
+    assert page.locator("#from").bounding_box()["height"] < 100
+    expect(page.locator("#from-note")).to_be_hidden()
+    page.click("#b-info"); expect(page.locator("#from-note")).to_be_visible()
+    opts = page.locator("#s-from option").all_text_contents()
+    assert opts[:2] == ["Drive from…", "📍 My location"] and "Pasadena" in opts and "SLO" in opts and len(opts) > 6
+
+
+def test_typed_place_shows_in_the_picker(make_page):
+    page, _ = make_page(mobile=False)
+    page.fill("#i-addr", "Fresno, CA"); page.press("#i-addr", "Enter")
+    expect(page.locator("#s-from")).to_have_value("addr")
+    expect(page.locator("#s-from option[value=addr]")).to_have_text("📌 Fresno, Fresno County")
+    page.select_option("#s-from", "o:slo")                             # switching drops the typed entry
+    expect(page.locator("#s-from option[value=addr]")).to_have_count(0)
+    page.click("#b-clear")
+    expect(page.locator("#s-from")).to_have_value("")
+
+
+@pytest.mark.parametrize("mobile", [True, False])
+def test_view_buttons_jump_to_the_view(make_page, mobile):
+    page, _ = make_page(mobile=mobile, frozen=False)
+    page.evaluate("window.scrollTo(0, 0)")
+    hdr = page.locator("header").bounding_box()["height"]
+    for btn, view in (("#m-cal", "#view-cal"), ("#m-map", "#view-map"), ("#m-tbl", "#view-tbl")):
+        page.evaluate("window.scrollTo(0, 0)")
+        page.click(btn)
+        page.wait_for_function(f"Math.abs(document.querySelector('{view}').getBoundingClientRect().top - {hdr} - 8) < 4"
+                               f" || document.documentElement.scrollHeight - innerHeight - scrollY < 2", timeout=4000)
+        top = page.locator(view).bounding_box()["y"]
+        assert top >= hdr - 1, f"{view} hidden under the sticky header ({top} < {hdr})"
+
+
+def test_page_load_does_not_jump(make_page):
+    page, _ = make_page(mobile=True, hash="#calendar", frozen=False)
+    page.wait_for_timeout(400)
+    assert page.evaluate("scrollY") == 0

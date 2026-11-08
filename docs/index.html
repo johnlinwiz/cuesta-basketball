@@ -31,9 +31,24 @@
   .res.W { background:#1f8f4e33; color:#1f8f4e } .res.L { background:#c0392b2e; color:#c0392b } .res.T { background:#8883 }
   @media (prefers-color-scheme: dark) { .res.W { color:#6fd39b } .res.L { color:#ff8a7a } }
   .res-links a { font-size:.75rem; margin-right:6px }
+  /* Drive from: one compact bar - picker (my location / presets / venues) + address box */
+  #from { display:flex; flex-wrap:wrap; gap:6px; align-items:center; background:var(--card); border:1px solid #8883;
+          border-radius:8px; padding:6px 8px; margin-bottom:10px }
+  #from select, #from input, #from button { font:inherit; font-size:0.875rem; border:1px solid #8886; border-radius:6px;
+          padding:5px 8px; background:transparent; color:inherit; min-width:0 }
+  #from button { cursor:pointer } #from button:hover { background:#8881 }
+  .from-pick { display:flex; align-items:center; gap:6px; flex:0 1 auto; min-width:0 }
+  #s-from { max-width:240px } #s-from option, #s-from optgroup { color:#111 }
+  #s-from.set { border-color:var(--green); font-weight:600 }
+  #f-addr { display:flex; gap:6px; margin:0; flex:1 1 220px; min-width:0 } #i-addr { flex:1; min-width:0 }
+  #b-clear, #b-info { padding:5px 9px }
+  #from-status { color:var(--muted); font-size:0.8125rem }
+  #from-status.ok { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0) }   /* picker shows it */
+  #from-status:empty { display:none }
+  #from-note { flex-basis:100%; color:var(--muted); font-size:0.75rem }
+  /* View jump lands just under the sticky header (its height is kept in --hdr-h by JS) */
+  #view-tbl, #view-cal, #view-map { scroll-margin-top:calc(var(--hdr-h, 56px) + 8px) }
   .leg { font-size:.75rem; color:var(--muted); margin-top:2px } .leg b { color:var(--ink); font-weight:600 }
-  #s-venue { font:inherit; font-size:0.875rem; border:1px solid #8886; border-radius:6px; padding:5px 8px; background:transparent; color:inherit; max-width:230px }
-  #s-venue option { color:#111 }
   #ts-badge { position:fixed; left:50%; top:18%; transform:translateX(-50%); z-index:9999; background:#0b6e3aee; color:#fff;
     font:700 1.1rem/1 -apple-system,BlinkMacSystemFont,sans-serif; padding:10px 16px; border-radius:999px; box-shadow:0 6px 20px #0006;
     pointer-events:none; opacity:0; transition:opacity .25s }
@@ -73,14 +88,6 @@
   a { color:var(--green) } @media (prefers-color-scheme: dark){ a { color:#6fd39b } }
 
   /* "Drive from" bar */
-  #from { display:flex; flex-wrap:wrap; gap:8px; align-items:center; background:var(--card); border:1px solid #8883; border-radius:8px; padding:10px 12px; margin-bottom:12px }
-  #from b { margin-right:2px }
-  #from button, #from input { font:inherit; font-size:0.875rem; border:1px solid #8886; border-radius:6px; padding:5px 10px; background:transparent; color:inherit }
-  #from button { cursor:pointer } #from button:hover { background:#8881 }
-  #from button.on { background:var(--green); border-color:var(--green); color:#fff }
-  #from form { display:flex; gap:6px; margin:0 } #from input { width:220px; max-width:52vw }
-  #from-status { color:var(--muted); font-size:0.8125rem }
-  #from small { flex-basis:100%; color:var(--muted); font-size:0.75rem }
 
   #next { background:#8881; border-left:4px solid var(--gold); padding:10px 14px; margin-bottom:14px; border-radius:4px }
   #next a { color:var(--gold) }
@@ -134,9 +141,10 @@
     .views .l { display:none } #teams .ti { display:none }
     .modes button { padding:4px 8px; font-size:0.8125em } .ts button { padding:3px 7px }
     main { padding:10px }
-    #from { padding:8px 10px } #from input { flex:1; width:auto; max-width:none; min-width:0 } #from form { flex:1 1 100%; min-width:0 }
-    #s-venue { max-width:100%; min-width:0 }   /* WebKit's default input/select widths otherwise push "Go" off-screen at large text */
-    #from small { font-size:0.6875rem }
+    /* Phones: row 1 = picker + ✕ + ⓘ, row 2 = address box */
+    .from-pick { flex:1 1 0; order:0 } #s-from { max-width:none; width:100%; flex:1 }
+    #b-clear { order:1 } #b-info { order:2 } #from-status { order:3 } #from-note { order:5 }
+    #f-addr { flex:1 1 100%; order:4 }
     /* Calendar toolbar */
   }
 
@@ -195,14 +203,16 @@
 </header>
 <main>
   <section id="from">
-    <b>🚗 Drive from</b>
-    <button id="b-geo" type="button">📍 My location</button>
-    <form id="f-addr"><input id="i-addr" placeholder="City, address or ZIP" autocomplete="off" aria-label="Starting location"><button>Go</button></form>
-    <span id="presets"></span>
-    <select id="s-venue" aria-label="Drive from a venue"><option value="">🏟️ From a venue…</option></select>
-    <button id="b-clear" type="button" hidden>✕</button>
-    <span id="from-status"></span>
-    <small>Your location stays in this browser. It's sent only to OpenStreetMap (address lookup) and OSRM (routing) to estimate drive times without traffic.</small>
+    <label class="from-pick"><span aria-hidden="true">🚗</span>
+      <select id="s-from" aria-label="Drive from">
+        <option value="">Drive from…</option>
+        <option value="geo">📍 My location</option>
+      </select></label>
+    <form id="f-addr"><input id="i-addr" placeholder="or city / address" autocomplete="off" aria-label="Starting location"><button>Go</button></form>
+    <button id="b-clear" type="button" hidden title="Clear starting point" aria-label="Clear starting point">✕</button>
+    <button id="b-info" type="button" title="Privacy" aria-label="About location privacy" aria-expanded="false">ⓘ</button>
+    <span id="from-status" aria-live="polite"></span>
+    <small id="from-note" hidden>Your starting point stays in this browser. It's sent only to OpenStreetMap (address lookup) and OSRM (routing) to estimate drive times without traffic.</small>
   </section>
   <div id="next">Loading…</div>
   <p class="legend"><span style="background:#0b6e3a"></span>Home <span style="background:#5b6670"></span>Away <span style="background:#c9a227"></span>Tournament &nbsp;·&nbsp; * = WSC conference · times Pacific</p>
@@ -258,33 +268,34 @@ async function computeDrives(o) {
 }
 
 async function setOrigin(o, { save = true } = {}) {
+  $("from-status").classList.remove("ok");
   $("from-status").textContent = `Calculating drive times from ${o.label}…`;
   try {
     drives = await computeDrives(o);
     origin = o;
     if (save) localStorage.setItem(STORE, JSON.stringify(o));
     $("from-status").textContent = `From ${o.label}`;
+    $("from-status").classList.add("ok");      // the picker already shows it; keep the text for screen readers
   } catch (err) {
     $("from-status").textContent = `Couldn't compute routes (${err.message}). Try again shortly.`;
     return;
   }
   $("b-clear").hidden = false;
-  document.querySelectorAll("#presets button").forEach(b => b.classList.toggle("on", b.dataset.key === o.key));
-  $("s-venue").value = (o.key || "").startsWith("venue:") ? o.key.slice(6) : "";
+  syncFromPicker(o);
   renderAll();
 }
 
 function clearOrigin() {
   origin = null; drives = {}; localStorage.removeItem(STORE);
-  $("from-status").textContent = ""; $("b-clear").hidden = true; $("i-addr").value = ""; $("s-venue").value = "";
-  document.querySelectorAll("#presets button").forEach(b => b.classList.remove("on"));
+  $("from-status").textContent = ""; $("b-clear").hidden = true; $("i-addr").value = "";
+  syncFromPicker(null);
   renderAll();
 }
 
 function renderAll() { renderNext(); renderTrips(); renderSeasonTable(); renderMap(); }
 
 // ---------- inputs ----------
-$("b-geo").onclick = () => {
+function useMyLocation() {
   if (!navigator.geolocation) { $("from-status").textContent = "Location isn't available in this browser."; return; }
   $("from-status").textContent = "Finding your location…";
   navigator.geolocation.getCurrentPosition(async pos => {
@@ -296,9 +307,10 @@ $("b-geo").onclick = () => {
       label = a.city || a.town || a.village || a.county || label;
     } catch {}
     setOrigin({ key: "geo", label, lat, lon });
-  }, err => { $("from-status").textContent = `Location blocked (${err.message}). Type a city instead.`; },
+  }, err => { $("from-status").textContent = `Location blocked (${err.message}). Type a city instead.`; syncFromPicker(origin); },
   { enableHighAccuracy: false, timeout: 10000, maximumAge: 600000 });
-};
+}
+$("b-info").onclick = () => { const n = $("from-note"); n.hidden = !n.hidden; $("b-info").setAttribute("aria-expanded", String(!n.hidden)); };
 
 $("f-addr").onsubmit = async ev => {
   ev.preventDefault();
@@ -652,11 +664,32 @@ function venueOrigin(key) {
   const v = DATA.venues[key];
   return { key: "venue:" + key, label: v.name.split(" — ")[0].replace(/ \(.*\)$/, ""), lat: v.lat, lon: v.lon };
 }
-function fillVenuePicker() {
-  const opts = Object.entries(DATA.venues).sort((a, b) => a[1].name.localeCompare(b[1].name))
-    .map(([k, v]) => `<option value="${k}">${esc(v.name.split(" — ")[0])}</option>`).join("");
-  $("s-venue").insertAdjacentHTML("beforeend", opts);
-  $("s-venue").onchange = () => { const k = $("s-venue").value; if (k) setOrigin(venueOrigin(k)); };
+// One picker: "geo" (my location), "o:<preset>" (Pasadena, SLO), "v:<venue>", and "addr" for a typed place.
+function fillFromPicker() {
+  const presets = Object.entries(DATA.origins).map(([k, o]) => `<option value="o:${k}">${esc(o.label)}</option>`).join("");
+  const venues = Object.entries(DATA.venues).sort((a, b) => a[1].name.localeCompare(b[1].name))
+    .map(([k, v]) => `<option value="v:${k}">${esc(v.name.split(" — ")[0])}</option>`).join("");
+  $("s-from").insertAdjacentHTML("beforeend", `<optgroup label="Places">${presets}</optgroup><optgroup label="Gyms">${venues}</optgroup>`);
+  $("s-from").onchange = () => {
+    const v = $("s-from").value;
+    if (!v) return clearOrigin();
+    if (v === "geo") return useMyLocation();
+    if (v.startsWith("o:")) { const k = v.slice(2), o = DATA.origins[k]; return setOrigin({ key: k, label: o.label, lat: o.lat, lon: o.lon }); }
+    if (v.startsWith("v:")) return setOrigin(venueOrigin(v.slice(2)));
+  };
+}
+function syncFromPicker(o) {
+  const sel = $("s-from");
+  sel.querySelector('option[value="addr"]')?.remove();
+  let val = "";
+  if (o) {
+    if (o.key === "geo") val = "geo";
+    else if ((o.key || "").startsWith("venue:")) val = "v:" + o.key.slice(6);
+    else if (DATA.origins[o.key]) val = "o:" + o.key;
+    else { sel.insertAdjacentHTML("afterbegin", `<option value="addr">📌 ${esc(o.label)}</option>`); val = "addr"; }
+  }
+  sel.value = val;
+  sel.classList.toggle("set", !!o);
 }
 
 // ---------- back-to-back legs (same/next-day games): drive from the previous venue ----------
@@ -670,6 +703,10 @@ function legHtml(p, { short = false } = {}) {
     ? `<div class="leg">🔁 ${leg} from <b>${esc(f.title)}</b> (${esc(when)})</div>`
     : `<p>🔁 <b>Back-to-back:</b> ${leg} from the previous game, <b>${esc(f.title)}</b> at ${esc(f.venue)}, ${esc(f.city)} (${esc(f.dateLabel)} · ${esc(f.time)}).</p>`;
 }
+
+// Sticky header height -> --hdr-h (view jumps scroll to just below it; it changes with width).
+new ResizeObserver(([e]) => document.documentElement.style.setProperty("--hdr-h", Math.ceil(e.target.offsetHeight) + "px"))
+  .observe(document.querySelector("header"));
 
 // ---------- boot ----------
 // Team: ?team=<key> (shareable) > last choice on this device > men's. Falls back to the legacy
@@ -713,15 +750,9 @@ loadTeamData().then(data => {
     });
   }
 
-  fillVenuePicker();
+  fillFromPicker();
 
-  // Preset origins (Pasadena, SLO) from data/venues.yaml
-  $("presets").innerHTML = Object.entries(data.origins)
-    .map(([k, o]) => `<button type="button" data-key="${k}">${esc(o.label)}</button>`).join(" ");
-  document.querySelectorAll("#presets button").forEach(b => b.onclick = () => {
-    const o = data.origins[b.dataset.key];
-    setOrigin({ key: b.dataset.key, label: o.label, lat: o.lat, lon: o.lon });
-  });
+
 
   // Season range = first of the first game's month .. first of the month after the last game
   const first = events[0].start.slice(0, 7), lastD = new Date(events.at(-1).end);
@@ -757,13 +788,15 @@ loadTeamData().then(data => {
   const MODES = { cal: "view-cal", table: "view-tbl", map: "view-map" };
   const BTN = { cal: "m-cal", table: "m-tbl", map: "m-map" };
   const modeFromHash = () => ({ "#calendar": "cal", "#cal": "cal", "#table": "table", "#map": "map" })[location.hash] || "table";
-  const setMode = m => {
+  const setMode = (m, { jump = false } = {}) => {
     for (const k in MODES) { $(MODES[k]).hidden = k !== m; $(BTN[k]).classList.toggle("on", k === m); }
     history.replaceState(null, "", location.pathname + location.search + (m === "table" ? "" : `#${m === "cal" ? "calendar" : m}`));
     if (m === "map") showMap();
     if (m === "cal" && CAL?.updateSize) setTimeout(() => CAL.updateSize(), 0);   // v6 needed this after being hidden; v7 resizes itself
+    if (jump) requestAnimationFrame(() => $(MODES[m]).scrollIntoView({
+      block: "start", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
   };
-  for (const k in BTN) $(BTN[k]).onclick = () => setMode(k);
+  for (const k in BTN) $(BTN[k]).onclick = () => setMode(k, { jump: true });   // taps jump; page load / hash don't
   setMode(modeFromHash());
   addEventListener("hashchange", () => setMode(modeFromHash()));
 

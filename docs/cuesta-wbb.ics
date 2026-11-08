@@ -150,7 +150,7 @@ UID:wbb-2026-11-07-santa-monica@johnlinwiz.cuesta-basketball
 DTSTAMP:20261108T000000Z
 DTSTART;TZID=America/Los_Angeles:20261107T130000
 DTEND;TZID=America/Los_Angeles:20261107T150000
-SUMMARY:Cuesta WBB vs Santa Monica — W 65-50
+SUMMARY:Cuesta WBB vs Santa Monica
 LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
  is Obispo\, CA 93405
 GEO:35.329;-120.7406
@@ -160,19 +160,19 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  esta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasad
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
- channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 65-50\nSeason calendar: https:/
- /johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ channel/UCJ5AEH02wtWXIUFAgVMspnQ\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta WBB vs Santa Monica — W 65-50 tomorrow
+DESCRIPTION:Cuesta WBB vs Santa Monica tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta WBB vs Santa Monica — W 65-50 in 3 hours
+DESCRIPTION:Cuesta WBB vs Santa Monica in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

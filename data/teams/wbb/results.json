@@ -16,5 +16,14 @@
     "status": "Final",
     "them": 67,
     "us": 51
+  },
+  "wbb-2026-11-07-santa-monica": {
+    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261107_af5x.xml",
+    "outcome": "W",
+    "raw": "W, 65-50",
+    "score": "65-50",
+    "status": "Final",
+    "them": 50,
+    "us": 65
   }
 }

@@ -259,3 +259,16 @@ def test_featured_player_who_has_not_played(make_page, stats_json):
     expect(spot.locator(".pchart text", has_text="DNP")).to_have_count(2)
     spot.locator("[data-sp-log]").click()
     expect(page.locator("#dlg table.st tbody tr.dnp")).to_have_count(2)
+
+
+def test_newly_featured_player_joins_an_existing_follow_list(make_page, stats_json):
+    """A device that already follows someone still gets a newly featured player (once)."""
+    page, net = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"),
+                          init_script="if (!sessionStorage.x) { sessionStorage.x = 1; localStorage.setItem('cuesta-follow', '[\"|Ann Star\"]') }")
+    expect(page.locator(".spot")).to_have_count(2)                             # Ann (own) + Cy (featured)
+    page.click(".spot:has-text('Cy Guard') button.star")                       # unfollow the featured one
+    expect(page.locator(".spot")).to_have_count(1)
+    page.reload()
+    page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
+    expect(page.locator(".spot")).to_have_count(1)                             # stays unfollowed
+    expect(page.locator(".spot")).to_contain_text("Ann Star")

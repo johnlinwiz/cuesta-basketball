@@ -324,9 +324,12 @@ let CAL, DATA, origin = null, drives = {};   // drives: venueKey -> {min, mi}
 // ---------- player stats (docs/<team>/stats.json, from the official box scores) ----------
 let STATS = { teams: [], byEvent: {} };      // byEvent: event id -> {team, short, lines}
 const FOLLOW_STORE = "cuesta-follow";
-// Followed players: this device's choice once it has made one; until then the teams' featured players
-// (`follow:` in schedule.yaml, shipped in stats.json as `featured`).
-const savedFollow = (() => { try { const v = JSON.parse(localStorage.getItem(FOLLOW_STORE)); return Array.isArray(v) ? v : null; } catch { return null; } })();
+// Followed players: this device's choice, plus each featured player (`follow:` in schedule.yaml, shipped in
+// stats.json as `featured`) added once, the first time this device sees them featured. So a newly featured
+// player shows up for everyone, and unfollowing one sticks.
+const readList = k => { try { const v = JSON.parse(localStorage.getItem(k)); return Array.isArray(v) ? v : null; } catch { return null; } };
+const FEATURED_SEEN = "cuesta-featured-seen";
+const savedFollow = readList(FOLLOW_STORE);
 let FOLLOW = new Set(savedFollow || []);
 const fkey = (team, name) => `${team}|${name}`;
 const isFollowed = (team, name) => FOLLOW.has(fkey(team, name));
@@ -351,9 +354,19 @@ async function loadStats(dir) {
     const byEvent = {};
     for (const t of teams) for (const g of t.games || []) byEvent[g.event] = { team: t.key, short: t.short, lines: g.lines };
     STATS = { teams, byEvent };
-    if (!savedFollow) for (const t of teams) {
+    const seen = new Set(readList(FEATURED_SEEN) || []);
+    let added = false;
+    for (const t of teams) {
       const names = [...(t.roster || []).map(r => r.name), ...(t.games || []).flatMap(g => g.lines.map(l => l.name))];
-      for (const f of t.featured || []) FOLLOW.add(fkey(t.key, names.find(n => n.toLowerCase() === f.toLowerCase()) || f));
+      for (const f of t.featured || []) {
+        const k = fkey(t.key, names.find(n => n.toLowerCase() === f.toLowerCase()) || f);
+        if (seen.has(k)) continue;
+        FOLLOW.add(k); seen.add(k); added = true;
+      }
+    }
+    if (added) {
+      localStorage.setItem(FEATURED_SEEN, JSON.stringify([...seen]));
+      if (savedFollow) localStorage.setItem(FOLLOW_STORE, JSON.stringify([...FOLLOW]));
     }
   } catch { /* stats are optional: the schedule works without them */ }
 }

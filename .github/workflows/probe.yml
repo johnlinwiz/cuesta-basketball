@@ -1,0 +1,23 @@
+name: probe (temporary)
+on: workflow_dispatch
+permissions: { contents: read }
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Can GitHub runners fetch box scores / roster?
+        run: |
+          BROWSER="Mozilla/5.0 (Macintosh; Intel Mac OS X 14_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141 Safari/537.36"
+          SCRIPT="Mozilla/5.0 (compatible; cuesta-basketball-schedule; +https://github.com/johnlinwiz/cuesta-basketball)"
+          for u in \
+            https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261107_1ewx.xml \
+            https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261107_1ewx.xml \
+            https://www.cuestaathletics.com/sports/mbkb/2026-27/roster \
+            https://www.cccaasports.org/sports/mbkb/2026-27/teams/cuesta?view=lineup \
+            "https://www.cccaasports.org/sports/mbkb/2026-27/schedule?print=ical"; do
+            for ua in "$BROWSER" "$SCRIPT"; do
+              r=$(curl -sL --max-time 30 -A "$ua" -o /tmp/b -w "%{http_code} %{size_download}" "$u")
+              players=$(grep -c "Evan Lin" /tmp/b || true)
+              echo "PROBE $r players=$players ua=${ua:0:20} $u"
+            done
+          done

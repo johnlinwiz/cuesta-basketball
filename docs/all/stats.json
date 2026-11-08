@@ -4,6 +4,9 @@
    "team": "Cuesta College Men's Basketball",
    "short": "MBB",
    "key": "mbb",
+   "featured": [
+    "Evan Lin"
+   ],
    "roster": [
     {
      "no": "1",
@@ -1239,6 +1242,9 @@
    "team": "Cuesta College Women's Basketball",
    "short": "WBB",
    "key": "wbb",
+   "featured": [
+    "Jenn Stambaugh"
+   ],
    "roster": [
     {
      "no": "0",

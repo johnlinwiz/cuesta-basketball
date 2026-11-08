@@ -213,6 +213,16 @@
   .pchart .bar { fill:var(--green) } @media (prefers-color-scheme: dark) { .pchart .bar { fill:#6fd39b } }
   .pchart .axis { stroke:#8886; stroke-width:1 } .pchart text { font-size:10px; fill:var(--muted) } .pchart text.v { fill:var(--ink); font-weight:600 }
   .pchart rect.hit { fill:transparent; cursor:pointer; outline:none } .pchart rect.hit.on, .pchart rect.hit:focus-visible { fill:#8881 }
+  .spots { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:10px; margin:0 0 10px }
+  .spot { border:2px solid #c9a227; border-radius:10px; padding:10px 12px; background:color-mix(in srgb, #c9a227 7%, var(--bg)); white-space:normal }
+  .sp-h { display:flex; flex-wrap:wrap; gap:4px 10px; align-items:baseline; font-size:1rem } .sp-h .muted { font-size:0.75rem }
+  .tiles { display:grid; grid-template-columns:repeat(6, minmax(0, 1fr)); gap:6px; margin:8px 0 }
+  .tile { background:var(--card); border-radius:8px; padding:5px 4px; text-align:center; display:flex; flex-direction:column; line-height:1.15 }
+  .tile b { font-size:1.25rem } .tile span { font-size:0.6875rem; color:var(--muted); text-transform:uppercase; letter-spacing:.3px }
+  .tile small { font-size:0.625rem; color:var(--muted) }
+  @media (max-width:640px) { .tiles { grid-template-columns:repeat(3, minmax(0, 1fr)) } .spots { grid-template-columns:1fr } }
+  .sp-last { margin:4px 0; font-size:0.8125rem } .sp-btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px }
+  .sp-btns .star { color:#8a6d00 } @media (prefers-color-scheme: dark) { .sp-btns .star { color:#e3c35a } }
   .pchart figcaption { font-size:0.75rem; color:var(--muted); min-height:1.2em }
   .cmp-pick { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px } .cmp-pick select { max-width:100% }
   table.cmp th.l { text-align:left; cursor:default }
@@ -314,7 +324,10 @@ let CAL, DATA, origin = null, drives = {};   // drives: venueKey -> {min, mi}
 // ---------- player stats (docs/<team>/stats.json, from the official box scores) ----------
 let STATS = { teams: [], byEvent: {} };      // byEvent: event id -> {team, short, lines}
 const FOLLOW_STORE = "cuesta-follow";
-let FOLLOW = new Set((() => { try { return JSON.parse(localStorage.getItem(FOLLOW_STORE) || "[]"); } catch { return []; } })());
+// Followed players: this device's choice once it has made one; until then the teams' featured players
+// (`follow:` in schedule.yaml, shipped in stats.json as `featured`).
+const savedFollow = (() => { try { const v = JSON.parse(localStorage.getItem(FOLLOW_STORE)); return Array.isArray(v) ? v : null; } catch { return null; } })();
+let FOLLOW = new Set(savedFollow || []);
 const fkey = (team, name) => `${team}|${name}`;
 const isFollowed = (team, name) => FOLLOW.has(fkey(team, name));
 function toggleFollow(team, name) {
@@ -338,11 +351,15 @@ async function loadStats(dir) {
     const byEvent = {};
     for (const t of teams) for (const g of t.games || []) byEvent[g.event] = { team: t.key, short: t.short, lines: g.lines };
     STATS = { teams, byEvent };
+    if (!savedFollow) for (const t of teams) {
+      const names = [...(t.roster || []).map(r => r.name), ...(t.games || []).flatMap(g => g.lines.map(l => l.name))];
+      for (const f of t.featured || []) FOLLOW.add(fkey(t.key, names.find(n => n.toLowerCase() === f.toLowerCase()) || f));
+    }
   } catch { /* stats are optional: the schedule works without them */ }
 }
 const lastName = n => n.split(" ").slice(1).join(" ") || n;
 const played = l => l.min == null || l.min > 0;          // null = minutes not recorded for that game (player appeared)
-const statLine = l => played(l) ? `${l.pts} pts · ${l.reb} reb · ${l.ast} ast${l.min ? ` · ${l.min} min` : ""}` : "DNP";
+const statLine = l => played(l) ? `${l.pts} pt${l.pts === 1 ? "" : "s"} · ${l.reb} reb · ${l.ast} ast${l.min ? ` · ${l.min} min` : ""}` : "DNP";
 const minCell = m => m == null ? "—" : m;
 const pct = (m, a) => a ? (100 * m / a).toFixed(1) : "—";
 const shoot = (m, a) => `${m}-${a}`;
@@ -482,6 +499,41 @@ function leadersHtml(t, rows, n) {
   };
   return `<div class="leaders" aria-label="Team leaders">${card("pts", "Points")}${card("reb", "Rebounds")}${card("ast", "Assists")}</div>`;
 }
+const ordinal = n => n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 100 > 10 && n % 100 < 14 ? 0 : n % 10] || "th");
+function spotlightHtml(t, rows) {
+  const mine = rows.filter(r => isFollowed(t.key, r.name));
+  if (!mine.length) return "";
+  const players = rows.filter(r => r.gp);
+  const rank = (r, k) => {
+    if (!r.gp || players.length < 2) return "";
+    const better = players.filter(o => o[k] / o.gp > r[k] / r.gp).length;
+    return `${ordinal(better + 1)} of ${players.length}`;
+  };
+  const tile = (big, lbl, sub = "") => `<div class="tile"><b>${big}</b><span>${lbl}</span>${sub ? `<small>${sub}</small>` : ""}</div>`;
+  return `<div class="spots">${mine.map(r => {
+    const log = playerLog(t, r.name).filter(x => !isScrim(x.e)), last = log.at(-1), res = last?.p?.results?.[0];
+    const bio = [r.bio?.pos, r.bio?.cl, r.bio?.ht, r.bio?.home].filter(Boolean).join(" · ");
+    const tiles = r.gp ? [tile((r.pts / r.gp).toFixed(1), "pts", rank(r, "pts")), tile((r.reb / r.gp).toFixed(1), "reb", rank(r, "reb")),
+                          tile((r.ast / r.gp).toFixed(1), "ast", rank(r, "ast")), tile(r.mgp ? (r.min / r.mgp).toFixed(1) : "—", "min"),
+                          tile(r.fga ? (100 * r.fgm / r.fga).toFixed(0) + "%" : "—", "FG", r.fga ? `${r.fgm}-${r.fga}` : ""),
+                          tile(`${r.gp}`, "games", r.gs ? `${r.gs} started` : "")].join("") : "";
+    return `<section class="spot" aria-label="Spotlight: ${esc(r.name)}">
+      <div class="sp-h"><span>⭐ <b>${r.no ? "#" + esc(r.no) + " " : ""}${esc(r.name)}</b></span> <span class="muted">${esc(bio)}</span></div>
+      ${r.gp ? `<div class="tiles">${tiles}</div>` : `<p class="muted">Hasn't appeared in a game${stFiltered() ? " matching these filters" : " yet this season"}.</p>`}
+      ${last ? `<p class="sp-last"><span class="muted">Last game:</span> ${esc(last.p?.dateLabel || last.g.date)} ${esc(last.p?.matchup || last.g.opponent)}
+        ${res ? `<span class="res ${res.outcome}">${esc(res.label)}</span>` : ""} — <b>${statLine(last.l)}</b></p>` : ""}
+      ${log.length ? pointsChart(log) : ""}
+      <div class="sp-btns"><button type="button" class="st-btn" data-sp-log="${esc(r.name)}">📋 Game log</button>
+        ${r.gp ? `<button type="button" class="st-btn" data-sp-cmp="${esc(r.name)}">⇄ Compare</button>` : ""}${starBtn(t.key, r.name).replace('class="star"', 'class="star st-btn"').replace(/>(☆|★)</, ">$1 Following<")}</div>
+    </section>`;
+  }).join("")}</div>`;
+}
+function wireCharts(el) {
+  el.querySelectorAll(".pchart").forEach(fig => fig.querySelectorAll("rect.hit").forEach(h => {
+    const say = () => { fig.querySelector(".pc-read").textContent = h.dataset.say; fig.querySelectorAll("rect.hit.on").forEach(o => o.classList.remove("on")); h.classList.add("on"); };
+    h.addEventListener("pointerenter", say); h.addEventListener("focus", say); h.addEventListener("click", say);
+  }));
+}
 function viewTeams() {
   const k = DATA?.teamKey;
   return STATS.teams.filter(t => !k || k === "all" || t.key === k || STATS.teams.length === 1);
@@ -517,7 +569,7 @@ function renderStats() {
         const x = cell(c, r), weak = r.gp && val(c, r) != null && !qual(c, r);
         return `<td${weak ? ' class="weak" title="Too few attempts to rank"' : ""}>${c === "pts" ? `<b>${x}</b>` : x}</td>`;
       }).join("")}</tr>`).join("");
-    return `<div class="stw">${head}${leadersHtml(t, rows, n)}
+    return `<div class="stw" data-team="${esc(t.key)}">${head}${spotlightHtml(t, rows)}${leadersHtml(t, rows, n)}
       <table class="st season" data-team="${esc(t.key)}"><thead><tr><th></th>${th("name")}${th("no")}${th("pos")}${cols.map(th).join("")}</tr></thead>
       <tbody>${body}</tbody></table></div>`;
   }).join("");
@@ -527,7 +579,9 @@ function renderStats() {
     renderStats();
   });
   el.querySelectorAll("button.link").forEach(b => b.onclick = () => openPlayer(b.dataset.team, b.dataset.name));
-  wireStars(el);
+  el.querySelectorAll("[data-sp-log]").forEach(b => b.onclick = () => openPlayer(b.closest("[data-team]")?.dataset.team ?? "", b.dataset.spLog));
+  el.querySelectorAll("[data-sp-cmp]").forEach(b => b.onclick = () => openCompare([fkey(b.closest("[data-team]")?.dataset.team ?? "", b.dataset.spCmp)]));
+  wireStars(el); wireCharts(el);
 }
 function wireStatsControls() {
   document.querySelectorAll("[data-st-mode]").forEach(b => b.onclick = () => { ST.mode = b.dataset.stMode; renderStats(); });
@@ -557,16 +611,18 @@ function pointsChart(log) {
     const lab = played(l) && l.pts === hi && hi > 0 ? `<text class="v" x="${x + bw / 2}" y="${y - 4}" text-anchor="middle">${l.pts}</text>` : "";
     const dnp = played(l) ? "" : `<text class="t" x="${x + bw / 2}" y="${base - 3}" text-anchor="middle">DNP</text>`;
     const tick = n <= 12 || i % Math.ceil(n / 12) === 0 ? `<text class="t" x="${x + bw / 2}" y="${base + 14}" text-anchor="middle">${esc(g.date.slice(5).replace("-", "/").replace(/^0/, ""))}</text>` : "";
-    const say = `${p?.dateLabel || g.date} · ${p?.matchup || g.opponent}: ${played(l) ? `${l.pts} pts` : "did not play"}`;
+    const say = `${p?.dateLabel || g.date} · ${p?.matchup || g.opponent}: ${played(l) ? `${l.pts} pt${l.pts === 1 ? "" : "s"}` : "did not play"}`;
     return `${bar}${lab}${dnp}${tick}<rect class="hit" data-say="${esc(say)}" x="${i * slot}" y="0" width="${slot}" height="${H}" tabindex="0" aria-label="${esc(say)}"/>`;
   }).join("");
   return `<figure class="pchart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Points by game">
     <line class="axis" x1="0" x2="${W}" y1="${base}" y2="${base}"/>${bars}</svg>
-    <figcaption id="pc-read" aria-live="polite">Points by game · hover or tap a bar</figcaption></figure>`;
+    <figcaption class="pc-read" aria-live="polite">Points by game · hover or tap a bar</figcaption></figure>`;
 }
+// Every team game with a box score; a player missing from one (box scores list who appeared) did not play.
+const DNP_LINE = { min: 0, pts: 0, reb: 0, ast: 0, absent: true };
 function playerLog(t, name) {
-  return (t.games || []).map(g => ({ g, l: g.lines.find(l => l.name === name), e: evOf(g.event) }))
-    .filter(x => x.l).sort((a, b) => a.g.date.localeCompare(b.g.date)).map(x => ({ ...x, p: x.e?.extendedProps }));
+  return (t.games || []).map(g => ({ g, l: g.lines.find(l => l.name === name) || DNP_LINE, e: evOf(g.event) }))
+    .sort((a, b) => a.g.date.localeCompare(b.g.date)).map(x => ({ ...x, p: x.e?.extendedProps }));
 }
 function openPlayer(team, name) {
   const t = STATS.teams.find(x => x.key === team);
@@ -593,10 +649,7 @@ function openPlayer(team, name) {
       pointsChart(log) +
       (rows ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>Stl</th><th>Blk</th><th>TO</th>
         <th>FG</th><th>3PT</th><th>FT</th></tr></thead><tbody>${rows}</tbody></table></div>` : "");
-    $("d-body").querySelectorAll(".pchart rect.hit").forEach(h => {
-      const say = () => { $("pc-read").textContent = h.dataset.say; $("d-body").querySelectorAll(".pchart rect.hit.on").forEach(o => o.classList.remove("on")); h.classList.add("on"); };
-      h.addEventListener("pointerenter", say); h.addEventListener("focus", say); h.addEventListener("click", say);
-    });
+    wireCharts($("d-body"));
     $("d-foot").innerHTML = `<button type="button" id="d-follow">${isFollowed(team, name) ? "★ Following" : "☆ Follow"}</button>
       ${season.gp ? `<button type="button" id="d-compare">⇄ Compare</button>` : ""}<button onclick="dlg.close()">Close</button>`;
     $("d-follow").onclick = () => { toggleFollow(team, name); draw(); };

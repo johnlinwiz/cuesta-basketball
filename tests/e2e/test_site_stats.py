@@ -122,7 +122,7 @@ def test_player_popup(make_page):
     expect(dlg.locator(".pchart path.bar")).to_have_count(2)
     expect(dlg.locator(".pchart text.v")).to_have_text("30")             # only the high is labelled
     dlg.locator(".pchart rect.hit").nth(0).click()
-    expect(page.locator("#pc-read")).to_contain_text("Gavilan: 20 pts")
+    expect(dlg.locator(".pc-read")).to_contain_text("Gavilan: 20 pts")
     expect(dlg.locator("table.st tbody tr")).to_have_count(2)
     expect(dlg.locator("table.st b.hi")).to_have_text(["4", "30", "5"])  # reb high @ Gavilan; pts + ast vs Sequoias
     page.click("#d-follow")
@@ -216,3 +216,46 @@ def test_bad_state_is_ignored(make_page):
     expect(page.locator("table.season tbody tr")).to_have_count(4)
     expect(page.locator("table.season th.on")).to_have_text("Pts")
     expect(page.locator("#st-site")).to_have_value("all")
+
+
+# ---------- featured players (`follow:` in schedule.yaml -> stats.json "featured") ----------
+def featured(stats_json, *names):
+    return {**stats_json, "featured": list(names)}
+
+
+def test_featured_players_are_followed_by_default(make_page, stats_json):
+    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "cy guard"))   # case-insensitive
+    spot = page.locator(".spot")
+    expect(spot).to_have_count(1)
+    expect(spot).to_contain_text("#10 Cy Guard")
+    expect(spot.locator(".tile").first).to_contain_text("8.5")                # (12+5)/2 pts
+    expect(spot.locator(".tile").first).to_contain_text("2nd of 2")
+    expect(spot.locator(".sp-last")).to_contain_text("Sequoias")
+    expect(spot.locator(".sp-last")).to_contain_text("5 pts · 9 reb · 0 ast")
+    expect(spot.locator(".pchart path.bar")).to_have_count(2)
+    expect(page.locator("table.season tr.fol")).to_contain_text("Cy Guard")
+    page.click("#m-tbl")
+    expect(page.locator("#tbl-b .box-lines .me").first).to_contain_text("⭐ Cy Guard: 12 pts")
+    # nothing saved until this device makes its own choice
+    assert page.evaluate("localStorage.getItem('cuesta-follow')") is None
+
+
+def test_own_choice_overrides_featured(make_page, stats_json):
+    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"))
+    page.click(".spot button.star")                                          # unfollow from the spotlight
+    expect(page.locator(".spot")).to_have_count(0)
+    page.reload()
+    page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
+    expect(page.locator(".spot")).to_have_count(0)                           # stays unfollowed
+
+
+def test_featured_player_who_has_not_played(make_page, stats_json):
+    """Missing from a box score = did not play; the chart and log still cover every team game."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Bo Bench"))
+    spot = page.locator(".spot")
+    expect(spot).to_contain_text("Hasn't appeared in a game yet this season")
+    expect(spot.locator(".sp-last")).to_contain_text("Sequoias")
+    expect(spot.locator(".sp-last")).to_contain_text("DNP")
+    expect(spot.locator(".pchart text", has_text="DNP")).to_have_count(2)
+    spot.locator("[data-sp-log]").click()
+    expect(page.locator("#dlg table.st tbody tr.dnp")).to_have_count(2)

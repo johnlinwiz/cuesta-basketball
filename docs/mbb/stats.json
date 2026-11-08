@@ -2,6 +2,9 @@
  "team": "Cuesta College Men's Basketball",
  "short": "MBB",
  "key": "mbb",
+ "featured": [
+  "Evan Lin"
+ ],
  "roster": [
   {
    "no": "1",

@@ -69,7 +69,7 @@ def stat_line(l):
     if l.get("min") is not None and l["min"] <= 0:
         return "did not play"
     mins = f" · {l['min']} min" if l.get("min") else ""
-    return (f"{l['pts']} pts · {l['reb']} reb · {l['ast']} ast{mins} "
+    return (f"{l['pts']} pt{'' if l['pts'] == 1 else 's'} · {l['reb']} reb · {l['ast']} ast{mins} "
             f"(FG {l['fgm']}-{l['fga']}, 3PT {l['fg3m']}-{l['fg3a']}, FT {l['ftm']}-{l['fta']})")
 
 

@@ -447,7 +447,8 @@ def main():
         st = load_stats(key)
         boxes = {g["event"]: {"top": box_summary(g["lines"]), "url": g.get("boxscore")} for g in st["games"]}
         all_boxes.update(boxes)
-        site_stats = {"team": sched["team"], "short": sched["short"], "key": key, "roster": st["roster"],
+        site_stats = {"team": sched["team"], "short": sched["short"], "key": key, "featured": sched.get("follow") or [],
+                      "roster": st["roster"],
                       "season": st["season"], "games": st["games"]}
         (ddir / "stats.json").write_text(json.dumps(site_stats, indent=1, ensure_ascii=False) + "\n")
         all_stats.append(site_stats)

@@ -22,7 +22,7 @@ feed_ignore:                      # "YYYY-MM-DD Opponent" feed entries we delibe
 timezone: America/Los_Angeles
 default_duration_min: 120
 notify: [johnlinwiz]             # @-mentioned in reminder comments
-follow: []                  # player names whose box-score lines are posted (and emailed) on the game issue, e.g. ["Jane Doe"]
+follow: ["Evan Lin"]               # featured players: followed by default on the site (spotlight in Stats, line under each game) + box-score comment/email on the game issue
 reminder_days_before: [7, 2, 0]   # GitHub issue reminder comments (0 = game day)
 
 games:

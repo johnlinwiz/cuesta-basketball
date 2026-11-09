@@ -19,7 +19,7 @@
 | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|---|
 | 1 | 2 | 3 | 4<br>✅🏠 **L 51-67** vs Hartnell | 5 | 6 | 7<br>✅🏠 **W 65-50** [vs Santa Monica](https://github.com/johnlinwiz/cuesta-basketball/issues/31) |
-| **8** | 9 | 10 | 11 | 12<br>🚌 4pm [@ Foothill](https://github.com/johnlinwiz/cuesta-basketball/issues/32) | 13<br>🚌 2pm [@ Siskiyous](https://github.com/johnlinwiz/cuesta-basketball/issues/33) [📺](https://fan.hudl.com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/video) | 14<br>🚌 2pm [@ Napa Valley](https://github.com/johnlinwiz/cuesta-basketball/issues/34) |
+| 8 | **9** | 10 | 11 | 12<br>🚌 4pm [@ Foothill](https://github.com/johnlinwiz/cuesta-basketball/issues/32) | 13<br>🚌 2pm [@ Siskiyous](https://github.com/johnlinwiz/cuesta-basketball/issues/33) [📺](https://fan.hudl.com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/video) | 14<br>🚌 2pm [@ Napa Valley](https://github.com/johnlinwiz/cuesta-basketball/issues/34) |
 | 15 | 16 | 17 | 18<br>🏠 4pm [vs Monterey Peninsula](https://github.com/johnlinwiz/cuesta-basketball/issues/35) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 19 | 20<br>🏆 6pm [vs Mission](https://github.com/johnlinwiz/cuesta-basketball/issues/36) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 21<br>🏆 3pm [vs Skyline](https://github.com/johnlinwiz/cuesta-basketball/issues/37) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
 | 22 | 23 | 24 | 25 | 26 | 27 | 28 |
 | 29 | 30 |   |   |   |   |   |

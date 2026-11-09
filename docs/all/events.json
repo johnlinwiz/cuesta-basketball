@@ -1086,22 +1086,22 @@
        "name": "AJ Rivera",
        "no": "0",
        "pts": 12,
-       "reb": 0,
-       "ast": 0
-      },
-      {
-       "name": "Kinzie Amer",
-       "no": "23",
-       "pts": 11,
-       "reb": 0,
-       "ast": 0
+       "reb": 3,
+       "ast": 2
       },
       {
        "name": "Jenn Stambaugh",
        "no": "12",
        "pts": 11,
-       "reb": 0,
-       "ast": 0
+       "reb": 11,
+       "ast": 2
+      },
+      {
+       "name": "Kinzie Amer",
+       "no": "23",
+       "pts": 11,
+       "reb": 8,
+       "ast": 3
       }
      ],
      "url": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261107_af5x.xml"

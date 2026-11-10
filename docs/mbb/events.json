@@ -20,7 +20,7 @@
    "team": "Both teams"
   }
  ],
- "record": "2-2",
+ "record": "2-3",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "reedley": {
@@ -686,19 +686,52 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "L 79-83",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261109_11hs.xml",
+      "recap": null
+     }
+    ],
     "venueKey": "cuesta",
     "video": "https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ",
     "videoLabel": "Host channel: YouTube · CuestaHDTV (may not be streamed)",
     "videoUncertain": true,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Redwoods&dates=20261109T130000%2F20261109T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Redwoods+%E2%80%94+L+79-83&dates=20261109T130000%2F20261109T150000&ctz=America%2FLos_Angeles&location=Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405&details=Non-conference+%E2%80%94+Home%0AVenue%3A+Stork+Gymnasium+%28Cuesta+Gym%29%2C+Cuesta+College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DStork%2BGymnasium%2B%2528Cuesta%2BGym%2529%252C%2BCuesta%2BCollege%252C%2BHighway%2B1%252C%2BSan%2BLuis%2BObispo%252C%2BCA%2B93405%0ADrive+from+Pasadena%3A+4h+03m+%C2%B7+198+mi%0ADrive+from+SLO%3A+12m+%C2%B7+7+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+CuestaHDTV+%28may+not+be+streamed%29%29%3A+https%3A%2F%2Fwww.youtube.com%2Fchannel%2FUCJ5AEH02wtWXIUFAgVMspnQ%0AFinal%3A+L+79-83+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fmbkb%2F2026-27%2Fboxscores%2F20261109_11hs.xml",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/7",
     "team": "mbb",
     "teamShort": "MBB",
     "fromPrev": null,
-    "box": null
+    "box": {
+     "top": [
+      {
+       "name": "Ahmad Jacquet",
+       "no": "5",
+       "pts": 21,
+       "reb": 4,
+       "ast": 2
+      },
+      {
+       "name": "James Nugent",
+       "no": "3",
+       "pts": 15,
+       "reb": 2,
+       "ast": 3
+      },
+      {
+       "name": "Sean Armstrong",
+       "no": "10",
+       "pts": 14,
+       "reb": 5,
+       "ast": 2
+      }
+     ],
+     "url": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261109_11hs.xml"
+    }
    },
    "start": "2026-11-09T13:00:00-08:00",
    "end": "2026-11-09T15:00:00-08:00"

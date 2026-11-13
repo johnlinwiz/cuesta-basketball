@@ -234,8 +234,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-11-13-feather-river@johnlinwiz.cuesta-basketball
 DTSTAMP:20261113T000000Z
-DTSTART;TZID=America/Los_Angeles:20261113T180000
-DTEND;TZID=America/Los_Angeles:20261113T200000
+DTSTART;TZID=America/Los_Angeles:20261113T173000
+DTEND;TZID=America/Los_Angeles:20261113T193000
 SUMMARY:Cuesta MBB vs Feather River
 LOCATION:American River College Gym\, 4700 College Oak Dr\, Sacramento\, CA
   95841

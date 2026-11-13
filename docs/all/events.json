@@ -20,7 +20,7 @@
    "team": "Both teams"
   }
  ],
- "record": "Men 2-3 · Women 1-2",
+ "record": "Men 2-3 · Women 2-2",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "taft": {
@@ -1296,19 +1296,52 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "W 75-43",
+      "outcome": "W",
+      "opponent": null,
+      "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml",
+      "recap": null
+     }
+    ],
     "venueKey": "foothill",
     "video": null,
     "videoLabel": "Game stream",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill+%E2%80%94+W+75-43&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi%0AFinal%3A+W+75-43+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261112_mpkq.xml",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/32",
     "team": "wbb",
     "teamShort": "WBB",
     "fromPrev": null,
-    "box": null
+    "box": {
+     "top": [
+      {
+       "name": "AJ Rivera",
+       "no": "0",
+       "pts": 19,
+       "reb": 2,
+       "ast": 5
+      },
+      {
+       "name": "Kinzie Amer",
+       "no": "23",
+       "pts": 12,
+       "reb": 5,
+       "ast": 3
+      },
+      {
+       "name": "Violet Pace",
+       "no": "24",
+       "pts": 12,
+       "reb": 5,
+       "ast": 1
+      }
+     ],
+     "url": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml"
+    }
    },
    "start": "2026-11-12T16:00:00-08:00",
    "end": "2026-11-12T18:00:00-08:00"

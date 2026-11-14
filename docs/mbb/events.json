@@ -20,7 +20,7 @@
    "team": "Both teams"
   }
  ],
- "record": "2-3",
+ "record": "2-4",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "reedley": {
@@ -761,14 +761,22 @@
     "liveStats": false,
     "notes": "American River College Tournament, day 1",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "L 73-78",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": null,
+      "recap": null
+     }
+    ],
     "venueKey": "arc",
     "video": "https://www.youtube.com/@arcbeavers",
     "videoLabel": "Host channel: YouTube · ARC Athletics",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Feather+River&dates=20261113T173000%2F20261113T193000&ctz=America%2FLos_Angeles&location=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAmerican%2BRiver%2BCollege%2BGym%252C%2B4700%2BCollege%2BOak%2BDr%252C%2BSacramento%252C%2BCA%2B95841%0ADrive+from+Pasadena%3A+7h+19m+%C2%B7+396+mi%0ADrive+from+SLO%3A+5h+49m+%C2%B7+301+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+ARC+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40arcbeavers%0ANote%3A+American+River+College+Tournament%2C+day+1",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Feather+River+%E2%80%94+L+73-78&dates=20261113T173000%2F20261113T193000&ctz=America%2FLos_Angeles&location=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAmerican%2BRiver%2BCollege%2BGym%252C%2B4700%2BCollege%2BOak%2BDr%252C%2BSacramento%252C%2BCA%2B95841%0ADrive+from+Pasadena%3A+7h+19m+%C2%B7+396+mi%0ADrive+from+SLO%3A+5h+49m+%C2%B7+301+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+ARC+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40arcbeavers%0AFinal%3A+L+73-78%0ANote%3A+American+River+College+Tournament%2C+day+1",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/29",
     "team": "mbb",
     "teamShort": "MBB",

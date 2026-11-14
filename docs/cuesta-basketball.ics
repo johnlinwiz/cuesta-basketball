@@ -396,8 +396,9 @@ DESCRIPTION:Non-conference — Away\nVenue: Foothill College Main Gymnasium
  \, 12345 El Monte Rd\, Los Altos Hills\, CA 94022\nMap: https://www.google
  .com/maps/search/?api=1&query=Foothill+College+Main+Gymnasium%2C+12345+El+
  Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022\nDrive from Pasadena: 6h 40m · 35
- 4 mi\nDrive from SLO: 3h 52m · 198 mi\nFinal: W 75-43\nSeason calendar: h
- ttps://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ 4 mi\nDrive from SLO: 3h 52m · 198 mi\nFinal: W 75-43 · Box score: https
+ ://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml\nSe
+ ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
@@ -446,7 +447,7 @@ UID:2026-11-13-feather-river@johnlinwiz.cuesta-basketball
 DTSTAMP:20261113T000000Z
 DTSTART;TZID=America/Los_Angeles:20261113T173000
 DTEND;TZID=America/Los_Angeles:20261113T193000
-SUMMARY:Cuesta MBB vs Feather River
+SUMMARY:Cuesta MBB vs Feather River — L 73-78
 LOCATION:American River College Gym\, 4700 College Oak Dr\, Sacramento\, CA
   95841
 GEO:38.6488;-121.3465
@@ -455,20 +456,20 @@ DESCRIPTION:Tournament — Neutral\nVenue: American River College Gym\, 470
  /search/?api=1&query=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+
  Sacramento%2C+CA+95841\nDrive from Pasadena: 7h 19m · 396 mi\nDrive from 
  SLO: 5h 49m · 301 mi\nWatch live (Host channel: YouTube · ARC Athletics)
- : https://www.youtube.com/@arcbeavers\nNote: American River College Tourna
- ment\, day 1\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketb
- all/?team=mbb
+ : https://www.youtube.com/@arcbeavers\nFinal: L 73-78\nNote: American Rive
+ r College Tournament\, day 1\nSeason calendar: https://johnlinwiz.github.i
+ o/cuesta-basketball/?team=mbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta MBB vs Feather River tomorrow
+DESCRIPTION:Cuesta MBB vs Feather River — L 73-78 tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta MBB vs Feather River in 3 hours
+DESCRIPTION:Cuesta MBB vs Feather River — L 73-78 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

@@ -43,5 +43,13 @@
     "status": "Final",
     "them": 83,
     "us": 79
+  },
+  "2026-11-13-feather-river": {
+    "outcome": "L",
+    "raw": "L, 78-73",
+    "score": "73-78",
+    "status": "Final",
+    "them": 78,
+    "us": 73
   }
 }

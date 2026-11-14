@@ -97,6 +97,16 @@
 
   #next { background:#8881; border-left:4px solid var(--gold); padding:10px 14px; margin-bottom:14px; border-radius:4px }
   #next a { color:var(--gold) }
+  .nx-rec { margin-bottom:4px } .nx-h { font-weight:700; margin-top:2px }
+  .nx { padding:6px 0 4px; border-top:1px solid #8883 } .nx:first-of-type { border-top:0 }
+  .nx-meta, .nx-drive { font-size:0.875rem } .nx-watch { margin-top:2px; font-weight:600 }
+  .nx-live { background:#c62828; color:#fff; border-radius:4px; padding:0 6px; font-size:0.75rem; font-weight:700; animation:nxpulse 2s ease-in-out infinite }
+  @media (prefers-reduced-motion: reduce) { .nx-live { animation:none } }
+  @keyframes nxpulse { 50% { opacity:.6 } }
+  .nx-tag { background:#8883; border-radius:4px; padding:0 6px; font-size:0.75rem; font-weight:700 }
+  .nx-btns { display:flex; gap:6px; margin-top:4px }
+  .nx-btns button { font:inherit; font-size:0.75rem; border:1px solid #8886; border-radius:6px; padding:2px 8px; background:var(--card); color:inherit; cursor:pointer }
+  .tbl tr.flash td { animation:rowflash 2.4s ease-out } @keyframes rowflash { 0%, 40% { background:#c9a22755 } 100% { background:transparent } }
   .legend { color:var(--muted); font-size:0.8125rem; margin:0 0 10px }
   .legend span { display:inline-block; width:10px; height:10px; border-radius:2px; margin:0 4px 0 10px; vertical-align:middle }
 
@@ -250,6 +260,7 @@
       <a id="l-pdf-bw" href="#">🖨️ Printable PDF (black &amp; white)</a>
       <a id="l-issues" href="#">🔔 Reminders</a>
       <a id="l-readme" href="#">📄 README &amp; tables</a>
+      <span id="l-ig"></span>
     </div>
   </details>
 </header>
@@ -844,14 +855,58 @@ function driveHtml(ev) {
          (lb ? ` → leave by <b>${lb}</b>` : "");
 }
 
-function renderNext() {
-  const now = new Date(), next = DATA.events.find(e => new Date(e.end) >= now);
-  const rec = DATA.record ? `<b>Record:</b> ${esc(DATA.record)}<br>` : "";
-  if (!next) { $("next").innerHTML = rec + "Season complete."; return; }
-  const p = next.extendedProps, dh = driveHtml(next);
-  $("next").innerHTML = rec + `<b>Next up:</b> ${esc(p.dateLabel)} · ${esc(p.time)} · <b>${esc(next.title)}</b> — ` +
-    `<a href="${p.map}" target="_blank">${esc(p.venue)}</a>, ${esc(p.city)}` + (dh ? `<br>${dh}` : "");
+// "Now" = from 15 min before tip-off to the expected end; all-day (tournament) events count for the whole day.
+const LIVE_EARLY_MS = 15 * 60000;
+const ptDay = d => new Date(d).toLocaleDateString("en-CA", { timeZone: TZ });
+function gameState(e, now = new Date()) {
+  const s = new Date(e.start), end = new Date(e.end);
+  if (e.allDay) return ptDay(now) >= e.start.slice(0, 10) && now < end ? "now" : now < s ? "soon" : "past";
+  if (now >= s - LIVE_EARLY_MS && now <= end) return "now";
+  return now < s ? "soon" : "past";
 }
+function whenLabel(e, now = new Date()) {
+  const days = Math.round((Date.parse(ptDay(e.start)) - Date.parse(ptDay(now))) / 864e5);
+  return days === 0 ? "Today" : days === 1 ? "Tomorrow" : `In ${days} days`;
+}
+function watchLinks(p) {
+  return [p.video && `<a href="${p.video}" target="_blank" rel="noopener">📺 ${esc(p.videoLabel || "Watch live")}</a>`,
+          p.audio && `<a href="${p.audio}" target="_blank" rel="noopener">🎙️ Listen</a>`,
+          p.stats ? `<a href="${p.stats}" target="_blank" rel="noopener">📊 Live stats</a>` : p.liveStats ? "📊 Live stats on game day" : ""]
+    .filter(Boolean).join(" · ");
+}
+function nextLine(e, state) {
+  const p = e.extendedProps, rc = resultChips(p, { links: false }), dh = driveHtml(e), w = watchLinks(p);
+  const badge = state === "now" ? `<span class="nx-live">🔴 Now</span>` : state === "final" ? `<span class="nx-tag">Final</span>`
+              : `<span class="nx-tag">${whenLabel(e)}</span>`;
+  return `<div class="nx" data-id="${esc(e.id)}">${badge} <b>${esc(e.title)}</b> ${rc}
+    <div class="nx-meta">${esc(p.dateLabel)} · ${esc(p.time)} · <a href="${p.map}" target="_blank" rel="noopener">${esc(p.venue)}</a>, ${esc(p.city)}${p.notes ? ` · ${esc(p.notes)}` : ""}</div>
+    ${w ? `<div class="nx-watch">${w}</div>` : ""}${dh && state !== "final" ? `<div class="nx-drive">${dh}</div>` : ""}${boxLinesHtml(e)}
+    <div class="nx-btns"><button type="button" data-nx="open">Details</button><button type="button" data-nx="jump">Show in table</button></div></div>`;
+}
+function renderNext() {
+  const now = new Date(), today = ptDay(now);
+  const rec = DATA.record ? `<div class="nx-rec"><b>Record:</b> ${esc(DATA.record)}</div>` : "";
+  const live = DATA.events.filter(e => gameState(e, now) === "now");
+  // tonight's finals stay up until midnight; then the next game(s) — every team's first upcoming one
+  const finals = DATA.events.filter(e => gameState(e, now) === "past" && ptDay(e.start) === today && (e.extendedProps.results || []).length);
+  const upcoming = [], seenTeam = new Set();
+  for (const e of DATA.events) {
+    if (gameState(e, now) !== "soon") continue;
+    const t = e.extendedProps.teamShort || "";
+    if (seenTeam.has(t)) continue;
+    seenTeam.add(t); upcoming.push(e);
+  }
+  const busyTeams = new Set(live.map(e => e.extendedProps.teamShort || ""));
+  const next = upcoming.filter(e => !busyTeams.has(e.extendedProps.teamShort || "") || ptDay(e.start) === today);
+  const parts = [...live.map(e => nextLine(e, "now")), ...finals.map(e => nextLine(e, "final")), ...next.map(e => nextLine(e, "soon"))];
+  $("next").innerHTML = rec + (parts.length ? `<div class="nx-h">${live.length ? "Now &amp; next" : "Next up"}</div>${parts.join("")}` : "Season complete.");
+  $("next").querySelectorAll(".nx").forEach(div => {
+    const ev = DATA.events.find(e => e.id === div.dataset.id);
+    div.querySelector('[data-nx="open"]').onclick = () => openEvent(ev);
+    div.querySelector('[data-nx="jump"]').onclick = () => jumpToEvent(ev.id);
+  });
+}
+let jumpToEvent = () => {};     // set once the view switcher exists (boot)
 
 function renderTrips() {
   if (!origin) { $("trips").hidden = true; return; }
@@ -914,7 +969,7 @@ function renderSeasonTable() {
                      : `<a href="${p.video}" target="_blank">📺</a>`),
                    p.stats ? `<a href="${p.stats}" target="_blank">📊</a>` : p.liveStats ? "📊" : ""]
                   .filter(Boolean).join(" ");
-    return `<tr class="${row}"><td class="num c-head">${esc(p.dateLabel)}<span class="m-only"> · ${esc(p.time)} · ${esc(p.site)}</span></td>
+    return `<tr class="${row}" data-id="${esc(e.id)}"><td class="num c-head">${esc(p.dateLabel)}<span class="m-only"> · ${esc(p.time)} · ${esc(p.site)}</span></td>
       <td class="num d-only">${esc(p.time)}</td><td class="c-game">${game}</td><td class="d-only">${esc(p.site)}</td>
       <td data-label="Venue"><a href="${p.map}" target="_blank">${esc(p.venue)}</a><br class="d-only"><span class="sub"> ${esc(p.city)}</span></td>
       <td class="num" data-label="Drive">${driveCell}${legHtml(p, { short: true })}</td><td class="num" data-label="Watch">${watch || "—"}</td></tr>`;
@@ -1252,6 +1307,8 @@ loadTeamData().then(data => {
   } else { $("l-pdf").hidden = true; $("l-pdf-bw").hidden = true; }
   $("l-ics").href = data.ics;
   $("l-readme").href = `${gh}#readme`;
+  $("l-ig").outerHTML = (data.teams || []).filter(t => t.instagram && (data.teamKey === "all" || t.key === data.teamKey))
+    .map(t => `<a href="https://www.instagram.com/${esc(t.instagram)}/" target="_blank" rel="noopener">📷 Instagram @${esc(t.instagram)}</a>`).join("");
   $("l-issues").href = data.teamKey && data.teamKey !== "all" ? `${gh}/issues?q=is%3Aissue+label%3A${data.teamKey}` : `${gh}/issues`;
   if (data.teamKey) {
     if (new URLSearchParams(location.search).get("team") !== data.teamKey)   // keep the URL shareable
@@ -1324,7 +1381,16 @@ loadTeamData().then(data => {
       }, 350);
     }
   };
-  for (const k in BTN) $(BTN[k]).onclick = () => setMode(k, { jump: true });   // taps jump; page load / hash don't
+  for (const k in BTN) $(BTN[k]).onclick = () => setMode(k, { jump: true });
+  jumpToEvent = id => {
+    setMode("table");
+    const tr = $("tbl-b").querySelector(`tr[data-id="${CSS.escape(id)}"]`);
+    if (!tr) return;
+    const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    requestAnimationFrame(() => tr.scrollIntoView({ block: "center", behavior: smooth ? "smooth" : "auto" }));
+    tr.classList.remove("flash"); void tr.offsetWidth; tr.classList.add("flash");
+  };
+  setInterval(renderNext, 60000);   // Now -> Final -> Next up without a reload   // taps jump; page load / hash don't
   ST = stFromHash();
   setMode(modeFromHash());
   addEventListener("hashchange", () => { ST = stFromHash(); setMode(modeFromHash()); renderStats(); });

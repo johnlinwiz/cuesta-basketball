@@ -7,12 +7,14 @@
   {
    "key": "mbb",
    "short": "MBB",
-   "team": "Cuesta College Men's Basketball"
+   "team": "Cuesta College Men's Basketball",
+   "instagram": "cuesta_mbb"
   },
   {
    "key": "wbb",
    "short": "WBB",
-   "team": "Cuesta College Women's Basketball"
+   "team": "Cuesta College Women's Basketball",
+   "instagram": null
   },
   {
    "key": "all",

@@ -221,7 +221,9 @@ def test_drive_from_unknown_address(make_page):
 def test_results_badges_and_record(make_page):
     page, _ = make_page(mobile=False)
     expect(page.locator("#next")).to_contain_text("Record: 2-1")      # the scrimmage isn't scored
-    expect(page.locator("#next")).to_contain_text("Next up: Sat Nov 7 · 3:00 PM · vs Diablo Valley")
+    expect(page.locator("#next .nx-h")).to_have_text("Next up")
+    expect(page.locator("#next .nx")).to_contain_text("vs Diablo Valley")
+    expect(page.locator("#next .nx-meta")).to_contain_text("Sat Nov 7 · 3:00 PM")
     badges = page.locator("#tbl-b .res")
     expect(badges).to_have_text(["L 68-75", "W 81-74 (OT)", "W (forfeit)"])
     expect(page.locator("#tbl-b .res.W")).to_have_count(2)
@@ -467,3 +469,44 @@ def test_page_load_does_not_jump(make_page):
     page, _ = make_page(mobile=True, hash="#calendar", frozen=False)
     page.wait_for_timeout(400)
     assert page.evaluate("scrollY") == 0
+
+
+# ---------------------------------------------------------------- Next up / Now
+def test_next_up_shows_when_and_where(make_page):
+    page, _ = make_page(mobile=False)                                   # Thu Nov 5, noon
+    nx = page.locator("#next .nx")
+    expect(nx).to_have_count(1)
+    expect(nx.locator(".nx-tag")).to_have_text("In 2 days")
+    expect(nx).to_contain_text("vs Diablo Valley")
+    expect(nx.locator(".nx-meta a")).to_have_attribute("href", re.compile("google.com/maps"))
+
+
+def test_now_during_a_game(make_page):
+    page, _ = make_page(mobile=False, now="2026-11-07T15:40:00-08:00")
+    expect(page.locator("#next .nx-h")).to_have_text("Now & next")
+    live = page.locator("#next .nx").first
+    expect(live.locator(".nx-live")).to_have_text("🔴 Now")
+    expect(live).to_contain_text("vs Diablo Valley")
+    expect(page.locator("#next .nx")).to_have_count(1)                  # the team's next game waits until it ends
+
+
+def test_final_stays_up_tonight_then_next_game(make_page):
+    page, _ = make_page(mobile=False, now="2026-10-31T20:00:00-07:00")   # after Sequoias (W 81-74 OT)
+    final, nxt = page.locator("#next .nx").nth(0), page.locator("#next .nx").nth(1)
+    expect(final.locator(".nx-tag")).to_have_text("Final")
+    expect(final).to_contain_text("W 81-74")
+    expect(nxt).to_contain_text("Monterey Peninsula")
+    expect(nxt.locator(".nx-tag")).to_have_text("In 3 days")
+
+
+def test_next_up_buttons(make_page):
+    page, _ = make_page(mobile=False, hash="#map")
+    page.click("#next [data-nx=open]")
+    expect(page.locator("#dlg #d-title")).to_contain_text("Diablo Valley")
+    page.keyboard.press("Escape")
+    page.click("#next [data-nx=jump]")
+    assert shown_views(page) == ["table"]
+    row = page.locator("#tbl-b tr.flash")
+    expect(row).to_have_count(1)
+    expect(row).to_contain_text("Diablo Valley")
+    expect(row).to_be_in_viewport()

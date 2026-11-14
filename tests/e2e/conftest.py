@@ -171,7 +171,7 @@ def make_page(browser, site_url, events_json, stats_json):
     that hunt for runtime errors must use frozen=False (real timers)."""
     contexts, nets = [], []
 
-    def make(mobile=True, text_size=None, hash="", frozen=True, data=None, stats=True, init_script=None):
+    def make(mobile=True, text_size=None, hash="", frozen=True, data=None, stats=True, init_script=None, now=None):
         ctx = browser.new_context(**(MOBILE if mobile else DESKTOP), timezone_id="America/Los_Angeles",
                                   locale="en-US", service_workers="block")
         contexts.append(ctx)
@@ -185,7 +185,7 @@ def make_page(browser, site_url, events_json, stats_json):
         page.errors = []
         page.on("pageerror", lambda exc: page.errors.append(str(exc)))
         if frozen:
-            page.clock.set_fixed_time(FROZEN_NOW)
+            page.clock.set_fixed_time(now or FROZEN_NOW)
         page.goto(site_url + hash)
         page.wait_for_function("document.querySelector('#next') && !/Loading/.test(document.querySelector('#next').textContent)")
         return page, net

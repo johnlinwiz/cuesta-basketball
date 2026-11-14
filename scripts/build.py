@@ -433,7 +433,7 @@ def main():
         print(f"built {len(events)} events")
         return
     loaded = [(k, *load(k)) for k in keys]
-    team_list = [{"key": k, "short": sc["short"], "team": sc["team"]} for k, sc, *_ in loaded]
+    team_list = [{"key": k, "short": sc["short"], "team": sc["team"], "instagram": sc.get("instagram")} for k, sc, *_ in loaded]
     if len(team_list) > 1:
         team_list.append({"key": "all", "short": "ALL", "team": "Both teams"})
     all_issues, all_boxes, all_stats = {}, {}, []

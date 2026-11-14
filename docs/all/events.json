@@ -20,7 +20,7 @@
    "team": "Both teams"
   }
  ],
- "record": "Men 2-3 · Women 2-2",
+ "record": "Men 2-3 · Women 2-3",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "taft": {
@@ -1301,7 +1301,7 @@
       "label": "W 75-43",
       "outcome": "W",
       "opponent": null,
-      "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml",
+      "boxscore": null,
       "recap": null
      }
     ],
@@ -1311,7 +1311,7 @@
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill+%E2%80%94+W+75-43&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi%0AFinal%3A+W+75-43+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261112_mpkq.xml",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Foothill+%E2%80%94+W+75-43&dates=20261112T160000%2F20261112T180000&ctz=America%2FLos_Angeles&location=Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Foothill+College+Main+Gymnasium%2C+12345+El+Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DFoothill%2BCollege%2BMain%2BGymnasium%252C%2B12345%2BEl%2BMonte%2BRd%252C%2BLos%2BAltos%2BHills%252C%2BCA%2B94022%0ADrive+from+Pasadena%3A+6h+40m+%C2%B7+354+mi%0ADrive+from+SLO%3A+3h+52m+%C2%B7+198+mi%0AFinal%3A+W+75-43",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/32",
     "team": "wbb",
     "teamShort": "WBB",
@@ -1371,14 +1371,22 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "L 61-67",
+      "outcome": "L",
+      "opponent": null,
+      "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261113_zgze.xml",
+      "recap": null
+     }
+    ],
     "venueKey": "siskiyous",
     "video": "https://fan.hudl.com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/video",
     "videoLabel": "Host channel: Hudl · College of the Siskiyous",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Siskiyous&dates=20261113T140000%2F20261113T160000&ctz=America%2FLos_Angeles&location=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSiskiyous%2BGymnasium%252C%2B800%2BCollege%2BAvenue%252C%2BWeed%252C%2BCA%2B96094%0ADrive+from+Pasadena%3A+11h+16m+%C2%B7+613+mi%0ADrive+from+SLO%3A+9h+25m+%C2%B7+496+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+College+of+the+Siskiyous%29%3A+https%3A%2F%2Ffan.hudl.com%2FUnited-States%2FCA%2FWeed%2Forganization%2F4884%2FCollege-of-the-Siskiyous-%2Fvideo",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Siskiyous+%E2%80%94+L+61-67&dates=20261113T140000%2F20261113T160000&ctz=America%2FLos_Angeles&location=Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Siskiyous+Gymnasium%2C+800+College+Avenue%2C+Weed%2C+CA+96094%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSiskiyous%2BGymnasium%252C%2B800%2BCollege%2BAvenue%252C%2BWeed%252C%2BCA%2B96094%0ADrive+from+Pasadena%3A+11h+16m+%C2%B7+613+mi%0ADrive+from+SLO%3A+9h+25m+%C2%B7+496+mi%0AWatch+live+%28Host+channel%3A+Hudl+%C2%B7+College+of+the+Siskiyous%29%3A+https%3A%2F%2Ffan.hudl.com%2FUnited-States%2FCA%2FWeed%2Forganization%2F4884%2FCollege-of-the-Siskiyous-%2Fvideo%0AFinal%3A+L+61-67+%C2%B7+Box+score%3A+https%3A%2F%2Fwww.cccaasports.org%2Fsports%2Fwbkb%2F2026-27%2Fboxscores%2F20261113_zgze.xml",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/33",
     "team": "wbb",
     "teamShort": "WBB",

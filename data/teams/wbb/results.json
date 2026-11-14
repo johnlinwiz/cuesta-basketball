@@ -27,12 +27,20 @@
     "us": 65
   },
   "wbb-2026-11-12-foothill": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml",
     "outcome": "W",
     "raw": "W, 75-43",
     "score": "75-43",
     "status": "Final",
     "them": 43,
     "us": 75
+  },
+  "wbb-2026-11-13-siskiyous": {
+    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261113_zgze.xml",
+    "outcome": "L",
+    "raw": "L, 67-61",
+    "score": "61-67",
+    "status": "Final",
+    "them": 67,
+    "us": 61
   }
 }

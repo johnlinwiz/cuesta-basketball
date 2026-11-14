@@ -396,9 +396,8 @@ DESCRIPTION:Non-conference — Away\nVenue: Foothill College Main Gymnasium
  \, 12345 El Monte Rd\, Los Altos Hills\, CA 94022\nMap: https://www.google
  .com/maps/search/?api=1&query=Foothill+College+Main+Gymnasium%2C+12345+El+
  Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022\nDrive from Pasadena: 6h 40m · 35
- 4 mi\nDrive from SLO: 3h 52m · 198 mi\nFinal: W 75-43 · Box score: https
- ://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml\nSe
- ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ 4 mi\nDrive from SLO: 3h 52m · 198 mi\nFinal: W 75-43\nSeason calendar: h
+ ttps://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
@@ -417,7 +416,7 @@ UID:wbb-2026-11-13-siskiyous@johnlinwiz.cuesta-basketball
 DTSTAMP:20261113T000000Z
 DTSTART;TZID=America/Los_Angeles:20261113T140000
 DTEND;TZID=America/Los_Angeles:20261113T160000
-SUMMARY:Cuesta WBB @ Siskiyous
+SUMMARY:Cuesta WBB @ Siskiyous — L 61-67
 LOCATION:Siskiyous Gymnasium\, 800 College Avenue\, Weed\, CA 96094
 GEO:41.4115;-122.3905
 DESCRIPTION:Non-conference — Away\nVenue: Siskiyous Gymnasium\, 800 Colle
@@ -426,19 +425,20 @@ DESCRIPTION:Non-conference — Away\nVenue: Siskiyous Gymnasium\, 800 Colle
  ve from Pasadena: 11h 16m · 613 mi\nDrive from SLO: 9h 25m · 496 mi\nWat
  ch live (Host channel: Hudl · College of the Siskiyous): https://fan.hudl
  .com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/vid
- eo\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=
- wbb
+ eo\nFinal: L 61-67 · Box score: https://www.cccaasports.org/sports/wbkb/2
+ 026-27/boxscores/20261113_zgze.xml\nSeason calendar: https://johnlinwiz.gi
+ thub.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta WBB @ Siskiyous tomorrow
+DESCRIPTION:Cuesta WBB @ Siskiyous — L 61-67 tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta WBB @ Siskiyous in 3 hours
+DESCRIPTION:Cuesta WBB @ Siskiyous — L 61-67 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

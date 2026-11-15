@@ -6,6 +6,15 @@ make test      # unit tests: offline, < 1 s
 make e2e       # browser tests of docs/index.html: ~10 s
 ```
 
+On a Linux host with an old system Python and libraries (e.g. the cd2 cloud desktop: Python 3.7,
+Amazon Linux 2), use `uv` for Python and Docker for the browsers instead:
+
+```sh
+make dev-uv      # once: .venv with Python 3.12 via uv (no browsers)
+make test        # unit tests, as above; make build etc. also use .venv
+make e2e-docker  # browser tests in Playwright's image (pinned to requirements-dev.txt), ~1 min
+```
+
 CI (`.github/workflows/test.yml`) runs both on every push and pull request. The daily job
 (`daily.yml`) runs the unit tests first and stops before fetching scores, commenting on issues or
 committing to the Pages site if they fail.

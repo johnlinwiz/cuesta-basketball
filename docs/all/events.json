@@ -22,7 +22,7 @@
    "team": "Both teams"
   }
  ],
- "record": "Men 2-4 · Women 2-3",
+ "record": "Men 3-4 · Women 3-3",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "taft": {
@@ -1495,14 +1495,22 @@
     "liveStats": false,
     "notes": "American River College Tournament, day 2",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "W 77-73",
+      "outcome": "W",
+      "opponent": null,
+      "boxscore": null,
+      "recap": null
+     }
+    ],
     "venueKey": "arc",
     "video": "https://www.youtube.com/@arcbeavers",
     "videoLabel": "Host channel: YouTube · ARC Athletics",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Shasta&dates=20261114T130000%2F20261114T150000&ctz=America%2FLos_Angeles&location=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAmerican%2BRiver%2BCollege%2BGym%252C%2B4700%2BCollege%2BOak%2BDr%252C%2BSacramento%252C%2BCA%2B95841%0ADrive+from+Pasadena%3A+7h+19m+%C2%B7+396+mi%0ADrive+from+SLO%3A+5h+49m+%C2%B7+301+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+ARC+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40arcbeavers%0ANote%3A+American+River+College+Tournament%2C+day+2",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Shasta+%E2%80%94+W+77-73&dates=20261114T130000%2F20261114T150000&ctz=America%2FLos_Angeles&location=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+American+River+College+Gym%2C+4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DAmerican%2BRiver%2BCollege%2BGym%252C%2B4700%2BCollege%2BOak%2BDr%252C%2BSacramento%252C%2BCA%2B95841%0ADrive+from+Pasadena%3A+7h+19m+%C2%B7+396+mi%0ADrive+from+SLO%3A+5h+49m+%C2%B7+301+mi%0AWatch+live+%28Host+channel%3A+YouTube+%C2%B7+ARC+Athletics%29%3A+https%3A%2F%2Fwww.youtube.com%2F%40arcbeavers%0AFinal%3A+W+77-73%0ANote%3A+American+River+College+Tournament%2C+day+2",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/30",
     "team": "mbb",
     "teamShort": "MBB",
@@ -1548,14 +1556,22 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "W (forfeit)",
+      "outcome": "W",
+      "opponent": null,
+      "boxscore": null,
+      "recap": null
+     }
+    ],
     "venueKey": "napa",
     "video": null,
     "videoLabel": "Game stream",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley+%E2%80%94+W+%28forfeit%29&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi%0AFinal%3A+W+%28forfeit%29",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/34",
     "team": "wbb",
     "teamShort": "WBB",

@@ -22,7 +22,7 @@
    "team": "Both teams"
   }
  ],
- "record": "2-3",
+ "record": "3-3",
  "repo": "johnlinwiz/cuesta-basketball",
  "venues": {
   "taft": {
@@ -781,14 +781,22 @@
     "liveStats": false,
     "notes": "",
     "confirmed": true,
-    "results": [],
+    "results": [
+     {
+      "label": "W (forfeit)",
+      "outcome": "W",
+      "opponent": null,
+      "boxscore": null,
+      "recap": null
+     }
+    ],
     "venueKey": "napa",
     "video": null,
     "videoLabel": "Game stream",
     "videoUncertain": false,
     "audio": null,
     "stats": null,
-    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi",
+    "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+WBB+%40+Napa+Valley+%E2%80%94+W+%28forfeit%29&dates=20261114T140000%2F20261114T160000&ctz=America%2FLos_Angeles&location=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558&details=Non-conference+%E2%80%94+Away%0AVenue%3A+Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C+CA+94558%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DNapa%2BValley%2BCollege%2BGym%252C%2B2277%2BNapa-Vallejo%2BHwy%252C%2BNapa%252C%2BCA%2B94558%0ADrive+from+Pasadena%3A+7h+24m+%C2%B7+398+mi%0ADrive+from+SLO%3A+5h+07m+%C2%B7+262+mi%0AFinal%3A+W+%28forfeit%29",
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/34",
     "team": "wbb",
     "teamShort": "WBB",

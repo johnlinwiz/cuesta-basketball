@@ -240,26 +240,26 @@ UID:wbb-2026-11-14-napa-valley@johnlinwiz.cuesta-basketball
 DTSTAMP:20261114T000000Z
 DTSTART;TZID=America/Los_Angeles:20261114T140000
 DTEND;TZID=America/Los_Angeles:20261114T160000
-SUMMARY:Cuesta WBB @ Napa Valley
+SUMMARY:Cuesta WBB @ Napa Valley — W (forfeit)
 LOCATION:Napa Valley College Gym\, 2277 Napa-Vallejo Hwy\, Napa\, CA 94558
 GEO:38.274;-122.2764
 DESCRIPTION:Non-conference — Away\nVenue: Napa Valley College Gym\, 2277 
  Napa-Vallejo Hwy\, Napa\, CA 94558\nMap: https://www.google.com/maps/searc
  h/?api=1&query=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C
  +CA+94558\nDrive from Pasadena: 7h 24m · 398 mi\nDrive from SLO: 5h 07m 
- · 262 mi\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball
- /?team=wbb
+ · 262 mi\nFinal: W (forfeit)\nSeason calendar: https://johnlinwiz.github.
+ io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta WBB @ Napa Valley tomorrow
+DESCRIPTION:Cuesta WBB @ Napa Valley — W (forfeit) tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta WBB @ Napa Valley in 3 hours
+DESCRIPTION:Cuesta WBB @ Napa Valley — W (forfeit) in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

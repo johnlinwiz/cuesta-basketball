@@ -43,5 +43,14 @@
     "status": "Final",
     "them": 67,
     "us": 61
+  },
+  "wbb-2026-11-14-napa-valley": {
+    "forfeit": true,
+    "outcome": "W",
+    "raw": "W, 2-0",
+    "score": "2-0",
+    "status": "Final",
+    "them": 0,
+    "us": 2
   }
 }

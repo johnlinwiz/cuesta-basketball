@@ -477,7 +477,7 @@ UID:2026-11-14-shasta@johnlinwiz.cuesta-basketball
 DTSTAMP:20261114T000000Z
 DTSTART;TZID=America/Los_Angeles:20261114T130000
 DTEND;TZID=America/Los_Angeles:20261114T150000
-SUMMARY:Cuesta MBB vs Shasta
+SUMMARY:Cuesta MBB vs Shasta — W 77-73
 LOCATION:American River College Gym\, 4700 College Oak Dr\, Sacramento\, CA
   95841
 GEO:38.6488;-121.3465
@@ -486,20 +486,20 @@ DESCRIPTION:Tournament — Neutral\nVenue: American River College Gym\, 470
  /search/?api=1&query=American+River+College+Gym%2C+4700+College+Oak+Dr%2C+
  Sacramento%2C+CA+95841\nDrive from Pasadena: 7h 19m · 396 mi\nDrive from 
  SLO: 5h 49m · 301 mi\nWatch live (Host channel: YouTube · ARC Athletics)
- : https://www.youtube.com/@arcbeavers\nNote: American River College Tourna
- ment\, day 2\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketb
- all/?team=mbb
+ : https://www.youtube.com/@arcbeavers\nFinal: W 77-73\nNote: American Rive
+ r College Tournament\, day 2\nSeason calendar: https://johnlinwiz.github.i
+ o/cuesta-basketball/?team=mbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta MBB vs Shasta tomorrow
+DESCRIPTION:Cuesta MBB vs Shasta — W 77-73 tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta MBB vs Shasta in 3 hours
+DESCRIPTION:Cuesta MBB vs Shasta — W 77-73 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -507,26 +507,26 @@ UID:wbb-2026-11-14-napa-valley@johnlinwiz.cuesta-basketball
 DTSTAMP:20261114T000000Z
 DTSTART;TZID=America/Los_Angeles:20261114T140000
 DTEND;TZID=America/Los_Angeles:20261114T160000
-SUMMARY:Cuesta WBB @ Napa Valley
+SUMMARY:Cuesta WBB @ Napa Valley — W (forfeit)
 LOCATION:Napa Valley College Gym\, 2277 Napa-Vallejo Hwy\, Napa\, CA 94558
 GEO:38.274;-122.2764
 DESCRIPTION:Non-conference — Away\nVenue: Napa Valley College Gym\, 2277 
  Napa-Vallejo Hwy\, Napa\, CA 94558\nMap: https://www.google.com/maps/searc
  h/?api=1&query=Napa+Valley+College+Gym%2C+2277+Napa-Vallejo+Hwy%2C+Napa%2C
  +CA+94558\nDrive from Pasadena: 7h 24m · 398 mi\nDrive from SLO: 5h 07m 
- · 262 mi\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball
- /?team=wbb
+ · 262 mi\nFinal: W (forfeit)\nSeason calendar: https://johnlinwiz.github.
+ io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta WBB @ Napa Valley tomorrow
+DESCRIPTION:Cuesta WBB @ Napa Valley — W (forfeit) tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta WBB @ Napa Valley in 3 hours
+DESCRIPTION:Cuesta WBB @ Napa Valley — W (forfeit) in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

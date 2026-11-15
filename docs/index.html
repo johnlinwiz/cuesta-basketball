@@ -209,6 +209,11 @@
   .fv button { color:#c9a227; font-size:1rem; line-height:1 }
   .box-lines { font-size:0.75rem; color:var(--muted); margin-top:2px } .box-lines .me { color:var(--ink); font-weight:600 }
   #dlg .stw { margin:4px 0 10px }
+  .st-views { gap:6px } .st-views button { font:inherit; border:1px solid #8886; border-radius:999px; padding:3px 10px; background:var(--card); color:inherit; cursor:pointer }
+  .st-views button.on { background:var(--green); border-color:var(--green); color:#fff } .st-views button:disabled { opacity:.7; cursor:default }
+  @media (max-width:640px) { .st-views { flex-wrap:nowrap; overflow-x:auto; padding-bottom:4px; -webkit-overflow-scrolling:touch } .st-views button { flex:none } }
+  .sp-best { margin:4px 0; font-size:0.8125rem } .sp-best button.link { background:none; border:0; padding:0; font:inherit; font-weight:600; color:var(--green); cursor:pointer }
+  @media (prefers-color-scheme: dark) { .sp-best button.link { color:#6fd39b } }
   .st-filters label { display:inline-flex; gap:5px; align-items:center; color:var(--muted) }
   .st-filters select, .st-btn, .cmp-pick select { font:inherit; color:var(--ink); background:var(--card); border:1px solid #8886; border-radius:6px; padding:3px 6px }
   .st-btn { cursor:pointer } .st-help { margin:2px 0 0; font-size:0.75rem }
@@ -300,6 +305,7 @@
       <p class="muted">🟢 home · ⚫ away · 🟡 tournament/neutral. Marker size = number of games. Click a venue for games, drive time and route.</p></aside>
   </section>
   <section id="view-stats" hidden>
+    <div class="st-bar st-views" id="st-views" role="group" aria-label="Stat views"></div>
     <div class="st-bar">
       <span class="seg" role="group" aria-label="Per game or totals"><button type="button" data-st-mode="avg">Per game</button><button type="button" data-st-mode="tot">Totals</button></span>
       <span class="seg" role="group" aria-label="Columns"><button type="button" data-st-cols="basic">Basic</button><button type="button" data-st-cols="shoot">Shooting</button><button type="button" data-st-cols="reb">Rebounds</button><button type="button" data-st-cols="adv">Advanced</button></span>
@@ -414,18 +420,21 @@ function boxTableHtml(eventId) {
 // State lives in the URL (#stats/sort=reb&dir=1&games=conf…) so a link reopens the same view.
 const ST_ALLOWED = { mode: ["avg", "tot"], cols: ["basic", "shoot", "reb", "adv"], games: ["all", "conf", "nonconf"],
                      site: ["all", "home", "away"], span: ["0", "5", "3"], role: ["all", "starter", "bench"], dir: ["-1", "1"] };
-const ST_DEFAULT = { mode: "avg", cols: "basic", games: "all", site: "all", span: "0", role: "all", sort: "pts", dir: "-1" };
+const ST_DEFAULT = { view: "auto", mode: "avg", cols: "basic", games: "all", site: "all", span: "0", role: "all", sort: "pts", dir: "-1" };
 let ST = { ...ST_DEFAULT };
 function stFromHash() {
   const q = new URLSearchParams(location.hash.split("/")[1] || ""), st = { ...ST_DEFAULT };
   for (const k in ST_DEFAULT) {
     const v = q.get(k);
-    if (v != null && (k === "sort" ? (v in C || v in STR) : ST_ALLOWED[k].includes(v))) st[k] = v;
+    const ok = k === "sort" ? (v in C || v in STR) : k === "cols" ? v in GROUPS : k === "view" ? (v in VIEWS || v === "auto" || v === "custom")
+             : ST_ALLOWED[k].includes(v);
+    if (v != null && ok) st[k] = v;
   }
+  if (!q.has("view") && [...q.keys()].some(k => k in ST_DEFAULT)) st.view = "custom";   // older links: sort/filters only
   return st;
 }
 function stHash() {
-  const q = new URLSearchParams(Object.entries(ST).filter(([k, v]) => v !== ST_DEFAULT[k])).toString();
+  const q = new URLSearchParams(Object.entries(ST).filter(([k, v]) => k in ST_DEFAULT && v !== ST_DEFAULT[k])).toString();
   return "#stats" + (q ? "/" + q : "");
 }
 const stFiltered = () => ["games", "site", "span", "role"].some(k => ST[k] !== ST_DEFAULT[k]);
@@ -488,7 +497,59 @@ const C = {
   ato: { h: "A/TO", t: "Assists per turnover", v: r => r.to ? r.ast / r.to : r.ast ? Infinity : null,
          f: r => r.to ? (r.ast / r.to).toFixed(2) : "∞", q: r => r.ast + r.to >= 3 },
 };
+// Stat views: ready-made tables (columns + sort + filter). "auto" picks, per team, the view that ranks its
+// featured player highest (best percentile among teammates with a value), recomputed from the live stats.
+const VIEWS = {
+  overview:   { h: "Overview",     i: "📋", cols: "basic",   sort: "pts" },
+  scoring:    { h: "Scoring",      i: "🏀", cols: "scoring", sort: "pts" },
+  efficiency: { h: "Efficiency",   i: "🎯", cols: "eff",     sort: "ts" },
+  threes:     { h: "3-point",      i: "👌", cols: "threes",  sort: "fg3p" },
+  playmaking: { h: "Playmaking",   i: "🤝", cols: "play",    sort: "ast" },
+  rebounding: { h: "Rebounding",   i: "💪", cols: "reb",     sort: "reb" },
+  defense:    { h: "Defense",      i: "🛡️", cols: "def",     sort: "stl" },
+  per40:      { h: "Per 40 min",   i: "⏱️", cols: "adv",     sort: "pts40" },
+  bench:      { h: "Bench",        i: "🪑", cols: "basic",   sort: "pts", role: "bench", note: "only games off the bench" },
+  recent:     { h: "Last 3 games", i: "🔥", cols: "basic",   sort: "pts", span: "3", note: "last 3 games" },
+};
+const viewState = (key, base = ST) => {
+  const v = VIEWS[key];
+  return { ...ST_DEFAULT, mode: base.mode, view: key, cols: v.cols, sort: v.sort, dir: "-1", role: v.role || "all", span: v.span || "0" };
+};
+function withST(st, fn) { const saved = ST; ST = st; try { return fn(); } finally { ST = saved; } }
+// Where `name` ranks in each view; the best is the lowest (rank-1)/(n-1) - ties go to the earlier view.
+// A view only counts if it covers at least half of the player's games (one bench game out of four is no showcase).
+function viewRanks(t, name) {
+  const out = [], seasonGp = aggregate(t, ST_DEFAULT).rows.find(r => r.name === name)?.gp || 0;
+  for (const key in VIEWS) {
+    const st = viewState(key, { mode: "avg" });
+    withST(st, () => {
+      const rows = aggregate(t, st).rows.filter(r => r.gp && val(st.sort, r) != null && qual(st.sort, r));
+      const me = rows.find(r => r.name === name);
+      if (!me || rows.length < 3 || me.gp < Math.max(seasonGp > 1 ? 2 : 1, Math.ceil(seasonGp / 2))) return;
+      const mine = val(st.sort, me), rank = 1 + rows.filter(r => val(st.sort, r) > mine).length;
+      out.push({ key, rank, n: rows.length, score: (rank - 1) / (rows.length - 1), value: C[st.sort].f(me) });
+    });
+  }
+  return out;
+}
+const bestView = (t, name) => viewRanks(t, name).reduce((b, x) => !b || x.score < b.score ? x : b, null);
+function featuredName(t) {
+  const names = [...(t.roster || []).map(r => r.name), ...(t.games || []).flatMap(g => g.lines.map(l => l.name))];
+  for (const f of t.featured || []) { const n = names.find(x => x.toLowerCase() === f.toLowerCase()); if (n) return n; }
+  return null;
+}
+// The table state for one team: the chosen view, or (auto) the view that best shows its featured player.
+function stFor(t) {
+  if (ST.view !== "auto") return ST;
+  const name = featuredName(t), best = name && bestView(t, name);
+  return { ...viewState(best ? best.key : "overview"), view: "auto", auto: best ? { name, ...best } : null };
+}
 const GROUPS = { basic: ["gp", "gs", "min", "pts", "reb", "ast", "stl", "blk", "to", "fgp", "fg3p", "ftp"],
+                 scoring: ["gp", "min", "pts", "fg", "fgp", "fg3", "fg3p", "ft", "ftp"],
+                 eff: ["gp", "pts", "ts", "efg", "fgp", "fg3p", "ftp", "ato"],
+                 threes: ["gp", "pts", "fg3", "fg3p", "efg"],
+                 play: ["gp", "min", "ast", "to", "ato", "stl", "ast40"],
+                 def: ["gp", "min", "stl", "blk", "dreb", "pf"],
                  shoot: ["gp", "pts", "fg", "fgp", "fg3", "fg3p", "ft", "ftp", "efg", "ts"],
                  reb: ["gp", "min", "oreb", "dreb", "reb", "pf"],
                  adv: ["gp", "min", "pts40", "reb40", "ast40", "ato", "efg", "ts"] };
@@ -546,6 +607,8 @@ function spotlightHtml(t, rows) {
       ${r.gp ? `<div class="tiles">${tiles}</div>` : `<p class="muted">Hasn't appeared in a game${stFiltered() ? " matching these filters" : " yet this season"}.</p>`}
       ${last ? `<p class="sp-last"><span class="muted">Last game:</span> ${esc(last.p?.dateLabel || last.g.date)} ${esc(last.p?.matchup || last.g.opponent)}
         ${res ? `<span class="res ${res.outcome}">${esc(res.label)}</span>` : ""} — <b>${statLine(last.l)}</b></p>` : ""}
+      ${(() => { const b = r.gp && bestView(t, r.name); return b ? `<p class="sp-best">🏅 Best view: <button type="button" class="link" data-sp-view="${b.key}">${VIEWS[b.key].i} ${VIEWS[b.key].h}</button>
+        — ${ordinal(b.rank)} of ${b.n} in ${C[VIEWS[b.key].sort].h} (${esc(b.value)})</p>` : ""; })()}
       ${log.length ? pointsChart(log) : ""}
       <div class="sp-btns"><button type="button" class="st-btn" data-sp-log="${esc(r.name)}">📋 Game log</button>
         ${r.gp ? `<button type="button" class="st-btn" data-sp-cmp="${esc(r.name)}">⇄ Compare</button>` : ""}${starBtn(t.key, r.name).replace('class="star"', 'class="star st-btn"').replace(/>(☆|★)</, ">$1 Following<")}</div>
@@ -565,19 +628,30 @@ function viewTeams() {
 function renderStats() {
   const el = $("st-body");
   if (!el || !DATA) return;
-  for (const k of ["mode", "cols"]) document.querySelectorAll(`[data-st-${k}]`).forEach(b => b.classList.toggle("on", b.dataset[`st${k[0].toUpperCase() + k.slice(1)}`] === ST[k]));
-  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).value = ST[k];
-  $("st-reset").hidden = !stFiltered();
   if (!$("view-stats").hidden) history.replaceState(null, "", location.pathname + location.search + stHash());
   const teams = viewTeams();
+  const shown = teams[0] ? stFor(teams[0]) : ST;           // the controls show the (first) table's state
+  const feat = teams.map(featuredName).filter(Boolean);
+  $("st-views").innerHTML = (feat.length ? `<button type="button" data-st-view="auto" title="The view where the featured player ranks highest on the team">⭐ Best for ${esc(feat.map(n => n.split(" ")[0]).join(" & "))}</button>` : "") +
+    Object.entries(VIEWS).map(([k, v]) => `<button type="button" data-st-view="${k}">${v.i} ${v.h}</button>`).join("") +
+    (ST.view === "custom" ? `<button type="button" data-st-view="custom" disabled>✎ Custom</button>` : "");
+  $("st-views").querySelectorAll("[data-st-view]").forEach(b => {
+    b.classList.toggle("on", b.dataset.stView === ST.view || (ST.view === "auto" && !feat.length && b.dataset.stView === "overview"));
+    b.onclick = () => { if (b.dataset.stView === "auto") ST = { ...ST_DEFAULT, mode: ST.mode }; else if (VIEWS[b.dataset.stView]) ST = viewState(b.dataset.stView); renderStats(); };
+  });
+  for (const k of ["mode", "cols"]) document.querySelectorAll(`[data-st-${k}]`).forEach(b => b.classList.toggle("on", b.dataset[`st${k[0].toUpperCase() + k.slice(1)}`] === shown[k]));
+  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).value = shown[k];
+  $("st-reset").hidden = !withST(shown, stFiltered);
   if (!teams.some(t => (t.games || []).length)) {
     el.innerHTML = `<p class="muted">No box scores yet — player stats appear after the first game's box score is posted.</p>`; return;
   }
-  const cols = GROUPS[ST.cols];
-  el.innerHTML = teams.map(t => {
+  el.innerHTML = teams.map(t => withST(stFor(t), () => {
+    const cols = GROUPS[ST.cols], v = VIEWS[ST.view === "auto" ? (ST.auto?.key || "overview") : ST.view];
     const { rows, n } = aggregate(t);
     const label = teams.length > 1 || DATA.teamKey === "all" ? `${esc(t.team.replace("College ", ""))} — ` : "";
-    const head = `<h2>${label}${n} game${n === 1 ? "" : "s"} <span class="muted">· ${ST.mode === "avg" ? "per game" : "totals"}${stFiltered() ? " · filtered" : ""}</span></h2>`;
+    const why = ST.auto ? ` — best for ${esc(ST.auto.name)}: ${ordinal(ST.auto.rank)} of ${ST.auto.n} in ${C[VIEWS[ST.auto.key].sort].h}` : "";
+    const head = `<h2>${label}${n} game${n === 1 ? "" : "s"} <span class="muted">· ${v ? `${v.i} ${v.h}` : "✎ Custom"}${why} · ${ST.mode === "avg" ? "per game" : "totals"}${
+      stFiltered() && !(v && v.note) ? " · filtered" : v?.note ? ` · ${v.note}` : ""}</span></h2>`;
     if (!n) return `<div class="stw">${head}<p class="muted">No games match these filters.</p></div>`;
     const th = c => {
       const d = C[c] || STR[c], on = ST.sort === c;
@@ -596,27 +670,38 @@ function renderStats() {
     return `<div class="stw" data-team="${esc(t.key)}">${head}${spotlightHtml(t, rows)}${leadersHtml(t, rows, n)}
       <table class="st season" data-team="${esc(t.key)}"><thead><tr><th></th>${th("name")}${th("no")}${th("pos")}${cols.map(th).join("")}</tr></thead>
       <tbody>${body}</tbody></table></div>`;
-  }).join("");
+  })).join("");
   el.querySelectorAll("th[data-col]").forEach(th => th.onclick = () => {
     const c = th.dataset.col, first = STR[c] ? "1" : "-1";
-    ST = { ...ST, sort: c, dir: ST.sort === c ? String(-ST.dir) : first };
+    const t = STATS.teams.find(x => x.key === th.closest("table").dataset.team) || teams[0];
+    const cur = stFor(t);
+    ST = { ...cur, view: "custom", sort: c, dir: cur.sort === c ? String(-cur.dir) : first };
+    delete ST.auto;
     renderStats();
   });
-  el.querySelectorAll("button.link").forEach(b => b.onclick = () => openPlayer(b.dataset.team, b.dataset.name));
+  el.querySelectorAll("[data-sp-view]").forEach(b => b.onclick = () => { ST = viewState(b.dataset.spView); renderStats(); });
+  el.querySelectorAll("button.link[data-name]").forEach(b => b.onclick = () => openPlayer(b.dataset.team, b.dataset.name));
   el.querySelectorAll("[data-sp-log]").forEach(b => b.onclick = () => openPlayer(b.closest("[data-team]")?.dataset.team ?? "", b.dataset.spLog));
   el.querySelectorAll("[data-sp-cmp]").forEach(b => b.onclick = () => openCompare([fkey(b.closest("[data-team]")?.dataset.team ?? "", b.dataset.spCmp)]));
   wireStars(el); wireCharts(el);
 }
+// Changing columns or filters by hand turns the view into "Custom" (starting from what's on screen);
+// Per game / Totals keeps the current view.
+function customize() {
+  const t = viewTeams()[0];
+  if (ST.view !== "custom") { ST = { ...(t ? stFor(t) : ST), view: "custom" }; delete ST.auto; }
+}
 function wireStatsControls() {
   document.querySelectorAll("[data-st-mode]").forEach(b => b.onclick = () => { ST.mode = b.dataset.stMode; renderStats(); });
   document.querySelectorAll("[data-st-cols]").forEach(b => b.onclick = () => {
+    customize();
     ST.cols = b.dataset.stCols;
     const g = GROUPS[ST.cols];        // sorted by a column this group doesn't show: fall back to its headline stat
     if (C[ST.sort] && !g.includes(ST.sort)) ST = { ...ST, sort: g.find(c => c === "pts") || g.find(c => c !== "gp" && c !== "min"), dir: "-1" };
     renderStats();
   });
-  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).onchange = ev => { ST[k] = ev.target.value; renderStats(); };
-  $("st-reset").onclick = () => { for (const k of ["games", "site", "span", "role"]) ST[k] = ST_DEFAULT[k]; renderStats(); };
+  for (const k of ["games", "site", "span", "role"]) $(`st-${k}`).onchange = ev => { customize(); ST[k] = ev.target.value; renderStats(); };
+  $("st-reset").onclick = () => { customize(); for (const k of ["games", "site", "span", "role"]) ST[k] = ST_DEFAULT[k]; renderStats(); };
   $("st-compare").onclick = () => openCompare();
   $("st-csv").onclick = downloadCsv;
 }

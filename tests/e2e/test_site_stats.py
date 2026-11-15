@@ -82,7 +82,7 @@ def test_filters_and_shareable_url(make_page):
     assert "role=starter" in stats_url(page) and "site" not in stats_url(page)
     assert cell(page, "Cy Guard", "gp").inner_text() == "1"            # started only at Gavilan
     page.click("#st-reset")
-    assert stats_url(page) == "#stats/sort=reb"
+    assert stats_url(page) == "#stats/view=custom&sort=reb"
     expect(page.locator("#st-reset")).to_be_hidden()
     page.select_option("#st-games", "conf")                            # no conference games yet
     expect(page.locator("#st-body")).to_contain_text("No games match these filters.")
@@ -272,3 +272,62 @@ def test_newly_featured_player_joins_an_existing_follow_list(make_page, stats_js
     page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
     expect(page.locator(".spot")).to_have_count(1)                             # stays unfollowed
     expect(page.locator(".spot")).to_contain_text("Ann Star")
+
+
+
+# ---------- stat views (presets) + the featured player's best view ----------
+def test_stat_views(make_page):
+    page, _ = make_page(mobile=False, hash="#stats")
+    chips = page.locator("#st-views button")
+    expect(chips.first).to_have_text("📋 Overview")                          # no featured player: no "Best for"
+    expect(page.locator("#st-views button.on")).to_have_text("📋 Overview")
+    page.click("#st-views [data-st-view=rebounding]")
+    assert stats_url(page).startswith("#stats/view=rebounding")
+    expect(page.locator("table.season th.on")).to_have_text("Reb")
+    expect(page.locator("table.season thead")).to_contain_text("OReb")
+    expect(page.locator("#st-body h2")).to_contain_text("💪 Rebounding")
+    assert season_names(page)[0] == "Cy Guard"
+    page.click("#st-views [data-st-view=bench]")                           # a filter preset
+    expect(page.locator("#st-role")).to_have_value("bench")
+    expect(page.locator("#st-body h2")).to_contain_text("only games off the bench")
+    page.click("[data-st-mode=tot]")                                       # mode keeps the view
+    expect(page.locator("#st-views button.on")).to_have_text("🪑 Bench")
+    page.click("table.season th[data-col=ast]")                            # a manual change -> Custom
+    expect(page.locator("#st-views button.on")).to_have_text("✎ Custom")
+    expect(page.locator("#st-role")).to_have_value("bench")                # ...starting from what was shown
+    page.reload()
+    page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
+    expect(page.locator("table.season th.on")).to_have_text("Ast")         # the link reopens it
+
+
+def with_extra(stats_json, **kw):
+    """A 3rd player in both games (views rank only with 3+ players), bench both times."""
+    extra = {"no": "33", "name": "Ed Extra", "pos": "Forward", "cl": "Freshman", "ht": "6-6", "home": ""}
+    return {**stats_json, **kw, "roster": stats_json["roster"] + [extra],
+            "games": [{**g, "lines": g["lines"] + [{**g["lines"][0], "name": "Ed Extra", "no": "33", "starter": False,
+                                                    "pts": 1, "reb": 1, "ast": 0}]} for g in stats_json["games"]]}
+
+
+def test_featured_player_gets_their_best_view(make_page, stats_json):
+    """Bo Bench never played; Cy Guard: 2nd of 2 in points, 1st in rebounds -> Rebounding."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=with_extra(stats_json, featured=["Cy Guard"]))
+    best = page.locator("#st-views [data-st-view=auto]")
+    expect(best).to_have_text("⭐ Best for Cy")
+    expect(best).to_have_class("on")
+    expect(page.locator("#st-body h2")).to_contain_text("💪 Rebounding — best for Cy Guard: 1st of 3 in Reb")
+    expect(page.locator(".spot .sp-best")).to_contain_text("Best view: 💪 Rebounding")
+    assert stats_url(page) == "#stats"                                     # auto isn't written into the link
+    page.click("#st-views [data-st-view=overview]")
+    expect(page.locator("#st-body h2")).to_contain_text("📋 Overview")
+    page.click(".spot .sp-best button")                                    # back to the player's best view
+    expect(page.locator("#st-views button.on")).to_have_text("💪 Rebounding")
+
+
+def test_best_view_needs_half_the_players_games(make_page, stats_json):
+    """Cy came off the bench in 1 of his 2 games: too thin a sample, so Bench can't be his best view;
+    Ed Extra (bench both games) qualifies for it."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=with_extra(stats_json, featured=["Cy Guard"]))
+    cy = page.evaluate("viewRanks(STATS.teams[0], 'Cy Guard').map(r => r.key)")
+    ed = page.evaluate("viewRanks(STATS.teams[0], 'Ed Extra').map(r => r.key)")
+    assert "rebounding" in cy and "bench" not in cy
+    assert "overview" in ed

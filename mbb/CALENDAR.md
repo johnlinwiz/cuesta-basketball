@@ -30,8 +30,8 @@
 |---|---|---|---|---|---|---|
 |   |   | 1 | 2<br>🚌 6pm [@ Coalinga](https://github.com/johnlinwiz/cuesta-basketball/issues/10) | 3 | 4 | 5 |
 | 6 | 7 | 8 | 9 | 10 | 11 | 12<br>🏠 3pm [vs Rio Hondo](https://github.com/johnlinwiz/cuesta-basketball/issues/11) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
-| 13 | 14 | 15<br>🚌 5:30pm [@ Bakersfield](https://github.com/johnlinwiz/cuesta-basketball/issues/12) | 16 | 17 | 18<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/@deltaathletics324) | 19<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/@deltaathletics324) |
-| 20<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/@deltaathletics324) | 21 | 22 | 23 | 24 | 25 | 26 |
+| 13 | 14 | 15<br>🚌 5:30pm [@ Bakersfield](https://github.com/johnlinwiz/cuesta-basketball/issues/12) [📺](https://www.youtube.com/@gogadesgo/streams) | 16 | 17 | 18<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) | 19<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) |
+| 20<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) | 21 | 22 | 23 | 24 | 25 | 26 |
 | 27 | 28 | 29<br>🏆 3pm [vs Santa Ana](https://github.com/johnlinwiz/cuesta-basketball/issues/14) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 30<br>🏆 1pm [vs Palo Verde](https://github.com/johnlinwiz/cuesta-basketball/issues/15) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 31 |   |   |
 
 ## January 2027
@@ -39,7 +39,7 @@
 | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|---|
 |   |   |   |   |   | 1 | 2 |
-| 3 | 4 | 5 | 6<br>🚌 7pm [@ Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/16) [📺](https://www.youtube.com/channel/UCwtRPgwghVQtHQBZAsTmxdQ) | 7 | 8 | 9<br>🏠 3pm [vs Santa Barbara*](https://github.com/johnlinwiz/cuesta-basketball/issues/17) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
+| 3 | 4 | 5 | 6<br>🚌 7pm [@ Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/16) [📺](https://www.youtube.com/watch?v=tJxXeSN3fwE) | 7 | 8 | 9<br>🏠 3pm [vs Santa Barbara*](https://github.com/johnlinwiz/cuesta-basketball/issues/17) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
 | 10 | 11 | 12 | 13<br>🏠 7pm [vs Moorpark*](https://github.com/johnlinwiz/cuesta-basketball/issues/18) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 14 | 15 | 16<br>🚌 3pm [@ Oxnard*](https://github.com/johnlinwiz/cuesta-basketball/issues/19) [📺](https://www.youtube.com/@occondors8165) |
 | 17 | 18 | 19 | 20 | 21 | 22 | 23<br>🚌 3pm [@ LA Pierce*](https://github.com/johnlinwiz/cuesta-basketball/issues/20) [📺](https://www.youtube.com/@brahmasportsnetwork) |
 | 24 | 25 | 26 | 27<br>🚌 7pm [@ Allan Hancock*](https://github.com/johnlinwiz/cuesta-basketball/issues/21) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 28 | 29<br>🏠 7pm [vs Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/22) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 30 |

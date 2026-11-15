@@ -49,7 +49,7 @@ games:
   - {date: 2026-12-12, time: "13:00", opponent: Fullerton,          site: away, venue: fullerton,    type: non-conference, video: "https://www.flocollege.com/live/284079", notes: "Stream is on FloCollege (subscription)"}
   - {date: 2026-12-19, time: "15:00", opponent: Chabot,             site: away, venue: chabot,       type: non-conference}
 
-  - {date: 2027-01-06, time: "17:00", opponent: Ventura,            site: away, venue: ventura,      type: conference}
+  - {date: 2027-01-06, time: "17:00", opponent: Ventura,            site: away, venue: ventura,      type: conference, video: "https://www.youtube.com/watch?v=3gu9CAz7PxY"}
   - {date: 2027-01-09, time: "13:00", opponent: Santa Barbara,      site: home, venue: cuesta,       type: conference}
   - {date: 2027-01-13, time: "17:00", opponent: Moorpark,           site: home, venue: cuesta,       type: conference}
   - {date: 2027-01-16, time: "13:00", opponent: Oxnard,             site: away, venue: oxnard,       type: conference}

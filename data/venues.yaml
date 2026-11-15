@@ -76,6 +76,8 @@ venues:
     address: 1801 Panorama Dr, Bakersfield, CA 93305
     lat: 35.4088
     lon: -118.9720
+    stream: https://www.youtube.com/@gogadesgo/streams     # checked 2026-11-15: streams BC basketball (vs LA Pierce 11/13)
+    stream_label: "YouTube · Bakersfield College Athletics"
   delta:
     name: San Joaquin Delta College Gym
     city: Stockton, CA
@@ -124,6 +126,8 @@ venues:
     lon: -119.1555
     stream: https://www.youtube.com/@occondors8165
     stream_label: "YouTube · OC Condors"
+    # Checked 2026-11-15: last basketball stream was last season (no 2026-27 games streamed yet).
+    stream_uncertain: true
   pierce:
     name: LA Pierce College — Ken Stanley Court
     city: Woodland Hills, CA

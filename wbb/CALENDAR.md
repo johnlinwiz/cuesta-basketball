@@ -39,7 +39,7 @@
 | Sun | Mon | Tue | Wed | Thu | Fri | Sat |
 |---|---|---|---|---|---|---|
 |   |   |   |   |   | 1 | 2 |
-| 3 | 4 | 5 | 6<br>🚌 5pm [@ Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/43) [📺](https://www.youtube.com/channel/UCwtRPgwghVQtHQBZAsTmxdQ) | 7 | 8 | 9<br>🏠 1pm [vs Santa Barbara*](https://github.com/johnlinwiz/cuesta-basketball/issues/44) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
+| 3 | 4 | 5 | 6<br>🚌 5pm [@ Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/43) [📺](https://www.youtube.com/watch?v=3gu9CAz7PxY) | 7 | 8 | 9<br>🏠 1pm [vs Santa Barbara*](https://github.com/johnlinwiz/cuesta-basketball/issues/44) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
 | 10 | 11 | 12 | 13<br>🏠 5pm [vs Moorpark*](https://github.com/johnlinwiz/cuesta-basketball/issues/45) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 14 | 15 | 16<br>🚌 1pm [@ Oxnard*](https://github.com/johnlinwiz/cuesta-basketball/issues/46) [📺](https://www.youtube.com/@occondors8165) |
 | 17 | 18 | 19 | 20<br>🏠 5pm [vs LA Mission*](https://github.com/johnlinwiz/cuesta-basketball/issues/47) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 21 | 22 | 23<br>🚌 1pm [@ LA Pierce*](https://github.com/johnlinwiz/cuesta-basketball/issues/48) [📺](https://www.youtube.com/@brahmasportsnetwork) |
 | 24 | 25 | 26 | 27<br>🚌 5pm [@ Allan Hancock*](https://github.com/johnlinwiz/cuesta-basketball/issues/49) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 28 | 29<br>🏠 5pm [vs Ventura*](https://github.com/johnlinwiz/cuesta-basketball/issues/50) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 30 |

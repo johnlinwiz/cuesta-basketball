@@ -5,6 +5,7 @@ Fixture (conftest.stats_json): Gavilan (away, minutes recorded) and Sequoias (ho
 Ann Star 20+30 pts, FT 5-6; Cy Guard 12+5 pts, FT 1-1 (too few to rank), started only at Gavilan;
 Bo Bench dressed but didn't play; Di Rookie is on the roster only."""
 import json
+import re
 
 import pytest
 from playwright.sync_api import expect
@@ -240,13 +241,14 @@ def test_featured_players_are_followed_by_default(make_page, stats_json):
     assert page.evaluate("localStorage.getItem('cuesta-follow')") is None
 
 
-def test_own_choice_overrides_featured(make_page, stats_json):
-    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"))
-    page.click(".spot button.star")                                          # unfollow from the spotlight
-    expect(page.locator(".spot")).to_have_count(0)
-    page.reload()
-    page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
-    expect(page.locator(".spot")).to_have_count(0)                           # stays unfollowed
+def test_featured_players_cannot_be_unfollowed(make_page, stats_json):
+    """Featured = always followed, even on a device whose saved list doesn't include them."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"),
+                        init_script="localStorage.setItem('cuesta-follow', '[]')")
+    expect(page.locator(".spot")).to_have_count(1)
+    expect(page.locator(".spot .sp-feat")).to_have_text("⭐ Featured")
+    expect(page.locator("table.season tr.fol .star.feat")).to_have_count(1)
+    expect(page.locator("table.season button.star[data-name='Cy Guard']")).to_have_count(0)
 
 
 def test_featured_player_who_has_not_played(make_page, stats_json):
@@ -261,21 +263,18 @@ def test_featured_player_who_has_not_played(make_page, stats_json):
     expect(page.locator("#dlg table.st tbody tr.dnp")).to_have_count(2)
 
 
-def test_newly_featured_player_joins_an_existing_follow_list(make_page, stats_json):
-    """A device that already follows someone still gets a newly featured player (once)."""
-    page, net = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"),
-                          init_script="if (!sessionStorage.x) { sessionStorage.x = 1; localStorage.setItem('cuesta-follow', '[\"|Ann Star\"]') }")
+def test_own_follows_add_to_featured(make_page, stats_json):
+    """A device's own stars sit alongside the featured player; unstarring them leaves the featured one."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=featured(stats_json, "Cy Guard"),
+                        init_script="if (!sessionStorage.x) { sessionStorage.x = 1; localStorage.setItem('cuesta-follow', '[\"|Ann Star\"]') }")
     expect(page.locator(".spot")).to_have_count(2)                             # Ann (own) + Cy (featured)
-    page.click(".spot:has-text('Cy Guard') button.star")                       # unfollow the featured one
+    page.click(".spot:has-text('Ann Star') button.star")
     expect(page.locator(".spot")).to_have_count(1)
     page.reload()
     page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
-    expect(page.locator(".spot")).to_have_count(1)                             # stays unfollowed
-    expect(page.locator(".spot")).to_contain_text("Ann Star")
+    expect(page.locator(".spot")).to_contain_text("Cy Guard")
+    expect(page.locator(".spot")).to_have_count(1)
 
-
-
-# ---------- stat views (presets) + the featured player's best view ----------
 def test_stat_views(make_page):
     page, _ = make_page(mobile=False, hash="#stats")
     chips = page.locator("#st-views button")
@@ -331,3 +330,16 @@ def test_best_view_needs_half_the_players_games(make_page, stats_json):
     ed = page.evaluate("viewRanks(STATS.teams[0], 'Ed Extra').map(r => r.key)")
     assert "rebounding" in cy and "bench" not in cy
     assert "overview" in ed
+
+
+
+def test_team_switch_opens_stats_on_the_default_view(make_page, events_json, stats_json):
+    from test_site import two_team
+    page, net = make_page(mobile=False, hash="#stats/view=defense", data=two_team(events_json, "mbb"),
+                          stats={**stats_json, "featured": ["Cy Guard"]})
+    expect(page.locator("#st-views button.on")).to_have_text("🛡️ Defense")
+    net.events_json = two_team(events_json, "wbb")
+    page.locator("#teams button").nth(1).click()
+    page.wait_for_url(re.compile(r"\?team=wbb#stats$"))
+    page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
+    expect(page.locator("#st-views button.on")).to_have_text("⭐ Best for Cy")

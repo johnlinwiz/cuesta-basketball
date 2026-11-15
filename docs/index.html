@@ -237,7 +237,7 @@
   .tile small { font-size:0.625rem; color:var(--muted) }
   @media (max-width:640px) { .tiles { grid-template-columns:repeat(3, minmax(0, 1fr)) } .spots { grid-template-columns:1fr } }
   .sp-last { margin:4px 0; font-size:0.8125rem } .sp-btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px }
-  .sp-btns .star { color:#8a6d00 } @media (prefers-color-scheme: dark) { .sp-btns .star { color:#e3c35a } }
+  .sp-btns .star, .sp-feat { color:#8a6d00 } .sp-feat { cursor:default } .star.feat { font-size:0.875rem; cursor:default } @media (prefers-color-scheme: dark) { .sp-btns .star { color:#e3c35a } }
   .pchart figcaption { font-size:0.75rem; color:var(--muted); min-height:1.2em }
   .cmp-pick { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px } .cmp-pick select { max-width:100% }
   table.cmp th.l { text-align:left; cursor:default }
@@ -341,22 +341,23 @@ let CAL, DATA, origin = null, drives = {};   // drives: venueKey -> {min, mi}
 // ---------- player stats (docs/<team>/stats.json, from the official box scores) ----------
 let STATS = { teams: [], byEvent: {} };      // byEvent: event id -> {team, short, lines}
 const FOLLOW_STORE = "cuesta-follow";
-// Followed players: this device's choice, plus each featured player (`follow:` in schedule.yaml, shipped in
-// stats.json as `featured`) added once, the first time this device sees them featured. So a newly featured
-// player shows up for everyone, and unfollowing one sticks.
+// Followed players = the featured players (`follow:` in schedule.yaml, shipped in stats.json as `featured`;
+// always on, for everyone) + whoever this device stars.
 const readList = k => { try { const v = JSON.parse(localStorage.getItem(k)); return Array.isArray(v) ? v : null; } catch { return null; } };
-const FEATURED_SEEN = "cuesta-featured-seen";
-const savedFollow = readList(FOLLOW_STORE);
-let FOLLOW = new Set(savedFollow || []);
+let FOLLOW = new Set(readList(FOLLOW_STORE) || []), FEATURED = new Set();
 const fkey = (team, name) => `${team}|${name}`;
-const isFollowed = (team, name) => FOLLOW.has(fkey(team, name));
+const isFeatured = (team, name) => FEATURED.has(fkey(team, name));
+const isFollowed = (team, name) => isFeatured(team, name) || FOLLOW.has(fkey(team, name));
 function toggleFollow(team, name) {
   const k = fkey(team, name);
+  if (FEATURED.has(k)) return;
   FOLLOW.has(k) ? FOLLOW.delete(k) : FOLLOW.add(k);
   localStorage.setItem(FOLLOW_STORE, JSON.stringify([...FOLLOW]));
   renderSeasonTable(); renderStats();
 }
-const starBtn = (team, name) => `<button type="button" class="star" data-team="${esc(team)}" data-name="${esc(name)}"
+const starBtn = (team, name) => isFeatured(team, name)
+  ? `<span class="star feat" title="Featured player — always followed">⭐</span>`
+  : `<button type="button" class="star" data-team="${esc(team)}" data-name="${esc(name)}"
   aria-pressed="${isFollowed(team, name)}" title="${isFollowed(team, name) ? "Unfollow" : "Follow"} ${esc(name)}">${isFollowed(team, name) ? "★" : "☆"}</button>`;
 function wireStars(el, after) {
   el.querySelectorAll("button.star").forEach(b => b.onclick = ev => {
@@ -371,19 +372,9 @@ async function loadStats(dir) {
     const byEvent = {};
     for (const t of teams) for (const g of t.games || []) byEvent[g.event] = { team: t.key, short: t.short, lines: g.lines };
     STATS = { teams, byEvent };
-    const seen = new Set(readList(FEATURED_SEEN) || []);
-    let added = false;
     for (const t of teams) {
       const names = [...(t.roster || []).map(r => r.name), ...(t.games || []).flatMap(g => g.lines.map(l => l.name))];
-      for (const f of t.featured || []) {
-        const k = fkey(t.key, names.find(n => n.toLowerCase() === f.toLowerCase()) || f);
-        if (seen.has(k)) continue;
-        FOLLOW.add(k); seen.add(k); added = true;
-      }
-    }
-    if (added) {
-      localStorage.setItem(FEATURED_SEEN, JSON.stringify([...seen]));
-      if (savedFollow) localStorage.setItem(FOLLOW_STORE, JSON.stringify([...FOLLOW]));
+      for (const f of t.featured || []) FEATURED.add(fkey(t.key, names.find(n => n.toLowerCase() === f.toLowerCase()) || f));
     }
   } catch { /* stats are optional: the schedule works without them */ }
 }
@@ -611,7 +602,8 @@ function spotlightHtml(t, rows) {
         — ${ordinal(b.rank)} of ${b.n} in ${C[VIEWS[b.key].sort].h} (${esc(b.value)})</p>` : ""; })()}
       ${log.length ? pointsChart(log) : ""}
       <div class="sp-btns"><button type="button" class="st-btn" data-sp-log="${esc(r.name)}">📋 Game log</button>
-        ${r.gp ? `<button type="button" class="st-btn" data-sp-cmp="${esc(r.name)}">⇄ Compare</button>` : ""}${starBtn(t.key, r.name).replace('class="star"', 'class="star st-btn"').replace(/>(☆|★)</, ">$1 Following<")}</div>
+        ${r.gp ? `<button type="button" class="st-btn" data-sp-cmp="${esc(r.name)}">⇄ Compare</button>` : ""}${isFeatured(t.key, r.name) ? `<span class="st-btn sp-feat" title="Featured player — always shown">⭐ Featured</span>`
+          : starBtn(t.key, r.name).replace('class="star"', 'class="star st-btn"').replace(/>(☆|★)</, ">$1 Following<")}</div>
     </section>`;
   }).join("")}</div>`;
 }
@@ -759,7 +751,7 @@ function openPlayer(team, name) {
       (rows ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>Stl</th><th>Blk</th><th>TO</th>
         <th>FG</th><th>3PT</th><th>FT</th></tr></thead><tbody>${rows}</tbody></table></div>` : "");
     wireCharts($("d-body"));
-    $("d-foot").innerHTML = `<button type="button" id="d-follow">${isFollowed(team, name) ? "★ Following" : "☆ Follow"}</button>
+    $("d-foot").innerHTML = `<button type="button" id="d-follow"${isFeatured(team, name) ? " disabled" : ""}>${isFeatured(team, name) ? "⭐ Featured" : isFollowed(team, name) ? "★ Following" : "☆ Follow"}</button>
       ${season.gp ? `<button type="button" id="d-compare">⇄ Compare</button>` : ""}<button onclick="dlg.close()">Close</button>`;
     $("d-follow").onclick = () => { toggleFollow(team, name); draw(); };
     if ($("d-compare")) $("d-compare").onclick = () => openCompare([fkey(team, name)]);
@@ -1407,7 +1399,8 @@ loadTeamData().then(data => {
     $("teams").hidden = false;
     $("teams").querySelectorAll("button").forEach(b => b.onclick = () => {
       if (b.dataset.team === data.teamKey) return;
-      location.href = `?team=${b.dataset.team}${location.hash}`;      // same view (table/calendar/map), other team
+      // same view (table/calendar/map/stats), other team; Stats opens on that team's default view
+      location.href = `?team=${b.dataset.team}${location.hash.startsWith("#stats") ? "#stats" : location.hash}`;
     });
   }
 

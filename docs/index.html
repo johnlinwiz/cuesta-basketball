@@ -238,6 +238,9 @@
   @media (max-width:640px) { .tiles { grid-template-columns:repeat(3, minmax(0, 1fr)) } .spots { grid-template-columns:1fr } }
   .sp-last { margin:4px 0; font-size:0.8125rem } .sp-btns { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px }
   .sp-btns .star, .sp-feat { color:#8a6d00 } .sp-feat { cursor:default } .star.feat { font-size:0.875rem; cursor:default } @media (prefers-color-scheme: dark) { .sp-btns .star { color:#e3c35a } }
+  .pchart .bar.off { fill:#8886 } @media (prefers-color-scheme: dark) { .pchart .bar.off { fill:#8887 } }
+  .pchart line.avg { stroke:#c9a227; stroke-width:1.5; stroke-dasharray:4 3 } .pchart text.avg { fill:#8a6d00; font-weight:600 }
+  @media (prefers-color-scheme: dark) { .pchart text.avg { fill:#e3c35a } }
   .pchart figcaption { font-size:0.75rem; color:var(--muted); min-height:1.2em }
   .cmp-pick { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px } .cmp-pick select { max-width:100% }
   table.cmp th.l { text-align:left; cursor:default }
@@ -598,9 +601,8 @@ function spotlightHtml(t, rows) {
       ${r.gp ? `<div class="tiles">${tiles}</div>` : `<p class="muted">Hasn't appeared in a game${stFiltered() ? " matching these filters" : " yet this season"}.</p>`}
       ${last ? `<p class="sp-last"><span class="muted">Last game:</span> ${esc(last.p?.dateLabel || last.g.date)} ${esc(last.p?.matchup || last.g.opponent)}
         ${res ? `<span class="res ${res.outcome}">${esc(res.label)}</span>` : ""} — <b>${statLine(last.l)}</b></p>` : ""}
-      ${(() => { const b = r.gp && bestView(t, r.name); return b ? `<p class="sp-best">🏅 Best view: <button type="button" class="link" data-sp-view="${b.key}">${VIEWS[b.key].i} ${VIEWS[b.key].h}</button>
-        — ${ordinal(b.rank)} of ${b.n} in ${C[VIEWS[b.key].sort].h} (${esc(b.value)})</p>` : ""; })()}
-      ${log.length ? pointsChart(log) : ""}
+      ${(() => { const b = r.gp && bestView(t, r.name); return (b ? `<p class="sp-best">🏅 Best view: <button type="button" class="link" data-sp-view="${b.key}">${VIEWS[b.key].i} ${VIEWS[b.key].h}</button>
+        — ${ordinal(b.rank)} of ${b.n} in ${C[VIEWS[b.key].sort].h} (${esc(b.value)})</p>` : "") + (log.length ? statChart(log, b?.key) : ""); })()}
       <div class="sp-btns"><button type="button" class="st-btn" data-sp-log="${esc(r.name)}">📋 Game log</button>
         ${r.gp ? `<button type="button" class="st-btn" data-sp-cmp="${esc(r.name)}">⇄ Compare</button>` : ""}${isFeatured(t.key, r.name) ? `<span class="st-btn sp-feat" title="Featured player — always shown">⭐ Featured</span>`
           : starBtn(t.key, r.name).replace('class="star"', 'class="star st-btn"').replace(/>(☆|★)</, ">$1 Following<")}</div>
@@ -699,25 +701,47 @@ function wireStatsControls() {
 }
 
 // ---------- player pop-up: highs, points-by-game chart, game log ----------
-function pointsChart(log) {
-  // One series (points), so no legend; the game log below is the table view. Bars: 4px rounded
-  // tops on the baseline, 2px gaps; the season high is labelled; hover/tap/focus reads out a game.
-  const W = 320, H = 118, top = 16, base = 96, n = log.length;
+// What a view's chart plots per game: counting stats directly; for rate views the per-game numbers behind them.
+const CHART_STAT = { pts: ["pts", "Points", "pt", "pts"], reb: ["reb", "Rebounds", "reb", "reb"], ast: ["ast", "Assists", "ast", "ast"],
+                     stl: ["stl", "Steals", "stl", "stl"], ts: ["pts", "Points", "pt", "pts"], fg3p: ["fg3m", "3-pointers made", "3PM", "3PM"],
+                     pts40: ["pts", "Points", "pt", "pts"] };
+// One bar per team game for the player's best view (default: points). One series, so no legend; the game
+// log is the table view. Bars: 4px rounded tops on the baseline, 2px gaps; games outside the view (e.g. starts,
+// for Bench) are grey; dashed line = the player's average over the view's games; the high is labelled;
+// hover/tap/focus reads a game out.
+function statChart(log, viewKey) {
+  const v = VIEWS[viewKey] || VIEWS.overview, [k, label, one, many] = CHART_STAT[v.sort] || CHART_STAT.pts;
+  const W = 320, H = 122, top = 18, base = 98, n = log.length;
   if (!n) return "";
-  const max = Math.max(10, ...log.map(x => x.l.pts || 0)), slot = W / n, bw = Math.max(4, Math.min(28, slot - 2));
-  const hi = Math.max(...log.map(x => x.l.pts || 0));
-  const bars = log.map(({ l, p, g }, i) => {
-    const h = played(l) ? (l.pts / max) * (base - top) : 0, x = i * slot + (slot - bw) / 2, y = base - h, r = Math.min(4, bw / 2, h);
-    const bar = h > 0 ? `<path class="bar" d="M${x},${base}V${y + r}Q${x},${y} ${x + r},${y}H${x + bw - r}Q${x + bw},${y} ${x + bw},${y + r}V${base}Z"/>` : "";
-    const lab = played(l) && l.pts === hi && hi > 0 ? `<text class="v" x="${x + bw / 2}" y="${y - 4}" text-anchor="middle">${l.pts}</text>` : "";
-    const dnp = played(l) ? "" : `<text class="t" x="${x + bw / 2}" y="${base - 3}" text-anchor="middle">DNP</text>`;
-    const tick = n <= 12 || i % Math.ceil(n / 12) === 0 ? `<text class="t" x="${x + bw / 2}" y="${base + 14}" text-anchor="middle">${esc(g.date.slice(5).replace("-", "/").replace(/^0/, ""))}</text>` : "";
-    const say = `${p?.dateLabel || g.date} · ${p?.matchup || g.opponent}: ${played(l) ? `${l.pts} pt${l.pts === 1 ? "" : "s"}` : "did not play"}`;
+  const real = log.map((x, i) => i).filter(i => !isScrim(log[i].e));
+  const last3 = new Set(real.slice(-3));
+  const inView = (x, i) => played(x.l) && (v.role === "bench" ? !x.l.starter : v.span === "3" ? last3.has(i) : true);
+  const vals = log.map(x => played(x.l) ? (x.l[k] || 0) : 0);
+  const used = log.map((x, i) => inView(x, i) ? vals[i] : null).filter(x => x != null);
+  const avg = used.length ? used.reduce((a, b) => a + b, 0) / used.length : null;
+  const max = Math.max(k === "pts" ? 10 : 4, ...vals), hi = Math.max(...used, 0), slot = W / n, bw = Math.max(4, Math.min(28, slot - 2));
+  const yOf = x => base - (x / max) * (base - top);
+  let labelled = false;
+  const bars = log.map((x, i) => {
+    const { l, p, g } = x, val = vals[i], on = inView(x, i);
+    const h = played(l) ? (val / max) * (base - top) : 0, bx = i * slot + (slot - bw) / 2, y = base - h, r = Math.min(4, bw / 2, h);
+    const bar = h > 0 ? `<path class="bar${on ? "" : " off"}" d="M${bx},${base}V${y + r}Q${bx},${y} ${bx + r},${y}H${bx + bw - r}Q${bx + bw},${y} ${bx + bw},${y + r}V${base}Z"/>` : "";
+    const lab = on && val === hi && hi > 0 && !labelled ? (labelled = true, `<text class="v" x="${bx + bw / 2}" y="${y - 4}" text-anchor="middle">${val}</text>`) : "";
+    const dnp = played(l) ? (h === 0 && on ? `<text class="t" x="${bx + bw / 2}" y="${base - 3}" text-anchor="middle">0</text>` : "")
+                          : `<text class="t" x="${bx + bw / 2}" y="${base - 3}" text-anchor="middle">DNP</text>`;
+    const tick = n <= 12 || i % Math.ceil(n / 12) === 0 ? `<text class="t" x="${bx + bw / 2}" y="${base + 14}" text-anchor="middle">${esc(g.date.slice(5).replace("-", "/").replace(/^0/, ""))}</text>` : "";
+    const why = !played(l) ? "did not play" : `${val} ${val === 1 ? one : many}${on ? "" : v.role === "bench" ? " (started — not in Bench view)" : " (not in this view)"}`;
+    const say = `${p?.dateLabel || g.date} · ${p?.matchup || g.opponent}: ${why}`;
     return `${bar}${lab}${dnp}${tick}<rect class="hit" data-say="${esc(say)}" x="${i * slot}" y="0" width="${slot}" height="${H}" tabindex="0" aria-label="${esc(say)}"/>`;
   }).join("");
-  return `<figure class="pchart"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Points by game">
-    <line class="axis" x1="0" x2="${W}" y1="${base}" y2="${base}"/>${bars}</svg>
-    <figcaption class="pc-read" aria-live="polite">Points by game · hover or tap a bar</figcaption></figure>`;
+  const avgLine = avg ? `<line class="avg" x1="0" x2="${W}" y1="${yOf(avg)}" y2="${yOf(avg)}"/>
+    <text class="avg" x="${W - 2}" y="${yOf(avg) - 4}" text-anchor="end">avg ${avg.toFixed(1)}</text>` : "";
+  const greyed = log.some((x, i) => played(x.l) && !inView(x, i));      // only explain grey bars that exist
+  const scope = !greyed ? "" : v.role === "bench" ? " · grey = started" : v.span === "3" ? " · grey = before the last 3" : "";
+  const title = `${label} by game · ${v.i} ${v.h}${scope}`;
+  return `<figure class="pchart" data-view="${esc(viewKey || "overview")}"><svg viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(title)}">
+    <line class="axis" x1="0" x2="${W}" y1="${base}" y2="${base}"/>${bars}${avgLine}</svg>
+    <figcaption class="pc-read" aria-live="polite">${esc(title)} · hover or tap a bar</figcaption></figure>`;
 }
 // Every team game with a box score; a player missing from one (box scores list who appeared) did not play.
 const DNP_LINE = { min: 0, pts: 0, reb: 0, ast: 0, absent: true };
@@ -747,7 +771,7 @@ function openPlayer(team, name) {
     $("d-body").innerHTML = (season.gp ? `<p>📈 ${(season.pts / season.gp).toFixed(1)} pts · ${(season.reb / season.gp).toFixed(1)} reb · ${(season.ast / season.gp).toFixed(1)} ast per game
         <span class="muted">(${season.gp} GP, FG ${season.fga ? (100 * season.fgm / season.fga).toFixed(1) : "—"}%)</span></p>` : `<p class="muted">No game minutes yet this season.</p>`) +
       (highs.length ? `<p class="muted">Season highs: ${highs.join(" · ")}</p>` : "") +
-      pointsChart(log) +
+      statChart(log, season.gp ? bestView(t, name)?.key : null) +
       (rows ? `<div class="stw"><table class="st"><thead><tr><th class="l pl">Game</th><th>Min</th><th>Pts</th><th>Reb</th><th>Ast</th><th>Stl</th><th>Blk</th><th>TO</th>
         <th>FG</th><th>3PT</th><th>FT</th></tr></thead><tbody>${rows}</tbody></table></div>` : "");
     wireCharts($("d-body"));

@@ -343,3 +343,25 @@ def test_team_switch_opens_stats_on_the_default_view(make_page, events_json, sta
     page.wait_for_url(re.compile(r"\?team=wbb#stats$"))
     page.wait_for_function("!/Loading/.test(document.querySelector('#next').textContent)")
     expect(page.locator("#st-views button.on")).to_have_text("⭐ Best for Cy")
+
+
+
+def test_spotlight_chart_follows_the_best_view(make_page, stats_json):
+    """Cy's best view is Rebounding: his chart plots rebounds by game, with his average and the high labelled."""
+    page, _ = make_page(mobile=False, hash="#stats", stats=with_extra(stats_json, featured=["Cy Guard"]))
+    chart = page.locator(".spot .pchart")
+    expect(chart).to_have_attribute("data-view", "rebounding")
+    expect(chart.locator("figcaption")).to_contain_text("Rebounds by game · 💪 Rebounding")
+    expect(chart.locator("text.v")).to_have_text("9")                          # 6 then 9 rebounds
+    expect(chart.locator("text.avg")).to_have_text("avg 7.5")
+    chart.locator("rect.hit").nth(1).click()
+    expect(chart.locator(".pc-read")).to_contain_text("Sequoias: 9 reb")
+
+
+def test_bench_view_chart_greys_out_starts(make_page, stats_json):
+    page, _ = make_page(mobile=False, hash="#stats", stats=with_extra(stats_json, featured=["Cy Guard"]))
+    page.evaluate("document.querySelector('#st-body').innerHTML = statChart(playerLog(STATS.teams[0], 'Cy Guard'), 'bench')")
+    chart = page.locator("#st-body .pchart")
+    expect(chart.locator("path.bar.off")).to_have_count(1)                      # Gavilan: he started
+    expect(chart.locator("figcaption")).to_contain_text("grey = started")
+    expect(chart.locator("text.avg")).to_have_text("avg 5.0")                   # only the bench game counts

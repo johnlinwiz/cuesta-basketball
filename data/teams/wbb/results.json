@@ -52,5 +52,14 @@
     "status": "Final",
     "them": 0,
     "us": 2
+  },
+  "wbb-2026-11-18-monterey-peninsula": {
+    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261118_wz8m.xml",
+    "outcome": "W",
+    "raw": "W, 77-29",
+    "score": "77-29",
+    "status": "Final",
+    "them": 29,
+    "us": 77
   }
 }

@@ -1551,7 +1551,32 @@
      "miles": 0,
      "dir": "https://www.google.com/maps/dir/?api=1&origin=4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&destination=4700+College+Oak+Dr%2C+Sacramento%2C+CA+95841&travelmode=driving"
     },
-    "box": null
+    "box": {
+     "top": [
+      {
+       "name": "Ahmad Jacquet",
+       "no": "5",
+       "pts": 28,
+       "reb": 7,
+       "ast": 6
+      },
+      {
+       "name": "Sean Armstrong",
+       "no": "10",
+       "pts": 19,
+       "reb": 2,
+       "ast": 4
+      },
+      {
+       "name": "Cole Williams",
+       "no": "55",
+       "pts": 17,
+       "reb": 7,
+       "ast": 2
+      }
+     ],
+     "url": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261114_4ap0.xml"
+    }
    },
    "start": "2026-11-14T13:00:00-08:00",
    "end": "2026-11-14T15:00:00-08:00"

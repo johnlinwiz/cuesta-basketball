@@ -20,7 +20,7 @@
 |---|---|---|---|---|---|---|
 | 1 | 2 | 3 | 4<br>✅🏠 **L 51-67** vs Hartnell | 5 | 6 | 7<br>✅🏠 **W 65-50** [vs Santa Monica](https://github.com/johnlinwiz/cuesta-basketball/issues/31) |
 | 8 | 9 | 10 | 11 | 12<br>✅🚌 **W 75-43** [@ Foothill](https://github.com/johnlinwiz/cuesta-basketball/issues/32) | 13<br>✅🚌 **L 61-67** [@ Siskiyous](https://github.com/johnlinwiz/cuesta-basketball/issues/33) | 14<br>✅🚌 **W FF** [@ Napa Valley](https://github.com/johnlinwiz/cuesta-basketball/issues/34) |
-| 15 | 16 | 17 | 18<br>✅🏠 **W 77-29** [vs Monterey Peninsula](https://github.com/johnlinwiz/cuesta-basketball/issues/35) | **19** | 20<br>🏆 6pm [vs Mission](https://github.com/johnlinwiz/cuesta-basketball/issues/36) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 21<br>🏆 3pm [vs Skyline](https://github.com/johnlinwiz/cuesta-basketball/issues/37) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
+| 15 | 16 | 17 | 18<br>✅🏠 **W 77-29** [vs Monterey Peninsula](https://github.com/johnlinwiz/cuesta-basketball/issues/35) | 19 | **20**<br>🏆 6pm [vs Mission](https://github.com/johnlinwiz/cuesta-basketball/issues/36) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) | 21<br>🏆 3pm [vs Skyline](https://github.com/johnlinwiz/cuesta-basketball/issues/37) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
 | 22 | 23 | 24 | 25 | 26 | 27 | 28 |
 | 29 | 30 |   |   |   |   |   |
 

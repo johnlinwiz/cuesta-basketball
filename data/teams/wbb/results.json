@@ -1,6 +1,6 @@
 {
   "wbb-2026-10-30-taft": {
-    "boxscore": "https://www.cccaasports.org/links/djm9mg",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261030_u1z6.xml",
     "outcome": "L",
     "raw": "L, 66-58",
     "score": "58-66",
@@ -9,7 +9,7 @@
     "us": 58
   },
   "wbb-2026-11-04-hartnell": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml",
     "outcome": "L",
     "raw": "L, 67-51",
     "score": "51-67",
@@ -18,7 +18,7 @@
     "us": 51
   },
   "wbb-2026-11-07-santa-monica": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261107_af5x.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261107_af5x.xml",
     "outcome": "W",
     "raw": "W, 65-50",
     "score": "65-50",
@@ -27,7 +27,7 @@
     "us": 65
   },
   "wbb-2026-11-12-foothill": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml",
     "outcome": "W",
     "raw": "W, 75-43",
     "score": "75-43",
@@ -36,7 +36,7 @@
     "us": 75
   },
   "wbb-2026-11-13-siskiyous": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261113_zgze.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261113_zgze.xml",
     "outcome": "L",
     "raw": "L, 67-61",
     "score": "61-67",
@@ -54,9 +54,10 @@
     "us": 2
   },
   "wbb-2026-11-18-monterey-peninsula": {
-    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261118_wz8m.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261118_wz8m.xml",
     "outcome": "W",
     "raw": "W, 77-29",
+    "recap": "https://www.cuestaathletics.com/sports/wbkb/2026-27/releases/20261118ywvqdw",
     "score": "77-29",
     "status": "Final",
     "them": 29,

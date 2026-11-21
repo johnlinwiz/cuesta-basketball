@@ -5,7 +5,7 @@
 | Team | Record | Next up | Schedule | Live site | Calendar feed | Print |
 |---|---|---|---|---|---|---|
 | **Cuesta College Men's Basketball** | 3-4 | Tue Nov 24 · 6:00 PM · vs De Anza | [MBB schedule](mbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb) | [cuesta-mbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule-bw.pdf) |
-| **Cuesta College Women's Basketball** | 4-3 | Fri Nov 20 · 6:00 PM · vs Mission | [WBB schedule](wbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb) | [cuesta-wbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule-bw.pdf) |
+| **Cuesta College Women's Basketball** | 5-3 | Sat Nov 21 · 3:00 PM · vs Skyline | [WBB schedule](wbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb) | [cuesta-wbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule-bw.pdf) |
 
 ## How this repo works
 

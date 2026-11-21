@@ -567,7 +567,7 @@ UID:wbb-2026-11-20-mission@johnlinwiz.cuesta-basketball
 DTSTAMP:20261120T000000Z
 DTSTART;TZID=America/Los_Angeles:20261120T180000
 DTEND;TZID=America/Los_Angeles:20261120T200000
-SUMMARY:Cuesta WBB vs Mission
+SUMMARY:Cuesta WBB vs Mission — W 58-57
 LOCATION:Stork Gymnasium (Cuesta Gym)\, Cuesta College\, Highway 1\, San Lu
  is Obispo\, CA 93405
 GEO:35.329;-120.7406
@@ -577,19 +577,21 @@ DESCRIPTION:Tournament — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, Cues
  +College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasadena:
   4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host channel: 
  YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/chan
- nel/UCJ5AEH02wtWXIUFAgVMspnQ\nNote: Hinson's Tire Pros Classic\, day 1\nSe
- ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ nel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 58-57 · Box score: https://www.ccc
+ aasports.org/sports/wbkb/2026-27/boxscores/20261120_pwq7.xml\nNote: Hinson
+ 's Tire Pros Classic\, day 1\nSeason calendar: https://johnlinwiz.github.i
+ o/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Tournament,Home
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-P1D
-DESCRIPTION:Cuesta WBB vs Mission tomorrow
+DESCRIPTION:Cuesta WBB vs Mission — W 58-57 tomorrow
 END:VALARM
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT3H
-DESCRIPTION:Cuesta WBB vs Mission in 3 hours
+DESCRIPTION:Cuesta WBB vs Mission — W 58-57 in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT

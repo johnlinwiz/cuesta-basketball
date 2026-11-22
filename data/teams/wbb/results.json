@@ -70,5 +70,14 @@
     "status": "Final",
     "them": 57,
     "us": 58
+  },
+  "wbb-2026-11-21-skyline": {
+    "boxscore": "https://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261121_inke.xml",
+    "outcome": "L",
+    "raw": "L, 59-37",
+    "score": "37-59",
+    "status": "Final",
+    "them": 59,
+    "us": 37
   }
 }

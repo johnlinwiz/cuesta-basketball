@@ -911,7 +911,32 @@
     "team": "mbb",
     "teamShort": "MBB",
     "fromPrev": null,
-    "box": null
+    "box": {
+     "top": [
+      {
+       "name": "Ahmad Jacquet",
+       "no": "5",
+       "pts": 26,
+       "reb": 9,
+       "ast": 3
+      },
+      {
+       "name": "Sean Armstrong",
+       "no": "10",
+       "pts": 19,
+       "reb": 3,
+       "ast": 2
+      },
+      {
+       "name": "Cole Williams",
+       "no": "55",
+       "pts": 16,
+       "reb": 2,
+       "ast": 0
+      }
+     ],
+     "url": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261124_p4xm.xml"
+    }
    },
    "start": "2026-11-24T18:00:00-08:00",
    "end": "2026-11-24T20:00:00-08:00"

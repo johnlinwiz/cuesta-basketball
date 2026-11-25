@@ -30,8 +30,8 @@
 |---|---|---|---|---|---|---|
 |   |   | 1 | 2<br>🚌 6pm [@ Coalinga](https://github.com/johnlinwiz/cuesta-basketball/issues/10) | 3 | 4 | 5 |
 | 6 | 7 | 8 | 9 | 10 | 11 | 12<br>🏠 3pm [vs Rio Hondo](https://github.com/johnlinwiz/cuesta-basketball/issues/11) [📺](https://www.youtube.com/channel/UCJ5AEH02wtWXIUFAgVMspnQ) |
-| 13 | 14 | 15<br>🚌 5:30pm [@ Bakersfield](https://github.com/johnlinwiz/cuesta-basketball/issues/12) [📺](https://www.youtube.com/@gogadesgo/streams) | 16 | 17 | 18<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) | 19<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) |
-| 20<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) | 21 | 22 | 23 | 24 | 25 | 26 |
+| 13 | 14 | 15<br>🚌 5:30pm [@ Bakersfield](https://github.com/johnlinwiz/cuesta-basketball/issues/12) [📺](https://www.youtube.com/@gogadesgo/streams) | 16 | 17<br>🏆 3pm vs Contra Costa [📺](https://www.youtube.com/watch?v=FUyurgmtjaI) | 18<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/@deltaathletics324) | 19<br>🏆  [San Joaquin Delta Tournament](https://github.com/johnlinwiz/cuesta-basketball/issues/13) [📺](https://www.youtube.com/@deltaathletics324) |
+| 20 | 21 | 22 | 23 | 24 | 25 | 26 |
 | 27 | 28 | 29<br>🏆 3pm [vs Santa Ana](https://github.com/johnlinwiz/cuesta-basketball/issues/14) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 30<br>🏆 1pm [vs Palo Verde](https://github.com/johnlinwiz/cuesta-basketball/issues/15) [📺](https://www.team1sports.com/college/?S=allanhancockcollege) | 31 |   |   |
 
 ## January 2027

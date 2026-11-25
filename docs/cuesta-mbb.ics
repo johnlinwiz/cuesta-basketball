@@ -412,11 +412,11 @@ DESCRIPTION:Cuesta MBB @ Bakersfield in 3 hours
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-12-18-san-joaquin-delta-tournament@johnlinwiz.cuesta-basketball
+UID:2026-12-17-contra-costa@johnlinwiz.cuesta-basketball
 DTSTAMP:20261124T000000Z
-DTSTART;VALUE=DATE:20261218
-DTEND;VALUE=DATE:20261221
-SUMMARY:Cuesta MBB San Joaquin Delta Tournament
+DTSTART;TZID=America/Los_Angeles:20261217T150000
+DTEND;TZID=America/Los_Angeles:20261217T170000
+SUMMARY:Cuesta MBB vs Contra Costa
 LOCATION:San Joaquin Delta College Gym\, 5151 Pacific Ave\, Stockton\, CA 9
  5207
 GEO:37.9953;-121.3193
@@ -425,10 +425,39 @@ DESCRIPTION:Tournament — Neutral\nVenue: San Joaquin Delta College Gym\,
  earch/?api=1&query=San+Joaquin+Delta+College+Gym%2C+5151+Pacific+Ave%2C+St
  ockton%2C+CA+95207\nDrive from Pasadena: 6h 18m · 341 mi\nDrive from SLO:
   4h 47m · 247 mi\nWatch live (Game stream): https://www.youtube.com/watch
- ?v=FUyurgmtjaI\nNote: Delta lists this as the Tristan Hill Tournament\, De
- c 17-19\, and streams Cuesta vs Contra Costa Thu Dec 17 (~3 PM)\; Cuesta a
- nd the 3C2A feed say Dec 18-20 - confirm before traveling\nSeason calendar
- : https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+ ?v=FUyurgmtjaI\nNote: Tristan Hill Holiday Tournament (San Joaquin Delta)\
+ , day 1\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?
+ team=mbb
+URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
+CATEGORIES:Tournament,Neutral
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-P1D
+DESCRIPTION:Cuesta MBB vs Contra Costa tomorrow
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT3H
+DESCRIPTION:Cuesta MBB vs Contra Costa in 3 hours
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-18-san-joaquin-delta-tournament@johnlinwiz.cuesta-basketball
+DTSTAMP:20261124T000000Z
+DTSTART;VALUE=DATE:20261218
+DTEND;VALUE=DATE:20261220
+SUMMARY:Cuesta MBB San Joaquin Delta Tournament
+LOCATION:San Joaquin Delta College Gym\, 5151 Pacific Ave\, Stockton\, CA 9
+ 5207
+GEO:37.9953;-121.3193
+DESCRIPTION:Tournament — Neutral\nVenue: San Joaquin Delta College Gym\, 
+ 5151 Pacific Ave\, Stockton\, CA 95207\nMap: https://www.google.com/maps/s
+ earch/?api=1&query=San+Joaquin+Delta+College+Gym%2C+5151+Pacific+Ave%2C+St
+ ockton%2C+CA+95207\nDrive from Pasadena: 6h 18m · 341 mi\nDrive from SLO:
+  4h 47m · 247 mi\nWatch live (Host channel: YouTube · Delta Athletics): 
+ https://www.youtube.com/@deltaathletics324\nNote: Tristan Hill Holiday Tou
+ rnament\, days 2-3: opponents and times TBA (bracket)\nSeason calendar: ht
+ tps://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=mbb
 CATEGORIES:Tournament,Neutral
 BEGIN:VALARM

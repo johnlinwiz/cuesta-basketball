@@ -4,7 +4,7 @@
 
 | Team | Record | Next up | Schedule | Live site | Calendar feed | Print |
 |---|---|---|---|---|---|---|
-| **Cuesta College Men's Basketball** | 3-4 | Tue Nov 24 · 6:00 PM · vs De Anza | [MBB schedule](mbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb) | [cuesta-mbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule-bw.pdf) |
+| **Cuesta College Men's Basketball** | 4-4 | Wed Dec 2 · 6:00 PM · @ Coalinga | [MBB schedule](mbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=mbb) | [cuesta-mbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-mbb-schedule-bw.pdf) |
 | **Cuesta College Women's Basketball** | 5-4 | Wed Dec 2 · 5:00 PM · vs Reedley | [WBB schedule](wbb/README.md) | [open](https://johnlinwiz.github.io/cuesta-basketball/?team=wbb) | [cuesta-wbb.ics](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb.ics) | [colour](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule.pdf) · [B&W](https://johnlinwiz.github.io/cuesta-basketball/cuesta-wbb-schedule-bw.pdf) |
 
 ## How this repo works

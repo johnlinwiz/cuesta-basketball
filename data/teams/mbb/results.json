@@ -61,5 +61,14 @@
     "status": "Final",
     "them": 73,
     "us": 77
+  },
+  "2026-11-24-de-anza": {
+    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261124_p4xm.xml",
+    "outcome": "W",
+    "raw": "W, 84-81",
+    "score": "84-81",
+    "status": "Final",
+    "them": 81,
+    "us": 84
   }
 }

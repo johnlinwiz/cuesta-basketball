@@ -15,6 +15,14 @@
   "miles": 0,
   "minutes": 0
  },
+ "delta|chabot": {
+  "miles": 65,
+  "minutes": 82
+ },
+ "delta|delta": {
+  "miles": 0,
+  "minutes": 0
+ },
  "foothill|siskiyous": {
   "miles": 321,
   "minutes": 369

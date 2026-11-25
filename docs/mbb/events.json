@@ -1075,7 +1075,7 @@
     "audio": null,
     "stats": null,
     "gcal": "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Cuesta+MBB+vs+Contra+Costa&dates=20261217T150000%2F20261217T170000&ctz=America%2FLos_Angeles&location=San+Joaquin+Delta+College+Gym%2C+5151+Pacific+Ave%2C+Stockton%2C+CA+95207&details=Tournament+%E2%80%94+Neutral%0AVenue%3A+San+Joaquin+Delta+College+Gym%2C+5151+Pacific+Ave%2C+Stockton%2C+CA+95207%0AMap%3A+https%3A%2F%2Fwww.google.com%2Fmaps%2Fsearch%2F%3Fapi%3D1%26query%3DSan%2BJoaquin%2BDelta%2BCollege%2BGym%252C%2B5151%2BPacific%2BAve%252C%2BStockton%252C%2BCA%2B95207%0ADrive+from+Pasadena%3A+6h+18m+%C2%B7+341+mi%0ADrive+from+SLO%3A+4h+47m+%C2%B7+247+mi%0AWatch+live+%28Game+stream%29%3A+https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DFUyurgmtjaI%0ANote%3A+Tristan+Hill+Holiday+Tournament+%28San+Joaquin+Delta%29%2C+day+1",
-    "issue": null,
+    "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/60",
     "team": "mbb",
     "teamShort": "MBB",
     "fromPrev": null,
@@ -1120,7 +1120,18 @@
     "issue": "https://github.com/johnlinwiz/cuesta-basketball/issues/13",
     "team": "mbb",
     "teamShort": "MBB",
-    "fromPrev": null,
+    "fromPrev": {
+     "title": "vs Contra Costa",
+     "dateLabel": "Thu Dec 17",
+     "time": "3:00 PM",
+     "venue": "San Joaquin Delta College Gym",
+     "city": "Stockton, CA",
+     "same": true,
+     "sameDay": false,
+     "minutes": 0,
+     "miles": 0,
+     "dir": "https://www.google.com/maps/dir/?api=1&origin=5151+Pacific+Ave%2C+Stockton%2C+CA+95207&destination=5151+Pacific+Ave%2C+Stockton%2C+CA+95207&travelmode=driving"
+    },
     "box": null
    },
    "start": "2026-12-18",

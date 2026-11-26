@@ -1,6 +1,6 @@
 {
   "2026-10-29-gavilan": {
-    "boxscore": "https://www.cccaasports.org/links/qjxbsa",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261029_f1v6.xml",
     "outcome": "W",
     "raw": "W, 93-53",
     "score": "93-53",
@@ -9,7 +9,7 @@
     "us": 93
   },
   "2026-10-31-sequoias": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261031_b00x.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261031_b00x.xml",
     "outcome": "L",
     "raw": "L, 87-82",
     "score": "82-87",
@@ -18,7 +18,7 @@
     "us": 82
   },
   "2026-11-03-monterey-peninsula": {
-    "boxscore": "https://www.cccaasports.org/links/1mntr8",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261103_p5bi.xml",
     "outcome": "L",
     "raw": "L, 72-58",
     "score": "58-72",
@@ -27,7 +27,7 @@
     "us": 58
   },
   "2026-11-07-diablo-valley": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261107_1ewx.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261107_1ewx.xml",
     "outcome": "W",
     "raw": "W, 72-65",
     "score": "72-65",
@@ -36,7 +36,7 @@
     "us": 72
   },
   "2026-11-09-redwoods": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261109_11hs.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261109_11hs.xml",
     "outcome": "L",
     "raw": "L, 83-79",
     "score": "79-83",
@@ -45,7 +45,7 @@
     "us": 79
   },
   "2026-11-13-feather-river": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261113_jrzj.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261113_jrzj.xml",
     "outcome": "L",
     "raw": "L, 78-73",
     "score": "73-78",
@@ -54,7 +54,7 @@
     "us": 73
   },
   "2026-11-14-shasta": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261114_4ap0.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261114_4ap0.xml",
     "outcome": "W",
     "raw": "W, 77-73",
     "score": "77-73",
@@ -63,9 +63,10 @@
     "us": 77
   },
   "2026-11-24-de-anza": {
-    "boxscore": "https://www.cccaasports.org/sports/mbkb/2026-27/boxscores/20261124_p4xm.xml",
+    "boxscore": "https://www.cuestaathletics.com/sports/mbkb/2026-27/boxscores/20261124_p4xm.xml",
     "outcome": "W",
     "raw": "W, 84-81",
+    "recap": "https://www.cuestaathletics.com/sports/mbkb/2026-27/releases/202611258c8hnw",
     "score": "84-81",
     "status": "Final",
     "them": 81,

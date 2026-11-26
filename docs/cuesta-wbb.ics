@@ -26,7 +26,7 @@ END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
 UID:wbb-2026-10-17-bakersfield@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261017T113000
 DTEND;TZID=America/Los_Angeles:20261017T133000
 SUMMARY:Cuesta WBB vs Bakersfield (scrimmage)
@@ -55,7 +55,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-10-24-canyons@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261024T140000
 DTEND;TZID=America/Los_Angeles:20261024T160000
 SUMMARY:Cuesta WBB @ Canyons (scrimmage)
@@ -86,7 +86,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-10-30-taft@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261030T170000
 DTEND;TZID=America/Los_Angeles:20261030T190000
 SUMMARY:Cuesta WBB @ Taft — L 58-66
@@ -98,9 +98,9 @@ DESCRIPTION:Non-conference — Away\nVenue: Taft College Gym\, 29 Cougar Co
  dena: 2h 28m · 121 mi\nDrive from SLO: 2h 12m · 96 mi\nWatch live (Host 
  channel: Hudl · Taft College Women's Basketball): https://fan.hudl.com/us
  a/ca/taft/organization/116746/taft-college/team/737875/womens-varsity-bask
- etball\nFinal: L 58-66 · Box score: https://www.cccaasports.org/links/djm
- 9mg\nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team
- =wbb
+ etball\nFinal: L 58-66 · Box score: https://www.cuestaathletics.com/sport
+ s/wbkb/2026-27/boxscores/20261030_u1z6.xml\nSeason calendar: https://johnl
+ inwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
@@ -116,7 +116,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-04-hartnell@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261104T150000
 DTEND;TZID=America/Los_Angeles:20261104T170000
 SUMMARY:Cuesta WBB vs Hartnell — L 51-67
@@ -130,8 +130,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: L 51-67 · Box score: https://www
- .cccaasports.org/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml\nSeason c
- alendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ .cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261104_hvlu.xml\nSeas
+ on calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
@@ -147,7 +147,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-07-santa-monica@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261107T130000
 DTEND;TZID=America/Los_Angeles:20261107T150000
 SUMMARY:Cuesta WBB vs Santa Monica — W 65-50
@@ -161,8 +161,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 65-50 · Box score: https://www
- .cccaasports.org/sports/wbkb/2026-27/boxscores/20261107_af5x.xml\nSeason c
- alendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ .cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261107_af5x.xml\nSeas
+ on calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
@@ -178,7 +178,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-12-foothill@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261112T160000
 DTEND;TZID=America/Los_Angeles:20261112T180000
 SUMMARY:Cuesta WBB @ Foothill — W 75-43
@@ -190,8 +190,9 @@ DESCRIPTION:Non-conference — Away\nVenue: Foothill College Main Gymnasium
  .com/maps/search/?api=1&query=Foothill+College+Main+Gymnasium%2C+12345+El+
  Monte+Rd%2C+Los+Altos+Hills%2C+CA+94022\nDrive from Pasadena: 6h 40m · 35
  4 mi\nDrive from SLO: 3h 52m · 198 mi\nFinal: W 75-43 · Box score: https
- ://www.cccaasports.org/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml\nSe
- ason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ ://www.cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261112_mpkq.xml
+ \nSeason calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wb
+ b
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
@@ -207,7 +208,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-13-siskiyous@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261113T140000
 DTEND;TZID=America/Los_Angeles:20261113T160000
 SUMMARY:Cuesta WBB @ Siskiyous — L 61-67
@@ -219,9 +220,9 @@ DESCRIPTION:Non-conference — Away\nVenue: Siskiyous Gymnasium\, 800 Colle
  ve from Pasadena: 11h 16m · 613 mi\nDrive from SLO: 9h 25m · 496 mi\nWat
  ch live (Host channel: Hudl · College of the Siskiyous): https://fan.hudl
  .com/United-States/CA/Weed/organization/4884/College-of-the-Siskiyous-/vid
- eo\nFinal: L 61-67 · Box score: https://www.cccaasports.org/sports/wbkb/2
- 026-27/boxscores/20261113_zgze.xml\nSeason calendar: https://johnlinwiz.gi
- thub.io/cuesta-basketball/?team=wbb
+ eo\nFinal: L 61-67 · Box score: https://www.cuestaathletics.com/sports/wb
+ kb/2026-27/boxscores/20261113_zgze.xml\nSeason calendar: https://johnlinwi
+ z.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Away
 BEGIN:VALARM
@@ -237,7 +238,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-14-napa-valley@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261114T140000
 DTEND;TZID=America/Los_Angeles:20261114T160000
 SUMMARY:Cuesta WBB @ Napa Valley — W (forfeit)
@@ -264,7 +265,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-18-monterey-peninsula@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261118T160000
 DTEND;TZID=America/Los_Angeles:20261118T180000
 SUMMARY:Cuesta WBB vs Monterey Peninsula — W 77-29
@@ -278,8 +279,8 @@ DESCRIPTION:Non-conference — Home\nVenue: Stork Gymnasium (Cuesta Gym)\,
  ena: 4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host chann
  el: YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/
  channel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 77-29 · Box score: https://www
- .cccaasports.org/sports/wbkb/2026-27/boxscores/20261118_wz8m.xml\nSeason c
- alendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
+ .cuestaathletics.com/sports/wbkb/2026-27/boxscores/20261118_wz8m.xml\nSeas
+ on calendar: https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Non-conference,Home
 BEGIN:VALARM
@@ -295,7 +296,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-20-mission@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261120T180000
 DTEND;TZID=America/Los_Angeles:20261120T200000
 SUMMARY:Cuesta WBB vs Mission — W 58-57
@@ -308,10 +309,10 @@ DESCRIPTION:Tournament — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, Cues
  +College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasadena:
   4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host channel: 
  YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/chan
- nel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 58-57 · Box score: https://www.ccc
- aasports.org/sports/wbkb/2026-27/boxscores/20261120_pwq7.xml\nNote: Hinson
- 's Tire Pros Classic\, day 1\nSeason calendar: https://johnlinwiz.github.i
- o/cuesta-basketball/?team=wbb
+ nel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: W 58-57 · Box score: https://www.cue
+ staathletics.com/sports/wbkb/2026-27/boxscores/20261120_pwq7.xml\nNote: Hi
+ nson's Tire Pros Classic\, day 1\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Tournament,Home
 BEGIN:VALARM
@@ -327,7 +328,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-11-21-skyline@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261121T150000
 DTEND;TZID=America/Los_Angeles:20261121T170000
 SUMMARY:Cuesta WBB vs Skyline — L 37-59
@@ -340,10 +341,10 @@ DESCRIPTION:Tournament — Home\nVenue: Stork Gymnasium (Cuesta Gym)\, Cues
  +College%2C+Highway+1%2C+San+Luis+Obispo%2C+CA+93405\nDrive from Pasadena:
   4h 03m · 198 mi\nDrive from SLO: 12m · 7 mi\nWatch live (Host channel: 
  YouTube · CuestaHDTV (may not be streamed)): https://www.youtube.com/chan
- nel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: L 37-59 · Box score: https://www.ccc
- aasports.org/sports/wbkb/2026-27/boxscores/20261121_inke.xml\nNote: Hinson
- 's Tire Pros Classic\, day 2\nSeason calendar: https://johnlinwiz.github.i
- o/cuesta-basketball/?team=wbb
+ nel/UCJ5AEH02wtWXIUFAgVMspnQ\nFinal: L 37-59 · Box score: https://www.cue
+ staathletics.com/sports/wbkb/2026-27/boxscores/20261121_inke.xml\nNote: Hi
+ nson's Tire Pros Classic\, day 2\nSeason calendar: https://johnlinwiz.gith
+ ub.io/cuesta-basketball/?team=wbb
 URL:https://johnlinwiz.github.io/cuesta-basketball/?team=wbb
 CATEGORIES:Tournament,Home
 BEGIN:VALARM
@@ -359,7 +360,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-12-02-reedley@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261202T170000
 DTEND;TZID=America/Los_Angeles:20261202T190000
 SUMMARY:Cuesta WBB vs Reedley
@@ -389,7 +390,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-12-05-tba-tom-gilcrest-tournament@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;VALUE=DATE:20261205
 DTEND;VALUE=DATE:20261206
 SUMMARY:Cuesta WBB TBA (Tom Gilcrest Tournament)
@@ -420,7 +421,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-12-11-santa-ana@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261211T180000
 DTEND;TZID=America/Los_Angeles:20261211T200000
 SUMMARY:Cuesta WBB @ Santa Ana
@@ -450,7 +451,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-12-12-fullerton@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261212T130000
 DTEND;TZID=America/Los_Angeles:20261212T150000
 SUMMARY:Cuesta WBB @ Fullerton
@@ -480,7 +481,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2026-12-19-chabot@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20261219T150000
 DTEND;TZID=America/Los_Angeles:20261219T170000
 SUMMARY:Cuesta WBB @ Chabot
@@ -508,7 +509,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-06-ventura@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270106T170000
 DTEND;TZID=America/Los_Angeles:20270106T190000
 SUMMARY:Cuesta WBB @ Ventura
@@ -535,7 +536,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-09-santa-barbara@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270109T130000
 DTEND;TZID=America/Los_Angeles:20270109T150000
 SUMMARY:Cuesta WBB vs Santa Barbara
@@ -565,7 +566,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-13-moorpark@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270113T170000
 DTEND;TZID=America/Los_Angeles:20270113T190000
 SUMMARY:Cuesta WBB vs Moorpark
@@ -595,7 +596,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-16-oxnard@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270116T130000
 DTEND;TZID=America/Los_Angeles:20270116T150000
 SUMMARY:Cuesta WBB @ Oxnard
@@ -623,7 +624,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-20-la-mission@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270120T170000
 DTEND;TZID=America/Los_Angeles:20270120T190000
 SUMMARY:Cuesta WBB vs LA Mission
@@ -653,7 +654,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-23-la-pierce@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270123T130000
 DTEND;TZID=America/Los_Angeles:20270123T150000
 SUMMARY:Cuesta WBB @ LA Pierce
@@ -683,7 +684,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-27-allan-hancock@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270127T170000
 DTEND;TZID=America/Los_Angeles:20270127T190000
 SUMMARY:Cuesta WBB @ Allan Hancock
@@ -712,7 +713,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-01-29-ventura@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270129T170000
 DTEND;TZID=America/Los_Angeles:20270129T190000
 SUMMARY:Cuesta WBB vs Ventura
@@ -742,7 +743,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-03-santa-barbara@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270203T170000
 DTEND;TZID=America/Los_Angeles:20270203T190000
 SUMMARY:Cuesta WBB @ Santa Barbara
@@ -773,7 +774,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-05-moorpark@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270205T170000
 DTEND;TZID=America/Los_Angeles:20270205T190000
 SUMMARY:Cuesta WBB @ Moorpark
@@ -801,7 +802,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-10-oxnard@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270210T170000
 DTEND;TZID=America/Los_Angeles:20270210T190000
 SUMMARY:Cuesta WBB vs Oxnard
@@ -831,7 +832,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-12-la-mission@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270212T170000
 DTEND;TZID=America/Los_Angeles:20270212T190000
 SUMMARY:Cuesta WBB @ LA Mission
@@ -860,7 +861,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-17-la-pierce@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270217T170000
 DTEND;TZID=America/Los_Angeles:20270217T190000
 SUMMARY:Cuesta WBB vs LA Pierce
@@ -890,7 +891,7 @@ END:VALARM
 END:VEVENT
 BEGIN:VEVENT
 UID:wbb-2027-02-19-allan-hancock@johnlinwiz.cuesta-basketball
-DTSTAMP:20261125T000000Z
+DTSTAMP:20261126T000000Z
 DTSTART;TZID=America/Los_Angeles:20270219T170000
 DTEND;TZID=America/Los_Angeles:20270219T190000
 SUMMARY:Cuesta WBB vs Allan Hancock
